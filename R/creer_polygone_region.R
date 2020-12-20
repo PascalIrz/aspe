@@ -1,0 +1,36 @@
+#' Créer un polygone pour uné région
+#'
+#' Créer un polygone de classe sf à partir des numéros des départements et
+#'     de la couche SIG des départements téléchargée
+#'
+#' @param couche_shp_departements Chemin vers la couche des départements au fromat .shp
+#' @param departements_selectionnes Caractère. Vecteur des numéros des départements.
+#' @param distance_buffer Numérique. Paramètre qui détermine la largeur du buffer.
+#' @param intitule_region Caractère. Intitulé de la région.
+#'
+#' @importFrom sf read_sf st_combine st_buffer st_as_sf
+#' @importFrom dplyr filter mutate
+#'
+#' @return Le contour de la région (objet de classe sf).
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' region <- creer_polygone_region (couche_shp_departements = url,
+#'     departements_selectionnes = c("22", "29", "35", "56"),
+#'     distance_buffer = 0.01,
+#'     intitule_region = "Bretagne")
+#' }
+creer_polygone_region <- function(couche_shp_departements,
+                                  departements_selectionnes,
+                                  distance_buffer = 0.01,
+                                  intitule_region) {
+
+  sf::read_sf(couche_shp_departements, options = "ENCODING=WINDOWS-1252") %>%
+    filter(code_insee %in% departements_selectionnes) %>%
+    sf::st_combine() %>% # fusion des départements
+    sf::st_buffer(dist = distance_buffer) %>%  # buffer d'environ 1km pour une valeur de 0.01
+    sf::st_as_sf() %>%
+    mutate(region = intitule_region) # rajout de ce champ nécessaire pour le filtrage ultérieur des stations
+}
+
