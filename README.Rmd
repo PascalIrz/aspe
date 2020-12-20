@@ -28,7 +28,7 @@ La base de données ASPE de l'OFB contient toutes les données d'inventaire par 
 If necessary, first install the {devtools} R package, then you can install the released version of {aspe} from [Github](https://github.com/PascalIrz/aspe) with:
 
 ``` r
-install_github("PascalIrz/aspe")
+devtools::install_github("PascalIrz/aspe")
 ```
 
 
