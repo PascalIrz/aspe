@@ -28,4 +28,4 @@ If necessary, first install the {devtools} R package, then you can
 install the released version of {aspe} from
 [Github](https://github.com/PascalIrz/aspe) with:
 
-    install_github("PascalIrz/aspe")
+    devtools::install_github("PascalIrz/aspe")
