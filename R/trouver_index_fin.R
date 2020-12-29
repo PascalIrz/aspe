@@ -1,9 +1,9 @@
 #' Trouver la ligne de fin qui correspond à une table désignée par sa ligne de début.
 #'
-#' Par expemple pour trouver le numéro de la ligne de fin d'une table qui débuterait à la ligne 6517552
+#' Par exemple pour trouver le numéro de la ligne de fin d'une table qui débuterait à la ligne 6517552
 #'
 #' @param vecteur_index_lignes_fin Vecteur contenant les numéros de toutes les lignes contenant la séquence caractéristique
-#'     de la fin d'une table
+#'     de la fin d'une table.
 #' @param ligne_debut Numéro de la ligne de début de la table.
 #'
 #' @return Le numéro de la ligne de fin de la table.

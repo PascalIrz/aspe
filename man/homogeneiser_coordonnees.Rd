@@ -4,15 +4,21 @@
 \alias{homogeneiser_coordonnees}
 \title{Homogénéiser les systèmes de coordonnées}
 \usage{
-homogeneiser_coordonnees(df, crs_sortie = 4326)
+homogeneiser_coordonnees(df, crs_initial, x, y, crs_sortie = 4326)
 }
 \arguments{
 \item{df}{Le dataframe contenant des coordonnées (sta_coordonnees_x et sta_coordonnees_y)
-ainsi qu'une colonne avec le système de coordonnées}
+ainsi qu'une colonne avec le système de coordonnées.}
 
-\item{crs_sortie}{Numérique. Le numéro EPSG du CRS de sortie. Les principaux sont :
-Lambert II Etendu : crs = 27572
-RGF93 / Lambert 93 : crs = 2154}
+\item{crs_initial}{Caractère. Nom de la colonne qui contient le numéro EPSG du CRS de chacune
+des observations (par exemple des stations ou des points).}
+
+\item{x}{Caractère. Nom de la colonne qui contient la longitude.}
+
+\item{y}{Caractère. Nom de la colonne qui contient la latitude.}
+
+\item{crs_sortie}{Numérique entier. Le numéro EPSG du CRS de sortie. Par défaut
+c'est en WGS84 (crs = 4326).}
 }
 \value{
 Le dataframe spatial (classe sf) dans le CRS choisi en sortie. Par défaut
@@ -25,6 +31,7 @@ La base Aspe comprend deux systèmes de coordonnées : Lambert II étendu et
 \examples{
 
 \dontrun{
-homogeneiser_coordonnees(df = station, crs_sortie = 4326)
+homogeneiser_coordonnees(df = station, crs_initial = "typ_code_epsg",
+    x = "sta_coordonnees_x", y = "sta_coordonnees_y", crs_sortie = 4326)
 }
 }
