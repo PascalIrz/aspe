@@ -23,7 +23,7 @@
 #' }
 creer_polygone_region <- function(couche_shp_departements,
                                   departements_selectionnes,
-                                  distance_buffer = 0.01,
+                                  distance_buffer = 0,
                                   intitule_region) {
 
   sf::read_sf(couche_shp_departements, options = "ENCODING=WINDOWS-1252") %>%
