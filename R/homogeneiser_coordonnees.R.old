@@ -1,0 +1,56 @@
+#' Homogénéiser les systèmes de coordonnées
+#'
+#' La base Aspe comprend plusieurs systèmes de coordonnées. En métropole ce sont les
+#'     Lambert II étendu et Lambert 93. D'autres systèmes sont utilisés dans les outre-mers.
+#'     Il s'agit ici d'homogénéiser.
+#'
+#' @param df Le dataframe contenant des coordonnées (longitude et latitude)
+#'     ainsi qu'une colonne avec le système de coordonnées identifié par son code ESPG.
+#' @param var_x Caractère. Nom de la colonne qui contient la longitude.
+#' @param var_y Caractère. Nom de la colonne qui contient la latitude.
+#' @param var_crs_initial Caractère. Nom de la colonne qui contient le numéro EPSG du CRS de chacune
+#'     des observations (par exemple des stations ou des points).
+#' @param crs_sortie Numérique entier. Le numéro EPSG du CRS de sortie. Par défaut
+#'     c'est en WGS84 (crs = 4326).
+#'
+#' @return Le dataframe complété de deux colonnes (X et Y) indiquant la longitude et la latitude
+#'     dans le CRS choisi en sortie. Par défaut la sortie est en WGS84 (crs = 4326).
+#'
+#' @export
+#'
+#' @examples
+#'
+#' \dontrun{
+#' homogeneiser_coordonnees(df = station, var_x = "sta_coordonnees_x", var_y = "sta_coordonnees_y",
+#'     crs_initial = "typ_code_epsg", crs_sortie = 4326)
+#' }
+#'
+homogeneiser_coordonnees <- function(df, var_x, var_y, var_crs_initial, crs_sortie = 4326)
+
+{
+
+  val_x <- df[var_x] %>% unlist()
+  val_y <- df[var_y] %>% unlist()
+  val_crs_initial <- df[var_crs_initial] %>% unlist()
+
+  prov <- df %>%
+    sf::st_as_sf(coords = c(var_x, var_y), crs = var_crs_initial)
+
+  sf::st_crs(prov) <- val_crs_initial
+
+  prov <- prov %>%
+    sf::st_transform(crs = crs_sortie)
+
+  coords <- sf::st_coordinates(prov)
+
+
+  cbind(df, coords)
+
+}
+
+
+
+mes_stations <- homogeneiser_coordonnees(df = mes_stations,
+                                         var_x = "sta_coordonnees_x",
+                                         var_y = "sta_coordonnees_y",
+                                         var_crs_initial = "typ_code_epsg")

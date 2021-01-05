@@ -2,7 +2,7 @@
 % Please edit documentation in R/creer_polygone_region.R
 \name{creer_polygone_region}
 \alias{creer_polygone_region}
-\title{Créer un polygone pour uné région}
+\title{Créer un polygone pour une région}
 \usage{
 creer_polygone_region(
   couche_shp_departements,

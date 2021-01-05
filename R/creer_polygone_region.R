@@ -1,4 +1,4 @@
-#' Créer un polygone pour uné région
+#' Créer un polygone pour une région
 #'
 #' Créer un polygone de classe sf à partir des numéros des départements et
 #'     de la couche SIG des départements téléchargée

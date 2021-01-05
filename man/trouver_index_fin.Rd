@@ -8,7 +8,7 @@ trouver_index_fin(vecteur_index_lignes_fin, ligne_debut)
 }
 \arguments{
 \item{vecteur_index_lignes_fin}{Vecteur contenant les numéros de toutes les lignes contenant la séquence caractéristique
-de la fin d'une table}
+de la fin d'une table.}
 
 \item{ligne_debut}{Numéro de la ligne de début de la table.}
 }
@@ -16,7 +16,7 @@ de la fin d'une table}
 Le numéro de la ligne de fin de la table.
 }
 \description{
-Par expemple pour trouver le numéro de la ligne de fin d'une table qui débuterait à la ligne 6517552
+Par exemple pour trouver le numéro de la ligne de fin d'une table qui débuterait à la ligne 6517552
 }
 \examples{
 \dontrun{
