@@ -2,6 +2,7 @@
 
 export(convertir_coords_df)
 export(convertir_coords_ligne)
+export(creer_passerelle)
 export(creer_polygone_region)
 export(extraire_noms_tables)
 export(importer_dump_sql)

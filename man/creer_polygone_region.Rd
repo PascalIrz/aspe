@@ -7,7 +7,7 @@
 creer_polygone_region(
   couche_shp_departements,
   departements_selectionnes,
-  distance_buffer = 0.01,
+  distance_buffer = 0,
   intitule_region
 )
 }
