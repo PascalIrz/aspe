@@ -1,4 +1,10 @@
-utils::globalVariables(c('.', 'code_insee', 'lot_poissons', 'lop_id', 'lop_pre_id',
-                         'prelevement_elementaire', 'pre_id', 'pre_op_id', 'operation',
-                         'ope_id', 'ope_pop_id', 'point_prelevement', 'pop_sta_id',
-                         'pop_id', 'sta_id'))
+utils::globalVariables(c('.',
+                        'code_insee', 'dept', 'annee',
+                        'lot_poissons', 'lop_id', 'lop_pre_id',
+                        'operation_ipr', 'ipr', 'classe_ipr', 'opi_ipr', 'opi_ope_id',
+                        'prelevement_elementaire', 'pre_id', 'pre_ope_id',
+                        'operation', 'ope_id', 'ope_pop_id', 'operation_objectif', 'ope_date', 'opo_ope_id',
+                        'opo_obj_id', 'obj_id',
+                        'point_prelevement', 'pop_sta_id', 'pop_id', 'pop_libelle_wama', 'libelle_point',
+                        'station', 'sta_com_code_insee', 'sta_libelle_sandre', 'libelle_station',
+                        'sta_id'))
