@@ -1,7 +1,7 @@
 #' Extraire les notes IPR à partir d'une table passerelle
 #'
-#' @param passerelle Dataframe mettant en correspondance les identifiants des différentes tables.
-#' @param date_debut Date de début de la période à extraire au format jj/mm/aaaa.
+#' @param passerelle Dataframe mettant en correspondance les identifiants des différentes tables
+#' @param date_debut Date de début de la période à extraire au format jj/mm/aaaa
 #' @param date_fin Date de fin de la période à extraire au format jj/mm/aaaa. Par défaut c'est la
 #'     date du jour où la fonction est exécutée.
 #'
@@ -17,12 +17,16 @@
 #' date_fin = '31/07/2020')
 #' }
 #'
-extraire_ipr <- function(passerelle, date_debut, date_fin = format(Sys.Date(), "%d/%m/%Y"))
+extraire_ipr <- function(passerelle, date_debut, date_fin = Sys.Date())
 
 {
 
   passerelle %>%
-    ajouter_ope_date(date_debut = date_debut, date_fin = date_fin) %>%
+    left_join(y = operation %>% select(ope_id, ope_date)) %>% # récupération de la date
+    mutate(ope_date = as.character(ope_date), # mise au format de la date
+           annee = lubridate::ymd_hms(ope_date), # création variable année
+           annee = lubridate::year(annee),
+           ope_date = ymd_hms(ope_date)) %>%
     filter(ope_date <= dmy(date_fin) & ope_date >= dmy(date_debut)) %>%
     left_join(y = operation_ipr %>% select(ope_id = opi_ope_id, ipr = opi_ipr)) %>% # récupération IPR
     filter(!is.na(ipr)) %>% # filtrage des IPR non vides
