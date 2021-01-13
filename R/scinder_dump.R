@@ -1,5 +1,13 @@
 #' Scinder le dump en deux parties pour les traiter séparément et éviter de
-#'     sature la mémoire vive
+#'     saturer la mémoire vive.
+#'
+#' ATTENTION : Si le chemin d'accès au fichier est trop long, il est possible que
+#'     la fonction retourne une erreur :
+#'     Error in gzfile(file, "wb") : argument 'description' incorrect
+#      De plus : Warning message:
+#'     In if (!nzchar(file)) stop("'file' must be non-empty string") :
+#'     a condition a une longueur > 1 et seul le premier élément est utilisé
+#'     Dans ce cas, déplacez le dump pour accourcir le chemin d'accès.
 #'
 #' @param fichier_dump Le chemin vers le fichier d'extension .sql (décompressé) ou
 #'     .sql.gz (archive).

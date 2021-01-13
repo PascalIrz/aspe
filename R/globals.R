@@ -13,4 +13,4 @@ utils::globalVariables(c('.',
                         'station', 'sta_com_code_insee', 'sta_libelle_sandre', 'libelle_station',
                         'sta_id',
                         'ref_espece',
-                        'ref_unite_hydrographique', 'unh_libelle', 'unh_code_sandre'))
+                        'ref_unite_hydrographique', 'unh_libelle', 'unh_code_sandre', 'unh_libelle_sandre'))
