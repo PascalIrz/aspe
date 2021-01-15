@@ -6,7 +6,8 @@
 #' @param date_fin Date de fin de la période à extraire au format jj/mm/aaaa. Par défaut c'est la
 #'     date du jour où la fonction est exécutée.
 #'
-#' @return Un dataframe au format souhaité.
+#' @return Un dataframe au format souhaité, mais dont les colonnes doivent ensuite être renommées
+#'     avec la fonction renommer_pour_macro().
 #' @export
 #'
 #' @importFrom lubridate ymd_hms dmy
@@ -15,7 +16,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' ipr_large_df <- formater_pour_macro(passerelle = passerelle, date_debut = '01/01/2020')
+#' data_macro <- formater_pour_macro(passerelle = passerelle, date_debut = '01/01/2020')
 #' }
 formater_pour_macro <- function(passerelle, date_debut, date_fin = format(Sys.Date(), "%d/%m/%Y"))
 
@@ -33,7 +34,7 @@ formater_pour_macro <- function(passerelle, date_debut, date_fin = format(Sys.Da
     filter(ope_date <= dmy(date_fin) & ope_date >= dmy(date_debut)) %>%
     left_join(y = lot_poissons %>% select(pre_id = lop_pre_id, esp_id = lop_esp_id, lop_effectif)) %>%
     left_join(y = ref_espece %>% select(esp_id, esp_code_alternatif)) %>%
-    left_join(ref_unite_hydrographique %>% select(unh_code_sandre, unh_libelle),
+    left_join(ref_unite_hydrographique %>% select(unh_code_sandre, unh_libelle_sandre),
               by = c("opi_param_bassin" = "unh_code_sandre")) %>%
     mutate(coursdo = NA,
            unh_libelle_sandre = str_extract(unh_libelle_sandre, pattern = '\\b\\w+$'),

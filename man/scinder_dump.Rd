@@ -3,7 +3,7 @@
 \name{scinder_dump}
 \alias{scinder_dump}
 \title{Scinder le dump en deux parties pour les traiter séparément et éviter de
-    sature la mémoire vive}
+    saturer la mémoire vive.}
 \usage{
 scinder_dump(fichier_dump, repertoire_sortie = NA)
 }
@@ -19,8 +19,12 @@ Deux fichiers au format .RData contenant l'un les lignes de la table
     mesure_individuelle et l'autre tout le reste du dump
 }
 \description{
-Scinder le dump en deux parties pour les traiter séparément et éviter de
-    sature la mémoire vive
+ATTENTION : Si le chemin d'accès au fichier est trop long, il est possible que
+    la fonction retourne une erreur :
+    Error in gzfile(file, "wb") : argument 'description' incorrect
+    In if (!nzchar(file)) stop("'file' must be non-empty string") :
+    a condition a une longueur > 1 et seul le premier élément est utilisé
+    Dans ce cas, déplacez le dump pour accourcir le chemin d'accès.
 }
 \examples{
 \dontrun{

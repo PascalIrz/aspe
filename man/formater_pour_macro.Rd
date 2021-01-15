@@ -20,7 +20,8 @@ formater_pour_macro(
 date du jour où la fonction est exécutée.}
 }
 \value{
-Un dataframe au format souhaité.
+Un dataframe au format souhaité, mais dont les colonnes doivent ensuite être renommées
+    avec la fonction renommer_pour_macro().
 }
 \description{
 Mettre les données nécessaires au calcul de l'IPR au format requis en entrée de la macro
@@ -28,6 +29,6 @@ Mettre les données nécessaires au calcul de l'IPR au format requis en entrée 
 }
 \examples{
 \dontrun{
-ipr_large_df <- formater_pour_macro(passerelle = passerelle, date_debut = '01/01/2020')
+data_macro <- formater_pour_macro(passerelle = passerelle, date_debut = '01/01/2020')
 }
 }
