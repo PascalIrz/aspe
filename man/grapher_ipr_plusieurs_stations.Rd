@@ -41,9 +41,9 @@ Produire un graphique en treilis de l'évolution de l'IPR sur un jeu de stations
 }
 \examples{
 \dontrun{
-grapher_ipr_plusieurs_stations (ipr_df = data,
+grapher_ipr_plusieurs_stations (ipr_df = data_22,
 stations_id = NA,
-premiere_annee = 2015,
+premiere_annee = 2010,
 derniere_annee = NA,
 titre = "CÃ´tes d'Armor",
 palette = NA)
