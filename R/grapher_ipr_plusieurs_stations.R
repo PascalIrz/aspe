@@ -36,11 +36,11 @@ grapher_ipr_plusieurs_stations <- function(ipr_df, stations_id = NA, premiere_an
 
   if (is.na(palette)) {
 
-    palette <- c("Très bon" = "darkblue",
+    palette <- c("Excellent" = "darkblue",
                  "Bon" = "darkgreen",
-                 "Moyen" = "yellow",
-                 "Médiocre" = "orange",
-                 "Mauvais" = "red")
+                 "Médiocre" = "yellow",
+                 "Mauvais" = "orange",
+                 "Très mauvais" = "red")
   }
 
   if (!is.na(stations_id)) ipr_df <- ipr_df %>% filter(sta_id %in% stations_id)
@@ -62,7 +62,8 @@ grapher_ipr_plusieurs_stations <- function(ipr_df, stations_id = NA, premiere_an
   ggplot(data = ipr_df,
          aes(x = annee, y = ipr, fill = classe_ipr)) +
     geom_bar(stat = "identity") +
-    labs(x = "Année", y = "IPR",
+    labs(x = "Année",
+         y = "IPR",
          title = titre,
          fill = "Classe IPR") +
     scale_fill_manual(values = palette) +

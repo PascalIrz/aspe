@@ -9,7 +9,8 @@ grapher_histo_longueur(
   indiv_df,
   operation,
   especes,
-  type_longueur = c("Totale", "Fourche", "Estimée d'après le poids")
+  type_longueur = c("Totale", "Fourche", "Estimée d'après le poids"),
+  n_intervalles = 30
 )
 }
 \arguments{
@@ -25,6 +26,9 @@ au genre.}
 \item{type_longueur}{Vecteur caractères. Intitulé(s) du ou des type(s) de longueur
 à prendre en compte pour construire l'histogramme. Trois modalités sont proposées,
 qui correspondent aux modélités du champ tlo_libelle de la table ref_type_longueur.}
+
+\item{n_intervalles}{Nombre entier. Nombre d'intervalles de longueur sur l'axe des
+abscisses. La valeur par défaut est 30.}
 }
 \value{
 L'histogramme. C'est un objet de classe ggplot qui peut donc être repris par la
@@ -39,6 +43,7 @@ Produire l'histogramme de distribution des longueurs individuelles pour une opé
 grapher_histo_longueur (indiv_df = data_ind_56,
 operation = 6313,
 especes = "GOU",
-type_longueur = c("Fourche", "EstimÃ©e d'aprÃ¨s le poids")
+type_longueur = c("Fourche", "EstimÃ©e d'aprÃ¨s le poids"),
+n_intervalles = 25)
 }
 }

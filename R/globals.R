@@ -15,5 +15,6 @@ utils::globalVariables(c('.',
                         'ref_espece',
                         'tlo_libelle',
                         'mei_taille',
+                        'cli_altitude_min', 'cli_borne_inf', 'cli_libelle',
                         'ref_unite_hydrographique', 'unh_libelle', 'unh_code_sandre', 'unh_libelle_sandre',
                         'ABLab', 'VANab'))
