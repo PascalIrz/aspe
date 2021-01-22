@@ -73,21 +73,11 @@ imp_tables_a_partir_des_lignes <- function(lignes_dump, tables_a_extraire = NA) 
   # recherche des numéros de lignes de fin de chaque table, repérées par "\."
   vecteur_index_lignes_fin <- which(stringi::stri_detect_fixed(lignes_dump, "\\."))
 
-  # Fonction qui, pour un numéro de ligne de début, va trouver la ligne de fin qui lui correspond
-  # trouver_index_fin <- function(vecteur_index_lignes_fin, ligne_debut)
-  #
-  # {
-  #
-  #   which(vecteur_index_lignes_fin > ligne_debut) %>%
-  #     min() %>%
-  #     vecteur_index_lignes_fin[.]
-  #
-  # }
 
   # application sur le dataframe
   caracteristiques_tables <- caracteristiques_tables %>%
-    group_by(nom_table) %>% # nécessaire car la fonction trouver_index_fin n'accepte pas les vecteurs en entrée
-    mutate(index_ligne_fin = trouver_index_fin(vecteur_index_lignes_fin = vecteur_index_lignes_fin,
+    group_by(nom_table) %>% # nécessaire car la fonction imp_trouver_index_fin n'accepte pas les vecteurs en entrée
+    mutate(index_ligne_fin = imp_trouver_index_fin(vecteur_index_lignes_fin = vecteur_index_lignes_fin,
                                                ligne_debut = index_ligne_debut)) %>%
     mutate(index_ligne_fin = index_ligne_fin - 1,
            index_ligne_debut = index_ligne_debut + 3)

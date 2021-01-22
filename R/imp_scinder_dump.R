@@ -49,7 +49,7 @@ vecteur_index_lignes_fin <- lignes %>%
   which()
 
 # Recherche parmi les numéros des lignes de fin de table de celle correspondant à la fin de mi
-index_fin_mi <- aspe::trouver_index_fin(vecteur_index_lignes_fin = vecteur_index_lignes_fin,
+index_fin_mi <- aspe::imp_trouver_index_fin(vecteur_index_lignes_fin = vecteur_index_lignes_fin,
                                         ligne_debut = index_debut_mi)
 
 # Sauvegarde au format RData de la table mi # le répertoire par défaut est celui où est stocké le dump

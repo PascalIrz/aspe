@@ -26,11 +26,11 @@ imp_importer_dump_sql <- function(fichier_dump) {
 
   # lecture brute du fichier texte
 
-  lignes_dump <- imp_lire_lignes_dump (fichier_dump)
+  lignes_dump <- imp_lire_lignes_dump(fichier_dump)
 
   options(stringsAsFactors = F)
 
-  noms_tables <- imp_extraire_noms_tables (lignes_dump = lignes_dump)
+  noms_tables <- imp_extraire_noms_tables(lignes_dump = lignes_dump)
 
   imp_tables_a_partir_des_lignes(lignes_dump = lignes_dump,
                                  tables_a_extraire = noms_tables)
