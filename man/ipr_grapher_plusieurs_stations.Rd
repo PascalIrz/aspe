@@ -9,9 +9,11 @@ ipr_grapher_plusieurs_stations(
   stations_id = NA,
   premiere_annee = NA,
   derniere_annee = NA,
+  nb_mini_annees = 5,
   titre = NA,
   palette = NA,
-  nb_colonnes = 3
+  nb_colonnes = 3,
+  max_axe_y = 40
 )
 }
 \arguments{
@@ -26,12 +28,19 @@ Par défaut, c'est la première année de donnée sur l'ensemble des stations.}
 \item{derniere_annee}{Numérique. Année de fin de la période à représenter (incluse).
 Par défaut, c'est la dernière année de donnée sur l'ensemble des stations.}
 
+\item{nb_mini_annees}{Numérique entier. Nombre minimum d'années de données nécessaire
+pour qu'une station soit représentée sur le graphique. Par défaut c'est 5 années.}
+
 \item{titre}{Caractère. Titre du graphique.}
 
 \item{palette}{Vecteur nommé de couleurs, contenant 5 éléments pour chacune des
 classes IPR. Par défaut, une palette est fournie.}
 
 \item{nb_colonnes}{Nombre entier. Nombre de colonnes dans la sortie graphique.}
+
+\item{max_axe_y}{Numérique. Valeur maximale de l'axe des ordonnées (IPR = 40 par défaut).
+Ce paramètre peut être intéressant pour éviter que quelques valeurs très élevées
+nuisent à la lisibilité du graphique.}
 }
 \value{
 Le graphique issu de ggplot2.
@@ -41,11 +50,9 @@ Produire un graphique en treilis de l'évolution de l'IPR sur un jeu de stations
 }
 \examples{
 \dontrun{
-ipr_grapher_plusieurs_stations (ipr_df = data_22,
-stations_id = NA,
+ipr_grapher_plusieurs_stations(ipr_df = data_22,
 premiere_annee = 2010,
-derniere_annee = NA,
-titre = "CÃ´tes d'Armor",
-palette = NA)
+nb_mini_annees = 3,
+titre = "CÃ´tes d'Armor")
 }
 }

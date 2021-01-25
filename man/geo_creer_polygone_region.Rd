@@ -16,7 +16,8 @@ geo_creer_polygone_region(
 
 \item{departements_selectionnes}{Caractère. Vecteur des numéros des départements.}
 
-\item{distance_buffer}{Numérique. Paramètre qui détermine la largeur du buffer.}
+\item{distance_buffer}{Numérique. Paramètre qui détermine la largeur du buffer en km
+(approximativement).}
 
 \item{intitule_region}{Caractère. Intitulé de la région.}
 }
