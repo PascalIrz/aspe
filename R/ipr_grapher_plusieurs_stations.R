@@ -1,12 +1,6 @@
 #' Produire un graphique en treilis de l'évolution de l'IPR sur un jeu de stations.
 #'
 #' @param ipr_df Dataframe contenant les données, issu de la fonction extraire_ipr().
-#' @param stations_id Vecteur caractère contenant les identifiants (sta_id) des stations à
-#'     représenter sur le graphique.
-#' @param premiere_annee Numérique. Année de début de la période à représenter (incluse).
-#'     Par défaut, c'est la première année de donnée sur l'ensemble des stations.
-#' @param derniere_annee Numérique. Année de fin de la période à représenter (incluse).
-#'     Par défaut, c'est la dernière année de donnée sur l'ensemble des stations.
 #' @param nb_mini_annees Numérique entier. Nombre minimum d'années de données nécessaire
 #'     pour qu'une station soit représentée sur le graphique. Par défaut c'est 5 années.
 #' @param titre Caractère. Titre du graphique.
@@ -27,12 +21,10 @@
 #' @examples
 #' \dontrun{
 #' ipr_grapher_plusieurs_stations(ipr_df = data_22,
-#' premiere_annee = 2010,
 #' nb_mini_annees = 3,
 #' titre = "Morbihan")
 #' }
-ipr_grapher_plusieurs_stations <- function(ipr_df, stations_id = NA, premiere_annee = NA,
-                                            derniere_annee = NA, nb_mini_annees = 5,
+ipr_grapher_plusieurs_stations <- function(ipr_df, nb_mini_annees = 5,
                                             titre = NA, palette = NA,
                                             nb_colonnes = 3, max_axe_y = 40)
 {
@@ -50,26 +42,26 @@ ipr_grapher_plusieurs_stations <- function(ipr_df, stations_id = NA, premiere_an
 
   }
 
-  # -----------------------------------------------------------
-  # Filtrage des données selon les arguments
-  # -----------------------------------------------------------
-  # selon stations_id
-  if (!is.na(stations_id)) ipr_df <- ipr_df %>% filter(sta_id %in% stations_id)
-
-  # selon les années sélectionnées
-  if (!is.na(premiere_annee))
-  {
-    ipr_df <- ipr_df %>% filter(annee >= premiere_annee)
-  } else{
-    premiere_annee <- min(ipr_df$annee, na.rm = T)
-  }
-
-  if (!is.na(derniere_annee))
-  {
-    ipr_df <- ipr_df %>% filter(annee <= derniere_annee)
-  } else{
-    derniere_annee <- max(ipr_df$annee, na.rm = T)
-  }
+  # # -----------------------------------------------------------
+  # # Filtrage des données selon les arguments
+  # # -----------------------------------------------------------
+  # # selon stations_id
+  # if (!is.na(stations_id)) ipr_df <- ipr_df %>% filter(sta_id %in% stations_id)
+  #
+  # # selon les années sélectionnées
+  # if (!is.na(premiere_annee))
+  # {
+  #   ipr_df <- ipr_df %>% filter(annee >= premiere_annee)
+  # } else{
+  #   premiere_annee <- min(ipr_df$annee, na.rm = T)
+  # }
+  #
+  # if (!is.na(derniere_annee))
+  # {
+  #   ipr_df <- ipr_df %>% filter(annee <= derniere_annee)
+  # } else{
+  #   derniere_annee <- max(ipr_df$annee, na.rm = T)
+  # }
 
   # selon le nb d'année de données par station sur la période
   stations_id2 <- ipr_df %>%
@@ -82,6 +74,9 @@ ipr_grapher_plusieurs_stations <- function(ipr_df, stations_id = NA, premiere_an
 
   ipr_df <- ipr_df %>%
     filter(sta_id %in% stations_id2)
+
+  premiere_annee <- min(ipr_df$annee)
+  derniere_annee <- max(ipr_df$annee)
 
   # -----------------------------------------------------------
   # Production du graphique

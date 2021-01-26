@@ -13,6 +13,7 @@ Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1
 Imports: dplyr,
+    forcats,
     ggplot2,
     lubridate,
     purrr,

@@ -6,9 +6,6 @@
 \usage{
 ipr_grapher_plusieurs_stations(
   ipr_df,
-  stations_id = NA,
-  premiere_annee = NA,
-  derniere_annee = NA,
   nb_mini_annees = 5,
   titre = NA,
   palette = NA,
@@ -18,15 +15,6 @@ ipr_grapher_plusieurs_stations(
 }
 \arguments{
 \item{ipr_df}{Dataframe contenant les données, issu de la fonction extraire_ipr().}
-
-\item{stations_id}{Vecteur caractère contenant les identifiants (sta_id) des stations à
-représenter sur le graphique.}
-
-\item{premiere_annee}{Numérique. Année de début de la période à représenter (incluse).
-Par défaut, c'est la première année de donnée sur l'ensemble des stations.}
-
-\item{derniere_annee}{Numérique. Année de fin de la période à représenter (incluse).
-Par défaut, c'est la dernière année de donnée sur l'ensemble des stations.}
 
 \item{nb_mini_annees}{Numérique entier. Nombre minimum d'années de données nécessaire
 pour qu'une station soit représentée sur le graphique. Par défaut c'est 5 années.}
@@ -51,8 +39,7 @@ Produire un graphique en treilis de l'évolution de l'IPR sur un jeu de stations
 \examples{
 \dontrun{
 ipr_grapher_plusieurs_stations(ipr_df = data_22,
-premiere_annee = 2010,
 nb_mini_annees = 3,
-titre = "CÃ´tes d'Armor")
+titre = "Morbihan")
 }
 }

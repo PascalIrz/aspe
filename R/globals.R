@@ -17,4 +17,5 @@ utils::globalVariables(c('.',
                         'mei_taille',
                         'cli_altitude_min', 'cli_borne_inf', 'cli_libelle',
                         'ref_unite_hydrographique', 'unh_libelle', 'unh_code_sandre', 'unh_libelle_sandre',
-                        'ABLab', 'VANab'))
+                        'ABLab', 'VANab',
+                        'bon derniere_annee', 'n_sta', 'pas_bon', 'premiere_annee', 'derniere_annee', 'bon'))
