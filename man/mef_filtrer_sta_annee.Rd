@@ -5,13 +5,16 @@
 \title{Filtrer un jeu de données sur les années et les identifiants des stations.}
 \usage{
 mef_filtrer_sta_annee(
-  ipr_df,
+  df,
   stations_id = NA,
   premiere_annee = NA,
   derniere_annee = NA
 )
 }
 \arguments{
+\item{df}{Dataframe contenant les données, issu de la fonction extraire_ipr() ou au moins
+avec des colonnes "annee" et "sta_id".}
+
 \item{stations_id}{Vecteur caractère contenant les identifiants (sta_id) des stations à
 représenter sur le graphique.}
 
@@ -20,9 +23,6 @@ Par défaut, c'est la première année de donnée sur l'ensemble des stations.}
 
 \item{derniere_annee}{Numérique. Année de fin de la période à représenter (incluse).
 Par défaut, c'est la dernière année de donnée sur l'ensemble des stations.}
-
-\item{df}{Dataframe contenant les données, issu de la fonction extraire_ipr() ou au moins
-avec des colonnes "annee" et "sta_id".}
 }
 \value{
 Le dataframe filtré.

@@ -1,8 +1,6 @@
 #' Produire un graphique en treilis de l'évolution de l'IPR sur un jeu de stations.
 #'
 #' @param ipr_df Dataframe contenant les données, issu de la fonction extraire_ipr().
-#' @param nb_mini_annees Numérique entier. Nombre minimum d'années de données nécessaire
-#'     pour qu'une station soit représentée sur le graphique. Par défaut c'est 5 années.
 #' @param titre Caractère. Titre du graphique.
 #' @param palette Vecteur nommé de couleurs, contenant 5 éléments pour chacune des
 #'     classes IPR. Par défaut, une palette est fournie.
@@ -24,7 +22,7 @@
 #' nb_mini_annees = 3,
 #' titre = "Morbihan")
 #' }
-ipr_grapher_plusieurs_stations <- function(ipr_df, nb_mini_annees = 5,
+ipr_grapher_plusieurs_stations <- function(ipr_df,
                                             titre = NA, palette = NA,
                                             nb_colonnes = 3, max_axe_y = 40)
 {
@@ -64,16 +62,16 @@ ipr_grapher_plusieurs_stations <- function(ipr_df, nb_mini_annees = 5,
   # }
 
   # selon le nb d'année de données par station sur la période
-  stations_id2 <- ipr_df %>%
-    group_by(sta_id) %>%
-    summarise(n = n_distinct(annee)) %>%
-    ungroup() %>%
-    filter(n >= nb_mini_annees) %>%
-    pull(sta_id) %>%
-    as.character()
-
-  ipr_df <- ipr_df %>%
-    filter(sta_id %in% stations_id2)
+  # stations_id2 <- ipr_df %>%
+  #   group_by(sta_id) %>%
+  #   summarise(n = n_distinct(annee)) %>%
+  #   ungroup() %>%
+  #   filter(n >= nb_mini_annees) %>%
+  #   pull(sta_id) %>%
+  #   as.character()
+  #
+  # ipr_df <- ipr_df %>%
+  #   filter(sta_id %in% stations_id2)
 
   premiere_annee <- min(ipr_df$annee)
   derniere_annee <- max(ipr_df$annee)
@@ -89,13 +87,14 @@ ipr_grapher_plusieurs_stations <- function(ipr_df, nb_mini_annees = 5,
          title = titre,
          fill = "Classe IPR") +
     scale_fill_manual(values = palette) +
-    facet_wrap(~libelle_station,
+    facet_wrap(~str_wrap(libelle_station, 30), # pour le cas des stations à libellé trop long
                ncol = nb_colonnes,
                scales = 'free_x') +
     scale_x_continuous(labels = scales::number_format(accuracy = 1, big.mark = ''),
                        breaks = seq(premiere_annee, derniere_annee, 2),
                        limits = c(premiere_annee - 0.5, derniere_annee + 0.5)) +
     coord_cartesian(ylim = c(0, max_axe_y)) +
-    theme(legend.position = "bottom")
+    theme(legend.position = "bottom",
+          strip.text.x = element_text(size = 8))
 
 }

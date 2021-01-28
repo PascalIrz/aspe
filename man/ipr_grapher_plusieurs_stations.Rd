@@ -6,7 +6,6 @@
 \usage{
 ipr_grapher_plusieurs_stations(
   ipr_df,
-  nb_mini_annees = 5,
   titre = NA,
   palette = NA,
   nb_colonnes = 3,
@@ -15,9 +14,6 @@ ipr_grapher_plusieurs_stations(
 }
 \arguments{
 \item{ipr_df}{Dataframe contenant les données, issu de la fonction extraire_ipr().}
-
-\item{nb_mini_annees}{Numérique entier. Nombre minimum d'années de données nécessaire
-pour qu'une station soit représentée sur le graphique. Par défaut c'est 5 années.}
 
 \item{titre}{Caractère. Titre du graphique.}
 
