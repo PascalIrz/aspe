@@ -14,7 +14,7 @@
 #'
 #' @importFrom scales number_format
 #' @importFrom ggplot2 aes facet_wrap geom_bar ggplot labs scale_fill_manual
-#' @importFrom ggplot2 scale_x_continuous theme coord_cartesian
+#' @importFrom ggplot2 scale_x_continuous theme coord_cartesian element_text
 #'
 #' @examples
 #' \dontrun{

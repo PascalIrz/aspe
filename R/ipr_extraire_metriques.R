@@ -7,6 +7,7 @@
 #' @export
 #'
 #' @importFrom lubridate year ymd_hms
+#' @importFrom stringr str_replace
 #'
 #' @examples
 #' \dontrun{

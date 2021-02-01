@@ -22,6 +22,7 @@ Imports: dplyr,
     sf,
     stringi,
     stringr,
+    tibble,
     tidyr
 Suggests: 
     knitr,
