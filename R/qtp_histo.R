@@ -10,7 +10,7 @@
 #' @export
 #'
 #' @importFrom dplyr filter
-#' @importFrom ggplot2 ggplot aes geom_histogram geom_density labs scale_x_continuous limits
+#' @importFrom ggplot2 ggplot aes geom_histogram geom_density labs scale_x_continuous
 #'
 #' @examples
 #' \dontrun{
@@ -44,7 +44,7 @@ qtp_histo <- function(df,
     geom_histogram(aes(y = ..density..), alpha = 0.5) +
     geom_density(color = "blue", size = 1) +
     labs(x = etiquette_x,
-         y = "Densité de probabilité",
+         y = "Densit\u00e9 de probabilit\u00e9",
          title = titre) +
     scale_x_continuous(limits = c(x_min, x_max))
 

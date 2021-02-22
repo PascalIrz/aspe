@@ -18,4 +18,5 @@ utils::globalVariables(c('.',
                         'cli_altitude_min', 'cli_borne_inf', 'cli_libelle',
                         'ref_unite_hydrographique', 'unh_libelle', 'unh_code_sandre', 'unh_libelle_sandre',
                         'ABLab', 'VANab',
-                        'bon derniere_annee', 'n_sta', 'pas_bon', 'premiere_annee', 'derniere_annee', 'bon'))
+                        'bon derniere_annee', 'n_sta', 'pas_bon', 'premiere_annee', 'derniere_annee', 'bon',
+                        '..density..', 'mei_poids'))
