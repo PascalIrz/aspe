@@ -21,7 +21,7 @@ Produire un graphique du pourcentage de stations en bon état au plan IPR sur un
 }
 \examples{
 \dontrun{
-ipr_grapher_pc_bon(ipr_df = data_22,
+ipr_grapher_pc_bon(ipr_df = data_56,
 titre = "Morbihan")
 }
 }

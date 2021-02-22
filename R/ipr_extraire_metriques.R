@@ -22,8 +22,6 @@ ipr_extraire_metriques <- function(passerelle)
                 rename(ope_id = opi_ope_id)) %>%
     left_join(y = station %>% # ajout libellé station
                 select(sta_id, sta_libelle_sandre)) %>%
-    #  left_join(y = operation %>% # ajout date opération
-    #                    select(ope_id, ope_date)) %>%
     select(sta_libelle_sandre, ope_date, sta_id, # sélection des colonnes
            ends_with("theorique"),
            ends_with("observe"),
@@ -37,6 +35,6 @@ ipr_extraire_metriques <- function(passerelle)
     ungroup() %>%
     mutate(titre = paste0(sta_libelle_sandre, " - ", annee)) %>% # création titre station - annee
     rename_at(.vars = vars(starts_with("opi_")), # simplification des noms des métriques
-              .funs = funs(str_replace(., pattern = "opi_", replacement = "")))
+              .funs = ~str_replace(., pattern = "opi_", replacement = ""))
 
 }

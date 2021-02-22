@@ -10,7 +10,7 @@
 #'
 #' @return Un dataframe à deux colonnes et une seule ligne contenant les coordonnées
 #'     dans le CRS de sortie.
-#' @export
+#' @noRd
 #'
 #' @importFrom dplyr mutate
 #' @importFrom sf st_as_sf st_crs st_transform

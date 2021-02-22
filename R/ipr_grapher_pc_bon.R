@@ -13,17 +13,20 @@
 #'
 #' @examples
 #' \dontrun{
-#' ipr_grapher_pc_bon(ipr_df = data_22,
+#' ipr_grapher_pc_bon(ipr_df = data_56,
 #' titre = "Morbihan")
 #' }
 ipr_grapher_pc_bon <- function(ipr_df, titre = NA)
 
 {
 
+  premiere_annee <- min(ipr_df$annee)
+  derniere_annee <- max(ipr_df$annee)
+
   pc_bon <- ipr_df %>%
     mutate(classe_ipr = fct_recode(classe_ipr, bon = "Excellent", bon = "Bon",
-                                   pas_bon = "Médiocre", pas_bon = "Mauvais",
-                                   pas_bon = "Très mauvais")) %>%
+                                   pas_bon = "M\u00e9diocre", pas_bon = "Mauvais",
+                                   pas_bon = "Tr\u00e8s mauvais")) %>%
     group_by(annee, classe_ipr) %>%
     summarise(n_sta = n_distinct(sta_id)) %>%
     ungroup() %>%
@@ -38,7 +41,7 @@ ipr_grapher_pc_bon <- function(ipr_df, titre = NA)
     geom_bar(stat = "identity") +
     scale_y_continuous(limits = c(0, NA)) +
     geom_bar(stat = "identity") +
-    labs(y = "Pourcentage de stations en bon état d'après l'IPR",
+    labs(y = "Pourcentage de stations en bon \u00e9tat d\'apr\u00e8s l\'IPR",
          title = titre) +
     scale_x_continuous(labels = scales::number_format(accuracy = 1, big.mark = ''),
                        breaks = seq(premiere_annee, derniere_annee, 2),

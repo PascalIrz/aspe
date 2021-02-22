@@ -4,7 +4,7 @@
 #'     .sql.gz (archive).
 #'
 #' @return Une liste de chaînes de caractères avec autant d'éléments que de lignes sur le dump.
-#' @export
+#' @noRd
 #'
 #'
 #' @examples

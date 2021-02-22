@@ -34,44 +34,11 @@ ipr_grapher_plusieurs_stations <- function(ipr_df,
 
     palette <- c("Excellent" = "darkblue",
                  "Bon" = "darkgreen",
-                 "Médiocre" = "yellow",
+                 "M\\u00e9diocre" = "yellow",
                  "Mauvais" = "orange",
-                 "Très mauvais" = "red")
+                 "Tr\\u00e8s mauvais" = "red")
 
   }
-
-  # # -----------------------------------------------------------
-  # # Filtrage des données selon les arguments
-  # # -----------------------------------------------------------
-  # # selon stations_id
-  # if (!is.na(stations_id)) ipr_df <- ipr_df %>% filter(sta_id %in% stations_id)
-  #
-  # # selon les années sélectionnées
-  # if (!is.na(premiere_annee))
-  # {
-  #   ipr_df <- ipr_df %>% filter(annee >= premiere_annee)
-  # } else{
-  #   premiere_annee <- min(ipr_df$annee, na.rm = T)
-  # }
-  #
-  # if (!is.na(derniere_annee))
-  # {
-  #   ipr_df <- ipr_df %>% filter(annee <= derniere_annee)
-  # } else{
-  #   derniere_annee <- max(ipr_df$annee, na.rm = T)
-  # }
-
-  # selon le nb d'année de données par station sur la période
-  # stations_id2 <- ipr_df %>%
-  #   group_by(sta_id) %>%
-  #   summarise(n = n_distinct(annee)) %>%
-  #   ungroup() %>%
-  #   filter(n >= nb_mini_annees) %>%
-  #   pull(sta_id) %>%
-  #   as.character()
-  #
-  # ipr_df <- ipr_df %>%
-  #   filter(sta_id %in% stations_id2)
 
   premiere_annee <- min(ipr_df$annee)
   derniere_annee <- max(ipr_df$annee)
@@ -82,7 +49,7 @@ ipr_grapher_plusieurs_stations <- function(ipr_df,
   ggplot(data = ipr_df,
          aes(x = annee, y = ipr, fill = classe_ipr)) +
     geom_bar(stat = "identity") +
-    labs(x = "Année",
+    labs(x = "Ann\u00e9e",
          y = "IPR",
          title = titre,
          fill = "Classe IPR") +

@@ -9,7 +9,8 @@ mei_grapher_histo_longueur(
   indiv_df,
   operation,
   especes,
-  type_longueur = c("Totale", "Fourche", "Estimée d'après le poids"),
+  type_longueur = c("Totale", "Fourche",
+    "Estim\\\\u00e9e d\\\\'apr\\\\u00e8s le poids"),
   n_intervalles = 30
 )
 }
