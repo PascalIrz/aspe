@@ -3,7 +3,7 @@
 #' @param df Dataframe contenant les données.
 #' @param especes Vecteur texte contenant les codes espèces et trois lettres.
 #' @param seuil_densite Numérique. Seuil de densité de probabilité probabilité au sens
-#'     de ggplot2::gemp_density(). Par défaut il est de 1\%.
+#'     de ggplot2::gemp_density(). Par défaut il est de 1p1000.
 #' @param seuil_poids_absolu Numérique. Poids minimum pour qu'un individu ne soit pas exclus,
 #'     en grammes.
 #'
@@ -18,7 +18,7 @@
 #' especes = c("GAR", "SAN", "BRE"),
 #' seuil_poids_absolu = 10)
 #' }
-qtp_calcul <- function(df, especes, seuil_densite = 0.01, seuil_poids_absolu = 5)
+qtp_calcul <- function(df, especes, seuil_densite = 0.001, seuil_poids_absolu = 5)
 
 {
 

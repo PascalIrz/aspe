@@ -3,7 +3,7 @@
 #' @param df Dataframe contenant les données.
 #' @param code_espece Texte. Code espèce en trois lettres
 #' @param seuil_densite Numérique. Seuil de densité au sens de aspe::qtp_seuils().
-#'     Par défaut il est de 1\%.
+#'     Par défaut il est de 1p1000.
 #' @param seuil_poids_absolu Numérique. Poids minimum pour qu'un individu ne soit pas exclus,
 #'     en grammes.
 #'
@@ -18,7 +18,7 @@
 #' qtp_calcul_1sp (df = tp_data,
 #' code_espece = "ROT")
 #' }
-qtp_calcul_1sp <- function(df, code_espece, seuil_densite = 0.01, seuil_poids_absolu = 5)
+qtp_calcul_1sp <- function(df, code_espece, seuil_densite = 0.001, seuil_poids_absolu = 5)
 
   {
 
@@ -58,12 +58,12 @@ qtp_calcul_1sp <- function(df, code_espece, seuil_densite = 0.01, seuil_poids_ab
   mod <- stats::lm(log(mei_poids) ~ log(mei_taille),
                    data = df)
 
-  alpha <- mod$coefficients["(Intercept)"]
-  beta <- mod$coefficients["log(mei_taille)"]
+  a <- mod$coefficients["(Intercept)"] %>% exp()
+  b <- mod$coefficients["log(mei_taille)"]
   r2 <- summary(mod)$adj.r.squared
   n_ind <- nrow(df)
 
-  resultat <- cbind(code_espece, alpha, beta, r2, n_ind, seuils_taille[1],
+  resultat <- cbind(code_espece, a, b, r2, n_ind, seuils_taille[1],
                     seuils_taille[2], seuils_poids[1], seuils_poids[2]) %>%
     as.data.frame() %>%
     rename(taille_mini = V6, taille_maxi = V7, poids_mini = V8, poids_maxi = V9)
