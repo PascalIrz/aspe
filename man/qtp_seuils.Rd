@@ -2,32 +2,31 @@
 % Please edit documentation in R/qtp_seuils.R
 \name{qtp_seuils}
 \alias{qtp_seuils}
-\title{Obtenir les seuils mini et maxi des variables biométriques selon une condition de
-    probabilité.}
+\title{Calculer les seuils}
 \usage{
 qtp_seuils(df, code_espece, variable = "mei_taille", seuil_densite = 0.01)
 }
 \arguments{
-\item{df}{Dataframe contenant les données}
+\item{df}{Dataframe contenant les données.}
 
-\item{code_espece}{Texte. Code à trois lettres de l'espèce.}
+\item{code_espece}{Texte. Code espèce en trois lettres.}
 
-\item{variable}{Texte. La variable à représenter, soit "mei_taille", soit "mei_poids".}
+\item{variable}{Texte. Variable, au choix "mei_taille" ou "mei_poids".}
 
-\item{seuil_densite}{Numérique. Seuil probabilité associé aux intervalles de taille.}
+\item{seuil_densite}{Numérique. Seuil de densité de probabilité probabilité au sens
+de ggplot2::gemp_density(). Par défaut il est de 1\%.}
 }
 \value{
-Un vecteur contenant les seuils mini et maxi pour la variable considérée.
+Un vecteur contenant les seuils haut et bas, c'est-à-dire les tailles ou
+    poids mini et maxi à retenir au seuil choisi.
 }
 \description{
-Obtenir les seuils mini et maxi des variables biométriques selon une condition de
-    probabilité.
+Calculer les seuils
 }
 \examples{
 \dontrun{
-qtp_seuils (df = data_esp,
-            code_espece = "TRF",
-            variable = "mei_taille",
-            seuil_densite = 0.001)
+qtp_seuils (df = tp_data,
+code_espece = "ROT",
+variable = "mei_taille")
 }
 }

@@ -1,24 +1,23 @@
-#' Obtenir les seuils mini et maxi des variables biométriques selon une condition de
-#'     probabilité.
+#' Calculer les seuils
 #'
-#' @param df Dataframe contenant les données
-#' @param code_espece Texte. Code à trois lettres de l'espèce.
-#' @param variable Texte. La variable à représenter, soit "mei_taille", soit "mei_poids".
-#' @param seuil_densite Numérique. Seuil probabilité associé aux intervalles de taille.
-#'     Par défaut il est de 1%.
+#' @param df Dataframe contenant les données.
+#' @param code_espece Texte. Code espèce en trois lettres.
+#' @param variable Texte. Variable, au choix "mei_taille" ou "mei_poids".
+#' @param seuil_densite Numérique. Seuil de densité de probabilité probabilité au sens
+#'     de ggplot2::gemp_density(). Par défaut il est de 1\%.
 #'
-#' @return Un vecteur contenant les seuils mini et maxi pour la variable considérée.
+#' @return Un vecteur contenant les seuils haut et bas, c'est-à-dire les tailles ou
+#'     poids mini et maxi à retenir au seuil choisi.
 #' @export
 #'
-#' @importFrom ggplot2 ggplot aes geom_density ggplot_build
-#' @importFrom dplyr filter pull select
+#' @importFrom ggplot2 aes geom_density ggplot_build
+#' @importFrom dplyr select filter pull
 #'
 #' @examples
 #' \dontrun{
-#' qtp_seuils (df = data_esp,
-#'             code_espece = "TRF",
-#'             variable = "mei_taille",
-#'             seuil_densite = 0.001)
+#' qtp_seuils (df = tp_data,
+#' code_espece = "ROT",
+#' variable = "mei_taille")
 #' }
 qtp_seuils <- function(df,
                        code_espece,
@@ -45,4 +44,3 @@ qtp_seuils <- function(df,
     round()
 
 }
-

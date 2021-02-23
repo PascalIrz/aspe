@@ -19,4 +19,5 @@ utils::globalVariables(c('.',
                         'ref_unite_hydrographique', 'unh_libelle', 'unh_code_sandre', 'unh_libelle_sandre',
                         'ABLab', 'VANab',
                         'bon derniere_annee', 'n_sta', 'pas_bon', 'premiere_annee', 'derniere_annee', 'bon',
-                        '..density..', 'mei_poids'))
+                        '..density..', 'mei_poids',
+                        'V6', 'V7', 'V8', 'V9', 'x', 'scaled', 'n_sup_seuil', 'tp_esp'))
