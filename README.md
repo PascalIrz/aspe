@@ -1,5 +1,7 @@
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/PascalIrz/aspe/workflows/R-CMD-check/badge.svg)](https://github.com/PascalIrz/aspe/actions)
+<!-- badges: end -->
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
 
 aspe
 ====

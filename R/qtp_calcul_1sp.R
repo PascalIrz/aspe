@@ -60,10 +60,10 @@ qtp_calcul_1sp <- function(df, code_espece, seuil_densite = 0.001, seuil_poids_a
 
   a <- mod$coefficients["(Intercept)"] %>% exp()
   b <- mod$coefficients["log(mei_taille)"]
-  r2 <- summary(mod)$adj.r.squared
+  r2_ajuste <- summary(mod)$adj.r.squared
   n_ind <- nrow(df)
 
-  resultat <- cbind(code_espece, a, b, r2, n_ind, seuils_taille[1],
+  resultat <- cbind(code_espece, a, b, r2_ajuste, n_ind, seuils_taille[1],
                     seuils_taille[2], seuils_poids[1], seuils_poids[2]) %>%
     as.data.frame() %>%
     rename(taille_mini = V6, taille_maxi = V7, poids_mini = V8, poids_maxi = V9)
