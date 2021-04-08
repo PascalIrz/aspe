@@ -20,4 +20,5 @@ utils::globalVariables(c('.',
                         'ABLab', 'VANab',
                         'bon derniere_annee', 'n_sta', 'pas_bon', 'premiere_annee', 'derniere_annee', 'bon',
                         '..density..', 'mei_poids',
-                        'V6', 'V7', 'V8', 'V9', 'x', 'scaled', 'n_sup_seuil', 'tp_esp'))
+                        'V6', 'V7', 'V8', 'V9', 'x', 'scaled', 'n_sup_seuil', 'tp_esp',
+                        'typ_code_epsg'))
