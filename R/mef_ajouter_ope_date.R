@@ -1,9 +1,6 @@
-#' Rajouter la date de chaque opération à la passerelle.
+#' Rajouter la date et l'année de chaque opération à la passerelle.
 #'
-#' @param passerelle Dataframe mettant en correspondance les identifiants des différentes tables
-#' @param date_debut Date de début de la période à extraire au format jj/mm/aaaa
-#' @param date_fin Date de fin de la période à extraire au format jj/mm/aaaa. Par défaut c'est la
-#'     date du jour où la fonction est exécutée.
+#' @param passerelle Dataframe "passerelle mettant en correspondance les identifiants des différentes tables.
 #'
 #' @return La passerelle à laquelle ont été ajoutés la date et l'année.
 #' @export
@@ -12,11 +9,9 @@
 #'
 #' @examples
 #' \dontrun{
-#' passerelle <- mef_ajouter_ope_date(passerelle = passerelle,
-#' date_debut = '01/01/2020',
-#' date_fin = '31/07/2020')
+#' passerelle <- mef_ajouter_ope_date(passerelle = passerelle)
 #' }
-mef_ajouter_ope_date <- function(passerelle, date_debut, date_fin = Sys.Date())
+mef_ajouter_ope_date <- function(passerelle)
 
 {
 

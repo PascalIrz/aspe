@@ -2,28 +2,21 @@
 % Please edit documentation in R/mef_ajouter_ope_date.R
 \name{mef_ajouter_ope_date}
 \alias{mef_ajouter_ope_date}
-\title{Rajouter la date de chaque opération à la passerelle.}
+\title{Rajouter la date et l'année de chaque opération à la passerelle.}
 \usage{
-mef_ajouter_ope_date(passerelle, date_debut, date_fin = Sys.Date())
+mef_ajouter_ope_date(passerelle)
 }
 \arguments{
-\item{passerelle}{Dataframe mettant en correspondance les identifiants des différentes tables}
-
-\item{date_debut}{Date de début de la période à extraire au format jj/mm/aaaa}
-
-\item{date_fin}{Date de fin de la période à extraire au format jj/mm/aaaa. Par défaut c'est la
-date du jour où la fonction est exécutée.}
+\item{passerelle}{Dataframe "passerelle mettant en correspondance les identifiants des différentes tables.}
 }
 \value{
 La passerelle à laquelle ont été ajoutés la date et l'année.
 }
 \description{
-Rajouter la date de chaque opération à la passerelle.
+Rajouter la date et l'année de chaque opération à la passerelle.
 }
 \examples{
 \dontrun{
-passerelle <- mef_ajouter_ope_date(passerelle = passerelle,
-date_debut = '01/01/2020',
-date_fin = '31/07/2020')
+passerelle <- mef_ajouter_ope_date(passerelle = passerelle)
 }
 }

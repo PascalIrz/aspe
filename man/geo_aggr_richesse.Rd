@@ -26,10 +26,14 @@ Un dataframe avec les richesses par entité hydrographique.
 Calculer à partir des données Aspe le nombre d'espèces différentes recensées par
     Zone HYdro, Sous-secteur Hydro, Secteur Hydro ou Région hydro.
 }
+\details{
+Comme la fonction effectue une jointure entre les inventaires et les entités hydrographiques,
+    il faut que les deux objets géographiques aient au moins un nom de champ en commun.
+}
 \examples{
 \dontrun{
 richesse_par_unite_spatiale <- geo_aggr_richesse(ope_geo_data = data_geo,
-echelle = "RegionHydro",
+echelle = "Secteur_Hydro",
 bassin_geo_poly = bv_simp)
 }
 }

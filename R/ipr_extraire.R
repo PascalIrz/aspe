@@ -22,7 +22,7 @@ ipr_extraire <- function(passerelle, date_debut, date_fin = format(Sys.Date(), "
 {
 
   prov <- passerelle %>%
-    mef_ajouter_ope_date(date_debut = date_debut, date_fin = date_fin) %>%
+    mef_ajouter_ope_date() %>%
     filter(ope_date <= dmy(date_fin) & ope_date >= dmy(date_debut)) %>%
     left_join(y = operation_ipr %>%
                 select(ope_id = opi_ope_id, ipr = opi_ipr, opi_param_alt)) %>% # récupération IPR
