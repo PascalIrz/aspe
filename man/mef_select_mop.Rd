@@ -7,10 +7,12 @@
 mef_select_mop(passerelle, moyen_prospection)
 }
 \arguments{
-\item{passerelle}{Dataframe "passerelle mettant en correspondance les identifiants des différentes tables.}
+\item{passerelle}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.}
 
 \item{moyen_prospection}{Vecteur numérique indiquant le ou les moyens de prospection
-à conserver. A choisir parmi 1 = "A pied", 2 = "En bateau", 3 = "Mixte" et 4 = "Non renseigné".}
+à conserver. A choisir parmi 1 = "A pied", 2 = "En bateau", 3 = "Mixte" et 4 = "Non renseigné".
+La correspondance entre les codes et les libellés peut être retrouvée dans
+la table ref_moyen_prospection.}
 }
 \value{
 La passerelle filtrée sur le ou les moyens de prospection.
