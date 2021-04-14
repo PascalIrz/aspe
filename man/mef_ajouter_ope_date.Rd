@@ -2,18 +2,18 @@
 % Please edit documentation in R/mef_ajouter_ope_date.R
 \name{mef_ajouter_ope_date}
 \alias{mef_ajouter_ope_date}
-\title{Rajouter la date et l'année de chaque opération à la passerelle.}
+\title{Rajouter à la passerelle la date et l'année de chaque opération.}
 \usage{
 mef_ajouter_ope_date(passerelle)
 }
 \arguments{
-\item{passerelle}{Dataframe "passerelle mettant en correspondance les identifiants des différentes tables.}
+\item{passerelle}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.}
 }
 \value{
 La passerelle à laquelle ont été ajoutés la date et l'année.
 }
 \description{
-Rajouter la date et l'année de chaque opération à la passerelle.
+Rajouter à la passerelle la date et l'année de chaque opération.
 }
 \examples{
 \dontrun{

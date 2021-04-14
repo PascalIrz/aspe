@@ -1,6 +1,6 @@
-#' Rajouter la date et l'année de chaque opération à la passerelle.
+#' Rajouter à la passerelle la date et l'année de chaque opération.
 #'
-#' @param passerelle Dataframe "passerelle mettant en correspondance les identifiants des différentes tables.
+#' @param passerelle Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
 #'
 #' @return La passerelle à laquelle ont été ajoutés la date et l'année.
 #' @export
