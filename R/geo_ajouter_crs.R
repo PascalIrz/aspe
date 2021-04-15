@@ -11,6 +11,10 @@
 #' @importFrom dplyr rename left_join
 #'
 #' @examples
+#' \dontrun{
+#' pop <- point_prelevement %>%
+#' geo_ajouter_crs(var_id_crs = "pop_typ_id")
+#' }
 geo_ajouter_crs <- function(df, var_id_crs)
 
 {
