@@ -2,9 +2,9 @@
 #'     du peuplement. Permet d'identifier les taxons qui apparaissent ou disparaissent
 #'     ainsi que les abondances.
 #'
-#' @param df Dataframe contenant les captures et contenant les champs sta_id, pop_libelle,
+#' @param df Dataframe contenant les captures et contenant les champs pop_id, pop_libelle,
 #'     annee, esp_code_alternatif, effectif.
-#' @param id_station Caractère. Identifiant du point au sens du champ pop_id de la base Aspe.
+#' @param id_point Caractère. Identifiant du point au sens du champ pop_id de la base Aspe.
 #'
 #' @return Un dataframe pour un point de prélèvement qui est mis en forme pour produire un
 #'     graphique avec la fonction gg_colo_ext_sta().
@@ -15,15 +15,14 @@
 #'
 #' @examples
 #' \dontrun{
-#' colo_ext_ma_station <- captures %>%
-#'     mef_colo_ext_sta(id_station = "22980"))
+#' colo_ext_mon_point <- captures %>%
+#'     mef_colo_ext_pop(id_point = "35803"))
 #' }
-mef_colo_ext_sta <- function(df, id_station)
+mef_colo_ext_pop <- function(df, id_point)
 
 {
-
   selection <- df %>%
-    filter(sta_id == id_station) %>%
+    filter(pop_id == id_point) %>%
     droplevels()
 
   libelle <- selection %>%
@@ -37,13 +36,20 @@ mef_colo_ext_sta <- function(df, id_station)
     arrange(esp_code_alternatif, annee) %>%
     select(pop_id, pop_libelle, annee, esp_code_alternatif, effectif) %>%
     group_by(esp_code_alternatif) %>%
-    mutate(col_ext = case_when(effectif > 0 & lag(effectif, 1) == 0 ~ "colonisation",
-                               effectif == 0 & lag(effectif, 1) > 0 ~ "extinction",
-                               TRUE ~ "statu quo"),
-           taille = case_when(col_ext == "extinction" ~ 10,
-                              effectif == 0 ~ NA_real_,
-                              TRUE ~ effectif^0.5),
-           type_point = col_ext == "extinction")
+    mutate(
+      col_ext = case_when(
+        effectif > 0 & lag(effectif, 1) == 0 ~ "colonisation",
+        effectif == 0 &
+          lag(effectif, 1) > 0 ~ "extinction",
+        TRUE ~ "statu quo"
+      ),
+      taille = case_when(
+        col_ext == "extinction" ~ 10,
+        effectif == 0 ~ NA_real_,
+        TRUE ~ effectif ^ 0.5
+      ),
+      type_point = col_ext == "extinction"
+    )
 
   selection
 
