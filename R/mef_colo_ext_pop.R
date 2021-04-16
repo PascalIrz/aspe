@@ -1,6 +1,7 @@
-#' Mettre en forme le tableau des captures sur un point en vue de visualiser la dynamique
-#'     du peuplement. Permet d'identifier les taxons qui apparaissent ou disparaissent
-#'     ainsi que les abondances.
+#' Mettre en forme le tableau des captures sur un point
+#'
+#' L'objectif est de visualiser la dynamique du peuplement. Permet d'identifier les taxons
+#'     qui apparaissent ou disparaissent ainsi que les abondances.
 #'
 #' @param df Dataframe contenant les captures et contenant les champs pop_id, pop_libelle,
 #'     annee, esp_code_alternatif, effectif.

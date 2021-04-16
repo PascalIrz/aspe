@@ -2,9 +2,7 @@
 % Please edit documentation in R/mef_colo_ext_pop.R
 \name{mef_colo_ext_pop}
 \alias{mef_colo_ext_pop}
-\title{Mettre en forme le tableau des captures sur un point en vue de visualiser la dynamique
-    du peuplement. Permet d'identifier les taxons qui apparaissent ou disparaissent
-    ainsi que les abondances.}
+\title{Mettre en forme le tableau des captures sur un point}
 \usage{
 mef_colo_ext_pop(df, id_point)
 }
@@ -19,9 +17,8 @@ Un dataframe pour un point de prélèvement qui est mis en forme pour produire u
     graphique avec la fonction gg_colo_ext_pop().
 }
 \description{
-Mettre en forme le tableau des captures sur un point en vue de visualiser la dynamique
-    du peuplement. Permet d'identifier les taxons qui apparaissent ou disparaissent
-    ainsi que les abondances.
+L'objectif est de visualiser la dynamique du peuplement. Permet d'identifier les taxons
+    qui apparaissent ou disparaissent ainsi que les abondances.
 }
 \examples{
 \dontrun{
