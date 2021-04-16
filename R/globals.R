@@ -24,4 +24,5 @@ utils::globalVariables(c('.',
                         'V6', 'V7', 'V8', 'V9', 'x', 'scaled', 'n_sup_seuil', 'tp_esp',
                         'typ_code_epsg', 'richesse', 'mop_id', 'odp_mop_id', 'odp_ope_id',
                         'operation_description_peche', 'ref_moyen_prospection', 'ope_pro_id', 'pro_id',
-                        'typ_libelle_sandre', 'ref_type_projection', 'typ_id'))
+                        'typ_libelle_sandre', 'ref_type_projection', 'typ_id',
+                        'col_ext'))
