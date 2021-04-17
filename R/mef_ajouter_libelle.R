@@ -1,5 +1,9 @@
-#' Rajouter le libellé du point (ou de la station quand il m'est pas dispobible au point) à
-#'     un dataframe qui peut être une passerelle.
+#' Rajouter le libellé du point
+#'
+#' Rajoute à un dataframe qui peut être une passerelle le libellé du point
+#'     (ou de la station quand il m'est pas dispobible au point). Si ni l'un
+#'     ni l'autre ne sont renseignés, c'est le pop_id pour éviter les valeurs
+#'     manquantes bloquantes pour certains traitements.
 #'
 #' @param passerelle Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
 #'
@@ -15,14 +19,19 @@
 mef_ajouter_libelle <- function(passerelle)
 
 {
-
   passerelle %>%
     left_join(y = point_prelevement %>%
                 select(pop_id, pop_libelle = pop_libelle_wama)) %>%
     left_join(y = station %>%
                 select(sta_id, sta_libelle_sandre)) %>%
-    mutate_at(vars(pop_libelle, sta_libelle_sandre), as.character) %>%
-    mutate(pop_libelle = ifelse(is.na(pop_libelle), sta_libelle_sandre, pop_libelle)) %>%
+    mutate_at(vars(pop_libelle, sta_libelle_sandre),
+              as.character) %>%
+    mutate(pop_libelle = ifelse(is.na(pop_libelle),
+                                sta_libelle_sandre,
+                                pop_libelle)) %>%
+    mutate(pop_libelle = ifelse(is.na(pop_libelle),
+                                pop_id,
+                                pop_libelle)) %>%
     select(-sta_libelle_sandre)
 
 }

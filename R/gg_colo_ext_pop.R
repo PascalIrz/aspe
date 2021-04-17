@@ -5,7 +5,8 @@
 #' @return Le graphique produit avec ggplot2.
 #' @export
 #'
-#' @importFrom ggplot2 ggplot aes geom_point labs scale_color_manual guides theme
+#' @importFrom ggplot2 ggplot aes geom_point labs scale_color_manual guides theme scale_x_continuous
+#' @importFrom scales pretty_breaks
 #' @importFrom dplyr pull
 #' @importFrom stats na.omit
 #'
@@ -47,6 +48,7 @@ gg_colo_ext_pop <- function(df)
       na.value = "grey10"
     ) +
     guides(shape = FALSE, size = FALSE) +
-    theme(legend.position = "bottom")
+    theme(legend.position = "bottom") +
+    scale_x_continuous(breaks = scales::pretty_breaks())
 
 }

@@ -6,7 +6,7 @@
 \usage{
 ipr_extraire(
   passerelle,
-  date_debut,
+  date_debut = NA,
   date_fin = format(Sys.Date(), "\%d/\%m/\%Y")
 )
 }

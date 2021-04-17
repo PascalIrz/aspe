@@ -17,9 +17,11 @@
 #' date_fin = '31/07/2020')
 #' }
 #'
-ipr_extraire <- function(passerelle, date_debut, date_fin = format(Sys.Date(), "%d/%m/%Y"))
+ipr_extraire <- function(passerelle, date_debut = NA, date_fin = format(Sys.Date(), "%d/%m/%Y"))
 
 {
+
+  if(is.na(date_debut)) {date_debut <- "01/01/1960"}
 
   prov <- passerelle %>%
     mef_ajouter_ope_date() %>%
