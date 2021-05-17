@@ -26,4 +26,4 @@ utils::globalVariables(c('.',
                         'operation_description_peche', 'ref_moyen_prospection', 'ope_pro_id', 'pro_id',
                         'typ_libelle_sandre', 'ref_type_projection', 'typ_id',
                         'col_ext', 'taille', 'type_point',
-                        'a', 'b', 'code_espece', 'tlo_id'))
+                        'a', 'b', 'code_espece', 'tlo_id', 'lieu'))
