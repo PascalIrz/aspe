@@ -39,11 +39,11 @@ qtp_calcul_1sp <- function(df, code_espece, seuil_densite = 0.001, seuil_poids_a
                               seuil_densite = seuil_densite)
 
   df <- df %>%
-    filter(mei_taille > seuils_taille[1] &
-             mei_taille < seuils_taille[2]) %>%
-    filter(mei_poids > seuils_poids[1] &
-             mei_poids < seuils_poids[2]) %>%
-    filter(mei_poids > seuil_poids_absolu)
+    filter(mei_taille > seuils_taille[1],
+           mei_taille < seuils_taille[2],
+           mei_poids > seuils_poids[1],
+           mei_poids < seuils_poids[2],
+           mei_poids > seuil_poids_absolu)
 
   mod <- stats::lm(log(mei_poids) ~ log(mei_taille),
                    data = df)
