@@ -2,7 +2,7 @@
 
 export(geo_aggr_richesse)
 export(geo_ajouter_crs)
-export(geo_attr_dept_bv)
+export(geo_attribuer)
 export(geo_completer_ref_type_projection)
 export(geo_convertir_coords_df)
 export(gg_colo_ext_pop)
