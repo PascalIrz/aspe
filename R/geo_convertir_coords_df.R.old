@@ -42,18 +42,10 @@ geo_convertir_coords_df <- function(df,
     {
 
     sel_coords <- df %>%
-      filter(typ_code_epsg == crs)
-
-    coords <- sel_coords %>%
+      filter(typ_code_epsg == crs) %>%
       sf::st_as_sf(coords = c(var_x, var_y), crs = crs) %>%
       sf::st_transform(crs = crs_sortie) %>%
       sf::st_coordinates()
-
-    ids <- sel_coords %>%
-      select(pop_id)
-
-    sel_coords <- ids %>%
-      cbind(coords)
 
     converted_coords <- converted_coords %>%
       rbind(sel_coords)
