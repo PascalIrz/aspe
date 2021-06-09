@@ -7,7 +7,7 @@
 gg_colo_ext_pop(df)
 }
 \arguments{
-\item{df}{Le dataframe contenant les données, mises en forme par la fonction mef_colo_ext_pop().}
+\item{df}{Le dataframe contenant les données, mises en forme par la fonction mef_colo_ext_pops().}
 }
 \value{
 Le graphique produit avec ggplot2.
