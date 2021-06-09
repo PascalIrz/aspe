@@ -13,8 +13,14 @@ imp_corres_aspe_taxref(
 Par défaut "https://api.sandre.eaufrance.fr/referentiels/v1/apt.csv?compress=true"}
 }
 \value{
-Dataframe. Table de correspondance
+Dataframe. Table de correspondence.
 }
 \description{
-La donnée ne provient pas de la base ASPE, mais de l'API SANDRE.
+La donnée ne provient pas de la base ASPE, mais de l'API SANDRE. Comme elle importe l'ensemble du
+    référentiel taxonomique, l'opération prend plusieurs dizaines de secondes.
+}
+\examples{
+\dontrun{
+taxref <- imp_corres_aspe_taxref()
+}
 }
