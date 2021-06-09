@@ -1,6 +1,6 @@
 #' Produire le graphique de la dynamique du peuplement en un point de prélèvement.
 #'
-#' @param df Le dataframe contenant les données, mises en forme par la fonction mef_colo_ext_pop().
+#' @param df Le dataframe contenant les données, mises en forme par la fonction mef_colo_ext_pops().
 #'
 #' @return Le graphique produit avec ggplot2.
 #' @export
