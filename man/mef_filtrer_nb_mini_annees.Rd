@@ -2,24 +2,24 @@
 % Please edit documentation in R/mef_filtrer_nb_mini_annees.R
 \name{mef_filtrer_nb_mini_annees}
 \alias{mef_filtrer_nb_mini_annees}
-\title{Filtrer un dataframe pour ne conserver que les stations présentes un nombre
+\title{Filtrer un dataframe pour ne conserver que les points présents un nombre
     minimum d'années.}
 \usage{
 mef_filtrer_nb_mini_annees(df, nb_mini_annees)
 }
 \arguments{
-\item{df}{Dataframe qui doit contenir le champ "sta_id".}
+\item{df}{Dataframe qui doit contenir le champ "pop_id".}
 
 \item{nb_mini_annees}{Nombre entier indiquant le seuil de sélection (nb mini d'années
-de données sur la station). Par défaut sa valeur est 1 donc toutes les stations avec
+de données sur le point). Par défaut sa valeur est 1 donc tous les points avec
 au moins une donnée sont sélectionnées.}
 }
 \value{
-Dataframe filtré, c'est-à-dire exourgé des stations qui n'ont pas assez d'années
+Dataframe filtré, c'est-à-dire exourgé des points qui n'ont pas assez d'années
     de données.
 }
 \description{
-Filtrer un dataframe pour ne conserver que les stations présentes un nombre
+Filtrer un dataframe pour ne conserver que les points présents un nombre
     minimum d'années.
 }
 \examples{

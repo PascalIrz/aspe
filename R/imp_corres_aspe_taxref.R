@@ -21,10 +21,12 @@ imp_corres_aspe_taxref <- function(url = "https://api.sandre.eaufrance.fr/refere
 
 {
 
-  file <- paste0(tempdir(), "\\ref_sandre.csv.gz")
+  file <- paste0(tempdir(),
+                 "\\ref_sandre.csv.gz")
 
   download.file(url = url,
-                destfile = file , mode = "wb")
+                destfile = file ,
+                mode = "wb")
 
   df <- read_csv2(file = file,
                   locale = locale(encoding = 'UTF-8')) %>%
