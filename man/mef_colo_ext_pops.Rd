@@ -4,11 +4,13 @@
 \alias{mef_colo_ext_pops}
 \title{Formater le tableau des captures sur un ensemble de points}
 \usage{
-mef_colo_ext_pops(df)
+mef_colo_ext_pops(df, id_point = NULL)
 }
 \arguments{
 \item{df}{Dataframe contenant les captures et contenant les champs pop_id, pop_libelle,
 annee, esp_code_alternatif, effectif.}
+
+\item{id_point}{Caractère. Identifiant du ou des point(s) au sens du champ pop_id de la base Aspe. Par défaut, tous les identifiants présents dans le tableau df sont pris en compte.}
 }
 \value{
 Un dataframe pour un ensemble de points de prélèvement qui est mis en forme

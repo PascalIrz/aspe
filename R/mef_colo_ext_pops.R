@@ -5,12 +5,14 @@
 #'
 #' @param df Dataframe contenant les captures et contenant les champs pop_id, pop_libelle,
 #'     annee, esp_code_alternatif, effectif.
+#' @param id_point Caractère. Identifiant du ou des point(s) au sens du champ pop_id de la base Aspe. Par défaut, tous les identifiants présents dans le tableau df sont pris en compte.
 #'
 #' @return Un dataframe pour un ensemble de points de prélèvement qui est mis en forme
 #'     pour produire des graphiques avec la fonction gg_colo_ext_pop().
 #' @export
 #'
-#' @importFrom dplyr pull
+#' @importFrom dplyr filter pull left_join mutate arrange select group_by case_when lag
+#' @importFrom tidyr expand
 #' @importFrom purrr map_df
 #'
 #' @examples
@@ -18,12 +20,52 @@
 #' colo_ext_mon_point <- captures %>%
 #'     mef_colo_ext_pops()
 #' }
-mef_colo_ext_pops <- function(df)
+mef_colo_ext_pops <- function(df, id_point = NULL)
 
 {
+  mef_colo_ext_pop <- function(df, id_point)
+
+  {
+    selection <- df %>%
+      filter(pop_id == id_point) %>%
+      droplevels()
+
+    libelle <- selection %>%
+      pull(pop_libelle) %>%
+      .[1]
+
+    selection <- selection %>%
+      expand(annee, esp_code_alternatif, pop_id) %>%
+      left_join(selection, by = c("annee", "esp_code_alternatif", "pop_id")) %>%
+      mutate(effectif = ifelse(is.na(effectif), 0, effectif)) %>%
+      arrange(esp_code_alternatif, annee) %>%
+      select(pop_id, pop_libelle, annee, esp_code_alternatif, effectif) %>%
+      group_by(esp_code_alternatif) %>%
+      mutate(
+        col_ext = case_when(
+          effectif > 0 & lag(effectif, 1) == 0 ~ "colonisation",
+          effectif == 0 &
+            lag(effectif, 1) > 0 ~ "extinction",
+          TRUE ~ "statu quo"
+        ),
+        taille = case_when(
+          col_ext == "extinction" ~ 10,
+          effectif == 0 ~ NA_real_,
+          TRUE ~ effectif ^ 0.5
+        ),
+        type_point = col_ext == "extinction"
+      )
+
+    selection
+
+  }
+
   mes_pops <- df %>%
     pull(pop_id) %>%
     unique()
+
+  if (!is.null(id_point))
+    mes_pops <- id_point
 
   capt_mef_colo_ext <- map_df(.x = mes_pops,
                            .f = mef_colo_ext_pop,
