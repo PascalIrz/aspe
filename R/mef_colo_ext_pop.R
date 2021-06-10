@@ -32,7 +32,7 @@ mef_colo_ext_pop <- function(df, id_point)
 
   selection <- selection %>%
     expand(annee, esp_code_alternatif, pop_id) %>%
-    left_join(selection) %>%
+    left_join(selection, by = c("annee", "esp_code_alternatif", "pop_id")) %>%
     mutate(effectif = ifelse(is.na(effectif), 0, effectif)) %>%
     arrange(esp_code_alternatif, annee) %>%
     select(pop_id, pop_libelle, annee, esp_code_alternatif, effectif) %>%
