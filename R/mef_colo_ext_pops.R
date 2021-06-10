@@ -11,7 +11,7 @@
 #' @export
 #'
 #' @importFrom dplyr pull
-#' @importFrom purrr map reduce
+#' @importFrom purrr map_df
 #'
 #' @examples
 #' \dontrun{
@@ -25,10 +25,9 @@ mef_colo_ext_pops <- function(df)
     pull(pop_id) %>%
     unique()
 
-  capt_mef_colo_ext <- map(.x = mes_pops,
+  capt_mef_colo_ext <- map_df(.x = mes_pops,
                            .f = mef_colo_ext_pop,
-                           df = df) %>%
-    reduce(rbind)
+                           df = df)
 
   capt_mef_colo_ext
 
