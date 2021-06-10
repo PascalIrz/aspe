@@ -7,8 +7,9 @@
 #'
 #' @importFrom ggplot2 ggplot aes geom_point labs scale_color_manual guides theme scale_x_continuous
 #' @importFrom scales pretty_breaks
-#' @importFrom dplyr pull
+#' @importFrom dplyr pull filter
 #' @importFrom stats na.omit
+#' @importFrom purrr map
 #'
 #' @examples
 #' \dontrun{
@@ -17,38 +18,55 @@
 gg_colo_ext_pop <- function(df)
 
 {
-  libelle <- df %>%
-    pull(pop_libelle) %>%
-    na.omit() %>%
-    .[1]
+  create_graph <- function(i, df) {
+    df.i <- filter(df, pop_id == i)
 
-  ggplot(
-    data = df,
-    aes(
-      x = annee,
-      y = esp_code_alternatif,
-      size = taille,
-      color = col_ext,
-      shape = type_point
-    )
-  ) +
-    geom_point() +
-    labs(
-      x = "",
-      y = "",
-      col = "",
-      title = libelle
+    libelle <- df.i %>%
+      pull(pop_libelle) %>%
+      na.omit() %>%
+      .[1]
+
+    ggplot(
+      data = df.i,
+      aes(
+        x = annee,
+        y = esp_code_alternatif,
+        size = taille,
+        color = col_ext,
+        shape = type_point
+      )
     ) +
-    scale_color_manual(
-      values = c(
-        "colonisation" = "#00B81F",
-        "extinction" = "red",
-        "statu quo" = "darkblue"
-      ),
-      na.value = "grey10"
-    ) +
-    guides(shape = FALSE, size = FALSE) +
-    theme(legend.position = "bottom") +
-    scale_x_continuous(breaks = scales::pretty_breaks())
+      geom_point() +
+      labs(
+        x = "",
+        y = "",
+        col = "",
+        title = libelle
+      ) +
+      scale_color_manual(
+        values = c(
+          "colonisation" = "#00B81F",
+          "extinction" = "red",
+          "statu quo" = "darkblue"
+        ),
+        na.value = "grey10"
+      ) +
+      guides(shape = FALSE, size = FALSE) +
+      theme(legend.position = "bottom") +
+      scale_x_continuous(breaks = scales::pretty_breaks())
+  }
+
+
+  graphs <- map(
+    unique(df$pop_id),
+    create_graph, df = df
+  )
+
+  if (length(graphs) == 1) {
+    graphs[[1]]
+  } else {
+    graphs
+  }
+
 
 }
