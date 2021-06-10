@@ -57,8 +57,8 @@ geo_aggr_richesse <- function(ope_geo_data,
 
   richesse_par_unite_spatiale <- ope_geo_data %>%
     group_by(!!!syms(code), !!!syms(libelle)) %>%
-    summarise(richesse = n_distinct(esp_code_alternatif),
-              nb_ope = n_distinct(ope_id)) %>%
+      summarise(richesse = n_distinct(esp_code_alternatif),
+                nb_ope = n_distinct(ope_id)) %>%
     ungroup() %>%
     sf::st_drop_geometry() %>%
     right_join(y = bassin_geo_poly) %>%

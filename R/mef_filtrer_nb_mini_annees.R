@@ -14,7 +14,9 @@
 #' \dontrun{
 #' data_22_filtre <- mef_filtrer_nb_mini_annees(df = data_22, nb_mini_annees = 1)
 #' }
-mef_filtrer_nb_mini_annees <- function(df, nb_mini_annees) {
+mef_filtrer_nb_mini_annees <- function(df, nb_mini_annees)
+
+  {
 
   pop_ids <- df %>%
     group_by(pop_id) %>%
@@ -27,4 +29,4 @@ mef_filtrer_nb_mini_annees <- function(df, nb_mini_annees) {
   df %>%
     filter(pop_id %in% pop_ids)
 
-}
+  }
