@@ -58,8 +58,9 @@ gg_colo_ext_pop <- function(df)
 
 
   graphs <- map(
-    unique(df$pop_id),
-    create_graph, df = df
+    .x = df %>% pull(pop_id) %>% unique(),
+    .f = create_graph,
+    df = df
   )
 
   if (length(graphs) == 1) {
