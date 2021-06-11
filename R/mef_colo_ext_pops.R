@@ -48,13 +48,14 @@ mef_colo_ext_pops <- function(df, id_point = NULL)
             lag(effectif, 1) > 0 ~ "extinction",
           TRUE ~ "statu quo"
         ),
-        taille = case_when(
+        diam_point = case_when(
           col_ext == "extinction" ~ 10,
           effectif == 0 ~ NA_real_,
           TRUE ~ effectif ^ 0.5
         ),
         type_point = col_ext == "extinction"
-      )
+      ) %>%
+      ungroup()
 
     selection
 
@@ -68,8 +69,8 @@ mef_colo_ext_pops <- function(df, id_point = NULL)
     mes_pops <- id_point
 
   capt_mef_colo_ext <- map_df(.x = mes_pops,
-                           .f = mef_colo_ext_pop,
-                           df = df)
+                              .f = mef_colo_ext_pop,
+                              df = df)
 
   capt_mef_colo_ext
 

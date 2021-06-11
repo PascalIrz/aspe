@@ -1,8 +1,9 @@
-#' Produire le graphique de la dynamique du peuplement en un point de prélèvement.
+#' Produire le graphique de la dynamique du peuplement pour chacun des points de prélèvement
+#'     du dataframe.
 #'
 #' @param df Le dataframe contenant les données, mises en forme par la fonction mef_colo_ext_pops().
 #'
-#' @return Le graphique produit avec ggplot2.
+#' @return Une liste contenant les graphiques produits avec ggplot2.
 #' @export
 #'
 #' @importFrom ggplot2 ggplot aes geom_point labs scale_color_manual guides theme scale_x_continuous
@@ -13,25 +14,27 @@
 #'
 #' @examples
 #' \dontrun{
-#' gg_colo_ext_pop(df = colo_ext_ma_station)
+#' mes_graphiques <- gg_colo_ext_pops(df = mon_df)
+#' mes_graphiques[[1]]
 #' }
-gg_colo_ext_pop <- function(df)
+gg_colo_ext_pops <- function(df)
 
 {
-  create_graph <- function(i, df) {
-    df.i <- filter(df, pop_id == i)
+  create_graph <- function(pop, df) {
+    df_pop <- df %>%
+      filter(pop_id == pop)
 
-    libelle <- df.i %>%
+    libelle <- df_pop %>%
       pull(pop_libelle) %>%
       na.omit() %>%
       .[1]
 
     ggplot(
-      data = df.i,
+      data = df_pop,
       aes(
         x = annee,
         y = esp_code_alternatif,
-        size = taille,
+        size = diam_point,
         color = col_ext,
         shape = type_point
       )
