@@ -10,7 +10,7 @@ mef_ajouter_surf_calc(passerelle)
 \item{passerelle}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.}
 }
 \value{
-La passerelle à laquelle ont été ajoutés la superficie échantillonnée qui est une valeur calculée
+La passerelle à laquelle a été ajoutée la superficie échantillonnée qui est une valeur calculée
     stockée dans le champ ope_surf_calculee de la table operation.
 }
 \description{
