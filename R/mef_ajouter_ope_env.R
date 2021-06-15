@@ -58,7 +58,8 @@ mef_ajouter_ope_env <- function(passerelle)
       -pop_id,
       -starts_with('opi_param'),
       -(pop_largeur_lit_mineur:pop_temperature_moyenne_juillet)
-    )
+    ) %>%
+    distinct()
 
 
   passerelle <- passerelle %>%
