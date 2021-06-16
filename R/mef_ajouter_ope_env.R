@@ -63,7 +63,8 @@ mef_ajouter_ope_env <- function(passerelle)
 
 
   passerelle <- passerelle %>%
-    left_join(ope_env)
+    left_join(ope_env) %>%
+    filter(!(temp_juillet == -99 & temp_janvier == -99)) # codage valeurs manquantes
 
   passerelle
 
