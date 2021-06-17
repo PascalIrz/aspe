@@ -14,6 +14,7 @@
 #' @importFrom dplyr pull filter rowwise ungroup
 #' @importFrom stats na.omit
 #' @importFrom purrr map
+#' @importFrom ggiraph geom_point_interactive girafe opts_sizing
 #'
 #' @examples
 #' \dontrun{
@@ -102,12 +103,12 @@ gg_colo_ext_pops <- function(df, interactif = FALSE, largeur = 6, hauteur = 5, .
       )
 
     if (interactive) {
-      ggiraph::girafe(
+      girafe(
         ggobj = gg,
         width_svg = largeur,
         height_svg = hauteur,
         options = list(
-          ggiraph::opts_sizing(...)
+          opts_sizing(...)
         )
         )
     } else {

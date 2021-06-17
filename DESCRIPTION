@@ -24,9 +24,9 @@ Imports: dplyr,
     stringi,
     stringr,
     tibble,
-    tidyr
+    tidyr,
+    ggiraph
 Suggests: 
     knitr,
-    rmarkdown,
-    ggiraph
+    rmarkdown
 VignetteBuilder: knitr
