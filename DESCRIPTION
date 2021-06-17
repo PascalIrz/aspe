@@ -27,5 +27,6 @@ Imports: dplyr,
     tidyr
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    ggiraph
 VignetteBuilder: knitr
