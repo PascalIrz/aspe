@@ -30,4 +30,5 @@ utils::globalVariables(c('.',
                         'col_ext', 'diam_point', 'type_point',
                         'a', 'b', 'code_espece', 'tlo_id', 'lieu',
                         'CdAlternatif2', 'CdAlternatif1', 'OrgCdAlternatif2',
-                        'FALSE', 'TRUE', 'data', 'parametre', 'presence', 'presences', 'ssech', 'valeur_parametre'))
+                        'FALSE', 'TRUE', 'data', 'parametre', 'presence', 'presences', 'ssech', 'valeur_parametre',
+                        'hover'))

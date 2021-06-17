@@ -9,6 +9,10 @@
 #' @importFrom tidyr pivot_longer
 #'
 #' @examples
+#' \dontrun{
+#' df_long <- mef_pivoter_var_env(df_court)
+#' mes_graphiques[[1]]
+#' }
 mef_pivoter_var_env <- function(df)
 
 {

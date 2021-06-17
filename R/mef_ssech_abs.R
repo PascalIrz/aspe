@@ -8,7 +8,7 @@
 
 #' @param df Dataframe avec les variables valeur_parametre, esp_code_alternatif, presence, parametre, n.
 #' @param seed Numérique. La racine du générateur de nombres aléatoires pour le tirage.
-#' @return Un dataframe de 4 colonnes correspondant à l'espèce, au paramètre et aux nombres de présence et d'absence.
+#' @return Un dataframe issu de df mais avec moins de lignes.
 #' @export
 #'
 #' @importFrom dplyr group_by ungroup left_join select mutate

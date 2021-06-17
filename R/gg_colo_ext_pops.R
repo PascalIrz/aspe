@@ -15,6 +15,7 @@
 #' @importFrom stats na.omit
 #' @importFrom purrr map
 #' @importFrom ggiraph geom_point_interactive girafe opts_sizing
+#' @importFrom shiny HTML
 #'
 #' @examples
 #' \dontrun{

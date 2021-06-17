@@ -15,3 +15,9 @@ Le dataframe pivoté, en forme pour les graphiques avec ggplot2.
 \description{
 Pivoter le dataframe pour regrouper les variables environnementales sur 2 colonnes
 }
+\examples{
+\dontrun{
+df_long <- mef_pivoter_var_env(df_court)
+mes_graphiques[[1]]
+}
+}

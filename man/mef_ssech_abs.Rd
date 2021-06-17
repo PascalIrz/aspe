@@ -12,7 +12,7 @@ mef_ssech_abs(df, seed = 123)
 \item{seed}{Numérique. La racine du générateur de nombres aléatoires pour le tirage.}
 }
 \value{
-Un dataframe de 4 colonnes correspondant à l'espèce, au paramètre et aux nombres de présence et d'absence.
+Un dataframe issu de df mais avec moins de lignes.
 }
 \description{
 La comparaison entre les sites de présence et d'absence d'une espèce n'a de sens quer si leur nombre
