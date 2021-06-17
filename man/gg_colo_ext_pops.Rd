@@ -5,10 +5,16 @@
 \title{Produire le graphique de la dynamique du peuplement pour chacun des points de prélèvement
     du dataframe.}
 \usage{
-gg_colo_ext_pops(df)
+gg_colo_ext_pops(df, interactif = FALSE, largeur = 6, hauteur = 5, ...)
 }
 \arguments{
-\item{df}{Le dataframe contenant les données, mises en forme par la fonction mef_colo_ext_pops().}
+\item{df}{Le dataframe contenant les données, mises en forme par la fonction \code{\link[=mef_colo_ext_pops]{mef_colo_ext()}}}
+
+\item{interactif}{Valeur logique définissant le type de graphique produit: statique (FALSE) ou interactif (TRUE)}
+
+\item{largeur, hauteur}{dimensions des graphiques interactifs}
+
+\item{...}{arguments passés à la fonction \code{ggiraph::opts_sizing()}}
 }
 \value{
 Une liste contenant les graphiques produits avec ggplot2.
