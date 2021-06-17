@@ -10,7 +10,6 @@
 #' @export
 #'
 #' @importFrom ggplot2 ggplot aes labs scale_color_manual guides theme scale_x_continuous element_text element_blank
-#' @importFrom ggiraph geom_point_interactive girafe opts_sizing
 #' @importFrom scales pretty_breaks
 #' @importFrom dplyr pull filter rowwise ungroup
 #' @importFrom stats na.omit
@@ -103,12 +102,12 @@ gg_colo_ext_pops <- function(df, interactif = FALSE, largeur = 6, hauteur = 5, .
       )
 
     if (interactive) {
-      girafe(
+      ggiraph::girafe(
         ggobj = gg,
         width_svg = largeur,
         height_svg = hauteur,
         options = list(
-          opts_sizing(...)
+          ggiraph::opts_sizing(...)
         )
         )
     } else {
