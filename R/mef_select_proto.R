@@ -23,13 +23,14 @@
 #' passerelle <- passerelle %>%
 #' mef_select_proto(protocole = c(1, 3))
 #' }
+#'
 mef_select_proto <- function(passerelle, protocole)
 
 {
 
   passerelle %>%
     left_join(y = operation %>%
-                select(ope_id, pro_id = ope_pro_id, ope_date)) %>%
+                select(ope_id, pro_id = ope_pro_id)) %>%
     filter(pro_id %in% protocole) %>%
     select(-pro_id)
 

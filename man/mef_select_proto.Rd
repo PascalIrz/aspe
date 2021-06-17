@@ -32,4 +32,5 @@ Filtrer la passerelle sur le protocole employé.
 passerelle <- passerelle \%>\%
 mef_select_proto(protocole = c(1, 3))
 }
+
 }
