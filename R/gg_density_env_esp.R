@@ -55,7 +55,8 @@ gg_density_env_esp <-
     {
       data <- df %>%
         filter(esp_code_alternatif == espece,
-               parametre == !!parametre)  # bang bang force l'évaluation en premier lieu / synonymie
+               parametre == !!parametre) %>%  # bang bang force l'évaluation en premier lieu / synonymie
+               mutate(presence = ifelse(presence, "Présence", "Absence"))
 
       x_max <- data %>%
         pull(valeur_parametre) %>%
@@ -69,8 +70,8 @@ gg_density_env_esp <-
         labs(
           x = parametre,
           y = "densite",
-          title = espece,
-          fill = ""
+          title = "",
+          fill = espece
         ) +
         scale_x_continuous(limits = c(NA, x_max)) +
         scale_fill_manual(values = c(coul_abs, coul_pres))
