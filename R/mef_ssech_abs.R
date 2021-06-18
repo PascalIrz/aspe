@@ -33,7 +33,7 @@ mef_ssech_abs <- function(df, seed = 123)
     group_by(esp_code_alternatif,
              presence,
              parametre) %>%
-      nest() %>%
+    nest() %>%
     ungroup() %>%
     left_join(
       y = pres_abs_env %>%

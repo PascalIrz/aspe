@@ -32,3 +32,4 @@ mef_compter_pres_abs_env <- function(df)
   pres_abs_env
 
 }
+
