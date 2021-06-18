@@ -40,7 +40,7 @@ gg_density_env_esp <-
            coul_abs = "red")
 
   {
-# liste des paramètres à considérer
+    # liste des paramètres à considérer
     if (is.na(parametres))
     {
       parametres <- df %>%
@@ -49,13 +49,13 @@ gg_density_env_esp <-
         as.character
     }
 
-# Fonction pour un paramètre
+    # Fonction pour un paramètre
     gg_density_env_pres_abs <- function(parametre, df, espece)
 
     {
       data <- df %>%
         filter(esp_code_alternatif == espece,
-               parametre == !!parametre)  # force l'évaluation en premier lieu / synonymie
+               parametre == !!parametre)  # bang bang force l'évaluation en premier lieu / synonymie
 
       x_max <- data %>%
         pull(valeur_parametre) %>%
@@ -68,25 +68,23 @@ gg_density_env_esp <-
         geom_density(alpha = 0.3) +
         labs(
           x = parametre,
-          y = "DENSITE",
+          y = "densite",
           title = espece,
           fill = ""
         ) +
         scale_x_continuous(limits = c(NA, x_max)) +
-        # scale_fill_discrete(name = "",
-        #                     labels = c("Absence", "Présence")) +
-        scale_fill_manual(values = c(coul_pres, coul_abs))
+        scale_fill_manual(values = c(coul_abs, coul_pres))
 
-      if (!!parametre %in% log) {
-        plot <- plot + scale_x_log10()
+      if (!!parametre %in% log) { # Passage en échelle log pour certains des paramètres
+        plot <- plot +
+          scale_x_log10(labels = function(x) format(x, scientific = FALSE))
       }
 
       plot
 
-
     }
 
-# application à un ensemble de paramètres
+    # application à un ensemble de paramètres
     map(
       .x = parametres,
       .f = gg_density_env_pres_abs,
