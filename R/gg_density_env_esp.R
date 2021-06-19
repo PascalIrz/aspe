@@ -21,7 +21,7 @@
 #'
 #' @importFrom dplyr pull filter
 #' @importFrom ggplot2 ggplot aes geom_density labs scale_x_continuous scale_fill_manual scale_x_log10
-#' @importFrom ggplot2 element_blank
+#' @importFrom ggplot2 element_blank geom_vline
 #' @importFrom purrr map
 #' @importFrom stats quantile
 #'
@@ -73,7 +73,7 @@ gg_density_env_esp <-
         mutate(moyenne = signif(moyenne, 3)) # arrondi à 3 chiffres significatifs
 
       moy_pres <- moyennes %>%
-        filter(presence == "Présence") %>%
+        filter(str_detect(presence, "Pr")) %>%
         pull(moyenne)
 
       moy_abs <- moyennes %>%
@@ -81,7 +81,7 @@ gg_density_env_esp <-
         pull(moyenne)
 
       # titre
-      titre = paste0("Moyenne présences : ", moy_pres, "\nMoyenne absences : ", moy_abs)
+      titre = paste0("Moyenne pr\032sences : ", moy_pres, "\nMoyenne absences : ", moy_abs)
 
       # graphique
       plot <-
@@ -99,7 +99,9 @@ gg_density_env_esp <-
         scale_fill_manual(values = c(coul_abs, coul_pres)) +
         theme(axis.title.y = element_blank(),
               axis.text.y = element_blank(),
-              axis.ticks.y = element_blank()) +
+              axis.ticks.y = element_blank(),
+              panel.grid.major.y = element_blank(),
+              panel.grid.minor.y = element_blank()) +
         geom_vline(xintercept = moy_pres, col = coul_pres) +
         geom_vline(xintercept = moy_abs, col = coul_abs, linetype = "dashed")
 
