@@ -12,7 +12,7 @@
 #'     que les 1p100 des valeurs les plus élevées sont exclues.
 #' @param log Vecteur caractère listant celles des variables environnementales pour lesquelles
 #'     l'axe des absisses est en échelle log. Par défaut ce sont les variables surface_bv,
-#'     distance_source et pente.
+#'     distance_source, pente et largeur.
 #' @param coul_pres Caractère. Couleur ou code hexadécimal couleur pour les présences.
 #' @param coul_abs Caractère. Couleur ou code hexadécimal couleur pour les absences.
 #'
@@ -21,6 +21,7 @@
 #'
 #' @importFrom dplyr pull filter
 #' @importFrom ggplot2 ggplot aes geom_density labs scale_x_continuous scale_fill_manual scale_x_log10
+#' @importFrom ggplot2 element_blank
 #' @importFrom purrr map
 #' @importFrom stats quantile
 #'
@@ -35,7 +36,7 @@ gg_density_env_esp <-
            espece,
            parametres = NA,
            quantile_max = 0.99,
-           log = c('surface_bv', 'distance_source', 'pente'),
+           log = c('surface_bv', 'distance_source', 'pente', 'largeur'),
            coul_pres = "blue",
            coul_abs = "red")
 
@@ -53,15 +54,36 @@ gg_density_env_esp <-
     gg_density_env_pres_abs <- function(parametre, df, espece)
 
     {
+      # jeu de données
       data <- df %>%
         filter(esp_code_alternatif == espece,
                parametre == !!parametre) %>%  # bang bang force l'évaluation en premier lieu / synonymie
                mutate(presence = ifelse(presence, "Présence", "Absence"))
 
+      # max de l'axe des abscisses
       x_max <- data %>%
         pull(valeur_parametre) %>%
         quantile(probs = c(quantile_max))
 
+      # calcul des moyennes du param pour pres et abs pour le titre
+      moyennes <- data %>%
+        group_by(presence) %>%
+          summarise(moyenne = mean(valeur_parametre, na.rm = TRUE)) %>%
+        ungroup() %>%
+        mutate(moyenne = signif(moyenne, 3)) # arrondi à 3 chiffres significatifs
+
+      moy_pres <- moyennes %>%
+        filter(presence == "Présence") %>%
+        pull(moyenne)
+
+      moy_abs <- moyennes %>%
+        filter(presence == "Absence") %>%
+        pull(moyenne)
+
+      # titre
+      titre = paste0("Moyenne présences : ", moy_pres, "\nMoyenne absences : ", moy_abs)
+
+      # graphique
       plot <-
         ggplot(data = data,
                aes(x = valeur_parametre,
@@ -69,12 +91,17 @@ gg_density_env_esp <-
         geom_density(alpha = 0.3) +
         labs(
           x = parametre,
-          y = "densite",
-          title = "",
+          y = "",
+          subtitle = titre,
           fill = espece
         ) +
         scale_x_continuous(limits = c(NA, x_max)) +
-        scale_fill_manual(values = c(coul_abs, coul_pres))
+        scale_fill_manual(values = c(coul_abs, coul_pres)) +
+        theme(axis.title.y = element_blank(),
+              axis.text.y = element_blank(),
+              axis.ticks.y = element_blank()) +
+        geom_vline(xintercept = moy_pres, col = coul_pres) +
+        geom_vline(xintercept = moy_abs, col = coul_abs, linetype = "dashed")
 
       if (!!parametre %in% log) { # Passage en échelle log pour certains des paramètres
         plot <- plot +

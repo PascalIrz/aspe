@@ -10,7 +10,7 @@ gg_density_env_esp(
   espece,
   parametres = NA,
   quantile_max = 0.99,
-  log = c("surface_bv", "distance_source", "pente"),
+  log = c("surface_bv", "distance_source", "pente", "largeur"),
   coul_pres = "blue",
   coul_abs = "red"
 )
@@ -31,7 +31,7 @@ que les 1p100 des valeurs les plus élevées sont exclues.}
 
 \item{log}{Vecteur caractère listant celles des variables environnementales pour lesquelles
 l'axe des absisses est en échelle log. Par défaut ce sont les variables surface_bv,
-distance_source et pente.}
+distance_source, pente et largeur.}
 
 \item{coul_pres}{Caractère. Couleur ou code hexadécimal couleur pour les présences.}
 
