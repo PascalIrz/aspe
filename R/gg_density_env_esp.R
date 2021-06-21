@@ -24,6 +24,7 @@
 #' @importFrom ggplot2 element_blank geom_vline
 #' @importFrom purrr map
 #' @importFrom stats quantile
+#' @importFrom stringr str_detect
 #'
 #' @examples
 #' \dontrun{
@@ -58,7 +59,7 @@ gg_density_env_esp <-
       data <- df %>%
         filter(esp_code_alternatif == espece,
                parametre == !!parametre) %>%  # bang bang force l'évaluation en premier lieu / synonymie
-               mutate(presence = ifelse(presence, "Présence", "Absence"))
+        mutate(presence = ifelse(presence, "Pr\u00e9sence", "Absence"))
 
       # max de l'axe des abscisses
       x_max <- data %>%
@@ -68,7 +69,7 @@ gg_density_env_esp <-
       # calcul des moyennes du param pour pres et abs pour le titre
       moyennes <- data %>%
         group_by(presence) %>%
-          summarise(moyenne = mean(valeur_parametre, na.rm = TRUE)) %>%
+        summarise(moyenne = mean(valeur_parametre, na.rm = TRUE)) %>%
         ungroup() %>%
         mutate(moyenne = signif(moyenne, 3)) # arrondi à 3 chiffres significatifs
 
@@ -81,7 +82,10 @@ gg_density_env_esp <-
         pull(moyenne)
 
       # titre
-      titre = paste0("Moyenne pr\032sences : ", moy_pres, "\nMoyenne absences : ", moy_abs)
+      titre = paste0("Moyenne pr\u00e9sence : ",
+                     moy_pres,
+                     "\nMoyenne absence : ",
+                     moy_abs)
 
       # graphique
       plot <-
