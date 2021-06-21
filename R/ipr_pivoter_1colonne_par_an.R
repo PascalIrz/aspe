@@ -1,7 +1,8 @@
-#' Convertir une table des IPR du format long au format large, c'est-à-dire avec une colonne
-#'     par année.
-#' S'il y a plisueurs valeurs de l'IPR pour un même point une année donnée, la valeur retournée
-#'     sera la moyenne
+#' Convertir une table des IPR du format long au format large
+#'
+#' On appelle format large la présentation des données avec une colonne par année.
+#'     S'il y a plusieurs valeurs de l'IPR pour un même point une année donnée,
+#'     la valeur retournée sera la moyenne.
 #'
 #' @param ipr_df Le dataframe au format long contenant les IPR, issi de la fonction extraire-ipr()
 #'
@@ -19,8 +20,7 @@ ipr_pivoter_1colonne_par_an <- function(ipr_df)
 {
 
   ipr_df %>%
-    select(libelle_station, libelle_point, dept, annee, ipr, pop_id) %>%
-    filter(annee > 2009) %>%
+    select(annee, ipr, pop_id) %>%
     distinct() %>%
     pivot_wider(names_from = annee,
                 values_from = ipr,

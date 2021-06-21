@@ -2,10 +2,7 @@
 % Please edit documentation in R/ipr_pivoter_1colonne_par_an.R
 \name{ipr_pivoter_1colonne_par_an}
 \alias{ipr_pivoter_1colonne_par_an}
-\title{Convertir une table des IPR du format long au format large, c'est-à-dire avec une colonne
-    par année.
-S'il y a plisueurs valeurs de l'IPR pour un même point une année donnée, la valeur retournée
-    sera la moyenne}
+\title{Convertir une table des IPR du format long au format large}
 \usage{
 ipr_pivoter_1colonne_par_an(ipr_df)
 }
@@ -16,10 +13,9 @@ ipr_pivoter_1colonne_par_an(ipr_df)
 Un dataframe contenant les mêmes données, mais agencé avec une colonne par année.
 }
 \description{
-Convertir une table des IPR du format long au format large, c'est-à-dire avec une colonne
-    par année.
-S'il y a plisueurs valeurs de l'IPR pour un même point une année donnée, la valeur retournée
-    sera la moyenne
+On appelle format large la présentation des données avec une colonne par année.
+    S'il y a plusieurs valeurs de l'IPR pour un même point une année donnée,
+    la valeur retournée sera la moyenne.
 }
 \examples{
 \dontrun{
