@@ -18,13 +18,13 @@
 #'
 #' @examples
 #' \dontrun{
-#' ipr_grapher_plusieurs_stations(ipr_df = data_22,
+#' ipr_grapher_plusieurs_stations(ipr_df = data_56,
 #' nb_mini_annees = 3,
 #' titre = "Morbihan")
 #' }
 ipr_grapher_plusieurs_stations <- function(ipr_df,
-                                            titre = NA, palette = NA,
-                                            nb_colonnes = 3, max_axe_y = 40)
+                                           titre = NA, palette = NA,
+                                           nb_colonnes = 3, max_axe_y = 40)
 {
 
   # -----------------------------------------------------------
@@ -47,14 +47,14 @@ ipr_grapher_plusieurs_stations <- function(ipr_df,
   # Production du graphique
   # -----------------------------------------------------------
   ggplot(data = ipr_df,
-         aes(x = annee, y = ipr, fill = classe_ipr)) +
+         aes(x = annee, y = ipr, fill = cli_libelle)) +
     geom_bar(stat = "identity") +
     labs(x = "Ann\u00e9e",
          y = "IPR",
          title = titre,
          fill = "Classe IPR") +
     scale_fill_manual(values = palette) +
-    facet_wrap(~str_wrap(libelle_station, 30), # pour le cas des stations à libellé trop long
+    facet_wrap(~str_wrap(pop_libelle, 30), # pour le cas des stations à libellé trop long
                ncol = nb_colonnes,
                scales = 'free_x') +
     scale_x_continuous(labels = scales::number_format(accuracy = 1, big.mark = ''),
