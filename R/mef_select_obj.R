@@ -31,7 +31,7 @@ mef_select_obj <- function(passerelle, objectif)
   passerelle <- passerelle %>%
     left_join(y = operation_objectif %>%
                 rename(ope_id  = opo_ope_id)) %>%
-    filter(opo_obj_id %in% objectif) %>%
+    filter(obj_id %in% objectif) %>%
     select(-opo_obj_id) %>%
     unique()
 
