@@ -1,7 +1,7 @@
 #' Dénombrer le nb d'opérations avec chaque paramètre environnemental renseigné pour chacune
 #'     des espèces
 #'
-#' @param df Dataframe avec les variables valeur_parametre, esp_code_alternatif, presence, parametre, n.
+#' @param df Dataframe avec les variables valeur_parametre, esp_code_alternatif, presence, parametre, annee, n.
 #'
 #' @return Un dataframe de 4 colonnes correspondant à l'espèce, au paramètre et aux nombres de présence et d'absence.
 #' @export
@@ -19,11 +19,11 @@ mef_compter_pres_abs_env <- function(df)
 
   pres_abs_env <- df  %>%
     filter(!is.na(valeur_parametre)) %>%
-    group_by(esp_code_alternatif, presence, parametre) %>%
+    group_by(esp_code_alternatif, presence, parametre, annee) %>%
     tally() %>%
     ungroup() %>%
     pivot_wider(
-      id_cols = esp_code_alternatif:parametre,
+      id_cols = esp_code_alternatif:annee,
       names_from = presence,
       values_from = n
     ) %>%

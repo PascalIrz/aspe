@@ -8,7 +8,7 @@
 mef_compter_pres_abs_env(df)
 }
 \arguments{
-\item{df}{Dataframe avec les variables valeur_parametre, esp_code_alternatif, presence, parametre, n.}
+\item{df}{Dataframe avec les variables valeur_parametre, esp_code_alternatif, presence, parametre, annee, n.}
 }
 \value{
 Un dataframe de 4 colonnes correspondant à l'espèce, au paramètre et aux nombres de présence et d'absence.
