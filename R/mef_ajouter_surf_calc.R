@@ -15,8 +15,9 @@
 mef_ajouter_surf_calc <- function(passerelle)
 
 {
-
   passerelle %>%
-    left_join(y = operation %>% select(ope_id, ope_surface_calculee))
+    left_join(y = operation %>%
+                select(ope_id,
+                       ope_surface_calculee))
 
 }
