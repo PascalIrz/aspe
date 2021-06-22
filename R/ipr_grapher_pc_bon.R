@@ -24,13 +24,18 @@ ipr_grapher_pc_bon <- function(ipr_df, titre = NA)
   derniere_annee <- max(ipr_df$annee)
 
   pc_bon <- ipr_df %>%
-    mutate(classe_ipr = fct_recode(classe_ipr, bon = "Excellent", bon = "Bon",
-                                   pas_bon = "M\u00e9diocre", pas_bon = "Mauvais",
-                                   pas_bon = "Tr\u00e8s mauvais")) %>%
-    group_by(annee, classe_ipr) %>%
-    summarise(n_sta = n_distinct(sta_id)) %>%
+    mutate(cli_libelle = fct_recode(cli_libelle,
+                                    bon = "Excellent",
+                                    bon = "Bon",
+                                    pas_bon = "M\u00e9diocre",
+                                    pas_bon = "Mauvais",
+                                    pas_bon = "Tr\u00e8s mauvais")) %>%
+    group_by(annee, cli_libelle) %>%
+    summarise(n_pop = n_distinct(pop_id)) %>%
     ungroup() %>%
-    pivot_wider(id_cols = annee, names_from = classe_ipr, values_from = n_sta) %>%
+    pivot_wider(id_cols = annee,
+                names_from = cli_libelle,
+                values_from = n_pop) %>%
     mutate(pc_bon = 100 * bon / (bon + pas_bon))
 
   # -----------------------------------------------------------
@@ -48,4 +53,5 @@ ipr_grapher_pc_bon <- function(ipr_df, titre = NA)
                        limits = c(premiere_annee - 0.5, derniere_annee + 0.5))
 
 }
+
 
