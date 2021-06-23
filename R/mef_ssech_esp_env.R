@@ -57,7 +57,7 @@ mef_ssech_esp_env <- function(df, seed = 123)
       .x = data,
       .y = n_ssech,
       .f = sample_n,
-      replace = TRUE
+      replace = FALSE
     ))
 
   # assemblage
