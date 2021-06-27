@@ -11,14 +11,15 @@
 #' @export
 #'
 #' @importFrom dplyr pull filter
-#' @importFrom ggplot2 ggplot geom_smooth facet_wrap
+#' @importFrom ggplot2 ggplot geom_smooth facet_wrap scale_y_log10
 #'
 #' @examples
 gg_env_fn_annee <-
   function(df,
            parametre,
            annee_debut = 1995,
-           annee_fin = NA) {
+           annee_fin = NA,
+           log_y = FALSE) {
     if (is.na(annee_fin))
     {
       annee_fin <- df %>%
@@ -26,12 +27,22 @@ gg_env_fn_annee <-
         max(na.rm = TRUE)
     }
 
-    df %>%
+  gg <- df %>%
       filter(parametre == !!parametre,
              annee >= annee_debut,
              annee <= annee_fin) %>%
-      ggplot(aes(x = annee, y = valeur_parametre,
+      ggplot(aes(x = annee,
+                 y = valeur_parametre,
                  col = presence)) +
+      labs(title = parametre) +
       geom_smooth(method = "lm", se = TRUE) +
       facet_wrap( ~ esp_code_alternatif)
+
+  if (!!parametre %in% log) { # Passage en échelle log pour certains des paramètres
+    gg <- gg +
+      scale_y_log10(labels = function(y) format(y, scientific = FALSE))
+  }
+
+  gg
+
   }

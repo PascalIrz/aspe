@@ -88,7 +88,7 @@ gg_density_env_esp <-
                      moy_abs)
 
       # graphique
-      plot <-
+      gg <-
         ggplot(data = data,
                aes(x = valeur_parametre,
                    fill = presence)) +
@@ -110,11 +110,11 @@ gg_density_env_esp <-
         geom_vline(xintercept = moy_abs, col = coul_abs, linetype = "dashed")
 
       if (!!parametre %in% log) { # Passage en échelle log pour certains des paramètres
-        plot <- plot +
+        gg <- gg +
           scale_x_log10(labels = function(x) format(x, scientific = FALSE))
       }
 
-      plot
+      gg
 
     }
 
