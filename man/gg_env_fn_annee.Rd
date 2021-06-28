@@ -11,7 +11,9 @@ gg_env_fn_annee(
   log_y = c("surface_bv", "distance_source", "pente", "largeur"),
   annee_debut = 1995,
   annee_fin = NA,
-  y_libre = FALSE
+  y_libre = FALSE,
+  coul_pres = "blue",
+  coul_abs = "red"
 )
 }
 \arguments{
@@ -31,6 +33,10 @@ correspond aux paramètres dont la distribution de rapproche d'une log-normale.}
 \item{y_libre}{TRUE/FALSE (valeur par défaut). Les axes des ordonnées peuvent (TRUE) différer
 selon les espèces, ce qui permet un "zoom", ou bien être les mêmes pour toutes, ce qui permet
 de les comparer les unes aux autres.}
+
+\item{coul_pres}{Caractère. Couleur ou code hexadécimal couleur pour les présences.}
+
+\item{coul_abs}{Caractère. Couleur ou code hexadécimal couleur pour les absences.}
 }
 \value{
 Une liste dont les éléments sont des graphiques ggplot2 (un par paramètre).

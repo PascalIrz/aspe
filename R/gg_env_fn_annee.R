@@ -12,6 +12,8 @@
 #' @param y_libre TRUE/FALSE (valeur par défaut). Les axes des ordonnées peuvent (TRUE) différer
 #'     selon les espèces, ce qui permet un "zoom", ou bien être les mêmes pour toutes, ce qui permet
 #'     de les comparer les unes aux autres.
+#' @param coul_pres Caractère. Couleur ou code hexadécimal couleur pour les présences.
+#' @param coul_abs Caractère. Couleur ou code hexadécimal couleur pour les absences.
 #'
 #' @return Une liste dont les éléments sont des graphiques ggplot2 (un par paramètre).
 #' @export
@@ -30,9 +32,10 @@ gg_env_fn_annee <-
            log_y = c('surface_bv', 'distance_source', 'pente', 'largeur'),
            annee_debut = 1995,
            annee_fin = NA,
-           y_libre = FALSE) {
-
-    if(is.na(parametres)){
+           y_libre = FALSE,
+           coul_pres = "blue",
+           coul_abs = "red") {
+    if (is.na(parametres)) {
       parametres <- df %>%
         pull(parametre) %>%
         as.character() %>%
@@ -51,23 +54,35 @@ gg_env_fn_annee <-
             max(na.rm = TRUE)
         }
 
-        gg <- df %>%
+        data <- df %>%
           filter(parametre == !!parametre,
                  annee >= annee_debut,
-                 annee <= annee_fin) %>%
+                 annee <= annee_fin)
+
+        gg <- data %>%
+          mutate(presence = ifelse(presence, "Pr\u00e9sence", "Absence")) %>%
           ggplot(aes(x = annee,
                      y = valeur_parametre,
                      col = presence)) +
-          labs(title = parametre,
-               x = "",
-               y = "") +
+          labs(
+            title = parametre,
+            x = "",
+            y = "",
+            col = ""
+          ) +
           geom_smooth(method = "lm", se = TRUE) +
-          facet_wrap( ~ esp_code_alternatif) +
-          theme(axis.text.x = element_text(angle = 45, size = 7))
+          scale_fill_manual(values = c(coul_abs, coul_pres)) +
+          facet_wrap(~ esp_code_alternatif) +
+          theme(axis.text.x = element_text(angle = 45, size = 7),
+                legend.position = "bottom")
 
-        if (!!parametre %in% log_y) { # Passage en échelle log pour certains des paramètres
+        if (!!parametre %in% log_y) {
+          # Passage en échelle log pour certains des paramètres
           gg <- gg +
-            scale_y_log10(labels = function(y) format(y, scientific = FALSE))
+            scale_y_log10(
+              labels = function(y)
+                format(y, scientific = FALSE)
+            )
         }
 
         gg
