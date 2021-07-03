@@ -30,9 +30,10 @@ imp_corres_aspe_taxref <- function(url = "https://api.sandre.eaufrance.fr/refere
 
   df <- read_csv2(file = file,
                   locale = locale(encoding = 'UTF-8')) %>%
-    filter(OrgCdAlternatif2 == "ASPE") %>%
+    filter(OrgCdAlternatif2 == "ASPE",
+           OrgCdAlternatif1 == "TAXREF") %>%
     select(esp_code_alternatif = CdAlternatif2,
-           esp_code_sandre = CdAlternatif1)
+           esp_code_taxref = CdAlternatif1)
 
   df
 
