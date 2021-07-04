@@ -10,7 +10,8 @@
 #' @export
 #'
 #' @importFrom readr read_csv2 locale
-#' @importFrom dplyr filter select
+#' @importFrom dplyr filter select starts_with pull rename
+#' @importFrom tidyr pivot_longer pivot_wider
 #' @importFrom utils download.file
 #'
 #' @examples
@@ -30,12 +31,43 @@ imp_corres_aspe_taxref <- function(url = "https://api.sandre.eaufrance.fr/refere
 
   df <- read_csv2(file = file,
                   locale = locale(encoding = 'UTF-8')) %>%
-    filter(OrgCdAlternatif2 == "ASPE",
-           OrgCdAlternatif1 == "TAXREF") %>%
-    select(esp_code_alternatif = CdAlternatif2,
-           esp_code_taxref = CdAlternatif1)
+    select(CdAppelTaxon,
+           starts_with("OrgCdAlternatif"),
+           starts_with("CdAlternatif"))
 
-  df
+  df1 <- df %>%
+    select(CdAppelTaxon,
+           starts_with("OrgCdAlternatif")) %>%
+    pivot_longer(cols = OrgCdAlternatif1:OrgCdAlternatif11,
+                 names_to = "variable_org",
+                 values_to = "organisme")
+
+  df2 <- df %>%
+    select(CdAppelTaxon,
+           starts_with("CdAlternatif")) %>%
+    pivot_longer(cols = CdAlternatif1:CdAlternatif11,
+                 names_to = "variable_code",
+                 values_to = "code")
+
+  df3 <- df1 %>%
+    cbind(df2 %>% select(-CdAppelTaxon)) %>%
+    filter(organisme %in% c("ASPE", "TAXREF"))
+
+  mes_codes_sandre <- df3 %>%
+    filter(organisme == "ASPE") %>%
+    pull(CdAppelTaxon) %>%
+    unique()
+
+  df3 <- df3 %>%
+    filter(CdAppelTaxon %in% mes_codes_sandre) %>%
+    select(CdAppelTaxon, organisme, code) %>%
+    pivot_wider(names_from = organisme,
+                values_from = code) %>%
+    rename(code_sandre = CdAppelTaxon,
+           code_aspe = ASPE,
+           code_taxref = TAXREF)
+
+  df3
 
 }
 

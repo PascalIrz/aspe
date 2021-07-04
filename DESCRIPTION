@@ -1,7 +1,7 @@
 Package: aspe
 Type: Package
 Title: Import, Process and Visualise the French River Fish Database ASPE
-Version: 0.1.6
+Version: 0.1.7
 Author: Pascal Irz <pascal.irz@ofb.gouv.fr>
 Maintainer: Pascal Irz <pascal.irz@ofb.gouv.fr>
 Description: The aspe package provides a suite of tools for most of the common 
@@ -14,6 +14,7 @@ LazyData: true
 RoxygenNote: 7.1.1
 Imports: dplyr,
     forcats,
+    ggiraph,
     ggplot2,
     lubridate,
     purrr,
@@ -25,8 +26,7 @@ Imports: dplyr,
     stringi,
     stringr,
     tibble,
-    tidyr,
-    ggiraph
+    tidyr
 Suggests: 
     knitr,
     rmarkdown
