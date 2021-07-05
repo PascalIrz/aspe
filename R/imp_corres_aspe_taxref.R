@@ -63,9 +63,9 @@ imp_corres_aspe_taxref <- function(url = "https://api.sandre.eaufrance.fr/refere
     select(CdAppelTaxon, organisme, code) %>%
     pivot_wider(names_from = organisme,
                 values_from = code) %>%
-    rename(code_sandre = CdAppelTaxon,
-           code_aspe = ASPE,
-           code_taxref = TAXREF)
+    rename(esp_code_sandre = CdAppelTaxon,
+           esp_code_alternatif = ASPE,
+           esp_code_taxref = TAXREF)
 
   df3
 
