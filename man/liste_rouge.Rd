@@ -5,7 +5,7 @@
 \alias{liste_rouge}
 \title{Données sur le statut liste rouge des espèces de poissons}
 \format{
-An object of class \code{spec_tbl_df} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 110 rows and 22 columns.
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 114 rows and 7 columns.
 }
 \usage{
 data(liste_rouge)

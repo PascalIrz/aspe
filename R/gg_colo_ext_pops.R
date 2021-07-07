@@ -25,7 +25,7 @@
 gg_colo_ext_pops <- function(df, interactif = FALSE, largeur = 6, hauteur = 5, ...)
 
 {
-  # based on https://stackoverflow.com/a/57086284
+  # mise en forme des étiquettes inspirée de https://stackoverflow.com/a/57086284
   int_breaks <- function(x, n = 5){
     if (length(unique(x)) > 1) {
       pretty(x, n)[round(pretty(x, n), 1) %% 1 == 0]
