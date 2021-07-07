@@ -16,9 +16,9 @@
 #' @examples
 #' \dontrun{
 #' df_propre <- df_brut %>%
-#' mef_recoder_filter_esp(esp_a_supprimer = c("OCV", "ASA"))
+#' mef_recoder_filtrer_esp(esp_a_supprimer = c("OCV", "ASA"))
 #' }
-mef_recoder_filter_esp <- function(df, esp_a_supprimer = NA) {
+mef_recoder_filtrer_esp <- function(df, esp_a_supprimer = NA) {
 
   if (!is.na(esp_a_supprimer))
 
