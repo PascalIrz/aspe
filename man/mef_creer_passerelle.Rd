@@ -36,7 +36,7 @@ soient toutes dans l'environnement.
 }
 \examples{
 \dontrun{
-mef_creer_passerelle <- function()
+ma_passerelle <- mef_creer_passerelle()
 }
 
 }
