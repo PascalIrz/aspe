@@ -15,40 +15,51 @@
 #' \dontrun{
 #' expl_trouver_variable(nom_contient = "ope")
 #' }
-expl_trouver_variable <- function(nom_contient) {
+expl_trouver_variable <-
+  function(nom_contient) {
 
-  # collecte de tous les objets de l'environnement
-  all_obj <- ls(envir = globalenv()) %>%
-    map(.f = get)
-  # test pour trouver ceux qui sont des dataframes
-  test_df <- map(.x = all_obj,
-                 .f = is.data.frame) %>%
-    as.data.frame %>%
-    t()
-  # sélection et nommage des dataframes
-  dfs <- all_obj[test_df]
-  dfs_names <- all_names[test_df]
+    # collecte de tous les objets de l'environnement
+    fun <- function(envir = parent.frame()) ls(envir = envir)
 
-  # collecte des noms des colonnes
-  dfs_col_names <- map(.x = dfs,
-                       .f = colnames)
+    all_names <- fun(.GlobalEnv)
 
-  names(dfs_col_names) <- dfs_names
+    all_obj <- map(.x = all_names,
+                   .f = get)
+    # test pour trouver ceux qui sont des dataframes
+    test_df <- map(.x = all_obj,
+                   .f = is.data.frame) %>%
+      as.data.frame %>%
+      t()
+    # sélection et nommage des dataframes
+    dfs <- all_obj[test_df]
+    dfs_names <- all_names[test_df]
 
-  # sélection de ceux qui contiennent la chaine de caractère recherchée
-  dfs_select <- map(.x = dfs_col_names,
-                    .f = str_subset,
-                    pattern = nom_contient) %>%
-    unlist
+    # collecte des noms des colonnes
+    dfs_col_names <- map(.x = dfs,
+                         .f = colnames)
 
-  df <- names(dfs_select)
-  names(dfs_select) <- NULL
+    names(dfs_col_names) <- dfs_names
 
-  # mise en forme
-  data.frame(table = df,
-             variable = dfs_select) %>%
-    mutate(table = str_replace_all(table,
-                                   pattern = "[:digit:]",
-                                   replacement = ""))
+    # noms des variables contenant la chaine recherchée
+    variables <- dfs_col_names %>%
+      unlist()
 
-}
+    selection <- variables %>%
+      str_detect(nom_contient)
+
+    selected_variables <- variables[selection]
+
+    # mise en forme et nettoyage
+    df <- names(selected_variables) # les noms sont ceux des dataframes
+
+    final <- data.frame(table = df,
+                        variable = selected_variables) %>%
+      mutate(table = str_replace_all(table,
+                                     pattern = "[:digit:]",
+                                     replacement = ""))
+
+    rownames(final) <- NULL
+
+    final
+
+  }
