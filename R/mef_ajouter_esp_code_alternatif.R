@@ -1,4 +1,4 @@
-#' Ajouter le numéro de passage associé à chaque prélèvement élémentaire de la passerelle.
+#' Ajouter le code espèce à 3 lettres à la passerelle.
 #'
 #' @param passerelle Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
 #'
@@ -10,14 +10,14 @@
 #' @examples
 #' \dontrun{
 #' passerelle <- passerelle %>%
-#' mef_ajouter_passage()
+#' mef_ajouter_esp_code_alternatif()
 #' }
-mef_ajouter_passage <- function(passerelle)
+mef_ajouter_esp_code_alternatif <- function(passerelle)
 
 {
   passerelle %>%
-    left_join(y = passage %>%
-                select(pre_id = pas_id,
-                       pas_numero))
+    left_join(y = ref_espece %>%
+                select(esp_id,
+                       esp_code_alternatif))
 
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/mef_ajouter_passage.R
 \name{mef_ajouter_passage}
 \alias{mef_ajouter_passage}
-\title{Ajouter le numéro de passage associé à chaque prélèvement élémentairte de la passerelle.}
+\title{Ajouter le numéro de passage associé à chaque prélèvement élémentaire de la passerelle.}
 \usage{
 mef_ajouter_passage(passerelle)
 }
@@ -13,7 +13,7 @@ mef_ajouter_passage(passerelle)
 La passerelle complétée.
 }
 \description{
-Ajouter le numéro de passage associé à chaque prélèvement élémentairte de la passerelle.
+Ajouter le numéro de passage associé à chaque prélèvement élémentaire de la passerelle.
 }
 \examples{
 \dontrun{

@@ -1,4 +1,5 @@
-#' Ajouter le numéro de passage associé à chaque prélèvement élémentaire de la passerelle.
+#' Ajouter le type de longueur à la passerelle
+#'     ex : totale, fourche.
 #'
 #' @param passerelle Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
 #'
@@ -10,14 +11,13 @@
 #' @examples
 #' \dontrun{
 #' passerelle <- passerelle %>%
-#' mef_ajouter_passage()
+#' mef_ajouter_type_longueur()
 #' }
-mef_ajouter_passage <- function(passerelle)
+mef_ajouter_type_longueur <- function(passerelle)
 
 {
   passerelle %>%
-    left_join(y = passage %>%
-                select(pre_id = pas_id,
-                       pas_numero))
-
+    left_join(y = ref_type_longueur %>%
+                select(tlo_id,
+                       tlo_libelle))
 }
