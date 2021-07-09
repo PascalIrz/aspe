@@ -31,3 +31,12 @@ install the released version of {aspe} from
 [Github](https://github.com/PascalIrz/aspe) with:
 
     devtools::install_github("PascalIrz/aspe")
+
+
+Associated Github repositories
+------------
+
+The package comes with a number of associated repos :
+- [aspe_data](https://github.com/PascalIrz/aspe_data) : building of the datasets included in the {aspe} package
+- [aspe_test](https://github.com/PascalIrz/aspe_test) : R Markdown files to test the {aspe} package and to build the tutorials
+- [aspe_demo](https://github.com/PascalIrz/aspe_demo) : R Markdown files to pre-process the fish data for [a dashboard app](https://github.com/CedricMondy/AspeDashboard)
