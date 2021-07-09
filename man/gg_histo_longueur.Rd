@@ -2,6 +2,7 @@
 % Please edit documentation in R/gg_histo_longueur.R
 \name{gg_histo_longueur}
 \alias{gg_histo_longueur}
+\alias{mei_grapher_histo_longueur}
 \title{Produire l'histogramme de distribution des longueurs individuelles pour une opération
     de pêche.}
 \usage{

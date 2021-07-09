@@ -17,6 +17,8 @@
 #'     suite pour en modifier la mise en forme.
 #' @export
 #'
+#' @aliases mei_grapher_histo_longueur
+#'
 #' @importFrom ggplot2 aes geom_histogram labs
 #' @importFrom dplyr filter pull
 #'
