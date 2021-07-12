@@ -18,8 +18,12 @@ mef_ajouter_lots <- function(passerelle)
 
   passerelle %>%
     left_join(y = lot_poissons %>%
-                select(lop_id, esp_id = lop_esp_id, lop_effectif)) %>%
+                select(lop_id,
+                       tyl_id = lop_tyl_id,
+                       esp_id = lop_esp_id,
+                       lop_effectif)) %>%
     left_join(y = ref_espece %>%
-                select(esp_id, esp_code_alternatif)) %>%
+                select(esp_id,
+                       esp_code_alternatif)) %>%
     select(-esp_id)
 }
