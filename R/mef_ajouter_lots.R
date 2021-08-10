@@ -26,4 +26,5 @@ mef_ajouter_lots <- function(passerelle)
                 select(esp_id,
                        esp_code_alternatif)) %>%
     select(-esp_id)
+
 }

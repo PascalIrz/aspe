@@ -2,7 +2,14 @@
 % Please edit documentation in R/mef_creer_passerelle.R
 \name{mef_creer_passerelle}
 \alias{mef_creer_passerelle}
-\title{Création d'un tableau "passerelle"
+\title{Création d'un tableau "passerelle"}
+\usage{
+mef_creer_passerelle()
+}
+\value{
+Un dataframe contenant les correspondances entre les identifiants
+}
+\description{
 Cette fonction crée un tableau de correspondance pour simplifier la navigation parmi les tables de la base Aspe.
 La base comprend plus d'une centaine de tables dont la plupart contiennent des référentiels associant des codes
 à des modalités. Par exemple la table ref_protocole associe le code pro_id à la modalité
@@ -14,14 +21,9 @@ Les tables qui constituent la colonne vertébrale de la base sont au nombre de .
 - operation
 - prelevement_elementaire
 - lot_poissons
-- mesure_individuelle}
-\usage{
-mef_creer_passerelle()
+- mesure_individuelle
 }
-\value{
-Un dataframe contenant les correspondances entre les identifiants
-}
-\description{
+\details{
 Ces tables sont liées de manières hiérarchique. Ainsi, chaque mesure individuelle se rapporte à un lot, qui
 se rapporte à un prélèvement élémentaire, qui se rapporte à une opération ... jusqu'à la station.
 Pour savoir sur quelle station a été capturé ce goujon de 87mm, il faut donc remonter toute la chaîne.
@@ -29,8 +31,7 @@ Pour simplifier cette procédure, et éviter d'avoir à la reproduire à chaque 
 on peut construire un tableau de correspondance des clés primaires. On n'incluera toutefois pas la
 table mesure_individuelle car elle compren des millions de lignes, ce qui alourdirait considérablement
 le tableau. Le traitement du contenu de cette table sera abordé ultérieurement.
-}
-\details{
+
 Pour que la fonction opère, il est nécessaire que les tables ci-dessus (sauf mesure_individuelle)
 soient toutes dans l'environnement.
 }
