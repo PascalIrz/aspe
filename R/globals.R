@@ -34,4 +34,4 @@ utils::globalVariables(c('.',
                         'FALSE', 'TRUE', 'data', 'parametre', 'presence', 'presences', 'ssech', 'valeur_parametre',
                         'hover', 'absences', 'n_ssech',
                         'OrgCdAlternatif1', 'OrgCdAlternatif11', 'ASPE', 'TAXREF', 'CdAlternatif11', 'CdAppelTaxon',
-                        'CdAlternatif1', 'organisme', 'code'))
+                        'CdAlternatif1', 'organisme', 'code', 'ope_poste_wama', 'poste_intervenant', 'poste_wama', 'utilisateur'))
