@@ -2,8 +2,7 @@
 % Please edit documentation in R/mef_ajouter_operateur.R
 \name{mef_ajouter_operateur}
 \alias{mef_ajouter_operateur}
-\title{Ajouter l'opérateur de pêche à la passerelle
-    ex : Indice Abondance Saumon.}
+\title{Ajouter l'opérateur de pêche à la passerelle}
 \usage{
 mef_ajouter_operateur(passerelle)
 }
@@ -15,7 +14,6 @@ La passerelle complétée.
 }
 \description{
 Ajouter l'opérateur de pêche à la passerelle
-    ex : Indice Abondance Saumon.
 }
 \examples{
 \dontrun{

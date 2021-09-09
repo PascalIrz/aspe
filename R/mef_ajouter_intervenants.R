@@ -11,7 +11,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' prov <- mef_creer_passerelle() %>%
+#' passerelle <- mef_creer_passerelle() %>%
 #' mef_ajouter_intervenants()
 #' }
 #'

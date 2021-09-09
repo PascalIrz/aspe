@@ -35,4 +35,6 @@ utils::globalVariables(c('.',
                         'hover', 'absences', 'n_ssech',
                         'OrgCdAlternatif1', 'OrgCdAlternatif11', 'ASPE', 'TAXREF', 'CdAlternatif11', 'CdAppelTaxon',
                         'CdAlternatif1', 'organisme', 'code', 'ope_poste_wama', 'poste_intervenant', 'poste_wama', 'utilisateur',
-                        'ope_int_id_operateur_peche', 'ope_int_id_commanditaire', 'ope_int_id_validation_technique'))
+                        'ope_int_id_operateur_peche', 'ope_int_id_commanditaire', 'ope_int_id_validation_technique',
+                        'ope_uti_id_creation', 'ope_uti_id_derniere_modification', 'int_id', 'int_libelle_sandre',
+                        'ref_intervenant', 'uti_id', 'uti_int_id', 'uti_mail'))
