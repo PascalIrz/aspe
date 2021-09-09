@@ -1,5 +1,4 @@
 #' Ajouter l'opérateur de pêche à la passerelle
-#'     ex : Indice Abondance Saumon.
 #'
 #' @param passerelle Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
 #'
