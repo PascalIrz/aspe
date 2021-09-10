@@ -3,7 +3,8 @@
 \name{mef_ajouter_utilisateurs}
 \alias{mef_ajouter_utilisateurs}
 \title{Ajouter à la passerelle les utilisateurs sur les opérations
-    Ces utilisateurs sont le créateur et la personne qui a effectué la dernière modification.}
+    Ces utilisateurs sont le créateur et la personne qui a effectué la dernière modification.
+    Ils sont identifiés par leur adresse email.}
 \usage{
 mef_ajouter_utilisateurs(passerelle)
 }
@@ -17,6 +18,7 @@ La passerelle complétée.
 \description{
 Ajouter à la passerelle les utilisateurs sur les opérations
     Ces utilisateurs sont le créateur et la personne qui a effectué la dernière modification.
+    Ils sont identifiés par leur adresse email.
 }
 \examples{
 \dontrun{
