@@ -45,7 +45,7 @@ Produire l'histogramme de distribution des longueurs individuelles pour une opé
 gg_histo_longueur (indiv_df = data_ind_56,
 operation = 6313,
 especes = "GOU",
-type_longueur = c("Fourche", "EstimÃ©e d'aprÃ¨s le poids"),
+type_longueur = c("Fourche", "Estimée d'après le poids"),
 n_intervalles = 25)
 }
 }

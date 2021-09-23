@@ -23,7 +23,7 @@ Filtrer un dataframe passerelle sur le niveau de validation des opérations.
 }
 \examples{
 \dontrun{
-# OpÃ©rations qui ne sont plus en cours de saisie
+# Opérations qui ne sont plus en cours de saisie
 data_22_filtre <- mef_filtrer_validation(df = data_22, validation = 2:3)
 }
 }
