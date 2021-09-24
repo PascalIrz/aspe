@@ -21,6 +21,7 @@ geo_ajouter_crs <- function(df, var_id_crs)
 
   df %>%
     rename(typ_id = var_id_crs) %>%
-    left_join(y = ref_type_projection %>% select(typ_id, typ_code_epsg))
+    left_join(y = ref_type_projection %>%
+                select(typ_id, typ_code_epsg))
 
 }

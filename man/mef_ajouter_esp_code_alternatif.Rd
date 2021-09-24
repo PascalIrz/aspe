@@ -7,13 +7,14 @@
 mef_ajouter_esp_code_alternatif(passerelle)
 }
 \arguments{
-\item{passerelle}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.}
+\item{passerelle}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
+La passerelle doit comprendre un champ avec le code taxon esp_id.}
 }
 \value{
 La passerelle complétée.
 }
 \description{
-Ajouter le code espèce à 3 lettres à la passerelle.
+Il s'agit des codes "historiques" hérités du Conseil Supérieur de la Pêche.
 }
 \examples{
 \dontrun{

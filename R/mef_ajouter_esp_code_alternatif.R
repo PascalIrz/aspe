@@ -1,6 +1,9 @@
 #' Ajouter le code espèce à 3 lettres à la passerelle.
 #'
+#' Il s'agit des codes "historiques" hérités du Conseil Supérieur de la Pêche.
+#'
 #' @param passerelle Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
+#'     La passerelle doit comprendre un champ avec le code taxon esp_id.
 #'
 #' @return La passerelle complétée.
 #' @export
