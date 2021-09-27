@@ -2,9 +2,16 @@
 % Please edit documentation in R/geo_convertir_coords_df.R
 \name{geo_convertir_coords_df}
 \alias{geo_convertir_coords_df}
-\title{Convertir un dataframe contenant des coordonnées dans un autre CRS}
+\title{Extraire d'un dataframe contenant des coordonnées en différents CRS et les homogénéiser}
 \usage{
-geo_convertir_coords_df(df, var_x, var_y, var_crs_initial, crs_sortie = 4326)
+geo_convertir_coords_df(
+  df,
+  var_x,
+  var_y,
+  var_id,
+  var_crs_initial,
+  crs_sortie = 4326
+)
 }
 \arguments{
 \item{df}{Dataframe contenant au moins trois colonnes pour les coordonnées et le
@@ -13,6 +20,8 @@ système de coordonnées (CRS)}
 \item{var_x}{Caractère. Nom de la colonne qui contient la longitude.}
 
 \item{var_y}{Caractère. Nom de la colonne qui contient la latitude.}
+
+\item{var_id}{Caractère. Nom de la colonne qui contient les identifiants des objets (=lignes) de df.}
 
 \item{var_crs_initial}{Caractère. Nom de la colonne qui contient le numéro EPSG du CRS de chacune
 des observations (par exemple des stations ou des points).}
@@ -24,13 +33,22 @@ c'est en WGS84 (crs = 4326).}
 Un dataframe à deux colonnes contenant les coordonnées dans le CRS de sortie.
 }
 \description{
-Convertir un dataframe contenant des coordonnées dans un autre CRS
+Les observations (lignes du df) sont reprojetées dans le CRS de sortie.
+}
+\details{
+Le dataframe d'entrée doit comprendre des colonnes indiquant longitude, latitude,
+    code EPSG du système de coordonnées, identifiant de l'observation.
 }
 \examples{
 \dontrun{
-coords_wgs84 <- geo_convertir_coords_df (df = stations,
+# Comme la table station de la base Aspe ne comprend pas le code EPSG mais un code de CRS interne,
+# il faut le rajouter avant la conversion.
+data <- station \%>\%
+  left_join(y = ref_type_projection, by = c("sta_typ_id" = "typ_id"))
+
+coords_wgs84 <- geo_convertir_coords_df (df = data,
     var_x = "sta_coordonnees_x", var_y = "sta_coordonnees_y",
-    var_crs_initial = "typ_code_epsg", crs_sortie = 4326)
+    var_id = "sta_id", var_crs_initial = "typ_code_epsg")
 }
 
 }
