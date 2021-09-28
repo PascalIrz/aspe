@@ -2,8 +2,8 @@
 % Please edit documentation in R/mef_ajouter_qualification.R
 \name{mef_ajouter_qualification}
 \alias{mef_ajouter_qualification}
-\title{Ajouter le type de protocole à la passerelle
-    ex : Indice Abondance Saumon.}
+\title{Ajouter à la passerelle la qualification de a donnée
+    ex : Correcte / Incorrecte / Incertaine.}
 \usage{
 mef_ajouter_qualification(passerelle)
 }
@@ -14,12 +14,12 @@ mef_ajouter_qualification(passerelle)
 La passerelle complétée.
 }
 \description{
-Ajouter le type de protocole à la passerelle
-    ex : Indice Abondance Saumon.
+Ajouter à la passerelle la qualification de a donnée
+    ex : Correcte / Incorrecte / Incertaine.
 }
 \examples{
 \dontrun{
 passerelle <- passerelle \%>\%
-mef_ajouter_type_protocole()
+mef_ajouter_qualification()
 }
 }

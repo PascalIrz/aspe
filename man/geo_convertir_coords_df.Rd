@@ -2,7 +2,7 @@
 % Please edit documentation in R/geo_convertir_coords_df.R
 \name{geo_convertir_coords_df}
 \alias{geo_convertir_coords_df}
-\title{Extraire d'un dataframe contenant des coordonnées en différents CRS et les homogénéiser}
+\title{Extraire des coordonnées homogénéisées à partir d'un dataframe contenant des coordonnées en différents CRS}
 \usage{
 geo_convertir_coords_df(
   df,
@@ -47,8 +47,10 @@ data <- station \%>\%
   left_join(y = ref_type_projection, by = c("sta_typ_id" = "typ_id"))
 
 coords_wgs84 <- geo_convertir_coords_df (df = data,
-    var_x = "sta_coordonnees_x", var_y = "sta_coordonnees_y",
-    var_id = "sta_id", var_crs_initial = "typ_code_epsg")
+    var_x = "sta_coordonnees_x",
+    var_y = "sta_coordonnees_y",
+    var_id = "sta_id",
+    var_crs_initial = "typ_code_epsg")
 }
 
 }

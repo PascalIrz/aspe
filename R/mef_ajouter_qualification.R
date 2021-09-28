@@ -1,5 +1,5 @@
-#' Ajouter le type de protocole à la passerelle
-#'     ex : Indice Abondance Saumon.
+#' Ajouter à la passerelle la qualification de a donnée
+#'     ex : Correcte / Incorrecte / Incertaine.
 #'
 #' @param passerelle Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
 #'
@@ -11,7 +11,7 @@
 #' @examples
 #' \dontrun{
 #' passerelle <- passerelle %>%
-#' mef_ajouter_type_protocole()
+#' mef_ajouter_qualification()
 #' }
 mef_ajouter_qualification <- function(passerelle)
 
