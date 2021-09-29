@@ -13,9 +13,9 @@
 #'
 #' @examples
 #' \dontrun{
-#' exp_tables_rdata()
+#' export_tables_rdata()
 #' }
-exp_tables_rdata <- function(repertoire = NA)
+export_tables_rdata <- function(repertoire = NA)
 
 {
 
@@ -34,13 +34,13 @@ exp_tables_rdata <- function(repertoire = NA)
 
   # nommage des fichiers. Pour éviter les risques d'écraser d'anciens fichiers,
   # nommage par date et heure par défaut
-  fichier_mei <- paste0(repertoire, "mei ", Sys.time(), ".RData") %>%
+  fichier_mei <- paste0(repertoire, "/mei ", Sys.time(), ".RData") %>%
     str_replace(" CEST", "") %>%
     str_replace_all("-", "_") %>%
     str_replace_all(" ", "_") %>%
     str_replace_all(":", "_")
 
-  fichier_tables_sauf_mei <- paste0(repertoire, "tables_sauf_mei ", Sys.time(), ".RData") %>%
+  fichier_tables_sauf_mei <- paste0(repertoire, "/tables_sauf_mei ", Sys.time(), ".RData") %>%
     str_replace(" CEST", "") %>%
     str_replace_all("-", "_") %>%
     str_replace_all(" ", "_") %>%
@@ -49,7 +49,7 @@ exp_tables_rdata <- function(repertoire = NA)
 # sauvegarde table mesure_individuelle
   save(mesure_individuelle, file = fichier_mei)
 # sauvegarde du reste
-  save(list = setdiff(ls(), "mesure_individuelle"),
+  save(list = setdiff(ls(envir = globalenv()), "mesure_individuelle"),
        file = fichier_tables_sauf_mei)
 
 }
