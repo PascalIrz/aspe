@@ -22,9 +22,9 @@
 #' @examples
 #' \dontrun{
 #' passerelle <- passerelle %>%
-#' mef_select_obj(objectif = 2:6)
+#' mef_select_objectif(objectif = 2:6)
 #' }
-mef_select_obj <- function(passerelle, objectif)
+mef_select_objectif <- function(passerelle, objectif)
 
 {
 
