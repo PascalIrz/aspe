@@ -6,6 +6,9 @@
 #'     qui le contient
 #' @export
 #'
+#' @importFrom purrr map reduce
+#' @importFrom stringr str_replace
+#'
 #' @examples
 #' \dontrun{
 #' synthese <- expl_lister_champs('processed_data/toutes_tables_aspe_sauf_mei.RData')
@@ -29,6 +32,9 @@ expl_lister_champs <- function(rdata)
 
   ) %>%
 
-    reduce(rbind)
+    reduce(rbind) %>%
+    mutate(champs = str_replace(string = champs,
+                                pattern = '"',
+                                replacement = ''))
 
 }
