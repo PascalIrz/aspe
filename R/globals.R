@@ -39,4 +39,6 @@ utils::globalVariables(c('.',
                         'ope_uti_id_creation', 'ope_uti_id_derniere_modification', 'int_id', 'int_libelle_sandre',
                         'ref_intervenant', 'uti_id', 'uti_int_id', 'uti_mail',
                         'niq_id', 'niq_libelle', 'obj_libelle', 'ope_niq_id', 'pop_coordonnees_x', 'pop_coordonnees_y',
-                        'pop_typ_id','ref_niveau_qualification', 'ref_objectif', 'typ_libelle'))
+                        'pop_typ_id','ref_niveau_qualification', 'ref_objectif', 'typ_libelle',
+                        'com_code_insee', 'dept_pop', 'dept_sta', 'eta_libelle', 'mop_libelle',
+                        'pop_com_code_insee', 'pop_com_code_insee_wama', 'ref_etat_avancement'))
