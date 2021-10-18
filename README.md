@@ -51,7 +51,7 @@ The package comes with a number of associated repos :
 - [aspe_demo](https://github.com/PascalIrz/aspe_demo): R Markdown files to pre-process the fish data for [a dashboard app](https://github.com/CedricMondy/AspeDashboard)
 
 
-Vignettes
+Tutoriels (vignettes)
 ------------
 
 - [Importer les tables de la base depuis un dump](https://rpubs.com/kamoke/713407)  
