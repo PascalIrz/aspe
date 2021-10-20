@@ -49,3 +49,14 @@ The package comes with a number of associated repos :
 - [aspe_data](https://github.com/PascalIrz/aspe_data): building of the datasets included in the {aspe} package
 - [aspe_test](https://github.com/PascalIrz/aspe_test): R Markdown files to test the {aspe} package and to build the tutorials
 - [aspe_demo](https://github.com/PascalIrz/aspe_demo): R Markdown files to pre-process the fish data for [a dashboard app](https://github.com/CedricMondy/AspeDashboard)
+
+
+Tutoriels (vignettes)
+------------
+
+- [Importer les tables de la base depuis un dump](https://rpubs.com/kamoke/713407)  
+- [Traiter des données Indice Poisson Rivière (IPR)](https://rpubs.com/kamoke/713491)
+- [Faire des traitements de base à partir des lots](https://rpubs.com/kamoke/715102)
+- [Traiter des mesures individuelles](https://rpubs.com/kamoke/715858)
+- [Faire des traitements géographiques](https://rpubs.com/kamoke/716322)
+- [Construire des relations taille-poids](https://rpubs.com/kamoke/729779)
