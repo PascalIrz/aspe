@@ -8,7 +8,8 @@ mef_ajouter_esp_code_alternatif(passerelle)
 }
 \arguments{
 \item{passerelle}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
-La passerelle doit comprendre un champ avec le code taxon esp_id.}
+La passerelle doit comprendre un champ avec le code taxon esp_id (typiquement, on utilise donc
+mef_ajouter_esp_code_alternatif() après mef_ajouter_lots())}
 }
 \value{
 La passerelle complétée.
@@ -18,7 +19,8 @@ Il s'agit des codes "historiques" hérités du Conseil Supérieur de la Pêche.
 }
 \examples{
 \dontrun{
-passerelle <- passerelle \%>\%
+passerelle <- mef_creer_passerelle() \%>\%
+mef_ajouter_lots() \%>\%
 mef_ajouter_esp_code_alternatif()
 }
 }
