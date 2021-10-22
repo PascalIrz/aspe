@@ -2,8 +2,8 @@
 #'
 #' @param lignes_dump Nom de la liste contenant les lignes du dump.
 #' @param tables_a_extraire Un vecteur contenant les noms des tables à extraire.
-#'     Par défaut toutes les tables sont extraites, ce qu ipeut prendre du temps
-#'     unutilement.
+#'     Par défaut toutes les tables sont extraites, ce qui peut prendre du temps
+#'     inutilement.
 #' @return Les dataframes correspondant à chacune des tables de la base.
 #' @export
 #'
@@ -78,7 +78,7 @@ imp_tables_a_partir_des_lignes <- function(lignes_dump, tables_a_extraire = NA) 
   caracteristiques_tables <- caracteristiques_tables %>%
     group_by(nom_table) %>% # nécessaire car la fonction imp_trouver_index_fin n'accepte pas les vecteurs en entrée
     mutate(index_ligne_fin = imp_trouver_index_fin(vecteur_index_lignes_fin = vecteur_index_lignes_fin,
-                                               ligne_debut = index_ligne_debut)) %>%
+                                                   ligne_debut = index_ligne_debut)) %>%
     mutate(index_ligne_fin = index_ligne_fin - 1,
            index_ligne_debut = index_ligne_debut + 3)
 

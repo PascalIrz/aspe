@@ -6,7 +6,6 @@
 #' @return Les dataframes correspondant à chacune des tables de la base.
 #' @export
 #'
-#' @import dplyr
 #' @importFrom utils type.convert
 #' @importFrom stringi stri_detect_fixed
 #' @importFrom stringr str_replace_all str_subset str_sub str_split
