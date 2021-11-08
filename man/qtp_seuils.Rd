@@ -14,7 +14,7 @@ qtp_seuils(df, code_espece, variable = "mei_taille", seuil_densite = 0.01)
 \item{variable}{Texte. Variable, au choix "mei_taille" ou "mei_poids".}
 
 \item{seuil_densite}{Numérique. Seuil de densité de probabilité probabilité au sens
-de ggplot2::gemp_density(). Par défaut il est de 1\%.}
+de ggplot2::geom_density(). Par défaut il est de 1\%.}
 }
 \value{
 Un vecteur contenant les seuils haut et bas, c'est-à-dire les tailles ou

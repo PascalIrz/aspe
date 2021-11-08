@@ -4,7 +4,7 @@
 #' @param code_espece Texte. Code espèce en trois lettres.
 #' @param variable Texte. Variable, au choix "mei_taille" ou "mei_poids".
 #' @param seuil_densite Numérique. Seuil de densité de probabilité probabilité au sens
-#'     de ggplot2::gemp_density(). Par défaut il est de 1\%.
+#'     de ggplot2::geom_density(). Par défaut il est de 1\%.
 #'
 #' @return Un vecteur contenant les seuils haut et bas, c'est-à-dire les tailles ou
 #'     poids mini et maxi à retenir au seuil choisi.
@@ -25,8 +25,13 @@ qtp_seuils <- function(df,
                        seuil_densite = 0.01) {
 
 
+  data_esp <- df %>%
+    filter(esp_code_alternatif == code_espece,
+           mei_taille > 0,
+           mei_poids > 0)
+
   # graphique simplifié
-  p <- ggplot(data = df, aes(x = get(variable))) +
+  p <- ggplot(data = data_esp, aes(x = get(variable))) +
     geom_density()
 
   # extraction des données du graphique
