@@ -20,6 +20,7 @@ mef_ajouter_lots <- function(passerelle)
     left_join(y = lot_poissons %>%
                 select(lop_id,
                        tyl_id = lop_tyl_id,
+                       tlo_id = lop_tlo_id,
                        esp_id = lop_esp_id,
                        lop_effectif)) %>%
     left_join(y = ref_espece %>%

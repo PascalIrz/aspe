@@ -27,7 +27,10 @@ qtp_calcul <- function(df, especes, seuil_densite = 0.001, seuil_poids_absolu = 
       df = df,
       seuil_densite = seuil_densite,
       seuil_poids_absolu = seuil_poids_absolu) %>%
-    reduce(rbind)
+    reduce(rbind) %>%
+    mutate_at(vars(-esp_code_alternatif),
+              as.numeric) %>%
+    arrange(-n_ind)
 
 }
 
