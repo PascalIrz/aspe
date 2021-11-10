@@ -12,14 +12,14 @@ misc_nom_dernier_fichier(repertoire, pattern, recursive = FALSE)
 \item{pattern}{Chaîne de caractère (exprtession régulière) à retrouver dans le nom du fichier.}
 
 \item{recursive}{Booléen (TRUE ou FALSE). Indique si la recherche inclut les sous-répertoire.
-La valeur par défaut est FALSE donc les sous-répertoires sont exclus de la recherche.
-Pour rappel les caractères ^ et $ sont respectivement les balises de début et de fin de chaîne.}
+La valeur par défaut est FALSE donc les sous-répertoires sont exclus de la recherche.}
 }
 \value{
 Le nom du plus récent des fichiers respectant la condition indiquée au pattern.
 }
 \description{
-Obtenir le nom du plus récent des fichiers
+Recherche dans un répertoire, parmi les fichiers dont le nom correspond au pattern,
+    celui qui est le dernier créé.
 }
 \examples{
 \dontrun{

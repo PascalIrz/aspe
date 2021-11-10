@@ -1,10 +1,12 @@
 #' Obtenir le nom du plus récent des fichiers
 #'
+#' @description Recherche dans un répertoire, parmi les fichiers dont le nom correspond au pattern,
+#'     celui qui est le dernier créé.
+#'
 #' @param repertoire Chaîne de caractère. Chemin vers le répertoire à explorer.
 #' @param pattern Chaîne de caractère (exprtession régulière) à retrouver dans le nom du fichier.
 #' @param recursive Booléen (TRUE ou FALSE). Indique si la recherche inclut les sous-répertoire.
 #'     La valeur par défaut est FALSE donc les sous-répertoires sont exclus de la recherche.
-#'     Pour rappel les caractères ^ et $ sont respectivement les balises de début et de fin de chaîne.
 #'
 #' @return Le nom du plus récent des fichiers respectant la condition indiquée au pattern.
 #' @export
