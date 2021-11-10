@@ -41,4 +41,5 @@ utils::globalVariables(c('.',
                         'niq_id', 'niq_libelle', 'obj_libelle', 'ope_niq_id', 'pop_coordonnees_x', 'pop_coordonnees_y',
                         'pop_typ_id','ref_niveau_qualification', 'ref_objectif', 'typ_libelle',
                         'com_code_insee', 'dept_pop', 'dept_sta', 'eta_libelle', 'mop_libelle',
-                        'pop_com_code_insee', 'pop_com_code_insee_wama', 'ref_etat_avancement'))
+                        'pop_com_code_insee', 'pop_com_code_insee_wama', 'ref_etat_avancement',
+                        'lop_tlo_id', 'n_ind', 'ctime'))

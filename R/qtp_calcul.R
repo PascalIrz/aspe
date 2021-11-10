@@ -11,6 +11,7 @@
 #' @export
 #'
 #' @importFrom purrr map reduce
+#' @importFrom dplyr mutate_at vars arrange
 #'
 #' @examples
 #' \dontrun{
