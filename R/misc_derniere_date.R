@@ -20,12 +20,12 @@ misc_derniere_date <- function()
 
 {
 
-  prov <-
+  vars <-
     expl_trouver_variable("date") # identifie les variables contenant la chaîne "date" et les tables
 
   map2(
-    .x = prov$table, # pour chaque variable, collecte du max
-    .y = prov$variable,
+    .x = vars$table, # pour chaque variable, collecte du max
+    .y = vars$variable,
     .f = function(table, variable) {
       table %>% get() %>% pull(variable) %>% max(na.rm = TRUE)
     }

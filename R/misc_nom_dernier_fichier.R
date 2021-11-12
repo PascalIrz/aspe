@@ -17,14 +17,16 @@
 #' \dontrun{
 #' mon_fichier <- misc_nom_dernier_fichier(repertoire = "raw_data", pattern = "RData$")
 #' }
-misc_nom_dernier_fichier <- function(repertoire, pattern, recursive = FALSE) {
-
-  list.files(path = repertoire,
-             pattern = pattern,
-             full.names = TRUE,
-             recursive = recursive) %>%
-    file.info() %>%
-    filter(ctime == max(ctime)) %>%
-    rownames()
+misc_nom_dernier_fichier <-
+  function(repertoire, pattern, recursive = FALSE) {
+    list.files(
+      path = repertoire,
+      pattern = pattern,
+      full.names = TRUE,
+      recursive = recursive
+    ) %>%
+      file.info() %>%
+      filter(ctime == max(ctime)) %>%
+      rownames()
 
 }
