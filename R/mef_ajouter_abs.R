@@ -24,12 +24,15 @@ mef_ajouter_abs <- function(df)
     droplevels() %>% # à retirer à terme
     select(ope_id,
            esp_code_alternatif,
-           effectif,
-           dens_ind_1000m2) %>%
+           lop_effectif,
+      #     dens_ind_1000m2
+           ) %>%
     complete(ope_id,
              esp_code_alternatif,
-             fill = list(effectif = 0,
-                         dens_ind_1000m2 = 0)) %>%
+             fill = list(lop_effectif = 0
+                         #,
+                      #   dens_ind_1000m2 = 0
+                         )) %>%
     left_join(y =  df %>%
                 select(ope_id,
                        annee) %>%
