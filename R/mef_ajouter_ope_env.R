@@ -69,9 +69,9 @@ mef_ajouter_ope_env <- function(passerelle)
 
   passerelle <- passerelle %>%
     left_join(ope_env) %>%
-    mutate(temp_temp_juillet = ifelse(temp_juillet == -99, # codage valeurs manquantes
-                                      NA,
-                                      temp_juillet),
+    mutate(temp_juillet = ifelse(temp_juillet == -99, # codage valeurs manquantes
+                                 NA,
+                                 temp_juillet),
            temp_janvier = ifelse(temp_janvier == -99,
                                  NA,
                                  temp_janvier))
