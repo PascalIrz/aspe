@@ -52,10 +52,10 @@ mef_ajouter_ope_env <- function(passerelle)
                      pop_pente_ign_cours_eau,
                      opi_param_pent),
       profondeur = opi_param_prof,
-      temp_juillet = ifelse(is.na(opi_param_tjuillet),
+      temp_juillet = ifelse(is.na(opi_param_tjuillet) | opi_param_tjuillet == -99,
                             pop_temperature_moyenne_juillet,
                             opi_param_tjuillet),
-      temp_janvier = ifelse(is.na(opi_param_tjanvier),
+      temp_janvier = ifelse(is.na(opi_param_tjanvier) | opi_param_tjanvier == -99,
                             pop_temperature_moyenne_janvier,
                             opi_param_tjanvier)
     ) %>%
