@@ -75,7 +75,6 @@ mef_ajouter_ope_env <- function(passerelle)
            temp_janvier = ifelse(temp_janvier == -99,
                                  NA,
                                  temp_janvier))
- #   filter(!(temp_juillet == -99 & temp_janvier == -99))
 
   passerelle
 
