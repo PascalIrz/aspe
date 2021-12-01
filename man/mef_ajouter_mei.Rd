@@ -7,7 +7,8 @@
 mef_ajouter_mei(passerelle)
 }
 \arguments{
-\item{passerelle}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.}
+\item{passerelle}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
+Elle doit contenir le champ "lop_id" qui sert à la jointure avec la table mesure_individuelle.}
 }
 \value{
 La passerelle complétée.
