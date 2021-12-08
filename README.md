@@ -62,3 +62,27 @@ Tutoriels (vignettes)
 - [Traiter des mesures individuelles](https://rpubs.com/kamoke/715858)
 - [Faire des traitements géographiques](https://rpubs.com/kamoke/716322)
 - [Construire des relations taille-poids](https://rpubs.com/kamoke/729779)
+
+
+Nommage des fonctions / Functions' naming rules
+---------------
+
+Les familles de fonctions se distinguent par des préfixes :
+
+- `mef_` : mise en forme des dataframes
+- `expl_` : exploration de la base
+- `geo_` : opérations spatiales
+- `gg_` : production de graphiques avec `ggplot2`
+- `imp_` : importation depuis un dump SQL
+- `ipr_` : indice poisson rivière ([voir](https://www.kmae-journal.org/articles/kmae/abs/2002/02/kmae2002365p405/kmae2002365p405.html))
+- `misc_` : divers
+
+Functions' names include group-specific prefixes :
+
+- `mef_` : tidying dataframes
+- `expl_` : exploring the database
+- `geo_` : spatial processing
+- `gg_` : plots with `ggplot2`
+- `imp_` : importing data from a SQL dump
+- `ipr_` : fish-based river health index ([voir](https://onlinelibrary.wiley.com/doi/abs/10.1046/j.1365-2427.2002.00884.x))
+- `misc_` : miscellaneous
