@@ -42,4 +42,4 @@ utils::globalVariables(c('.',
                         'pop_typ_id','ref_niveau_qualification', 'ref_objectif', 'typ_libelle',
                         'com_code_insee', 'dept_pop', 'dept_sta', 'eta_libelle', 'mop_libelle',
                         'pop_com_code_insee', 'pop_com_code_insee_wama', 'ref_etat_avancement',
-                        'lop_tlo_id', 'n_ind', 'ctime', 'V1', 'date_max'))
+                        'lop_tlo_id', 'n_ind', 'ctime', 'V1', 'date_max', 'esp_nom_commun', 'mediane', 'mon_espece', 'mon_point'))
