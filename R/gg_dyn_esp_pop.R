@@ -56,8 +56,8 @@ gg_dyn_esp_pop <- function(df, point, espece)
           strip.text.y = element_text(size = 7)) +
     labs(x = "Longueur(mm)",
          y = "Effectif",
-         title = paste(mon_espece,
-                       mon_point,
+         title = paste(espece,
+                       point,
                        sep = " - "))
 
 
