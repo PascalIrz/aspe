@@ -15,7 +15,7 @@ esp_nom_commun", "mei_taille" et "annee".}
 \item{espece}{Caractère. Nom de l'espèce dans le champ "esp_nom_commun".}
 }
 \value{
-Le graphique ggplot2 avec les dictributions en taille par année et l'évolution
+Le graphique ggplot2 avec les distributions en taille par année et l'évolution
     temporelle de la longueur médiane et des effectifs capturés.
 }
 \description{

@@ -7,7 +7,7 @@
 #' @param point Caractère. Nom du point dans le champ "pop_libelle".
 #' @param espece Caractère. Nom de l'espèce dans le champ "esp_nom_commun".
 #'
-#' @return Le graphique ggplot2 avec les dictributions en taille par année et l'évolution
+#' @return Le graphique ggplot2 avec les distributions en taille par année et l'évolution
 #'     temporelle de la longueur médiane et des effectifs capturés.
 #' @export
 #'
