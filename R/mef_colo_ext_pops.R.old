@@ -11,7 +11,7 @@
 #'     pour produire des graphiques avec la fonction gg_colo_ext_pop().
 #' @export
 #'
-#' @importFrom dplyr filter pull left_join mutate arrange select group_by case_when lag summarise
+#' @importFrom dplyr filter pull left_join mutate arrange select group_by case_when lag
 #' @importFrom tidyr expand
 #' @importFrom purrr map_df
 #'
@@ -23,17 +23,11 @@
 mef_colo_ext_pops <- function(df, id_point = NULL)
 
 {
-  mef_colo_ext_pop_1pt <- function(df, id_point)
+  mef_colo_ext_pop <- function(df, id_point)
 
   {
     selection <- df %>%
       filter(pop_id == id_point) %>%
-      group_by(annee,
-               esp_code_alternatif,
-               pop_id,
-               pop_libelle) %>%
-      summarise(effectif = sum(lop_effectif, na.rm = TRUE)) %>%
-      ungroup() %>%
       droplevels()
 
     libelle <- selection %>%
@@ -41,22 +35,11 @@ mef_colo_ext_pops <- function(df, id_point = NULL)
       .[1]
 
     selection <- selection %>%
-      expand(annee,
-             esp_code_alternatif,
-             pop_id,
-             pop_libelle) %>%
-      left_join(selection,
-                by = c("annee", "esp_code_alternatif", "pop_id", "pop_libelle")) %>%
-      mutate(effectif = ifelse(is.na(effectif),
-                               yes = 0,
-                               no = effectif)) %>%
-      arrange(esp_code_alternatif,
-              annee) %>%
-      select(pop_id,
-             pop_libelle,
-             annee,
-             esp_code_alternatif,
-             effectif) %>%
+      expand(annee, esp_code_alternatif, pop_id) %>%
+      left_join(selection, by = c("annee", "esp_code_alternatif", "pop_id")) %>%
+      mutate(effectif = ifelse(is.na(effectif), 0, effectif)) %>%
+      arrange(esp_code_alternatif, annee) %>%
+      select(pop_id, pop_libelle, annee, esp_code_alternatif, effectif) %>%
       group_by(esp_code_alternatif) %>%
       mutate(
         col_ext = case_when(
@@ -86,7 +69,7 @@ mef_colo_ext_pops <- function(df, id_point = NULL)
     mes_pops <- id_point
 
   capt_mef_colo_ext <- map_df(.x = mes_pops,
-                              .f = mef_colo_ext_pop_1pt,
+                              .f = mef_colo_ext_pop,
                               df = df)
 
   capt_mef_colo_ext
