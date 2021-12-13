@@ -77,7 +77,7 @@ Les familles de fonctions se distinguent par des préfixes :
 - `ipr_` : indice poisson rivière ([voir](https://www.kmae-journal.org/articles/kmae/abs/2002/02/kmae2002365p405/kmae2002365p405.html))
 - `misc_` : divers
 
-Functions' names include group-specific prefixes :
+Functions' names start by group-specific prefixes:
 
 - `mef_` : tidying dataframes
 - `expl_` : exploring the database
@@ -86,3 +86,29 @@ Functions' names include group-specific prefixes :
 - `imp_` : importing data from a SQL dump
 - `ipr_` : fish-based river health index ([voir](https://onlinelibrary.wiley.com/doi/abs/10.1046/j.1365-2427.2002.00884.x))
 - `misc_` : miscellaneous
+
+Nommage des variables / Variables' naming rules
+---------------
+
+Dans la quasi-totalité des cas, les variables contenues dans une table sont préfixées en fonction de cette table. Par exemple :
+
+- `sta_` : station
+- `pop_` : point_prelevement
+- `mei_` : mesure_individuelle
+
+Pour une liste des noms et signification des variables, taper dans la console :
+
+    data("dictionnaire")
+    View(dictionnaire)
+
+
+Almost systematically, variables' names start by table-specific prefixes:
+
+- `sta_` : station
+- `pop_` : point_prelevement (sampling point)
+- `mei_` : mesure_individuelle (individual measurment)
+
+To display a comprehensive list of variables with their meaning, call:
+
+    data("dictionnaire")
+    View(dictionnaire)
