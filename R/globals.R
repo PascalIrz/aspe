@@ -1,6 +1,6 @@
 utils::globalVariables(c('.',
                         'code_insee', 'dept', 'annee', 'effectif', 'coursdo',
-                        'esp_code_alternatif', 'esp_id',
+                        'esp_code_alternatif', 'esp_id', 'esp_nom_latin',
                         'lot_poissons', 'lop_id', 'lop_pre_id', 'lop_effectif', 'lop_esp_id',
                         'operation_ipr', 'ipr', 'classe_ipr', 'opi_ipr', 'opi_ope_id',
                         'opi_param_surf', 'opi_param_sbv', 'opi_param_ds', 'opi_param_lar', 'opi_param_pent',

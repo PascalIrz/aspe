@@ -2,12 +2,12 @@
 #'
 #' @docType data
 #'
-#' @usage data(champs_aspe)
+#' @usage data(dictionnaire)
 #'
 #' @keywords datasets
 #'
 #' @examples
 #' \donttest{
-#' data(champs_aspe)
-#' champs_aspe}
-"champs_aspe"
+#' data(dictionnaire)
+#' dictionnaire}
+"dictionnaire"
