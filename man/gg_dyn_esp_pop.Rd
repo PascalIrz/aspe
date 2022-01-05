@@ -4,15 +4,20 @@
 \alias{gg_dyn_esp_pop}
 \title{Produire un graphique de synthèse de la dynamique d'une population}
 \usage{
-gg_dyn_esp_pop(df, point, espece)
+gg_dyn_esp_pop(df, libelle_point, nom_espece, seuil = 0)
 }
 \arguments{
 \item{df}{Dataframe contenant les données, avec les variables "pop_id", "pop_libelle",
 esp_nom_commun", "mei_taille" et "annee".}
 
-\item{point}{Caractère. Nom du point dans le champ "pop_libelle".}
+\item{libelle_point}{Caractère. Nom du point dans le champ "pop_libelle".}
 
-\item{espece}{Caractère. Nom de l'espèce dans le champ "esp_nom_commun".}
+\item{nom_espece}{Caractère. Nom de l'espèce dans le champ "esp_nom_commun".}
+
+\item{seuil}{Numérique entre 0 et 1. Seuil de pourcentile pour exclure des histogrammes les rares
+individus de longueur extrême. Par défaut fixé à 0 donc toutes les observations sont conservées.
+S'il est fixé à 0.01, les 1% des longueurs les plus élevées sont exclus des histogrammes. Ces
+individus sont en revanche conservés sur les autres graphiques.}
 }
 \value{
 Le graphique ggplot2 avec les distributions en taille par année et l'évolution
@@ -24,7 +29,7 @@ Représentation pour une espèce sur un point de prélèvement.
 \examples{
 \dontrun{
 gg_dyn_esp_pop(df = data,
-               point = "DROME A CHABRILLAN ",
-               espece = "Barbeau fluviatile")
+               libelle_point = "DROME A CHABRILLAN ",
+               esp_nom = "Barbeau fluviatile")
 }
 }
