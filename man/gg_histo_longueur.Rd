@@ -18,7 +18,7 @@ gg_histo_longueur(
 \arguments{
 \item{indiv_df}{Le dataframe contanant les données nécessaires.}
 
-\item{operation}{L'identifiant de l'opération de pêche.}
+\item{operation}{Entier. Identifiant de l'opération de pêche au sens du champ ope_id.}
 
 \item{especes}{Vecteur caractères. Identifiants des codes espèces en trois lettres.
 Classiquement une seule espèce est désignée mais on peut préférer regrouper des

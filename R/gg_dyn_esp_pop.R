@@ -74,7 +74,7 @@ gg_dyn_esp_pop <- function(df, libelle_point, nom_espece, seuil = 0)
       axis.text.y = element_blank(),
       axis.ticks.y = element_blank(),
       strip.text.y.left = element_text(size = 7,
-                                  angle = 0)
+                                       angle = 0)
     ) +
     labs(x = "Longueur (mm)",
          y = "Effectif",

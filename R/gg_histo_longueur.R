@@ -2,7 +2,7 @@
 #'     de pêche.
 #'
 #' @param indiv_df Le dataframe contanant les données nécessaires.
-#' @param operation L'identifiant de l'opération de pêche.
+#' @param operation Entier. Identifiant de l'opération de pêche au sens du champ ope_id.
 #' @param especes Vecteur caractères. Identifiants des codes espèces en trois lettres.
 #'     Classiquement une seule espèce est désignée mais on peut préférer regrouper des
 #'     sous-espèces avec des identifiants différents ou conserver les identifications
