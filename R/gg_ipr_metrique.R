@@ -96,7 +96,11 @@ gg_ipr_metrique <- function(df,
     data.frame(
       ystart = limites_fin[1:(length(limites_fin) - 1)],
       yend = limites_fin[2:(length(limites_fin))],
-      col = c("Excellent", "Bon", "Médiocre", "Mauvais", "Très mauvais")[1:n_cat]
+      col = c("Excellent",
+              "Bon",
+              "M\u00e9diocre",
+              "Mauvais",
+              "Tr\u00e8s mauvais")[1:n_cat]
     )
 
   rects[nrow(rects), "yend"] <- Inf
@@ -119,9 +123,9 @@ gg_ipr_metrique <- function(df,
       values = c(
         "Excellent" = "blue",
         "Bon" = "green",
-        "Médiocre" = "yellow",
+        "M\u00e9diocre" = "yellow",
         "Mauvais" = "orange",
-        "Très mauvais" = "red"
+        "Tr\u00e8s mauvais" = "red"
       ),
       guide = guide_legend(reverse = TRUE)
     ) +
@@ -139,11 +143,11 @@ gg_ipr_metrique <- function(df,
       size = 2
     ) +
     labs(
-      x = "Année",
+      x = "Ann\u00e9e",
       y = "Valeur",
       title = station,
       fill = "Classe",
-      col = "Métrique"
+      col = "M\u00e9trique"
     ) +
     palette_couleurs +
     scale_y_continuous(expand = expansion(mult = c(0, 0.05)))
