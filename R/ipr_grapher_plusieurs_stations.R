@@ -34,9 +34,9 @@ ipr_grapher_plusieurs_stations <- function(ipr_df,
 
     palette <- c("Excellent" = "darkblue",
                  "Bon" = "darkgreen",
-                 "M\\u00e9diocre" = "yellow",
+                 "M\u00e9diocre" = "yellow",
                  "Mauvais" = "orange",
-                 "Tr\\u00e8s mauvais" = "red")
+                 "Tr\u00e8s mauvais" = "red")
 
   }
 
