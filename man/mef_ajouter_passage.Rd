@@ -2,7 +2,7 @@
 % Please edit documentation in R/mef_ajouter_passage.R
 \name{mef_ajouter_passage}
 \alias{mef_ajouter_passage}
-\title{Ajouter le numéro de passage associé à chaque prélèvement élémentaire de la passerelle.}
+\title{Ajouter à la passerelle, quand le prélèvement élémentaire est un passage, le numéro de passage}
 \usage{
 mef_ajouter_passage(passerelle)
 }
@@ -13,11 +13,13 @@ mef_ajouter_passage(passerelle)
 La passerelle complétée.
 }
 \description{
-Ajouter le numéro de passage associé à chaque prélèvement élémentaire de la passerelle.
+Le type de prélèvement doit donc être indiqué dans le data frame (Groupe de points,
+    Passage ou Ambiance). On applique mef_ajouter_passage() après mef_ajouter_type_prelevement().
 }
 \examples{
 \dontrun{
 passerelle <- passerelle \%>\%
+mef_ajouter_type_prelevement() \%>\%
 mef_ajouter_passage()
 }
 }

@@ -13,7 +13,7 @@ mef_ajouter_type_lot(passerelle)
 La passerelle complétée.
 }
 \description{
-Ajouter le type de lot à la passerelle
+NB Les tables "lot_poissons" et "ref_type_lot" doivent avoir été chargées auparavant.
 }
 \examples{
 \dontrun{

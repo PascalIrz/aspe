@@ -24,7 +24,6 @@ mef_ajouter_objectif <- function(passerelle)
                        obj_id = opo_obj_id)) %>%
     left_join(y = ref_objectif %>%
                 select(obj_id,
-                       obj_libelle)) %>%
-    select(-obj_id)
+                       obj_libelle))
 
 }
