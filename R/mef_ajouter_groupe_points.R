@@ -1,4 +1,4 @@
-#' Ajouter à la passerelle, quand le prélèvement élémentaire est un passage, le numéro de passage
+#' Ajouter à la passerelle, quand le prélèvement élémentaire est un groupe de points, ses données
 #'
 #'     Le type de prélèvement doit donc être indiqué dans le data frame (Groupe de points,
 #'     Passage ou Ambiance). On applique mef_ajouter_groupe_points() après mef_ajouter_type_prelevement().

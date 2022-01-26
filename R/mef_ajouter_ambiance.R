@@ -1,4 +1,4 @@
-#' Ajouter à la passerelle, quand le prélèvement élémentaire est un passage, le numéro de passage
+#' Ajouter à la passerelle, quand le prélèvement élémentaire est une ambiance, ses données
 #'
 #'     Le type de prélèvement doit donc être indiqué dans le data frame (Groupe de points,
 #'     Passage ou Ambiance). On applique mef_ajouter_ambiance() après mef_ajouter_type_prelevement().
