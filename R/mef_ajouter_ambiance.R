@@ -22,5 +22,4 @@ mef_ajouter_ambiance <- function(passerelle)
   passerelle %>%
     left_join(y = ambiance %>%
                 rename(pre_id = amb_id))
-
 }

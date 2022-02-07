@@ -1,0 +1,91 @@
+#' Graphique de la série chronologique des IPR
+#'
+#' La fonction utilise le référentiel "classe_ipr" de la base Aspe qui doit donc être
+#'     chargé auparavant et complété par les codes couleurs avec ipr_completer_classes_couleur().
+#'
+#' @param df_ipr Dataframe contenant les données IPR.
+#' @param var_id_sta Nom de la variable servant à identifier les stations ou points.
+#'     Cette variable donnera les étiquettes du graphique.
+#' @param station_sel Vecteur caractère indiquant les points ou stations à sélectionner.
+#' @param sup_500m Booléen. Indique si les stations sont situées à des altitudes inférieures
+#'     (sup_500m = FALSE, par défaut) ou bien supérieures à 500m car les seuils de classe
+#'     se qualité varient selon l'altitude.
+#'
+#' @return Un graphique ggplot2.
+#' @export
+#'
+#' @importFrom ggplot2 ggplot aes scale_fill_manual scale_y_continuous expansion geom_vline
+#' @importFrom ggplot2 geom_line geom_point facet_wrap labs guides guide_legend
+#' @importFrom dplyr enquo filter
+#'
+#' @examples
+#' \dontrun{
+#' classe_ipr <- classe_ipr %>%
+#'   ipr_completer_classes_couleur()
+#' }
+gg_ipr_station <- function(df_ipr,
+                           var_id_sta,
+                           station_sel,
+                           sup_500m = FALSE)
+
+{
+  # sélection des données
+  var_id_sta <- enquo(var_id_sta)
+
+  data_ipr_sel_station <- df_ipr %>%
+    filter(!!var_id_sta %in% station_sel)
+
+  # référentiel des classes
+  df_classes <- classe_ipr %>%
+    replace(is.na(.), 0)
+
+  if(sup_500m) {
+    df_classes <- df_classes %>%
+      filter(cli_altitude_max != 500)
+  } else {
+    df_classes <- df_classes %>%
+      filter(cli_altitude_min != 500)
+  }
+
+  # graphique
+  plot_ipr_station <-
+    data_ipr_sel_station %>%
+    ggplot() +
+    # arrière-plan
+    geom_rect(data = df_classes,
+              aes(ymin = cli_borne_inf,
+                  ymax = cli_borne_sup,
+                  fill = cli_libelle),
+              xmin = -Inf,
+              xmax = Inf,
+              alpha = 0.3) +
+    scale_fill_manual(values = df_classes$cli_couleur) +
+    scale_y_continuous(trans = "reverse",
+                       expand = expansion(mult = c(0.05, 0.01))) +
+    geom_vline(aes(xintercept = annee),
+               linetype = "dotted",
+               size = 0.1) +
+    # notes IPR
+    geom_line(aes(x = annee,
+                  y = ipr),
+              show.legend = F,
+              lty = 2) +
+    geom_point(aes(x = annee,
+                   y = ipr),
+               size = 2.5,
+               pch = 21,
+               fill = "grey70") +
+    # treillis
+    facet_wrap(~pop_libelle,
+               ncol = 6) +
+    labs(title = "Evolution de l'indice IPR",
+         x = "",
+         y = "Indice Poisson Rivière") +
+    guides(fill = guide_legend(title = "Classe IPR",
+                               override.aes = list(color = df_classes$cli_couleur,
+                                                   fill = df_classes$cli_couleur,
+                                                   shape = 15,
+                                                   alpha = 0.6)))
+
+  plot_ipr_station
+}
