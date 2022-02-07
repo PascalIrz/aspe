@@ -4,10 +4,17 @@
 \alias{mef_ajouter_abs}
 \title{Ajouter à un dataframe de présences les lignes des absences (avec effectif et densité nuls)}
 \usage{
-mef_ajouter_abs(df)
+mef_ajouter_abs(df, var_id, var_taxon, var_effectif)
 }
 \arguments{
 \item{df}{Dataframe avec les variables ope_id, esp_code_alternatif, effectif, dens_ind_1000m2 et annee.}
+
+\item{var_id}{Nom de la variable contenant les identifiants des observations (ex : ope_id), sans guillements.}
+
+\item{var_taxon}{Nom de la variable contenant les identifiants des taxons (ex : esp_code_alternatif),
+sans guillements.}
+
+\item{var_effectif}{Nom de la variable contenant les effectifs (ex : lop_effectif), sans guillements.}
 }
 \value{
 Le dataframe avec des lignes supplémentaires pour chacune des espèces absentes à chacune
@@ -19,6 +26,9 @@ La fonction fait appel au dataframe "operation" de la base Aspe qui doit impéra
 }
 \examples{
 \dontrun{
-df_complet <- mef_ajouter_abs(df = df_presences)
+df_complet <- mef_ajouter_abs(df = df_presences,
+var_id = ope_id,
+var_taxon = esp_code_alternatif,
+var_effectif = effectif)
 }
 }
