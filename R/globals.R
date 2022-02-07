@@ -1,5 +1,5 @@
 utils::globalVariables(c('.',
-                        'code_insee', 'dept', 'annee', 'effectif', 'coursdo',
+                        'code_insee', 'dept', 'annee', 'effectif', 'coursdo', 'cli_libelle', 'groupe_points', 'grp_id',
                         'esp_code_alternatif', 'esp_id', 'esp_nom_latin',
                         'lot_poissons', 'lop_id', 'lop_pre_id', 'lop_effectif', 'lop_esp_id',
                         'operation_ipr', 'ipr', 'classe_ipr', 'opi_ipr', 'opi_ope_id',
