@@ -4,10 +4,19 @@
 \alias{gg_ipr_station}
 \title{Graphique de la série chronologique des IPR}
 \usage{
-gg_ipr_station(df_ipr, var_id_sta, station_sel, sup_500m = FALSE)
+gg_ipr_station(
+  df_ipr,
+  var_id_sta,
+  station_sel,
+  sup_500m = FALSE,
+  nb_colonnes = 6,
+  max_axe_y = 40
+)
 }
 \arguments{
-\item{df_ipr}{Dataframe contenant les données IPR.}
+\item{df_ipr}{Dataframe contenant les données IPR. Il doit contenir des variables "ipr"
+et "annee" ainsi qu'une variable permettant d'identifier la station ou le point de
+prélèvement.}
 
 \item{var_id_sta}{Nom de la variable servant à identifier les stations ou points.
 Cette variable donnera les étiquettes du graphique.}
@@ -16,7 +25,14 @@ Cette variable donnera les étiquettes du graphique.}
 
 \item{sup_500m}{Booléen. Indique si les stations sont situées à des altitudes inférieures
 (sup_500m = FALSE, par défaut) ou bien supérieures à 500m car les seuils de classe
-se qualité varient selon l'altitude.}
+se qualité varient selon l'altitude. Comme ce paramètre est unique pour l'ensemble des
+stations (ou points) représentées, il importe de s'assurer qu'elles sont toutes soit
+au-dessus, soit en-dessous de 500m.}
+
+\item{nb_colonnes}{Entier. Nombre (maxi) de colonnes de graphiques s'il y a plusieurs stations.
+Par défaut nb_colonnes = 6.}
+
+\item{max_axe_y}{Numérique. Limite supérieure de l'axe des ordonnées. Par défaut max_axe_y = 40.}
 }
 \value{
 Un graphique ggplot2.
