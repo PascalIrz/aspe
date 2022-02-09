@@ -29,6 +29,10 @@
 #' \dontrun{
 #' classe_ipr <- classe_ipr %>%
 #'   ipr_completer_classes_couleur()
+#'
+#' gg_ipr_station(df_ipr = ipr_dept,
+#' var_id_sta = pop_libelle,
+#' station_sel = mes_pops)
 #' }
 gg_ipr_station <- function(df_ipr,
                            var_id_sta,
@@ -44,7 +48,7 @@ gg_ipr_station <- function(df_ipr,
   data_ipr_sel_station <- df_ipr %>%
     filter(!!var_id_sta %in% station_sel)
 
-  # référentiel des classes
+  # référentiel des classes (on remplace nes NA par des zéros)
   df_classes <- classe_ipr %>%
     replace(is.na(.), 0)
 
@@ -72,9 +76,6 @@ gg_ipr_station <- function(df_ipr,
     scale_y_continuous(trans = "reverse",
                        expand = expansion(mult = c(0.05, 0.01))) +
     coord_cartesian(ylim = c(0, max_axe_y)) +
-    # geom_vline(aes(xintercept = annee),
-    #            linetype = "dotted",
-    #            size = 0.1) +
     # notes IPR
     geom_line(aes(x = annee,
                   y = ipr),
@@ -86,8 +87,9 @@ gg_ipr_station <- function(df_ipr,
                pch = 21,
                fill = "grey70") +
     # treillis
-    facet_wrap(~pop_libelle,
+    facet_wrap(~str_wrap(pop_libelle, 25), # au cas où intitulés trop longs
                ncol = nb_colonnes) +
+    # mise en forme
     labs(title = "Evolution de l'indice IPR",
          x = "",
          y = "Indice Poisson Rivi\u00e8re") +
@@ -96,7 +98,9 @@ gg_ipr_station <- function(df_ipr,
                                                    fill = df_classes$cli_couleur,
                                                    shape = 15,
                                                    alpha = 0.6))) +
-    theme(legend.position = "bottom")
+    theme(legend.position = "bottom",
+          strip.text.x = element_text(size = 8),
+          axis.text.x = element_text(angle = 45, hjust = 1))
 
   plot_ipr_station
 }

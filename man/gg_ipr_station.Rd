@@ -45,5 +45,9 @@ La fonction utilise le référentiel "classe_ipr" de la base Aspe qui doit donc 
 \dontrun{
 classe_ipr <- classe_ipr \%>\%
   ipr_completer_classes_couleur()
+
+gg_ipr_station(df_ipr = ipr_dept,
+var_id_sta = pop_libelle,
+station_sel = mes_pops)
 }
 }
