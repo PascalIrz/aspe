@@ -7,7 +7,7 @@
 #' @export
 #'
 #' @importFrom dplyr case_when mutate
-#'
+#' @importFrom forcats fct_reorder
 #' @examples
 #' \dontrun{
 #' gg_ipr_station(df_ipr = ipr_dept,
