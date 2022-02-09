@@ -24,15 +24,18 @@
 #' @importFrom ggplot2 ggplot aes scale_fill_manual scale_y_continuous expansion geom_vline
 #' @importFrom ggplot2 geom_line geom_point facet_wrap labs guides guide_legend theme
 #' @importFrom dplyr enquo filter
+#' @importFrom stringr str_wrap
 #'
 #' @examples
 #' \dontrun{
 #' classe_ipr <- classe_ipr %>%
 #'   ipr_completer_classes_couleur()
 #'
-#' gg_ipr_station(df_ipr = ipr_dept,
-#' var_id_sta = pop_libelle,
-#' station_sel = mes_pops)
+#' ipr_data %>%
+#'   gg_ipr_station(var_id_sta = pop_libelle,
+#'     station_sel = mes_pops,
+#'     nb_colonnes = 4,
+#'     max_axe_y = 60)
 #' }
 gg_ipr_station <- function(df_ipr,
                            var_id_sta,
