@@ -17,6 +17,8 @@
 #' @param nb_colonnes Entier. Nombre (maxi) de colonnes de graphiques s'il y a plusieurs stations.
 #'     Par défaut nb_colonnes = 6.
 #' @param max_axe_y Numérique. Limite supérieure de l'axe des ordonnées. Par défaut max_axe_y = 40.
+#' @param inv_y Booléen. Indique l'axe des ordonnées pointe vers le bas (TRUE, par défaut) ou
+#'     vers le haut.
 #'
 #' @return Un graphique ggplot2.
 #' @export
@@ -35,14 +37,16 @@
 #'   gg_ipr_station(var_id_sta = pop_libelle,
 #'     station_sel = mes_pops,
 #'     nb_colonnes = 4,
-#'     max_axe_y = 60)
+#'     max_axe_y = 60,
+#'     inv_y = FALSE)
 #' }
 gg_ipr_station <- function(df_ipr,
                            var_id_sta,
                            station_sel,
                            sup_500m = FALSE,
                            nb_colonnes = 6,
-                           max_axe_y = 40)
+                           max_axe_y = 40,
+                           inv_y = TRUE)
 
 {
   # sélection des données
@@ -78,7 +82,7 @@ gg_ipr_station <- function(df_ipr,
     scale_fill_manual(values = df_classes$cli_couleur) +
     scale_y_continuous(trans = "reverse",
                        expand = expansion(mult = c(0.05, 0.01))) +
-    coord_cartesian(ylim = c(0, max_axe_y)) +
+
     # notes IPR
     geom_line(aes(x = annee,
                   y = ipr),
@@ -104,6 +108,15 @@ gg_ipr_station <- function(df_ipr,
     theme(legend.position = "bottom",
           strip.text.x = element_text(size = 8),
           axis.text.x = element_text(angle = 45, hjust = 1))
+  # orientation de l'axe des IPR selon l'argument inv_y
+  if(inv_y) {
+
+   plot_ipr_station <- plot_ipr_station +
+    coord_cartesian(ylim = c(max_axe_y, 0))
+  } else {
+    plot_ipr_station <- plot_ipr_station +
+      coord_cartesian(ylim = c(0, max_axe_y))
+  }
 
   plot_ipr_station
 }

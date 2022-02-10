@@ -10,7 +10,8 @@ gg_ipr_station(
   station_sel,
   sup_500m = FALSE,
   nb_colonnes = 6,
-  max_axe_y = 40
+  max_axe_y = 40,
+  inv_y = TRUE
 )
 }
 \arguments{
@@ -33,6 +34,9 @@ au-dessus, soit en-dessous de 500m.}
 Par défaut nb_colonnes = 6.}
 
 \item{max_axe_y}{Numérique. Limite supérieure de l'axe des ordonnées. Par défaut max_axe_y = 40.}
+
+\item{inv_y}{Booléen. Indique l'axe des ordonnées pointe vers le bas (TRUE, par défaut) ou
+vers le haut.}
 }
 \value{
 Un graphique ggplot2.
@@ -50,6 +54,7 @@ ipr_data \%>\%
   gg_ipr_station(var_id_sta = pop_libelle,
     station_sel = mes_pops,
     nb_colonnes = 4,
-    max_axe_y = 60)
+    max_axe_y = 60,
+    inv_y = FALSE)
 }
 }
