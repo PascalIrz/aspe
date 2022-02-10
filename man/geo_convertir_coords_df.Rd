@@ -17,13 +17,13 @@ geo_convertir_coords_df(
 \item{df}{Dataframe contenant au moins trois colonnes pour les coordonnées et le
 système de coordonnées (CRS)}
 
-\item{var_x}{Caractère. Nom de la colonne qui contient la longitude.}
+\item{var_x}{Colonne qui contient la longitude.}
 
-\item{var_y}{Caractère. Nom de la colonne qui contient la latitude.}
+\item{var_y}{Colonne qui contient la latitude.}
 
-\item{var_id}{Caractère. Nom de la colonne qui contient les identifiants des objets (=lignes) de df.}
+\item{var_id}{Colonne qui contient les identifiants des objets (=lignes) de df.}
 
-\item{var_crs_initial}{Caractère. Nom de la colonne qui contient le numéro EPSG du CRS de chacune
+\item{var_crs_initial}{Colonne qui contient le numéro EPSG du CRS de chacune
 des observations (par exemple des stations ou des points).}
 
 \item{crs_sortie}{Numérique entier. Le numéro EPSG du CRS de sortie. Par défaut
@@ -47,10 +47,9 @@ data <- station \%>\%
   left_join(y = ref_type_projection, by = c("sta_typ_id" = "typ_id"))
 
 coords_wgs84 <- geo_convertir_coords_df (df = data,
-    var_x = "sta_coordonnees_x",
-    var_y = "sta_coordonnees_y",
-    var_id = "sta_id",
-    var_crs_initial = "typ_code_epsg")
+    var_x = sta_coordonnees_x,
+    var_y = sta_coordonnees_y,
+    var_id = sta_id,
+    var_crs_initial = typ_code_epsg)
 }
-
 }

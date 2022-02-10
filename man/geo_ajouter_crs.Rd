@@ -22,6 +22,6 @@ Ajouter le code EPSG du CRS à un dataframe.
 \examples{
 \dontrun{
 pop <- point_prelevement \%>\%
-geo_ajouter_crs(var_id_crs = "pop_typ_id")
+geo_ajouter_crs(var_id_crs = pop_typ_id)
 }
 }
