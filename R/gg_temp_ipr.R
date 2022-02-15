@@ -34,75 +34,103 @@
 #'   ipr_completer_classes_couleur()
 #'
 #' ipr_data %>%
-#'   gg_ipr_station(var_id_sta = pop_libelle,
-#'     station_sel = mes_pops,
-#'     nb_colonnes = 4,
-#'     max_axe_y = 60,
-#'     inv_y = FALSE)
+#'   gg_temp_ipr(var_id_sta = pop_libelle,
+#'               var_ipr = ipr,
+#'               station_sel = mes_pops,
+#'               nb_colonnes = 4,
+#'               max_axe_y = 60,
+#'               inv_y = FALSE)
 #' }
-gg_ipr_station <- function(df_ipr,
+gg_temp_ipr <- function(df_ipr,
                            var_id_sta,
-                           station_sel,
+                           var_ipr,
+                           station_sel = NA,
                            sup_500m = FALSE,
                            nb_colonnes = 6,
                            max_axe_y = 40,
-                           inv_y = TRUE)
+                           inv_y = TRUE,
+                           annee_facteur = FALSE,
+                           df_classes = classe_ipr)
 
 {
   # sélection des données
   var_id_sta <- enquo(var_id_sta)
+  var_ipr <- enquo(var_ipr)
 
-  data_ipr_sel_station <- df_ipr %>%
-    filter(!!var_id_sta %in% station_sel)
-
-  # référentiel des classes (on remplace nes NA par des zéros)
-  df_classes <- classe_ipr %>%
-    replace(is.na(.), 0)
-
-  if(sup_500m) {
-    df_classes <- df_classes %>%
-      filter(cli_altitude_max != 500)
-  } else {
-    df_classes <- df_classes %>%
-      filter(cli_altitude_min != 500)
+  if(!is.na(station_sel))
+  {
+    df_ipr <- df_ipr %>%
+      filter(!!var_id_sta %in% station_sel)
   }
 
+  # gestion de l'évaluation non standard en passant par création d'une variable. Pas trouvé mieux.
+  # sinon bug avec le facet_wrap()
+  df_ipr <- df_ipr %>%
+    mutate(var_id = str_wrap(!!var_id_sta, 25), # au cas où intitulés trop longs
+           var_id = as.factor(var_id))
+
+  # année en facteur ?
+  if(annee_facteur)
+  {
+    df_ipr <- df_ipr %>%
+      mutate(annee = as.factor(annee))
+  }
+
+  # référentiel des classes (on remplace nes NA par des zéros)
+  # df_classes <- classe_ipr %>%
+  #   replace(is.na(.), 0)
+  #
+  # if(sup_500m) {
+  #   df_classes <- df_classes %>%
+  #     filter(cli_altitude_max != 500)
+  # } else {
+  #   df_classes <- df_classes %>%
+  #     filter(cli_altitude_min != 500)
+  # }
+
+  df_classes <- df_classes %>%
+    gg_gerer_seuils_classes_ipr_int(metriques = FALSE,
+                                    sup_500m = sup_500m)
+
+  plot_ipr_station <- ggplot(data = df_ipr) %>%
+    gg_ajouter_arriere_plan_int(df_classes = df_classes) +
+
   # graphique
-  plot_ipr_station <-
-    data_ipr_sel_station %>%
-    ggplot() +
-    # arrière-plan
-    geom_rect(data = df_classes,
-              aes(ymin = cli_borne_inf,
-                  ymax = cli_borne_sup,
-                  fill = cli_libelle),
-              xmin = -Inf,
-              xmax = Inf,
-              alpha = 0.3) +
-    scale_fill_manual(values = df_classes$cli_couleur) +
-    scale_y_continuous(trans = "reverse",
-                       expand = expansion(mult = c(0.05, 0.01))) +
+  # plot_ipr_station <-
+  #   data %>%
+  #   ggplot() +
+  #   # arrière-plan
+  #   geom_rect(data = df_classes,
+  #             aes(ymin = cli_borne_inf,
+  #                 ymax = cli_borne_sup,
+  #                 fill = cli_libelle),
+  #             xmin = -Inf,
+  #             xmax = Inf,
+  #             alpha = 0.3) +
+  #   scale_fill_manual(values = df_classes$cli_couleur) +
+  #   scale_y_continuous(trans = "reverse",
+  #                      expand = expansion(mult = c(0.05, 0.01))) +
 
     # notes IPR
     geom_line(aes(x = annee,
-                  y = ipr),
+                  y = !!var_ipr),
               show.legend = F,
               lty = 2) +
     geom_point(aes(x = annee,
-                   y = ipr),
+                   y = !!var_ipr),
                size = 2.5,
                pch = 21,
                fill = "grey70") +
     # treillis
-    facet_wrap(~str_wrap(pop_libelle, 25), # au cas où intitulés trop longs
+    facet_wrap(~var_id,
                ncol = nb_colonnes) +
     # mise en forme
     labs(title = "Evolution de l'indice IPR",
          x = "",
          y = "Indice Poisson Rivi\u00e8re") +
     guides(fill = guide_legend(title = "Classe IPR",
-                               override.aes = list(color = df_classes$cli_couleur,
-                                                   fill = df_classes$cli_couleur,
+                               override.aes = list(color = df_classes$classe_couleur,
+                                                   fill = df_classes$classe_couleur,
                                                    shape = 15,
                                                    alpha = 0.6))) +
     theme(legend.position = "bottom",
