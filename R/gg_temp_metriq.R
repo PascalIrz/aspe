@@ -25,9 +25,9 @@
 #'     C'est l'inverse pour l'IPR+.
 #' @param annee_facteur Booléen. Indique si la variable annee doit être transformée en facteur.
 #'     Parfois utile pour la mise en forme de l'axe des abscisses (années).
-#' @param indice Caractère. Peut prendre la valeur "IPR" ou bien "IPR+" selon le jeu de métriques.
 #' @param type_graphique Caractère. Peut prendre les valeurs "courbes" ou "barres" selon le type
 #'     de graphique souhaité.
+#' @param df_classe Dataframe contenant les limites de classes. Exemple : classe_ipr.
 #'
 #' @return Un graphique ggplot2.
 #' @export
@@ -43,11 +43,15 @@
 #'   ipr_completer_classes_couleur()
 #'
 #' ipr_data %>%
-#'   gg_ipr_station(var_id_sta = pop_libelle,
-#'     station_sel = mes_pops,
-#'     nb_colonnes = 4,
-#'     max_axe_y = 60,
-#'     inv_y = FALSE)
+#'   gg_temp_metriq(var_id_sta = pop_libelle,
+#'                  station_sel = mes_pops,
+#'                  var_nom_metrique = metrique,
+#'                  var_valeur_metrique = valeur,
+#'                  nb_colonnes = 4,
+#'                  max_axe_y = 15,
+#'                  inv_y = FALSE,
+#'                  type_graphique = "barres",
+#'                  df_classes = classe_ipr)
 #' }
 gg_temp_metriq <- function(df_metriques,
                            var_id_sta,
@@ -59,8 +63,8 @@ gg_temp_metriq <- function(df_metriques,
                            max_axe_y = 10,
                            inv_y = TRUE,
                            annee_facteur = FALSE,
-                           indice = "IPR",
-                           type_graphique = "courbes")
+                           type_graphique = "courbes",
+                           df_classes = classe_ipr)
 
 {
   # sélection des données
@@ -85,61 +89,15 @@ gg_temp_metriq <- function(df_metriques,
     df_metriques <- df_metriques %>%
       mutate(annee = as.factor(annee))
   }
-  # référentiel des classes (on remplace les NA par des zéros, divise les seuils des classes
-  # par le nb de métriques et si IPR applique la distinction au seuil de 500m)
-  # if(indice == "IPR")
-  # {
-  df_classes <- classe_ipr %>%
-    replace(is.na(.), 0) %>%
-    mutate(classe_borne_inf = cli_borne_inf / 7,
-           classe_borne_sup = cli_borne_sup / 7,
-           classe_borne_sup = ifelse(cli_classe == 5 & max_axe_y > (99 / 7),
-                                     yes = max_axe_y,
-                                     no = classe_borne_sup),
-           classe_libelle = cli_libelle)
 
-     if(sup_500m) {
-       df_classes <- df_classes %>%
-         filter(cli_altitude_max != 500)
-     } else {
-       df_classes <- df_classes %>%
-         filter(cli_altitude_min != 500)
-     }
-
-  # }
-
-  # if(indice == "IPR+")
-  # {
-  #   df_classes <- classe_ipr_plus %>%
-  #     replace(is.na(.), 0) %>%
-  #     mutate(classe_borne_inf = cip_borne_inf / 11,
-  #            classe_borne_sup = cip_borne_sup / 11,
-  #            classe_libelle = cip_libelle)
-  # }
-  #
-  # if(!indice %in% c("IPR", "IPR+"))
-  # {
-  #   stop("La valeur de l'argument 'indice' doit \u00eatre soit 'IPR' soit 'IPR+'")
-  # }
-
-
+  # gestion des seuils de classes de qualité
+  df_classes <- df_classes %>%
+    gg_gerer_seuils_classes_ipr_int(metriques = TRUE,
+                                    sup_500m = sup_500m)
 
   # graphique
-  plot_ipr_station <-
-    df_metriques %>%
-    ggplot() +
-    # arrière-plan
-    geom_rect(data = df_classes,
-              aes(ymin = classe_borne_inf,
-                  ymax = classe_borne_sup,
-                  fill = classe_libelle),
-              xmin = -Inf,
-              xmax = Inf,
-              alpha = 0.3) +
-    scale_fill_manual(values = df_classes$classe_couleur) +
-    scale_y_continuous(trans = "reverse",
-                       expand = expansion(mult = c(0.05, 0.01)))
-
+  plot_ipr_station <- ggplot(data = df_metriques) %>%
+    gg_ajouter_arriere_plan_int(df_classes = df_classes)
 
     # métriques IPR
   if(type_graphique == "barres")
@@ -186,8 +144,7 @@ gg_temp_metriq <- function(df_metriques,
       )
 
   }
-    #  treillis
-
+  #  treillis
   plot_ipr_station <- plot_ipr_station +
     facet_wrap(~var_id,
                ncol = nb_colonnes) +
@@ -203,6 +160,7 @@ gg_temp_metriq <- function(df_metriques,
     theme(legend.position = "bottom",
           strip.text.x = element_text(size = 8),
           axis.text.x = element_text(angle = 45, hjust = 1))
+
   # orientation de l'axe des IPR selon l'argument inv_y
   if(inv_y) {
 

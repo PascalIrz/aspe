@@ -15,8 +15,8 @@ gg_temp_metriq(
   max_axe_y = 10,
   inv_y = TRUE,
   annee_facteur = FALSE,
-  indice = "IPR",
-  type_graphique = "courbes"
+  type_graphique = "courbes",
+  df_classes = classe_ipr
 )
 }
 \arguments{
@@ -51,10 +51,10 @@ C'est l'inverse pour l'IPR+.}
 \item{annee_facteur}{Booléen. Indique si la variable annee doit être transformée en facteur.
 Parfois utile pour la mise en forme de l'axe des abscisses (années).}
 
-\item{indice}{Caractère. Peut prendre la valeur "IPR" ou bien "IPR+" selon le jeu de métriques.}
-
 \item{type_graphique}{Caractère. Peut prendre les valeurs "courbes" ou "barres" selon le type
 de graphique souhaité.}
+
+\item{df_classe}{Dataframe contenant les limites de classes. Exemple : classe_ipr.}
 }
 \value{
 Un graphique ggplot2.
@@ -70,10 +70,14 @@ classe_ipr <- classe_ipr \%>\%
   ipr_completer_classes_couleur()
 
 ipr_data \%>\%
-  gg_ipr_station(var_id_sta = pop_libelle,
-    station_sel = mes_pops,
-    nb_colonnes = 4,
-    max_axe_y = 60,
-    inv_y = FALSE)
+  gg_temp_metriq(var_id_sta = pop_libelle,
+                 station_sel = mes_pops,
+                 var_nom_metrique = metrique,
+                 var_valeur_metrique = valeur,
+                 nb_colonnes = 4,
+                 max_axe_y = 15,
+                 inv_y = FALSE,
+                 type_graphique = "barres",
+                 df_classes = classe_ipr)
 }
 }
