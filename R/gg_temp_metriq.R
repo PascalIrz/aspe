@@ -32,7 +32,7 @@
 #' @return Un graphique ggplot2.
 #' @export
 #'
-#' @importFrom ggplot2 ggplot aes scale_fill_manual scale_y_continuous expansion geom_vline
+#' @importFrom ggplot2 ggplot aes scale_fill_manual scale_y_continuous expansion geom_vline coord_cartesian
 #' @importFrom ggplot2 geom_line geom_bar facet_wrap labs guides guide_legend theme geom_rect
 #' @importFrom dplyr enquo filter
 #' @importFrom stringr str_wrap

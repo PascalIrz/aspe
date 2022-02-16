@@ -8,6 +8,7 @@
 #'     prélèvement.
 #' @param var_id_sta Nom de la variable servant à identifier les stations ou points.
 #'     Cette variable donnera les étiquettes du graphique.
+#' @param var_ipr Nom de la variable contenant les valeurs IPR.
 #' @param station_sel Vecteur caractère indiquant les points ou stations à sélectionner.
 #' @param sup_500m Booléen. Indique si les stations sont situées à des altitudes inférieures
 #'     (sup_500m = FALSE, par défaut) ou bien supérieures à 500m car les seuils de classe
@@ -19,12 +20,15 @@
 #' @param max_axe_y Numérique. Limite supérieure de l'axe des ordonnées. Par défaut max_axe_y = 40.
 #' @param inv_y Booléen. Indique l'axe des ordonnées pointe vers le bas (TRUE, par défaut) ou
 #'     vers le haut.
+#' @param annee_facteur Booléen. Indique si la variable annee doit être transformée en facteur.
+#'     Parfois utile pour la mise en forme de l'axe des abscisses (années).
+#' @param df_classe Dataframe contenant les limites de classes. Exemple : classe_ipr.
 #'
 #' @return Un graphique ggplot2.
 #' @export
 #'
 #' @importFrom ggplot2 ggplot aes scale_fill_manual scale_y_continuous expansion geom_vline
-#' @importFrom ggplot2 geom_line geom_point facet_wrap labs guides guide_legend theme
+#' @importFrom ggplot2 geom_line geom_point facet_wrap labs guides guide_legend theme coord_cartesian
 #' @importFrom dplyr enquo filter
 #' @importFrom stringr str_wrap
 #'
@@ -94,23 +98,6 @@ gg_temp_ipr <- function(df_ipr,
 
   plot_ipr_station <- ggplot(data = df_ipr) %>%
     gg_ajouter_arriere_plan_int(df_classes = df_classes) +
-
-  # graphique
-  # plot_ipr_station <-
-  #   data %>%
-  #   ggplot() +
-  #   # arrière-plan
-  #   geom_rect(data = df_classes,
-  #             aes(ymin = cli_borne_inf,
-  #                 ymax = cli_borne_sup,
-  #                 fill = cli_libelle),
-  #             xmin = -Inf,
-  #             xmax = Inf,
-  #             alpha = 0.3) +
-  #   scale_fill_manual(values = df_classes$cli_couleur) +
-  #   scale_y_continuous(trans = "reverse",
-  #                      expand = expansion(mult = c(0.05, 0.01))) +
-
     # notes IPR
     geom_line(aes(x = annee,
                   y = !!var_ipr),

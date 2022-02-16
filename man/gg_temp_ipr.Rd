@@ -25,6 +25,8 @@ prélèvement.}
 \item{var_id_sta}{Nom de la variable servant à identifier les stations ou points.
 Cette variable donnera les étiquettes du graphique.}
 
+\item{var_ipr}{Nom de la variable contenant les valeurs IPR.}
+
 \item{station_sel}{Vecteur caractère indiquant les points ou stations à sélectionner.}
 
 \item{sup_500m}{Booléen. Indique si les stations sont situées à des altitudes inférieures
@@ -40,6 +42,11 @@ Par défaut nb_colonnes = 6.}
 
 \item{inv_y}{Booléen. Indique l'axe des ordonnées pointe vers le bas (TRUE, par défaut) ou
 vers le haut.}
+
+\item{annee_facteur}{Booléen. Indique si la variable annee doit être transformée en facteur.
+Parfois utile pour la mise en forme de l'axe des abscisses (années).}
+
+\item{df_classe}{Dataframe contenant les limites de classes. Exemple : classe_ipr.}
 }
 \value{
 Un graphique ggplot2.
