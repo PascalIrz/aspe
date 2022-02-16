@@ -27,7 +27,7 @@
 #'     Parfois utile pour la mise en forme de l'axe des abscisses (années).
 #' @param type_graphique Caractère. Peut prendre les valeurs "courbes" ou "barres" selon le type
 #'     de graphique souhaité.
-#' @param df_classe Dataframe contenant les limites de classes. Exemple : classe_ipr.
+#' @param df_classes Dataframe contenant les limites de classes. Exemple : classe_ipr.
 #'
 #' @return Un graphique ggplot2.
 #' @export

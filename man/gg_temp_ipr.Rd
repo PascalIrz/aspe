@@ -46,7 +46,7 @@ vers le haut.}
 \item{annee_facteur}{Booléen. Indique si la variable annee doit être transformée en facteur.
 Parfois utile pour la mise en forme de l'axe des abscisses (années).}
 
-\item{df_classe}{Dataframe contenant les limites de classes. Exemple : classe_ipr.}
+\item{df_classes}{Dataframe contenant les limites de classes. Exemple : classe_ipr.}
 }
 \value{
 Un graphique ggplot2.
