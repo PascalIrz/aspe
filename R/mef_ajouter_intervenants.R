@@ -8,6 +8,7 @@
 #' @export
 #'
 #' @importFrom dplyr select left_join rename
+#' @importFrom stringr str_extract
 #'
 #' @examples
 #' \dontrun{
@@ -24,25 +25,65 @@ mef_ajouter_intervenants <- function(passerelle)
            int_libelle_sandre)
 
   ope_simp <- operation %>%
-    select(ope_id,
-           ope_int_id_operateur_peche,
-           ope_int_id_commanditaire,
-           ope_int_id_validation_technique)
+    select(
+      ope_id,
+      ope_int_id_operateur_peche,
+      ope_int_id_commanditaire,
+      ope_int_id_validation_technique
+    )
 
   # Jointure pour ajouter operateur, commanditaire etc. à la table ope_simp
   ope_simp <- ope_simp %>%
-    left_join(y = int_simp %>%
-                rename(ope_int_id_operateur_peche = int_id,
-                       operateur_peche = int_libelle_sandre)) %>%
-    left_join(y = int_simp %>%
-                rename(ope_int_id_commanditaire = int_id,
-                       commanditaire = int_libelle_sandre)) %>%
-    left_join(y = int_simp %>%
-                rename(ope_int_id_validation_technique = int_id,
-                       validation_technique = int_libelle_sandre))
+    left_join(
+      y = int_simp %>%
+        rename(
+          ope_int_id_operateur_peche = int_id,
+          operateur_peche = int_libelle_sandre
+        )
+    ) %>%
+    left_join(
+      y = int_simp %>%
+        rename(
+          ope_int_id_commanditaire = int_id,
+          commanditaire = int_libelle_sandre
+        )
+    ) %>%
+    left_join(
+      y = int_simp %>%
+        rename(
+          ope_int_id_validation_technique = int_id,
+          validation_technique = int_libelle_sandre
+        )
+    )
 
+  # ajout de variables booleennes pour taguer si l'opération est OFB ou AFB (commanditaire etc.)
   passerelle <- passerelle %>%
-    left_join(ope_simp)
+    left_join(ope_simp) %>%
+    mutate(
+      operateur_ofb = str_extract(string = operateur_peche,
+                                  pattern = "\\((.*)\\)"),
+      operateur_ofb = ifelse(
+        operateur_ofb %in% c("(OFB)", "(AFB)"),
+        yes = TRUE,
+        no = FALSE
+      ),
+      commanditaire_ofb = str_extract(string = commanditaire,
+                                      pattern = "\\((.*)\\)"),
+      commanditaire_ofb = ifelse(
+        commanditaire_ofb %in% c("(OFB)", "(AFB)"),
+        yes = TRUE,
+        no = FALSE
+      ),
+
+      validation_ofb = str_extract(string = validation_technique,
+                                   pattern = "\\((.*)\\)"),
+      validation_ofb = ifelse(
+        validation_ofb %in% c("(OFB)", "(AFB)"),
+        yes = TRUE,
+        no = FALSE
+      )
+
+    )
 
   passerelle
 
