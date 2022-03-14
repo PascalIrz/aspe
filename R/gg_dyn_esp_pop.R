@@ -28,7 +28,10 @@
 #'                libelle_point = "DROME A CHABRILLAN ",
 #'                esp_nom = "Barbeau fluviatile")
 #' }
-gg_dyn_esp_pop <- function(df, libelle_point, nom_espece, seuil = 0)
+gg_dyn_esp_pop <- function(df,
+                           libelle_point,
+                           nom_espece,
+                           seuil = 0)
 
 {
   # Sélection des données

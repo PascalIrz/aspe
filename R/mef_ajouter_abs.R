@@ -32,7 +32,7 @@ mef_ajouter_abs <- function(df, var_id, var_taxon, var_effectif)
 
   df %>%
     droplevels() %>% # à retirer à terme
-    select(var_id, var_taxon, var_effectif) %>%
+    select(!!var_id, !!var_taxon, !!var_effectif) %>%
     complete(!!var_id,!!var_taxon) %>%
     left_join(y =  df %>%
                 select(!!var_id,
