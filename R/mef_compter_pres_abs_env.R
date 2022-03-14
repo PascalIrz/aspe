@@ -6,7 +6,7 @@
 #' @return Un dataframe de 4 colonnes correspondant à l'espèce, au paramètre et aux nombres de présence et d'absence.
 #' @export
 #'
-#' @importFrom dplyr filter group_by ungroup tally left_join
+#' @importFrom dplyr filter group_by ungroup tally left_join mutate
 #' @importFrom tidyr pivot_wider
 #'
 #' @examples
@@ -21,6 +21,7 @@ mef_compter_pres_abs_env <- function(df)
     filter(!is.na(valeur_parametre)) %>%
     group_by(esp_code_alternatif, presence, parametre, annee) %>%
     tally() %>%
+    mutate(presence = ifelse(is.na(presence), FALSE, presence)) %>%
     ungroup() %>%
     pivot_wider(
       id_cols = esp_code_alternatif:annee,
