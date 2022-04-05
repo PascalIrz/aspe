@@ -45,8 +45,7 @@ mef_creer_passerelle <- function() {
     #                    obj_id = opo_obj_id)) %>%
     left_join(y = point_prelevement %>%
                 select (sta_id = pop_sta_id,
-                        pop_id,
-                        sta_id = pop_sta_id)) %>%
+                        pop_id)) %>%
     select(sta_id,
            pop_id,
            ope_id,
