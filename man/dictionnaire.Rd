@@ -5,7 +5,7 @@
 \alias{dictionnaire}
 \title{Signification des champs de la base Aspe}
 \format{
-An object of class \code{data.frame} with 718 rows and 3 columns.
+An object of class \code{data.frame} with 720 rows and 3 columns.
 }
 \usage{
 data(dictionnaire)

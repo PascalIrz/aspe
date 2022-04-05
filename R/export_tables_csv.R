@@ -15,7 +15,18 @@ export_tables_csv <- function(repertoire = NA)
 
 {
 
-  if(is.na(repertoire)) repertoire <- getwd()
+  # création du nom et répertoire de sortie s'ils ne sont pas indiqués
+  if(is.na(repertoire))
+  {
+
+    if (!dir.exists("processed_data"))
+    {
+      dir.create("processed_data")
+    }
+
+    repertoire <- "processed_data/"
+
+  }
 
   ######################################
   lister_dfs <- function()
@@ -46,9 +57,10 @@ export_tables_csv <- function(repertoire = NA)
 
   }
   #################################
+  mes_dfs <- ls()[lister_dfs()]
 
   map(.x = mes_dfs,
-      .f = exporter_df)
+      .f = exporter_df())
 
 }
 
