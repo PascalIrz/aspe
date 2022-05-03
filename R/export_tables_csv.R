@@ -47,7 +47,7 @@ export_tables_csv <- function(repertoire = NA)
   }
   #######################################
 
-  exporter_df <- function(df_nom)
+  exporter_df <- function(df_nom, repertoire)
 
   {
     df <- get(df_nom, envir = globalenv())
@@ -57,10 +57,11 @@ export_tables_csv <- function(repertoire = NA)
 
   }
   #################################
-  mes_dfs <- ls()[lister_dfs()]
+  mes_dfs <- ls(globalenv())[lister_dfs()]
 
   map(.x = mes_dfs,
-      .f = exporter_df())
+      .f = exporter_df,
+      repertoire = repertoire)
 
 }
 
