@@ -33,7 +33,10 @@ imp_tables_a_partir_des_lignes2 <- function(lignes_dump, tables_a_extraire = NA)
     }
 
   # début de table
-  lignes_debut <- paste0("-- Data for Name: ", tables_a_extraire, "; Type: TABLE DATA;")
+  lignes_debut <- paste0("-- Data for Name: ",
+                         tables_a_extraire %>% stringr::str_replace(pattern = "aspe.",
+                                                                    replacement = ""),
+                         "; Type: TABLE DATA;")
 
   # On va constituer un dataframe avec tout le nécessaire pour spliter ensuite en tables
   caracteristiques_tables <- data.frame(nom_table = tables_a_extraire, ligne_debut = lignes_debut)
