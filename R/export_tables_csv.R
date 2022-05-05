@@ -6,6 +6,7 @@
 #' @export
 #'
 #' @importFrom purrr map
+#' @importFrom utils write.csv2
 #'
 #' @examples
 #' \dontrun{

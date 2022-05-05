@@ -3,17 +3,10 @@
 #'
 #' @param df Dataframe contenant les données. Il doit contenir au moins lz variable "annee" ainsi
 #'     que deux autres, l'une pour l'espèce et l'autre pour l'abondance ou la densité.
-#'     .
 #' @param var_espece Nom de la variable contenant les identifiants des espèces.
 #' @param var_abondance Nom de la variable contenant les valeurs d'abondance ou de densité
 #' @param nb_colonnes Entier. Nombre (maxi) de colonnes de graphiques s'il y a plusieurs stations.
 #'     Par défaut nb_colonnes = 4.
-#' @param max_axe_y Numérique. Limite supérieure de l'axe des ordonnées. Par défaut max_axe_y = 40.
-#' @param inv_y Booléen. Indique l'axe des ordonnées pointe vers le bas (TRUE, par défaut) ou
-#'     vers le haut.
-#' @param annee_facteur Booléen. Indique si la variable annee doit être transformée en facteur.
-#'     Parfois utile pour la mise en forme de l'axe des abscisses (années).
-#' @param df_classes Dataframe contenant les limites de classes. Exemple : classe_ipr.
 #'
 #' @return Un graphique ggplot2.
 #' @export
