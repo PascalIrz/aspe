@@ -1,8 +1,7 @@
 #' Graphique de la série chronologique des IPR
 #'
-#' La fonction utilise les référentiel "classe_ipr" et "classe_ipe_plus" de la base Aspe qui doivent
+#' La fonction utilise les référentiel "classe_ipr" et "classe_ipr_plus" de la base Aspe qui doivent
 #'     donc être chargés auparavant et complétés par les codes couleurs avec ipr_completer_classes_couleur().
-#'     Comme
 #'
 #' @param df_metriques Dataframe contenant les données IPR. Il doit contenir des variables "ipr"
 #'     et "annee" ainsi qu'une variable permettant d'identifier la station ou le point de

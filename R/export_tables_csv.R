@@ -17,16 +17,15 @@ export_tables_csv <- function(repertoire = NA)
 {
 
   # création du nom et répertoire de sortie s'ils ne sont pas indiqués
+
   if(is.na(repertoire))
   {
-
-    if (!dir.exists("processed_data"))
-    {
-      dir.create("processed_data")
-    }
-
     repertoire <- "processed_data/"
+  }
 
+  if(!dir.exists(repertoire))
+  {
+    dir.create(repertoire)
   }
 
   ######################################

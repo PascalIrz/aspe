@@ -60,9 +60,8 @@ de graphique souhaité.}
 Un graphique ggplot2.
 }
 \description{
-La fonction utilise les référentiel "classe_ipr" et "classe_ipe_plus" de la base Aspe qui doivent
+La fonction utilise les référentiel "classe_ipr" et "classe_ipr_plus" de la base Aspe qui doivent
     donc être chargés auparavant et complétés par les codes couleurs avec ipr_completer_classes_couleur().
-    Comme
 }
 \examples{
 \dontrun{
