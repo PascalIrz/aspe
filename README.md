@@ -43,13 +43,13 @@ Répertoires Github associés / Associated Github repositories
 Plusieurs dépôts Github sont associés au package :
 - [aspe_data](https://github.com/PascalIrz/aspe_data) : construction des jeux de données inclus dans le package {aspe}
 - [aspe_test](https://github.com/PascalIrz/aspe_test) : Fichiers R Markdown pour tester le package {aspe} et produire les tutos
-- [aspe_demo](https://github.com/PascalIrz/aspe_demo) : Fichiers R Markdown pour prétraiter les données pour [un tableau de bord interactif](https://github.com/CedricMondy/AspeDashboard)
+- [aspe_demo](https://github.com/PascalIrz/aspe_demo) : Fichiers R Markdown pour prétraiter les données pour [un tableau de bord interactif](https://gitlab.ofb.fr/cedric.mondy1/aspedashboard)
 - [aspeQual](https://github.com/PascalIrz/aspeQual) : package R destiné à la mise en qualité de la base Aspe
 
 The package comes with a number of associated repos :
 - [aspe_data](https://github.com/PascalIrz/aspe_data): building of the datasets included in the {aspe} package
 - [aspe_test](https://github.com/PascalIrz/aspe_test): R Markdown files to test the {aspe} package and to build the tutorials
-- [aspe_demo](https://github.com/PascalIrz/aspe_demo): R Markdown files to pre-process the fish data for [a dashboard app](https://github.com/CedricMondy/AspeDashboard)
+- [aspe_demo](https://github.com/PascalIrz/aspe_demo): R Markdown files to pre-process the fish data for [a dashboard app](https://gitlab.ofb.fr/cedric.mondy1/aspedashboard)
 - [aspeQual](https://github.com/PascalIrz/aspeQual) : R package dedicated to the quality control on the Aspe database
 
 
