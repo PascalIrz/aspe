@@ -22,14 +22,19 @@
 #'     vers le haut.
 #' @param annee_facteur Booléen. Indique si la variable annee doit être transformée en facteur.
 #'     Parfois utile pour la mise en forme de l'axe des abscisses (années).
+#' @param titre_graphique Texte. Titre du graphique.
+#' @param titre_y Texte. Titre de l'axe des ordonnées.
 #' @param df_classes Dataframe contenant les limites de classes. Exemple : classe_ipr.
+#' @param interactif Booléen. Indique si le graphique produit est statique (ggplot) ou interactif (produit avec le package ggiraph).
+#' @param largeur,hauteur largeur et hauteur du graphique interactif (en pouces). Cela définit les dimensions relatives du graphique.
+#' @param options liste d'options utilisée pour le rendu du graphique interactif (voir \code{\link[ggiraph]{girafe}})
 #'
-#' @return Un graphique ggplot2.
+#' @return Un graphique statique ggplot2 ou un graphique interactif girafe.
 #' @export
 #'
-#' @importFrom ggplot2 ggplot aes scale_fill_manual scale_y_continuous expansion geom_vline
-#' @importFrom ggplot2 geom_line geom_point facet_wrap labs guides guide_legend theme coord_cartesian
-#' @importFrom dplyr enquo filter
+#' @importFrom dplyr filter mutate case_when
+#' @importFrom ggiraph geom_rect_interactive geom_point_interactive girafe opts_sizing
+#' @importFrom ggplot2 enquo ggplot aes scale_fill_manual scale_y_continuous expansion geom_line facet_wrap labs scale_x_continuous guides guide_legend theme element_text element_blank element_line coord_cartesian
 #' @importFrom stringr str_wrap
 #'
 #' @examples
@@ -54,10 +59,33 @@ gg_temp_ipr <- function(df_ipr,
                            max_axe_y = 40,
                            inv_y = TRUE,
                            annee_facteur = FALSE,
-                           df_classes = classe_ipr)
+                           titre_graphique = "Evolution de l'IPR",
+                           titre_y = "Indice Poisson Rivière",
+                           df_classes = classe_ipr,
+                           interactif = FALSE,
+                           largeur = 6,
+                           hauteur = 5,
+                           options = list())
 
 {
-  # sélection des données
+  # mise en forme des étiquettes inspirée de https://stackoverflow.com/a/57086284
+  int_breaks <- function(x, n = 5){
+    if (length(unique(x)) > 1) {
+      pretty(x, n)[round(pretty(x, n), 1) %% 1 == 0]
+    } else {
+      round(unique(x)) + c(-1, 0, 1)
+    }
+  }
+
+  int_limits <- function(x) {
+    if (length(unique(x)) > 1) {
+      range(x)
+    } else {
+      range(int_breaks(x))
+    }
+  }
+
+    # sélection des données
   var_id_sta <- enquo(var_id_sta)
   var_ipr <- enquo(var_ipr)
 
@@ -71,7 +99,9 @@ gg_temp_ipr <- function(df_ipr,
   # sinon bug avec le facet_wrap()
   df_ipr <- df_ipr %>%
     mutate(var_id = str_wrap(!!var_id_sta, 25), # au cas où intitulés trop longs
-           var_id = as.factor(var_id))
+           var_id = as.factor(var_id),
+           hover = paste0("<b>", annee, "</b><br>IPR: ", round(!!var_ipr, 2))
+           )
 
   # année en facteur ?
   if(annee_facteur)
@@ -94,35 +124,80 @@ gg_temp_ipr <- function(df_ipr,
 
   df_classes <- df_classes %>%
     gg_gerer_seuils_classes_ipr_int(metriques = FALSE,
-                                    sup_500m = sup_500m)
+                                    sup_500m = sup_500m) %>%
+    dplyr::mutate(
+      hover = paste0(
+        "<b>", cli_libelle, "</b><br>",
+        dplyr::case_when(
+          cli_id == 1 ~
+            paste0("[", cli_borne_inf, "-", cli_borne_sup, "]"),
+          cli_id == 7 ~
+            paste0("> ", cli_borne_inf),
+          TRUE ~
+            paste0("]", cli_borne_inf, "-", cli_borne_sup, "]")
+        )
+      )
 
-  plot_ipr_station <- ggplot(data = df_ipr) %>%
-    gg_ajouter_arriere_plan_int(df_classes = df_classes) +
+    )
+
+  plot_ipr_station <- ggplot(data = df_ipr) +
+    ggiraph::geom_rect_interactive(
+      data = df_classes,
+      mapping = ggplot2::aes(
+        ymin = classe_borne_inf,
+        ymax = classe_borne_sup,
+        fill = classe_libelle,
+        tooltip = hover
+      ),
+      xmin = -Inf,
+      xmax = Inf,
+      alpha = 0.3
+    ) +
+    ggplot2::scale_fill_manual(values = df_classes$classe_couleur) +
+    scale_x_continuous(
+      breaks = int_breaks,
+      limits = int_limits
+    ) +
+    ggplot2::scale_y_continuous(
+      trans = "reverse",
+      expand = ggplot2::expansion(mult = c(0.05, 0.01))
+    ) +
     # notes IPR
     geom_line(aes(x = annee,
                   y = !!var_ipr),
               show.legend = F,
               lty = 2) +
-    geom_point(aes(x = annee,
-                   y = !!var_ipr),
-               size = 2.5,
-               pch = 21,
-               fill = "grey70") +
+    ggiraph::geom_point_interactive(
+      ggplot2::aes(x = annee, y = !!var_ipr, tooltip = hover),
+      size = 2.5,
+      pch = 21,
+      fill = "grey70"
+    ) +
     # treillis
     facet_wrap(~var_id,
                ncol = nb_colonnes) +
     # mise en forme
-    labs(title = "Evolution de l'indice IPR",
+    labs(title = titre_graphique,
          x = "",
-         y = "Indice Poisson Rivi\u00e8re") +
-    guides(fill = guide_legend(title = "Classe IPR",
+         y = titre_y) +
+    guides(fill = guide_legend(title = "Classe de qualit\u00E9",
+                               title.position = "top",
+                               nrow = 2,
+                               byrow = TRUE,
                                override.aes = list(color = df_classes$classe_couleur,
                                                    fill = df_classes$classe_couleur,
                                                    shape = 15,
                                                    alpha = 0.6))) +
     theme(legend.position = "bottom",
-          strip.text.x = element_text(size = 8),
-          axis.text.x = element_text(angle = 45, hjust = 1))
+          strip.text = ggplot2::element_text(
+            size = 12, face = "bold", hjust = 0
+          ),
+          axis.text.x = element_text(angle = 45, hjust = 1),
+          panel.grid.minor = ggplot2::element_blank(),
+          panel.grid.major.x = ggplot2::element_blank(),
+          panel.grid.major.y = ggplot2::element_line(color = "lightgrey", size = .25),
+          panel.background = ggplot2::element_blank(),
+          strip.background = ggplot2::element_blank())
   # orientation de l'axe des IPR selon l'argument inv_y
   if(inv_y) {
 
@@ -133,5 +208,14 @@ gg_temp_ipr <- function(df_ipr,
       coord_cartesian(ylim = c(0, max_axe_y))
   }
 
-  plot_ipr_station
+  if (interactif) {
+    ggiraph::girafe(
+      ggobj = plot_ipr_station,
+      width_svg = largeur,
+      height_svg = hauteur,
+      options = options
+    )
+  } else {
+    plot_ipr_station
+  }
 }

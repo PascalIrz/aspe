@@ -94,7 +94,7 @@ gg_colo_ext_pops <- function(df, interactif = FALSE, largeur = 6, hauteur = 5, .
         breaks = int_breaks,
         limits = int_limits
       ) +
-      guides(shape = FALSE, size = FALSE) +
+      guides(shape = "none", size = "none") +
       theme(
         legend.position = "none",
         axis.text.y = element_text(hjust = 0),
