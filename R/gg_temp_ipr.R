@@ -51,21 +51,22 @@
 #'               inv_y = FALSE)
 #' }
 gg_temp_ipr <- function(df_ipr,
-                           var_id_sta,
-                           var_ipr,
-                           station_sel = NA,
-                           sup_500m = FALSE,
-                           nb_colonnes = 6,
-                           max_axe_y = 40,
-                           inv_y = TRUE,
-                           annee_facteur = FALSE,
-                           titre_graphique = "Evolution de l'IPR",
-                           titre_y = "Indice Poisson Rivière",
-                           df_classes = classe_ipr,
-                           interactif = FALSE,
-                           largeur = 6,
-                           hauteur = 5,
-                           options = list())
+                        var_id_sta,
+                        var_ipr,
+                        station_sel = NA,
+                        sup_500m = FALSE,
+                        nb_colonnes = 6,
+                        max_axe_y = 40,
+                        inv_y = TRUE,
+                        annee_facteur = FALSE,
+                        titre_graphique = "Evolution de l'IPR",
+                        titre_y = "Indice Poisson Rivi\\u00e8re",
+                        df_classes = classe_ipr,
+                        interactif = FALSE,
+                        largeur = 6,
+                        hauteur = 5,
+                        options = list()
+)
 
 {
   # mise en forme des étiquettes inspirée de https://stackoverflow.com/a/57086284
