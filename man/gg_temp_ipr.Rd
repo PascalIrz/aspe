@@ -14,7 +14,13 @@ gg_temp_ipr(
   max_axe_y = 40,
   inv_y = TRUE,
   annee_facteur = FALSE,
-  df_classes = classe_ipr
+  titre_graphique = "Evolution de l'IPR",
+  titre_y = "Indice Poisson Rivière",
+  df_classes = classe_ipr,
+  interactif = FALSE,
+  largeur = 6,
+  hauteur = 5,
+  options = list()
 )
 }
 \arguments{
@@ -46,10 +52,20 @@ vers le haut.}
 \item{annee_facteur}{Booléen. Indique si la variable annee doit être transformée en facteur.
 Parfois utile pour la mise en forme de l'axe des abscisses (années).}
 
+\item{titre_graphique}{Texte. Titre du graphique.}
+
+\item{titre_y}{Texte. Titre de l'axe des ordonnées.}
+
 \item{df_classes}{Dataframe contenant les limites de classes. Exemple : classe_ipr.}
+
+\item{interactif}{Booléen. Indique si le graphique produit est statique (ggplot) ou interactif (produit avec le package ggiraph).}
+
+\item{largeur, hauteur}{largeur et hauteur du graphique interactif (en pouces). Cela définit les dimensions relatives du graphique.}
+
+\item{options}{liste d'options utilisée pour le rendu du graphique interactif (voir \code{\link[ggiraph]{girafe}})}
 }
 \value{
-Un graphique ggplot2.
+Un graphique statique ggplot2 ou un graphique interactif girafe.
 }
 \description{
 La fonction utilise le référentiel "classe_ipr" de la base Aspe qui doit donc être
