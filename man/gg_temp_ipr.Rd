@@ -15,7 +15,7 @@ gg_temp_ipr(
   inv_y = TRUE,
   annee_facteur = FALSE,
   titre_graphique = "Evolution de l'IPR",
-  titre_y = "Indice Poisson Rivi\\\\u00e8re",
+  titre_y = "Indice Poisson Rivière",
   df_classes = classe_ipr,
   interactif = FALSE,
   largeur = 6,
