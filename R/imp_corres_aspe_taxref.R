@@ -1,12 +1,12 @@
 #' Importer une table de correspondance entre les codes espèces 3 lettres Aspe et leurs codes Taxref
 #'
-#' La donnée ne provient pas de la base ASPE, mais de l'API SANDRE. Les données importées ont été 
-#'      filtrer afin de ne pas récupérer l'intégralité du référentiel "Appellation de taxons". Seuls
-#       les Taxons ayant un code alternatif "ASPE" sont nécessaires. Néanmoins, l'opération peut
-#       prendre quelques dizaines de secondes.
+#' La donnée ne provient pas de la base ASPE, mais de l'API SANDRE. Les données importées ont été
+#'      filtrées afin de ne pas récupérer l'intégralité du référentiel "Appellation de taxons". Seuls
+#       les taxons ayant un code alternatif "ASPE" sont nécessaires.
 #'
 #' @param url Caractère. URL du jeu de données à télécharger.
-#'     Par défaut "https://api.sandre.eaufrance.fr/referentiels/v1/apt.csv?compress=true&filter=<Filter><IS><Field>CodeAlternatifAp/OrgCdAlternatif</Field><Value>ASPE</Value></IS></Filter>"
+#'     Par défaut "https://api.sandre.eaufrance.fr/referentiels/v1/apt.csv?compress=true&
+#'     filter=<Filter><IS><Field>CodeAlternatifAp/OrgCdAlternatif</Field><Value>ASPE</Value></IS></Filter>"
 #'
 #' @return Dataframe. Table de correspondence.
 #' @export
@@ -20,7 +20,10 @@
 #' \dontrun{
 #' taxref <- imp_corres_aspe_taxref()
 #' }
-imp_corres_aspe_taxref <- function(url = "https://api.sandre.eaufrance.fr/referentiels/v1/apt.csv?compress=true&filter=<Filter><IS><Field>CodeAlternatifAp/OrgCdAlternatif</Field><Value>ASPE</Value></IS></Filter>")
+imp_corres_aspe_taxref <- function(
+  url = "https://api.sandre.eaufrance.fr/referentiels/v1/apt.csv?compress=true&
+  filter=<Filter><IS><Field>CodeAlternatifAp/OrgCdAlternatif</Field><Value>ASPE</Value></IS></Filter>"
+  )
 
 {
 
