@@ -53,15 +53,24 @@ The package comes with a number of associated repos :
 - [aspeQual](https://github.com/PascalIrz/aspeQual) : R package dedicated to the quality control on the Aspe database
 
 
-Tutoriels (vignettes)
+Tutoriels / Vignettes
 ------------
 
+Une série de tutoriels est en ligne :
 - [Importer les tables de la base depuis un dump](https://rpubs.com/kamoke/713407)  
 - [Traiter des données Indice Poisson Rivière (IPR)](https://rpubs.com/kamoke/713491)
 - [Faire des traitements de base à partir des lots](https://rpubs.com/kamoke/715102)
 - [Traiter des mesures individuelles](https://rpubs.com/kamoke/715858)
 - [Faire des traitements géographiques](https://rpubs.com/kamoke/716322)
 - [Construire des relations taille-poids](https://rpubs.com/kamoke/729779)
+
+Several vignettes (in French) are available online:
+- [Import data tables from a SQL dump of the database](https://rpubs.com/kamoke/713407)  
+- [Processing the fish-based river health index](https://rpubs.com/kamoke/713491)
+- [Base processing on the fish batches data](https://rpubs.com/kamoke/715102)
+- [Processing the individual measurements](https://rpubs.com/kamoke/715858)
+- [Geographical analysis](https://rpubs.com/kamoke/716322)
+- [Fitting length-weight relationships](https://rpubs.com/kamoke/729779)
 
 
 Nommage des fonctions / Functions' naming rules
@@ -110,7 +119,7 @@ Almost systematically, variables' names start by table-specific prefixes:
 - `pop_` : point_prelevement (sampling point)
 - `mei_` : mesure_individuelle (individual measurment)
 
-To display a comprehensive list of variables with their meaning, call:
+To display a comprehensive list of variables with their meaning (all in French so far, sorry), call:
 
     data("dictionnaire")
     View(dictionnaire)
