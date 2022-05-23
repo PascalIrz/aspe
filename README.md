@@ -71,21 +71,23 @@ Les familles de fonctions se distinguent par des préfixes :
 
 - `mef_` : mise en forme des dataframes
 - `expl_` : exploration de la base
+- `export`: export des dataframes (.csv ou .RData)
 - `geo_` : opérations spatiales
 - `gg_` : production de graphiques avec `ggplot2`
 - `imp_` : importation depuis un dump SQL
-- `ipr_` : [indice poisson rivière](https://www.kmae-journal.org/articles/kmae/abs/2002/02/kmae2002365p405/kmae2002365p405.html))
+- `ipr_` : [indice poisson rivière](https://www.kmae-journal.org/articles/kmae/abs/2002/02/kmae2002365p405/kmae2002365p405.html)
 - `misc_` : divers
 
 Functions' names start by group-specific prefixes:
 
-- `mef_` : tidying dataframes
-- `expl_` : exploring the database
-- `geo_` : spatial processing
-- `gg_` : plots with `ggplot2`
-- `imp_` : importing data from a SQL dump
-- `ipr_` : [fish-based river health index](https://www.researchgate.net/publication/227818978_Development_and_validation_of_a_fish-based_index_FBI_for_the_assessment_of_river_health_in_France)))
-- `misc_` : miscellaneous
+- `mef_`: tidying dataframes
+- `expl_`: exploring the database
+- `export`: export dataframes (.csv or .RData)
+- `geo_`: spatial processing
+- `gg_`: plots with `ggplot2`
+- `imp_`: importing data from a SQL dump
+- `ipr_`: [fish-based river health index](https://www.researchgate.net/publication/227818978_Development_and_validation_of_a_fish-based_index_FBI_for_the_assessment_of_river_health_in_France)
+- `misc_`: miscellaneous
 
 Nommage des variables / Variables' naming rules
 ---------------
