@@ -74,7 +74,7 @@ Les familles de fonctions se distinguent par des préfixes :
 - `geo_` : opérations spatiales
 - `gg_` : production de graphiques avec `ggplot2`
 - `imp_` : importation depuis un dump SQL
-- `ipr_` : indice poisson rivière ([voir](https://www.kmae-journal.org/articles/kmae/abs/2002/02/kmae2002365p405/kmae2002365p405.html))
+- `ipr_` : [indice poisson rivière](https://www.kmae-journal.org/articles/kmae/abs/2002/02/kmae2002365p405/kmae2002365p405.html))
 - `misc_` : divers
 
 Functions' names start by group-specific prefixes:
@@ -84,7 +84,7 @@ Functions' names start by group-specific prefixes:
 - `geo_` : spatial processing
 - `gg_` : plots with `ggplot2`
 - `imp_` : importing data from a SQL dump
-- `ipr_` : fish-based river health index ([voir](https://onlinelibrary.wiley.com/doi/abs/10.1046/j.1365-2427.2002.00884.x))
+- `ipr_` : [fish-based river health index](https://www.researchgate.net/publication/227818978_Development_and_validation_of_a_fish-based_index_FBI_for_the_assessment_of_river_health_in_France)))
 - `misc_` : miscellaneous
 
 Nommage des variables / Variables' naming rules
