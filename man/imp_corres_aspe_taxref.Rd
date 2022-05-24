@@ -19,7 +19,7 @@ Dataframe. Table de correspondence.
 }
 \description{
 La donnée ne provient pas de la base ASPE, mais de l'API SANDRE. Les données importées ont été
-     filtrer afin de ne pas récupérer l'intégralité du référentiel "Appellation de taxons". Seuls
+     filtrées afin de ne pas récupérer l'intégralité du référentiel "Appellation de taxons". Seuls
 }
 \examples{
 \dontrun{

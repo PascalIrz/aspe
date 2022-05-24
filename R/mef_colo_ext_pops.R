@@ -61,8 +61,7 @@ mef_colo_ext_pops <- function(df, id_point = NULL)
       mutate(
         col_ext = case_when(
           effectif > 0 & lag(effectif, 1) == 0 ~ "colonisation",
-          effectif == 0 &
-            lag(effectif, 1) > 0 ~ "extinction",
+          effectif == 0 & lag(effectif, 1) > 0 ~ "extinction",
           TRUE ~ "statu quo"
         ),
         diam_point = case_when(

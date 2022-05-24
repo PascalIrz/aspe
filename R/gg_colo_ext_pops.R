@@ -42,6 +42,7 @@ gg_colo_ext_pops <- function(df, interactif = FALSE, largeur = 6, hauteur = 5, .
     }
   }
 
+  # fonction de création d'un graphique
   create_graph <- function(pop, df, interactive) {
     df_pop <- df %>%
       filter(pop_id == pop) %>%
@@ -117,7 +118,7 @@ gg_colo_ext_pops <- function(df, interactif = FALSE, largeur = 6, hauteur = 5, .
     }
   }
 
-
+  # application sur l'ensemble des points
   graphs <- df %>%
     pull(pop_id) %>%
     unique() %>%
@@ -128,6 +129,7 @@ gg_colo_ext_pops <- function(df, interactif = FALSE, largeur = 6, hauteur = 5, .
       ) %>%
     set_names(unique(df$pop_id))
 
+  # sortie
   if (length(graphs) == 1) {
     graphs[[1]]
   } else {

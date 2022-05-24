@@ -91,7 +91,7 @@ Functions' names start by group-specific prefixes:
 
 - `mef_`: tidying dataframes
 - `expl_`: exploring the database
-- `export`: export dataframes (.csv or .RData)
+- `export`: exporting dataframes (.csv or .RData)
 - `geo_`: spatial processing
 - `gg_`: plots with `ggplot2`
 - `imp_`: importing data from a SQL dump
