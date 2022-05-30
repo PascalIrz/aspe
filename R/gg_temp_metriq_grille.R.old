@@ -10,8 +10,6 @@
 #' @param var_nom_metrique Variable contenant les noms des métriques (ex : dio, dti).
 #' @param var_valeur_metrique Variable numérique contenant les valeurs des métriques.
 #' @param station_sel Vecteur caractère indiquant les points ou stations à sélectionner.
-#' @param nb_colonnes Entier. Nombre de colonnes du graphique. Par défaut nb_colonnes = 7 pour les 7 métriques IPR.
-#'     Dans le cas où une seule station est sélectionnée, et seulement dans ce cas, nb_colonnes peut être différent de 7.
 #' @param max_axe_y Numérique. Limite supérieure de l'axe des ordonnées. Par défaut max_axe_y = 10.
 #' @param id_sta_max_caract Entier. Nombre maximum de caractères dans l'identifiant de la station, au-delà duquel il sera
 #'     découpé pour tenir sur plusieurs lignes. Par défaut c'est 25 caractères.
@@ -22,7 +20,7 @@
 #' @return Un graphique ggplot2.
 #' @export
 #'
-#' @importFrom ggplot2 ggplot aes coord_cartesian geom_line geom_point facet_grid facet_wrap labs guides theme element_text
+#' @importFrom ggplot2 ggplot aes coord_cartesian geom_line geom_point facet_grid labs guides theme element_text
 #' @importFrom dplyr enquo filter mutate
 #' @importFrom stringr str_wrap
 #'
@@ -53,7 +51,6 @@ gg_temp_metriq_grille <- function(df_metriques,
                                   var_nom_metrique,
                                   var_valeur_metrique,
                                   station_sel = NULL,
-                                  nb_colonnes = 7,
                                   max_axe_y = 10,
                                   id_sta_max_caract = 25,
                                   inv_y = TRUE)
@@ -78,34 +75,20 @@ gg_temp_metriq_grille <- function(df_metriques,
       !!var_id_sta := as.factor(!!var_id_sta)
     )
 
-  # graphique de base
+  # graphique
   plot_ipr_station <- ggplot(data = df_metriques,
                              aes(x = annee,
                                  y = !!var_valeur_metrique)) +
     geom_line(size = 1) +
     geom_point(size = 2, shape = 16) +
+    facet_grid(rows = vars(!!var_id_sta),
+               cols = vars(!!var_nom_metrique)) +
     labs(title = "Evolution des m\u00e9triques IPR",
          x = "",
          y = "") +
     theme(legend.position = "bottom",
           strip.text.x = element_text(size = 8),
           axis.text.x = element_text(angle = 45, hjust = 1))
-
-  # Gestion du nombre de colonnes du graphique. Par défaut c'est 7 mais modifiable dans le cas où une seule station
-  if((df_metriques %>% pull(!!var_id_sta) %>% unique() %>% length()) == 1 & # une seule station
-      nb_colonnes != 7) {
-
-    plot_ipr_station <- plot_ipr_station +
-      facet_wrap(facets = vars(!!var_nom_metrique),
-                 ncol = nb_colonnes)
-
-  } else {
-
-    plot_ipr_station <- plot_ipr_station +
-      facet_grid(rows = vars(!!var_id_sta),
-                 cols = vars(!!var_nom_metrique))
-
-  }
 
   # orientation de l'axe des IPR selon l'argument inv_y
   if (inv_y) {
@@ -116,6 +99,5 @@ gg_temp_metriq_grille <- function(df_metriques,
       coord_cartesian(ylim = c(0, max_axe_y))
   }
 
-  # affichage
   plot_ipr_station
 }

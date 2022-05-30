@@ -9,8 +9,10 @@ gg_temp_metriq_grille(
   var_id_sta,
   var_nom_metrique,
   var_valeur_metrique,
-  station_sel = NA,
+  station_sel = NULL,
+  nb_colonnes = 7,
   max_axe_y = 10,
+  id_sta_max_caract = 25,
   inv_y = TRUE
 )
 }
@@ -28,7 +30,13 @@ Cette variable donnera les étiquettes des lignes du graphique.}
 
 \item{station_sel}{Vecteur caractère indiquant les points ou stations à sélectionner.}
 
+\item{nb_colonnes}{Entier. Nombre de colonnes du graphique. Par défaut nb_colonnes = 7 pour les 7 métriques IPR.
+Dans le cas où une seule station est sélectionnée, et seulement dans ce cas, nb_colonnes peut être différent de 7.}
+
 \item{max_axe_y}{Numérique. Limite supérieure de l'axe des ordonnées. Par défaut max_axe_y = 10.}
+
+\item{id_sta_max_caract}{Entier. Nombre maximum de caractères dans l'identifiant de la station, au-delà duquel il sera
+découpé pour tenir sur plusieurs lignes. Par défaut c'est 25 caractères.}
 
 \item{inv_y}{Booléen. Indique l'axe des ordonnées pointe vers le bas (TRUE, par défaut) ou
 vers le haut. NB pour l'IPR, plus l'indice est faible plus la qualité est élevée.
@@ -38,7 +46,7 @@ C'est l'inverse pour l'IPR+.}
 Un graphique ggplot2.
 }
 \description{
-Graphique de la série chronologique des métriques IPR sur une station ou un groupe de stations
+Cette fonction renvoie un graphique ggplot2 en treillis avec une colonne par métrique IPR et une ligne par station.
 }
 \examples{
 \dontrun{
