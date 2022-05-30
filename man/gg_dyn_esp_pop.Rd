@@ -2,17 +2,28 @@
 % Please edit documentation in R/gg_dyn_esp_pop.R
 \name{gg_dyn_esp_pop}
 \alias{gg_dyn_esp_pop}
-\title{Produire un graphique de synthèse de la dynamique d'une population}
+\title{Produire un graphique de synthèse de la dynamique d'une population sur une localité}
 \usage{
-gg_dyn_esp_pop(df, libelle_point, nom_espece, seuil = 0)
+gg_dyn_esp_pop(
+  df,
+  var_id_espece,
+  var_id_station,
+  espece_sel,
+  station_sel,
+  seuil = 0
+)
 }
 \arguments{
-\item{df}{Dataframe contenant les données, avec les variables "pop_id", "pop_libelle",
-esp_nom_commun", "mei_taille" et "annee".}
+\item{df}{Dataframe contenant les données, avec les variables permettant d'identifier l'espèce et
+la station/point, ainsi que "mei_taille", "mois" et "annee".}
 
-\item{libelle_point}{Caractère. Nom du point dans le champ "pop_libelle".}
+\item{var_id_espece}{Variable servant à identifier les espèces.}
 
-\item{nom_espece}{Caractère. Nom de l'espèce dans le champ "esp_nom_commun".}
+\item{var_id_station}{Variable servant à identifier les stations ou points.}
+
+\item{espece_sel}{Caractère. Espèce sélectionnée.}
+
+\item{station_sel}{Caractère. Point ou station sélectionné.}
 
 \item{seuil}{Numérique entre 0 et 1. Seuil de pourcentile pour exclure des histogrammes les rares
 individus de longueur extrême. Par défaut fixé à 0 donc toutes les observations sont conservées.
@@ -24,12 +35,40 @@ Le graphique ggplot2 avec les distributions en taille par année et l'évolution
     temporelle de la longueur médiane et des effectifs capturés.
 }
 \description{
-Représentation pour une espèce sur un point de prélèvement.
+Représentation pour une espèce sur une station ou un point de prélèvement.
 }
 \examples{
 \dontrun{
+# chargement packages
+library(tidyverse)
+library(aspe)
+
+# chargement données
+load("raw_data/aspe_mei.RData") # mesures individuelles
+load("raw_data/aspe_sauf_mei.RData") # autres tables
+
+# assemblage du dataframe
+data <- mef_creer_passerelle() \%>\%
+  mef_ajouter_lots() \%>\%
+  mef_ajouter_esp() \%>\% # pour avoir les noms communs des espèces
+  mef_ajouter_ope_date() \%>\% # pour avoir l'année et le mois
+  mef_ajouter_libelle() \%>\%
+  mef_ajouter_mei() \%>\%
+  select(pop_libelle,
+         annee,
+         ope_date,
+         esp_nom_commun,
+         lop_effectif,
+         mei_taille)
+
+# graphique
 gg_dyn_esp_pop(df = data,
-               libelle_point = "DROME A CHABRILLAN ",
-               esp_nom = "Barbeau fluviatile")
+               var_id_espece = esp_nom_commun,
+               var_id_station = pop_libelle,
+               espece_sel = "Goujon commun",
+               station_sel = "La Moder à Drusenheim")
 }
+
+
+
 }

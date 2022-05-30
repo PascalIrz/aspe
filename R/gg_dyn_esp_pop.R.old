@@ -1,13 +1,11 @@
-#' Produire un graphique de synthèse de la dynamique d'une population sur une localité
+#' Produire un graphique de synthèse de la dynamique d'une population
 #'
-#' Représentation pour une espèce sur une station ou un point de prélèvement.
+#' Représentation pour une espèce sur un point de prélèvement.
 #'
-#' @param df Dataframe contenant les données, avec les variables permettant d'identifier l'espèce et
-#'     la station/point, ainsi que "mei_taille", "mois" et "annee".
-#' @param var_id_espece Variable servant à identifier les espèces.
-#' @param var_id_station Variable servant à identifier les stations ou points.
-#' @param espece_sel Caractère. Espèce sélectionnée.
-#' @param station_sel Caractère. Point ou station sélectionné.
+#' @param df Dataframe contenant les données, avec les variables "pop_id", "pop_libelle",
+#'     esp_nom_commun", "mei_taille" et "annee".
+#' @param libelle_point Caractère. Nom du point dans le champ "pop_libelle".
+#' @param nom_espece Caractère. Nom de l'espèce dans le champ "esp_nom_commun".
 #' @param seuil Numérique entre 0 et 1. Seuil de pourcentile pour exclure des histogrammes les rares
 #'     individus de longueur extrême. Par défaut fixé à 0 donc toutes les observations sont conservées.
 #'     S'il est fixé à 0.01, les 1% des longueurs les plus élevées sont exclus des histogrammes. Ces
@@ -26,65 +24,34 @@
 #'
 #' @examples
 #' \dontrun{
-#' # chargement packages
-#' library(tidyverse)
-#' library(aspe)
-#'
-#' # chargement données
-#' load("raw_data/aspe_mei.RData") # mesures individuelles
-#' load("raw_data/aspe_sauf_mei.RData") # autres tables
-#'
-#' # assemblage du dataframe
-#' data <- mef_creer_passerelle() %>%
-#'   mef_ajouter_lots() %>%
-#'   mef_ajouter_esp() %>% # pour avoir les noms communs des espèces
-#'   mef_ajouter_ope_date() %>% # pour avoir l'année et le mois
-#'   mef_ajouter_libelle() %>%
-#'   mef_ajouter_mei() %>%
-#'   select(pop_libelle,
-#'          annee,
-#'          ope_date,
-#'          esp_nom_commun,
-#'          lop_effectif,
-#'          mei_taille)
-#'
-#' # graphique
 #' gg_dyn_esp_pop(df = data,
-#'                var_id_espece = esp_nom_commun,
-#'                var_id_station = pop_libelle,
-#'                espece_sel = "Goujon commun",
-#'                station_sel = "La Moder à Drusenheim")
+#'                libelle_point = "DROME A CHABRILLAN ",
+#'                esp_nom = "Barbeau fluviatile")
 #' }
-#'
-#'
-#'
 gg_dyn_esp_pop <- function(df,
-                           var_id_espece,
-                           var_id_station,
-                           espece_sel,
-                           station_sel,
+                           libelle_point,
+                           nom_espece,
                            seuil = 0)
 
 {
-  # gestion évaluation
-  var_id_espece <- enquo(var_id_espece)
-  var_id_station <- enquo(var_id_station)
-
   # Sélection des données
   data_pop <- df %>%
-    filter(!!var_id_station == station_sel &
-             !!var_id_espece == espece_sel &
-             mei_taille > 0) %>%
+    filter(pop_libelle == libelle_point &
+           esp_nom_commun == nom_espece &
+           mei_taille > 0) %>%
     mutate(mois = month(ope_date))
 
   # stats pour produire les graphiques
   stats <- data_pop %>%
     group_by(annee) %>%
-    summarise(
-      mediane = median(mei_taille),
-      effectif = n(),
-      mois = max(mois)
-    )
+    summarise(mediane = median(mei_taille),
+              effectif = n(),
+              mois = max(mois))
+
+  # code espèce 3 lettres correspondant au nom commun
+  esp_code <- ref_espece %>%
+    filter(esp_nom_commun == nom_espece) %>%
+    pull(esp_code_alternatif)
 
   # seuil pour exclure les tailles extremes
   seuil <- quantile(data_pop$mei_taille,
@@ -112,13 +79,11 @@ gg_dyn_esp_pop <- function(df,
       strip.text.y.left = element_text(size = 7,
                                        angle = 0)
     ) +
-    labs(
-      x = "Longueur (mm)",
-      y = "Effectif",
-      title = paste(espece_sel,
-                    station_sel,
-                    sep = " - ")
-    )
+    labs(x = "Longueur (mm)",
+         y = "Effectif",
+         title = paste(nom_espece,
+                       libelle_point,
+                       sep = " - "))
 
   # graphique longueur médiane
   g2 <- ggplot(data = stats,
@@ -156,11 +121,9 @@ gg_dyn_esp_pop <- function(df,
              stat = "identity") +
     labs(x = "",
          y = "Mois") +
-    scale_y_continuous(
-      labels = c(3, 6, 9),
-      breaks = c(3, 6, 9),
-      guide = guide_axis(n.dodge = 2)
-    ) +
+    scale_y_continuous(labels = c(3, 6, 9),
+                       breaks = c(3, 6, 9),
+                       guide = guide_axis(n.dodge = 2)) +
     theme(axis.text.y = element_text(angle = 90,
                                      hjust = 0.5),
           axis.title = element_text(size = 10)) +
