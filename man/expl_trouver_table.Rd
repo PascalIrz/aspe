@@ -13,10 +13,12 @@ expl_trouver_table(nom_contient)
 Un vecteur caractères contenant les noms des tables.
 }
 \description{
-Rechercher les dataframes dont le nom contient un pattern
+Cette fonction est utile pour explorer la base quand on a une idée de ce que son nom
+    peut contenir. Par exemple pour les tables liées au point on peut chercher, parmi les noms
+    des dataframes chargés, ceux contenant la chaîne de caractères "point".
 }
 \examples{
 \dontrun{
-expl_trouver_table(nom_contient = "op")
+expl_trouver_table(nom_contient = "point")
 }
 }

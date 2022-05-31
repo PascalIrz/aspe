@@ -32,7 +32,7 @@ export_tables_csv <- function(repertoire = NA)
   lister_dfs <- function()
 
   {
-    objets <- ls(globalenv())
+    objets <- ls(envir = globalenv())
 
     test_1obj <- function(obj) {
       is.data.frame(get(obj))
