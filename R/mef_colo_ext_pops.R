@@ -5,7 +5,8 @@
 #'
 #' @param df Dataframe contenant les captures et contenant les champs pop_id, pop_libelle,
 #'     annee, esp_code_alternatif, effectif.
-#' @param id_point Caractère. Identifiant du ou des point(s) au sens du champ pop_id de la base Aspe. Par défaut, tous les identifiants présents dans le tableau df sont pris en compte.
+#' @param id_point Caractère. Identifiant du ou des point(s) au sens du champ pop_id de la base Aspe.
+#'     Par défaut, tous les identifiants présents dans le tableau df sont pris en compte.
 #'
 #' @return Un dataframe pour un ensemble de points de prélèvement qui est mis en forme
 #'     pour produire des graphiques avec la fonction gg_colo_ext_pop().
