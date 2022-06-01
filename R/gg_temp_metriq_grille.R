@@ -18,6 +18,9 @@
 #' @param inv_y Booléen. Indique l'axe des ordonnées pointe vers le bas (TRUE, par défaut) ou
 #'     vers le haut. NB pour l'IPR, plus l'indice est faible plus la qualité est élevée.
 #'     C'est l'inverse pour l'IPR+.
+#' @param orientation Caractère. Par défaut les métriques sont organisées horizontalement (orientation = "h"). Pour permettre
+#'     d'organiser les métriques en 2 colonnes correspondant aux métriques de richesse et de densité, il faut
+#'     spécifier orientation = "v". Cet argument ne fonctionne que si une seule station est sélectionnée.
 #'
 #' @return Un graphique ggplot2.
 #' @export
@@ -28,7 +31,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' # tidy a data set
+#' # préparation des données
 #' metriques <- mef_creer_passerelle() %>%
 #' select(-lop_id, -pre_id) %>%
 #'   distinct() %>%
@@ -41,12 +44,21 @@
 #'                names_to = "metrique",
 #'                values_to = "valeur")
 #'
-#' # the plot
+#' # affichage
 #' gg_temp_metriq_grille(df_metriques = metriques,
 #'                       station_sel = c("La Berre à Portel-des-Corbières", "LA BERENCE A GAVRAY"),
 #'                       var_id_sta = pop_libelle,
 #'                       var_nom_metrique = metrique,
 #'                       var_valeur_metrique = valeur)
+#'
+#' gg_temp_metriq_grille(df_metriques = metriques,
+#'                       station_sel = c("La Berre à Portel-des-Corbières"),
+#'                       var_id_sta = pop_libelle,
+#'                       var_nom_metrique = metrique,
+#'                       var_valeur_metrique = valeur,
+#'                       nb_colonnes = 2,
+#'                       orientation = "v"
+#' )
 #' }
 gg_temp_metriq_grille <- function(df_metriques,
                                   var_id_sta,
@@ -56,7 +68,8 @@ gg_temp_metriq_grille <- function(df_metriques,
                                   nb_colonnes = 7,
                                   max_axe_y = 10,
                                   id_sta_max_caract = 25,
-                                  inv_y = TRUE)
+                                  inv_y = TRUE,
+                                  orientation = FALSE)
 
 {
   # gestion évaluation
@@ -97,7 +110,8 @@ gg_temp_metriq_grille <- function(df_metriques,
 
     plot_ipr_station <- plot_ipr_station +
       facet_wrap(facets = vars(!!var_nom_metrique),
-                 ncol = nb_colonnes)
+                 ncol = nb_colonnes,
+                 dir = orientation) # pour disposition des graf en colonnes on réordonne les modalités des métriques
 
   } else {
 
