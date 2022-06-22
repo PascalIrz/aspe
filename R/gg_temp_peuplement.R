@@ -15,7 +15,7 @@
 #' @importFrom dplyr filter rowwise mutate ungroup pull select
 #' @importFrom forcats fct_rev
 #' @importFrom ggiraph geom_point_interactive girafe
-#' @importFrom ggplot2 ggplot aes labs scale_x_continuous scale_size theme geom_line scale_shape_manual scale_y_continuous expansion element_blank
+#' @importFrom ggplot2 ggplot aes labs scale_x_continuous xlab scale_size unit theme geom_line scale_shape_manual scale_y_continuous expansion element_blank element_text element_rect
 #' @importFrom ggtext element_markdown
 #' @importFrom patchwork plot_layout
 #' @importFrom purrr map
@@ -138,14 +138,14 @@ gg_temp_peuplement <- function(df,
 
       ) +
       ggplot2::theme(
-        axis.text.y = element_text(size = 8),
-        panel.background = element_rect(fill='grey95'),
+        axis.text.y = ggplot2::element_text(size = 8),
+        panel.background = ggplot2::element_rect(fill='grey95'),
         #strip.text = element_text(size = 11,color="white",face = "bold"),
-        strip.background = element_rect(color="black",fill="grey30"),
+        strip.background = ggplot2::element_rect(color="black",fill="grey30"),
         legend.position = 'right',
-        legend.text = element_text(size = 8),
-        legend.title = element_text(size = 8),
-        axis.text.x = element_text(angle = 0, hjust = 0.5, size=9)
+        legend.text = ggplot2::element_text(size = 8),
+        legend.title = ggplot2::element_text(size = 8),
+        axis.text.x = ggplot2::element_text(angle = 0, hjust = 0.5, size=9)
       )
 
     esp_ipr <-
@@ -180,7 +180,7 @@ gg_temp_peuplement <- function(df,
       ggplot2::scale_y_continuous(
         expand = ggplot2::expansion(mult = c(0, 0))
       ) +
-      xlab(NULL) +
+      ggplot2::xlab(NULL) +
       ggplot2::theme(
         panel.background = element_rect(fill='grey95'),
         strip.text = element_text(size = 11,color="white",face = "bold"),
@@ -193,7 +193,7 @@ gg_temp_peuplement <- function(df,
       )
 
     plot_comb <- ((gg_peuplement +
-                     ggplot2::theme(plot.margin = unit(c(0,0,-0.5,0), "pt"),
+                     ggplot2::theme(plot.margin = ggplot2::unit(c(0,0,-0.5,0), "pt"),
                            axis.text.x = element_blank(),
                            #axis.ticks.x = element_blank(),
                            axis.title.x = element_blank()) ) / gg_proto) +

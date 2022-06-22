@@ -241,6 +241,13 @@ utils::globalVariables(
     'pre_tpe_id',
     'ref_type_prelevement_elementaire',
     'tpe_id',
-    'tpe_ordre_affichage'
+    'tpe_ordre_affichage',
+    'Shannon diversite',
+    'Richesse taxonomique',
+    'valeur',
+    'Protocole',
+    'hover2',
+    'esp_eligible_calcul_ipr'
+
   )
 )
