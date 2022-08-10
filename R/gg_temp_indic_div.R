@@ -80,12 +80,12 @@
 #' }
 
 gg_temp_indic_div <- function(df_captures,
-                                var_id_sta,
-                                var_metrique_div,
-                                station_sel = NULL,
-                                nb_colonnes = 2,
-                                id_sta_max_caract = 25,
-                                print.metrique = F)
+                              var_id_sta,
+                              var_metrique_div,
+                              station_sel = NULL,
+                              nb_colonnes = 2,
+                              id_sta_max_caract = 25,
+                              print.metrique = F)
 {
 
   # mise en forme des étiquettes inspirée de https://stackoverflow.com/a/57086284
@@ -176,8 +176,8 @@ gg_temp_indic_div <- function(df_captures,
     ggplot2::ggplot(
       data = df_metriques_div_long,
       ggplot2::aes(x = annee,
-          y = valeur,
-          fill = !! var_metrique_div)) +
+                   y = valeur,
+                   fill = !! var_metrique_div)) +
     ggplot2::geom_line(lty=2) +
     ggplot2::geom_point(size = 2, shape = 21) +
     ggplot2::scale_x_continuous(

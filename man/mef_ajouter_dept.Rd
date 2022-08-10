@@ -7,7 +7,8 @@
 mef_ajouter_dept(passerelle)
 }
 \arguments{
-\item{passerelle}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.}
+\item{passerelle}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
+La passerelle doit comprendre des colonnes "sta_id" et "pop_id".}
 }
 \value{
 La passerelle complétée par le département.
