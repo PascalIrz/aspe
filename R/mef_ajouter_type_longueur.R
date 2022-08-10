@@ -17,6 +17,9 @@ mef_ajouter_type_longueur <- function(passerelle)
 
 {
   passerelle %>%
+    left_join(lot_poissons %>%
+                select(lop_id,
+                       tlo_id = lop_tlo_id)) %>%
     left_join(y = ref_type_longueur %>%
                 select(tlo_id,
                        tlo_libelle))
