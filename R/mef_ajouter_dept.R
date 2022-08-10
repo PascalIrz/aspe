@@ -6,6 +6,7 @@
 #'     certains cas.
 #'
 #' @param passerelle Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
+#'     La passerelle doit comprendre des colonnes "sta_id" et "pop_id".
 #'
 #' @return La passerelle complétée par le département.
 #' @export

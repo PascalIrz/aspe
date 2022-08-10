@@ -47,10 +47,10 @@
 #'
 #' captures_sel <- captures %>% filter(sta_id %in% id_sta_sel)
 #'
-#' graph_interactif <- gg_temp_peuplement(captures_sel,interactif = T)
+#' graph_interactif <- gg_temp_peuplement(captures_sel, interactif = T)
 #' graph_interactif[[1]]
 #'
-#' graph_static <- gg_temp_peuplement(captures_sel,interactif = F)
+#' graph_static <- gg_temp_peuplement(captures_sel, interactif = F)
 #' graph_static[[1]]
 #'
 #' }
