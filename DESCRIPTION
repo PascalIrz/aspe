@@ -5,9 +5,9 @@ Version: 0.2.17
 Author: Pascal Irz <pascal.irz@ofb.gouv.fr>
 Maintainer: Pascal Irz <pascal.irz@ofb.gouv.fr>
 Description: The aspe package provides a suite of tools for most of the common 
-    processing of the ASPE database including importation from a SQL format dump,
-    calculation of abundances, densities, size distributions, temporal trends
-    for populations at the station level, along with graphical output.
+    processing of the ASPE database including importation of the tables from a dump of the ASPE
+    PostGreSQL database, calculation of abundances, densities, size distributions,
+    along with graphical output and spatial processing.
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true

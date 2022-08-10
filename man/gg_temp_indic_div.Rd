@@ -11,7 +11,7 @@ gg_temp_indic_div(
   station_sel = NULL,
   nb_colonnes = 2,
   id_sta_max_caract = 25,
-  print.metrique = F
+  print_metrique = F
 )
 }
 \arguments{
@@ -30,7 +30,7 @@ Cette variable donnera les étiquettes des lignes du graphique.}
 \item{id_sta_max_caract}{Entier. Nombre maximum de caractères dans l'identifiant de la station, au-delà duquel il sera
 découpé pour tenir sur plusieurs lignes. Par défaut c'est 25 caractères.}
 
-\item{print.metrique}{Valeur logique. Si TRUE, le dataframe des métriques est retourné. Si FALSE (par défaut), le graphique \code{ggplot2} est retourné.}
+\item{print_metrique}{Valeur logique. Si TRUE, le dataframe des métriques est retourné. Si FALSE (par défaut), le graphique \code{ggplot2} est retourné.}
 }
 \value{
 Un graphique \code{ggplot2} ou un dataframe.
@@ -71,27 +71,27 @@ gg_temp_indic_div(df_captures = captures,
                     var_id_sta = pop_libelle,
                     var_metrique_div = metrique_div,
                     station_sel =c("LA BERENCE A GAVRAY", "La Berre à Portel-des-Corbières"),
-                    print.metrique = F)
+                    print_metrique = F)
 
 gg_temp_indic_div(df_captures = captures,
                     var_id_sta = pop_libelle,
                     var_metrique_div = metrique_div,
                     station_sel =c("La Berre à Portel-des-Corbières"),
                     nb_colonnes = 2,
-                    print.metrique = F)
+                    print_metrique = F)
 
 # dataframe des metriques
 gg_temp_indic_div(df_captures = captures,
                     var_id_sta = pop_libelle,
                     var_metrique_div = metrique_div,
                     station_sel =c("LA BERENCE A GAVRAY", "La Berre à Portel-des-Corbières"),
-                    print.metrique = T)
+                    print_metrique = T)
 
 gg_temp_indic_div(df_captures = captures,
                     var_id_sta = pop_libelle,
                     var_metrique_div = metrique_div,
                     station_sel =c("La Berre à Portel-des-Corbières"),
                     nb_colonnes = 2,
-                    print.metrique = T)
+                    print_metrique = T)
 }
 }

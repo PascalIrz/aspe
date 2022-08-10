@@ -13,7 +13,7 @@
 #' @param nb_colonnes Entier. Nombre de colonnes du graphique utilisé pour dans le cas d'un graphique pour une station. Par défaut nb_colonnes = 2.
 #' @param id_sta_max_caract Entier. Nombre maximum de caractères dans l'identifiant de la station, au-delà duquel il sera
 #'     découpé pour tenir sur plusieurs lignes. Par défaut c'est 25 caractères.
-#' @param print_metrique Valeur logique. Si TRUE, le dataframe des métriques est retourné. Si FALSE (par défaut), le graphique \code{ggplot2} est retourné.
+#' @param tableau_metriques Valeur logique. Si TRUE, le dataframe des métriques est retourné. Si FALSE (par défaut), le graphique \code{ggplot2} est retourné.
 #'
 #' @return Un graphique \code{ggplot2} ou un dataframe.
 #' @export
@@ -55,28 +55,28 @@
 #'                     var_id_sta = pop_libelle,
 #'                     var_metrique_div = metrique_div,
 #'                     station_sel =c("LA BERENCE A GAVRAY", "La Berre à Portel-des-Corbières"),
-#'                     print_metrique = F)
+#'                     tableau_metriques = F)
 #'
 #' gg_temp_indic_div(df_captures = captures,
 #'                     var_id_sta = pop_libelle,
 #'                     var_metrique_div = metrique_div,
 #'                     station_sel =c("La Berre à Portel-des-Corbières"),
 #'                     nb_colonnes = 2,
-#'                     print_metrique = F)
+#'                     tableau_metriques = F)
 #'
 #' # dataframe des metriques
 #' gg_temp_indic_div(df_captures = captures,
 #'                     var_id_sta = pop_libelle,
 #'                     var_metrique_div = metrique_div,
 #'                     station_sel =c("LA BERENCE A GAVRAY", "La Berre à Portel-des-Corbières"),
-#'                     print_metrique = T)
+#'                     tableau_metriques = T)
 #'
 #' gg_temp_indic_div(df_captures = captures,
 #'                     var_id_sta = pop_libelle,
 #'                     var_metrique_div = metrique_div,
 #'                     station_sel =c("La Berre à Portel-des-Corbières"),
 #'                     nb_colonnes = 2,
-#'                     print_metrique = T)
+#'                     tableau_metriques = T)
 #' }
 
 gg_temp_indic_div <- function(df_captures,
@@ -85,11 +85,10 @@ gg_temp_indic_div <- function(df_captures,
                               station_sel = NULL,
                               nb_colonnes = 2,
                               id_sta_max_caract = 25,
-                              print_metrique = F)
+                              tableau_metriques = F)
 {
-
   # mise en forme des étiquettes inspirée de https://stackoverflow.com/a/57086284
-  int_breaks <- function(x, n = 5){
+  int_breaks <- function(x, n = 5) {
     if (length(unique(x)) > 1) {
       pretty(x, n)[round(pretty(x, n), 1) %% 1 == 0]
     } else {
@@ -127,21 +126,29 @@ gg_temp_indic_div <- function(df_captures,
   shannon_cal <-
     function(df_effectif) {
       richesse_spe <- length(df_effectif[df_effectif != 0])
-      if(richesse_spe > 1){
-        p_i <- df_effectif[df_effectif != 0]/sum(df_effectif)
-        shannon_ind <- -sum(p_i * log(p_i))}
+      if (richesse_spe > 1) {
+        p_i <- df_effectif[df_effectif != 0] / sum(df_effectif)
+        shannon_ind <- -sum(p_i * log(p_i))
+      }
       else
-      { shannon_ind <- NA }
+      {
+        shannon_ind <- NA
+      }
       return(shannon_ind)
     }
   simpson_cal <-
     function(df_effectif) {
       richesse_spe <- length(df_effectif[df_effectif != 0])
-      if(richesse_spe > 1){
+      if (richesse_spe > 1) {
         data_non_zero <- df_effectif[df_effectif != 0]
-        simpson_ind <- 1 - ( sum(data_non_zero * (data_non_zero - 1)) / (sum(data_non_zero) * (sum(data_non_zero)-1)) )}
+        simpson_ind <-
+          1 - (sum(data_non_zero * (data_non_zero - 1)) / (sum(data_non_zero) * (sum(
+            data_non_zero
+          ) - 1)))
+      }
       else {
-        simpson_ind <- NA }
+        simpson_ind <- NA
+      }
       return(simpson_ind)
     }
 
@@ -150,15 +157,16 @@ gg_temp_indic_div <- function(df_captures,
   df_metriques_div <-
     df_captures %>%
     dplyr::mutate(
-      !!var_id_sta := stringr::str_wrap(!!var_id_sta, width = id_sta_max_caract),
-      !!var_id_sta := as.factor(!!var_id_sta)
+      !!var_id_sta := stringr::str_wrap(!!var_id_sta, width = id_sta_max_caract),!!var_id_sta := as.factor(!!var_id_sta)
     ) %>%
     dplyr::group_by(!!var_id_sta, annee) %>%
-    dplyr::summarise(`Effectif total` = sum(effectif),
-                     `Richesse taxonomique` = richesse_cal(effectif),
-                     `Shannon diversite` = shannon_cal(effectif),
-                     #Simpson = simpson_cal(effectif),
-                     `Equitabilite (Pielou)` =  `Shannon diversite` / log(`Richesse taxonomique`)) %>%
+    dplyr::summarise(
+      `Effectif total` = sum(effectif),
+      `Richesse taxonomique` = richesse_cal(effectif),
+      `Shannon diversite` = shannon_cal(effectif),
+      #Simpson = simpson_cal(effectif),
+      `Equitabilite (Pielou)` =  `Shannon diversite` / log(`Richesse taxonomique`)
+    ) %>%
     dplyr::ungroup()
 
   # df format long
@@ -167,57 +175,68 @@ gg_temp_indic_div <- function(df_captures,
     tidyr::pivot_longer(-c(!!var_id_sta, annee),
                         names_to = "indices",
                         values_to = "valeur") %>%
-    dplyr::rename(!! var_metrique_div := 'indices') %>%
+    dplyr::rename(!!var_metrique_div := 'indices') %>%
     dplyr::ungroup() %>%
-    dplyr::mutate(!! var_metrique_div := forcats::fct_relevel(!! var_metrique_div, 'Richesse taxonomique' , "Effectif total", 'Shannon diversite', "Equitabilite (Pielou)"))
+    dplyr::mutate(
+      !!var_metrique_div := forcats::fct_relevel(
+        !!var_metrique_div,
+        'Richesse taxonomique' ,
+        "Effectif total",
+        'Shannon diversite',
+        "Equitabilite (Pielou)"
+      )
+    )
 
   # graphique de base
   plot_indic_div_station <-
-    ggplot2::ggplot(
-      data = df_metriques_div_long,
-      ggplot2::aes(x = annee,
-                   y = valeur,
-                   fill = !! var_metrique_div)) +
-    ggplot2::geom_line(lty=2) +
+    ggplot2::ggplot(data = df_metriques_div_long,
+                    ggplot2::aes(
+                      x = annee,
+                      y = valeur,
+                      fill = !!var_metrique_div
+                    )) +
+    ggplot2::geom_line(lty = 2) +
     ggplot2::geom_point(size = 2, shape = 21) +
-    ggplot2::scale_x_continuous(
-      breaks = int_breaks,
-      limits = int_limits
-    ) +
+    ggplot2::scale_x_continuous(breaks = int_breaks,
+                                limits = int_limits) +
     ggplot2::labs(title = "Evolution des m\u00e9triques de diversit\u00e9",
                   x = "",
                   y = "") +
-    ggplot2::theme(legend.position = "none",
-                   strip.text.x = ggplot2::element_text(size = 8),
-                   axis.text.x = ggplot2::element_text(angle = 45, hjust = 1)) +
+    ggplot2::theme(
+      legend.position = "none",
+      strip.text.x = ggplot2::element_text(size = 8),
+      axis.text.x = ggplot2::element_text(angle = 45, hjust = 1)
+    ) +
     ggplot2::facet_wrap(facets = dplyr::vars(!!var_metrique_div),
                         scales = "free")
 
-  # # Gestion du nombre de colonnes du graphique. Par défaut c'est 7 mais modifiable dans le cas où une seule station
-  if((df_metriques_div_long %>%
-      dplyr::pull(!! var_id_sta) %>%
-      unique() %>%
-      length()) == 1) {
-
+  # Gestion du nombre de colonnes du graphique. Par défaut c'est 7 mais modifiable dans le cas où une seule station
+  if ((df_metriques_div_long %>%
+       dplyr::pull(!!var_id_sta) %>%
+       unique() %>%
+       length()) == 1) {
     plot_indic_div_station <-
       plot_indic_div_station +
       ggplot2::labs(title = df_metriques_div_long %>% dplyr::pull(!!var_id_sta)) +
-      ggplot2::facet_wrap(facets = dplyr::vars(!!var_metrique_div),
-                          scales = "free",
-                          ncol = nb_colonnes)
+      ggplot2::facet_wrap(
+        facets = dplyr::vars(!!var_metrique_div),
+        scales = "free",
+        ncol = nb_colonnes
+      )
 
   } else {
-
     plot_indic_div_station <-
       plot_indic_div_station +
-      ggplot2::facet_grid(cols = dplyr::vars(!!var_id_sta),
-                          rows = dplyr::vars(!!var_metrique_div),
-                          scales = "free")
+      ggplot2::facet_grid(
+        cols = dplyr::vars(!!var_id_sta),
+        rows = dplyr::vars(!!var_metrique_div),
+        scales = "free"
+      )
 
   }
 
   # affichage
-  if(print_metrique == T) {
+  if (tableau_metriques == T) {
     return(df_metriques_div)
   } else {
     plot_indic_div_station
