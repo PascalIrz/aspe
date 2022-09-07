@@ -4,10 +4,11 @@
 \alias{misc_nom_dernier_fichier}
 \title{Obtenir le nom du plus récent des fichiers}
 \usage{
-misc_nom_dernier_fichier(repertoire, pattern, recursive = FALSE)
+misc_nom_dernier_fichier(repertoire = NULL, pattern, recursive = FALSE)
 }
 \arguments{
-\item{repertoire}{Chaîne de caractère. Chemin vers le répertoire à explorer.}
+\item{repertoire}{Chaîne de caractère. Chemin vers le répertoire à explorer.
+Par défaut c'est le répertoire de travail.}
 
 \item{pattern}{Chaîne de caractère (exprtession régulière) à retrouver dans le nom du fichier.}
 

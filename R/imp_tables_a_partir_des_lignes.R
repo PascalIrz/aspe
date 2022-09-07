@@ -27,7 +27,7 @@ imp_tables_a_partir_des_lignes <- function(lignes_dump, tables_a_extraire = NA) 
   options(stringsAsFactors = F)
 
   # Si l'utilisateur ne précise pas quelles tables sont à extraire, elles le seront toutes
-  if(is.na(tables_a_extraire))
+  if(is.null(tables_a_extraire))
     {
     tables_a_extraire <- imp_extraire_noms_tables(lignes_dump = lignes_dump)
     }

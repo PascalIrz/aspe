@@ -4,6 +4,7 @@
 #'     celui qui est le dernier créé.
 #'
 #' @param repertoire Chaîne de caractère. Chemin vers le répertoire à explorer.
+#'     Par défaut c'est le répertoire de travail.
 #' @param pattern Chaîne de caractère (exprtession régulière) à retrouver dans le nom du fichier.
 #' @param recursive Booléen (TRUE ou FALSE). Indique si la recherche inclut les sous-répertoire.
 #'     La valeur par défaut est FALSE donc les sous-répertoires sont exclus de la recherche.
@@ -18,7 +19,12 @@
 #' mon_fichier <- misc_nom_dernier_fichier(repertoire = "raw_data", pattern = "RData$")
 #' }
 misc_nom_dernier_fichier <-
-  function(repertoire, pattern, recursive = FALSE) {
+  function(repertoire = NULL,
+           pattern,
+           recursive = FALSE) {
+
+    if(is.null(repertoire)) {repertoire <- getwd()}
+
     list.files(
       path = repertoire,
       pattern = pattern,
