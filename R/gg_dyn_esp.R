@@ -12,6 +12,9 @@
 #'     individus de longueur extrême. Par défaut fixé à 0 donc toutes les observations sont conservées.
 #'     S'il est fixé à 0.01, les 1% des longueurs les plus élevées sont exclus des histogrammes. Ces
 #'     individus sont en revanche conservés sur les autres graphiques.
+#' @param graph_long_mediane Booléen. Afficher le diagramme des longueurs médianes ? Par défaut TRUE.
+#' @param graph_effectif Booléen. Afficher le diagramme des longueurs effectifs ? Par défaut TRUE.
+#' @param graph_mois Booléen. Afficher le diagramme du mois de prospection ? Par défaut TRUE.
 #'
 #' @return Le graphique ggplot2 avec les distributions en taille par année et l'évolution
 #'     temporelle de la longueur médiane et des effectifs capturés.
@@ -49,7 +52,7 @@
 #'          mei_taille)
 #'
 #' # graphique
-#' gg_dyn_esp_pop(df = data,
+#' gg_dyn_esp(df = data,
 #'                var_id_espece = esp_nom_commun,
 #'                var_id_station = pop_libelle,
 #'                espece_sel = "Goujon commun",
@@ -58,12 +61,15 @@
 #'
 #'
 #'
-gg_dyn_esp_pop <- function(df,
-                           var_id_espece,
-                           var_id_station,
-                           espece_sel,
-                           station_sel,
-                           seuil = 0)
+gg_dyn_esp <- function(df,
+                       var_id_espece,
+                       var_id_station,
+                       espece_sel,
+                       station_sel = NULL,
+                       seuil = 0,
+                       graph_long_mediane = TRUE,
+                       graph_effectif = TRUE,
+                       graph_mois = TRUE)
 
 {
   # gestion évaluation
@@ -72,10 +78,15 @@ gg_dyn_esp_pop <- function(df,
 
   # Sélection des données
   data_pop <- df %>%
-    filter(!!var_id_station == station_sel &
-             !!var_id_espece == espece_sel &
+    filter(!!var_id_espece == espece_sel &
              mei_taille > 0) %>%
     mutate(mois = month(ope_date))
+
+  if (!is.null(station_sel))
+  {
+    data_pop <- data_pop %>%
+      filter(!!var_id_station == station_sel)
+  }
 
   # stats pour produire les graphiques
   stats <- data_pop %>%
@@ -121,55 +132,95 @@ gg_dyn_esp_pop <- function(df,
     )
 
   # graphique longueur médiane
-  g2 <- ggplot(data = stats,
-               aes(x = annee)) +
-    geom_bar(aes(y = mediane),
-             fill = "red",
-             stat = "identity") +
-    labs(x = "",
-         y = "Long. med.") +
-    scale_y_continuous(guide = guide_axis(n.dodge = 2)) +
-    theme(axis.text.y = element_text(angle = 90,
-                                     hjust = 0.5),
-          axis.title = element_text(size = 10)) +
-    coord_flip()
+
+  if (graph_long_mediane)
+  {
+    g2 <- ggplot(data = stats,
+                 aes(x = annee)) +
+      geom_bar(aes(y = mediane),
+               fill = "red",
+               stat = "identity") +
+      labs(x = "",
+           y = "Long. med.") +
+      scale_y_continuous(guide = guide_axis(n.dodge = 2)) +
+      theme(axis.text.y = element_text(angle = 90,
+                                       hjust = 0.5),
+            axis.title = element_text(size = 10)) +
+      coord_flip()
+  }
 
   # graphique effectifs
-  g3 <- ggplot(data = stats,
-               aes(x = annee)) +
-    geom_bar(aes(y = effectif),
-             fill = "blue",
-             stat = "identity") +
-    labs(x = "",
-         y = "Effectif") +
-    scale_y_continuous(guide = guide_axis(n.dodge = 2)) +
-    theme(axis.text.y = element_text(angle = 90,
-                                     hjust = 0.5),
-          axis.title = element_text(size = 10)) +
-    coord_flip()
+
+  if (graph_effectif)
+  {
+    g3 <- ggplot(data = stats,
+                 aes(x = annee)) +
+      geom_bar(aes(y = effectif),
+               fill = "blue",
+               stat = "identity") +
+      labs(x = "",
+           y = "Effectif") +
+      scale_y_continuous(guide = guide_axis(n.dodge = 2)) +
+      theme(axis.text.y = element_text(angle = 90,
+                                       hjust = 0.5),
+            axis.title = element_text(size = 10)) +
+      coord_flip()
+  }
 
   # graphique mois d'échantillonnage
-  g4 <- ggplot(data = stats,
-               aes(x = annee)) +
-    geom_bar(aes(y = mois),
-             fill = "darkgreen",
-             stat = "identity") +
-    labs(x = "",
-         y = "Mois") +
-    scale_y_continuous(
-      labels = c(3, 6, 9),
-      breaks = c(3, 6, 9),
-      guide = guide_axis(n.dodge = 2)
-    ) +
-    theme(axis.text.y = element_text(angle = 90,
-                                     hjust = 0.5),
-          axis.title = element_text(size = 10)) +
-    coord_flip()
 
+  if (graph_mois)
+  {
+    g4 <- ggplot(data = stats,
+                 aes(x = annee)) +
+      geom_bar(aes(y = mois),
+               fill = "darkgreen",
+               stat = "identity") +
+      labs(x = "",
+           y = "Mois") +
+      scale_y_continuous(
+        labels = c(3, 6, 9),
+        breaks = c(3, 6, 9),
+        guide = guide_axis(n.dodge = 2)
+      ) +
+      theme(axis.text.y = element_text(angle = 90,
+                                       hjust = 0.5),
+            axis.title = element_text(size = 10)) +
+      coord_flip()
+  }
 
-  # assemblage des graphiques
-  ggarrange(g1, g2, g3, g4,
-            nrow = 1,
-            widths = c(4, 1, 1, 1))
+  # assemblage des graphiques, selon le choix de ceux à afficher
+  if (graph_long_mediane &
+      graph_effectif &
+      graph_mois)
+    g <- ggarrange(g1, g2, g3, g4, nrow = 1, widths = c(4, 1, 1, 1))
+  if (graph_long_mediane &
+      graph_effectif &
+      !graph_mois)
+    g <- ggarrange(g1, g2, g3, nrow = 1, widths = c(4, 1, 1))
+  if (graph_long_mediane &
+      !graph_effectif &
+      graph_mois)
+    g <- ggarrange(g1, g2, g4, nrow = 1, widths = c(4, 1, 1))
+  if (!graph_long_mediane &
+      graph_effectif &
+      graph_mois)
+    g <- ggarrange(g1, g3, g4, nrow = 1, widths = c(4, 1, 1))
+  if (graph_long_mediane &
+      !graph_effectif &
+      !graph_mois)
+    g <- ggarrange(g1, g2, nrow = 1, widths = c(4, 1))
+  if (!graph_long_mediane &
+      graph_effectif &
+      !graph_mois)
+    g <- ggarrange(g1, g3, nrow = 1, widths = c(4, 1))
+  if (!graph_long_mediane &
+      !graph_effectif &
+      graph_mois)
+    g <- ggarrange(g1, g4, nrow = 1, widths = c(4, 1))
+  if (!graph_long_mediane & !graph_effectif & !graph_mois)
+    g <- g1
 
+  g
 }
+
