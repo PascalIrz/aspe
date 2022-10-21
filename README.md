@@ -21,9 +21,15 @@ graphical output.
 
 La base de données ASPE de l’OFB contient toutes les données
 d’inventaire par pêche à l’électricité par le CSP, l’ONEMA, l’AFB, l’OFB
-ainsi que par certains partenaires sur les rivières de France.
+ainsi que par certains partenaires sur les rivières de France. Elle est décrite
+dans un article à paraître dans la revue *Knowledge and Management of Aquatic Ecosystems* et produit en visant le respect des principes de 
+la recherche reproductible (Wilkinson *et al.* 2016). Ses fichiers sources - données comprises - sont diffusées sur le dépôt [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7099129.svg)](https://doi.org/10.5281/zenodo.7099129)
 
-The ASPE database is administrated by the French Office for Biodiversity. It gathers, among others, all the river electrofishing samplings carried out by the former Fisheries Council, National Office for Water and Aquatic Systems and French Agency for Biodiversity.
+
+The ASPE database is administrated by the French Office for Biodiversity. It gathers, among others, all the river electrofishing samplings carried out by the former Fisheries Council, National Office for Water and Aquatic Systems and French Agency for Biodiversity. The database is described in an article *in press* in the *Knowledge and Management of Aquatic Ecosystems* journal. The paper was produced to respect the FAIR principles (Wilkinson *et al.* 2016), hence its source files - including the database - are available at [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7099129.svg)](https://doi.org/10.5281/zenodo.7099129)
+
+Wilkinson MD, et al. 2016. The FAIR Guiding Principles for scientific data management and stewardship. Sci Data 3: 160018.
+
 
 Installation
 ------------
