@@ -8,6 +8,8 @@
 #'
 #' @return Le dataframe filtré selon l'altitude
 #'
+#' @export
+#'
 #' @examples
 #' \dontrun{
 #' classe_classes_ipr <- classe_ipr %>%
