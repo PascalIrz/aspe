@@ -27,7 +27,7 @@ dans l'article Irz *et al.* (2022), produit en visant le respect des principes d
 
 The ASPE database is administrated by the French Office for Biodiversity. It gathers, among others, all the river electrofishing samplings carried out by the former Fisheries Council, National Office for Water and Aquatic Systems and French Agency for Biodiversity. The database is described in Irz *et al.* (2022). The paper was produced to respect the FAIR principles (Wilkinson *et al.* 2016), hence its source files - including the database - are available at [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7099129.svg)](https://doi.org/10.5281/zenodo.7099129)
 
-- Irz P, Vigneron T, Poulet N, Cosson E, Point T, Baglinière E, Porcher JP. 2022. A long-term monitoring database on fish and crayfish species in French rivers. *Knowl. Manag. Aquat. Ecosyst.* 423, 25, ![](DOI: 10.1051/kmae/2022021).
+- Irz P, Vigneron T, Poulet N, Cosson E, Point T, Baglinière E, Porcher JP. 2022. A long-term monitoring database on fish and crayfish species in French rivers. *Knowl. Manag. Aquat. Ecosyst.* 423, 25, [![DOI: 10.1051/kmae/2022021]](DOI: 10.1051/kmae/2022021).
 - Wilkinson MD, et al. 2016. The FAIR Guiding Principles for scientific data management and stewardship. *Sci. Data* 3: 160018.
 
 
