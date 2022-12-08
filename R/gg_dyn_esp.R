@@ -3,7 +3,7 @@
 #' Représentation pour une espèce sur une station ou un point de prélèvement.
 #'
 #' @param df Dataframe contenant les données, avec les variables permettant d'identifier l'espèce et
-#'     la station/point, ainsi que "mei_taille", "mois" et "annee".
+#'     la station/point, ainsi que "mei_taille", "ope_date", mois" et "annee".
 #' @param var_id_espece Variable servant à identifier les espèces.
 #' @param var_id_station Variable servant à identifier les stations ou points.
 #' @param espece_sel Caractère. Espèce sélectionnée.
