@@ -1,5 +1,6 @@
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/PascalIrz/aspe/workflows/R-CMD-check/badge.svg)](https://github.com/PascalIrz/aspe/actions)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7099129.svg)](https://doi.org/10.5281/zenodo.7099129)
 <!-- badges: end -->
 
 
@@ -22,13 +23,13 @@ graphical output.
 La base de données ASPE de l’OFB contient toutes les données
 d’inventaire par pêche à l’électricité par le CSP, l’ONEMA, l’AFB, l’OFB
 ainsi que par certains partenaires sur les rivières de France. Elle est décrite
-dans l'article Irz *et al.* (2022), produit en visant le respect des principes de la recherche reproductible (Wilkinson *et al.* 2016). Ses fichiers sources - données comprises - sont diffusées sur le dépôt [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7099129.svg)](https://doi.org/10.5281/zenodo.7099129)
+dans Irz *et al.* (2022), article produit en visant le respect des principes de la recherche reproductible (Wilkinson *et al.* 2016). Ses fichiers sources - données comprises - sont diffusées sur le dépôt [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7099129.svg)](https://doi.org/10.5281/zenodo.7099129)
 
 
-The ASPE database is administrated by the French Office for Biodiversity. It gathers, among others, all the river electrofishing samplings carried out by the former Fisheries Council, National Office for Water and Aquatic Systems and French Agency for Biodiversity. The database is described in Irz *et al.* (2022). The paper was produced to respect the FAIR principles (Wilkinson *et al.* 2016), hence its source files - including the database - are available at [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7099129.svg)](https://doi.org/10.5281/zenodo.7099129)
+The ASPE database is administrated by the French Office for Biodiversity. It gathers, among others, all the river electrofishing samplings carried out by the former Fisheries Council, National Office for Water and Aquatic Systems and French Agency for Biodiversity. The database is described in Irz *et al.* (2022). This paper was produced to respect the FAIR principles (Wilkinson *et al.* 2016), hence its source files - including the database - are available at [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7099129.svg)](https://doi.org/10.5281/zenodo.7099129)
 
 - Irz P, Vigneron T, Poulet N, Cosson E, Point T, Baglinière E, Porcher JP. 2022. A long-term monitoring database on fish and crayfish species in French rivers. *Knowl. Manag. Aquat. Ecosyst.* 423, 25, [DOI:10.1051/kmae/2022021](https://doi.org/10.1051/kmae/2022021).
-- Wilkinson MD, et al. 2016. The FAIR Guiding Principles for scientific data management and stewardship. *Sci. Data* 3: 160018.
+- Wilkinson MD, et al. 2016. The FAIR Guiding Principles for scientific data management and stewardship. *Sci. Data* 3: 160018, [DOI:10.1038/sdata.2016.18](https://doi.org/10.1038/sdata.2016.18).
 
 
 Installation
