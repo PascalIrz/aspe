@@ -1,6 +1,5 @@
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/PascalIrz/aspe/workflows/R-CMD-check/badge.svg)](https://github.com/PascalIrz/aspe/actions)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7099129.svg)](https://doi.org/10.5281/zenodo.7099129)
 <!-- badges: end -->
 
 

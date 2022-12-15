@@ -2,7 +2,13 @@ Package: aspe
 Type: Package
 Title: Import, Process and Visualise the French River Fish Database ASPE
 Version: 0.2.18
-Author: Pascal Irz <pascal.irz@ofb.gouv.fr>
+Authors@R: c(
+    person("Pascal", "Irz", , "pascal.irz@ofb.gouv.fr", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-2066-8935")),
+    person("Cédric", "Mondy", , "cedric.mondy@ofb.gouv.fr", role = "ctb"),
+    person("Benoît", "Richard", , "benoit.richard@ofb.gouv.fr", role = "ctb"),
+    person("Lilian", "Bonnafoux", , "l.bonnafoux@peche63.com", role = "ctb")
+  )
 Maintainer: Pascal Irz <pascal.irz@ofb.gouv.fr>
 Description: The aspe package provides a suite of tools for most of the common 
     processing of the ASPE database including importation of the tables from a dump of the ASPE

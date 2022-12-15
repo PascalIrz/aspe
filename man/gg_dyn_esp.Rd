@@ -18,7 +18,7 @@ gg_dyn_esp(
 }
 \arguments{
 \item{df}{Dataframe contenant les données, avec les variables permettant d'identifier l'espèce et
-la station/point, ainsi que "mei_taille", "mois" et "annee".}
+la station/point, ainsi que "mei_taille", "ope_date", "mois" et "annee".}
 
 \item{var_id_espece}{Variable servant à identifier les espèces.}
 
