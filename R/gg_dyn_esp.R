@@ -126,9 +126,14 @@ gg_dyn_esp <- function(df,
     labs(
       x = "Longueur (mm)",
       y = "Effectif",
-      title = paste(espece_sel,
-                    station_sel,
-                    sep = " - ")
+      # title = paste(espece_sel,
+      #               station_sel,
+      #               sep = " - ")
+      title = ifelse(is.null(station_sel),
+                     espece_sel,
+                     paste(espece_sel,
+                           station_sel,
+                           sep = " - "))
     )
 
   # graphique longueur médiane
