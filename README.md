@@ -2,6 +2,7 @@
 [![R-CMD-check](https://github.com/PascalIrz/aspe/workflows/R-CMD-check/badge.svg)](https://github.com/PascalIrz/aspe/actions)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Lifecycle:Maturing](https://img.shields.io/badge/Lifecycle-Maturing-007EC6)](https://discourse.jupyter.org/t/should-we-adopt-the-tidyverse-package-lifecycle-badges/1310)
+[![DOI](https://zenodo.org/badge/7458005.svg)](https://zenodo.org/record/7458005)
 <!-- badges: end -->
 
 
