@@ -1,9 +1,11 @@
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/PascalIrz/aspe/workflows/R-CMD-check/badge.svg)](https://github.com/PascalIrz/aspe/actions)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Lifecycle:Maturing](https://img.shields.io/badge/Lifecycle-Maturing-007EC6)](https://discourse.jupyter.org/t/should-we-adopt-the-tidyverse-package-lifecycle-badges/1310)
 <!-- badges: end -->
 
 
-aspe
+{aspe}: an R package to analyse and visualise river fish data in France 
 ====
 
 {aspe} fournit des outils autorisant simplement la plupart des
