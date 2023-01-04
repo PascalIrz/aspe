@@ -4,7 +4,14 @@
 \alias{gg_temp_peuplement}
 \title{Graphique pour représenter l'évolution des effectifs de taxons au cours du temps}
 \usage{
-gg_temp_peuplement(df, interactif = FALSE, largeur = 6, hauteur = 5, ...)
+gg_temp_peuplement(
+  df,
+  interactif = FALSE,
+  largeur = 6,
+  hauteur = 5,
+  var_especes = esp_code_alternatif,
+  ...
+)
 }
 \arguments{
 \item{df}{Dataframe contenant les données des effectifs capturés pour les taxons.  Il doit contenir des variables "effectif"
@@ -13,7 +20,9 @@ prélèvement. Il doit également contenir une variable 'pro_libelle' correspond
 
 \item{interactif}{Valeur logique: statique (FALSE) produit avec `ggplot2` ou interactif (TRUE) produit avec `ggiraph`.}
 
-\item{largeur, hauteur}{dimensions des graphiques interactifs}
+\item{largeur, hauteur}{Numériques. Dimensions des graphiques interactifs.}
+
+\item{var_especes}{Variable indiquant l'espèce ou le code espèce.}
 
 \item{...}{arguments passés à la fonction \code{ggiraph::opts_sizing()}}
 }

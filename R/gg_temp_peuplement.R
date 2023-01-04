@@ -6,7 +6,8 @@
 #'     et "annee" ainsi qu'une variable permettant d'identifier la station ou le point de
 #'     prélèvement. Il doit également contenir une variable 'pro_libelle' correspondant aux protocoles (à ajouter avec la \code{aspe::mef_ajouter_type_protocole()}).
 #' @param interactif Valeur logique: statique (FALSE) produit avec `ggplot2` ou interactif (TRUE) produit avec `ggiraph`.
-#' @param largeur,hauteur dimensions des graphiques interactifs
+#' @param largeur,hauteur Numériques. Dimensions des graphiques interactifs.
+#' @param var_especes Variable indiquant l'espèce ou le code espèce.
 #' @param ... arguments passés à la fonction \code{ggiraph::opts_sizing()}
 #'
 #' @return Retourne une liste de graphiques pour les stations ou points, graphiques statiques `ggplot2` ou interactifs `ggiraph`.
@@ -56,12 +57,16 @@
 #' }
 
 gg_temp_peuplement <- function(df,
-                               interactif = FALSE,
-                               largeur = 6,
-                               hauteur = 5,
-                               ...)
+                                interactif = FALSE,
+                                largeur = 6,
+                                hauteur = 5,
+                                var_especes = esp_code_alternatif,
+                                ...)
 
 {
+
+  var_especes <- enquo(var_especes)
+
   # mise en forme des étiquettes inspirée de https://stackoverflow.com/a/57086284
   int_breaks <- function(x, n = 5){
     if (length(unique(x)) > 1) {
@@ -86,11 +91,11 @@ gg_temp_peuplement <- function(df,
       dplyr::rowwise() %>%
       dplyr::mutate(
         hover = shiny::HTML(
-          paste0("<b>", annee, "</b><br>",esp_code_alternatif,": ", effectif, ' ind.')
+          paste0("<b>", annee, "</b><br>",!!var_especes,": ", effectif, ' ind.')
         )
       ) %>%
       dplyr::ungroup() %>%
-      dplyr::mutate(esp_code_alternatif = forcats::fct_rev(esp_code_alternatif))
+      dplyr::mutate(!!var_especes := forcats::fct_rev(!!var_especes))
 
     libelle <-
       df_pop %>%
@@ -101,7 +106,7 @@ gg_temp_peuplement <- function(df,
 
     df_protocole <-
       df_pop %>%
-      dplyr::select(annee,pop_libelle,pro_libelle) %>%
+      dplyr::select(annee, pop_libelle, pro_libelle) %>%
       unique() %>%
       dplyr::mutate(Protocole = stringr::str_wrap(pro_libelle,15)) %>%
       dplyr::mutate(hover2 = paste0("<b>", annee, "</b><br>",pro_libelle))
@@ -109,11 +114,11 @@ gg_temp_peuplement <- function(df,
 
     gg_peuplement <-
       ggplot2::ggplot(
-      data = df_pop,
-      aes(x = annee, y = esp_code_alternatif, size = effectif)
-    ) +
+        data = df_pop,
+        aes(x = annee, y = !!var_especes, size = ifelse(effectif == 0, NA, effectif))
+      ) +
       ggiraph::geom_point_interactive(
-        ggplot2::aes(x = annee, y = esp_code_alternatif, tooltip = hover, size = effectif),
+        ggplot2::aes(x = annee, y = !!var_especes, tooltip = hover, size = ifelse(effectif == 0, NA, effectif)),
         pch = 21,
         alpha= 0.7,
         fill = "#1B9E77"
@@ -131,10 +136,10 @@ gg_temp_peuplement <- function(df,
       #   expand = ggplot2::expansion(mult = c(0.04, 0.03))
       # ) +
       ggplot2::scale_size(name = "Effectifs",
-                 range = c(0.5, 7.5),
-                 breaks=c(1, 10, 50, 100, 250, 500, 1000, 2500,5000),
-                 limits = c(df_pop$effectif %>% min(),
-                            df_pop$effectif %>% max())
+                          range = c(0.5, 7.5),
+                          breaks=c(1, 10, 50, 100, 250, 500, 1000, 2500,5000),
+                          limits = c(df_pop$effectif %>% min(),
+                                     df_pop$effectif %>% max())
 
       ) +
       ggplot2::theme(
@@ -151,9 +156,9 @@ gg_temp_peuplement <- function(df,
     esp_ipr <-
       ref_espece %>%
       dplyr::filter(esp_eligible_calcul_ipr == 't') %>%
-      dplyr::pull(esp_code_alternatif)
+      dplyr::pull(!!var_especes)
 
-    manual_font <- ifelse(levels(df_pop$esp_code_alternatif) %in% esp_ipr, yes = "bold.italic", no = "plain")
+    manual_font <- ifelse(levels(df_pop %>% pull(!!var_especes)) %in% esp_ipr, yes = "bold.italic", no = "plain")
 
     gg_peuplement <-
       gg_peuplement +
@@ -194,9 +199,9 @@ gg_temp_peuplement <- function(df,
 
     plot_comb <- ((gg_peuplement +
                      ggplot2::theme(plot.margin = ggplot2::unit(c(0,0,-0.5,0), "pt"),
-                           axis.text.x = element_blank(),
-                           #axis.ticks.x = element_blank(),
-                           axis.title.x = element_blank()) ) / gg_proto) +
+                                    axis.text.x = element_blank(),
+                                    #axis.ticks.x = element_blank(),
+                                    axis.title.x = element_blank()) ) / gg_proto) +
       patchwork::plot_layout(heights = c(5, 0.2))
 
     if (interactive) {
@@ -205,10 +210,10 @@ gg_temp_peuplement <- function(df,
 
       plot_comb <- ((gg_peuplement +
                        ggplot2::theme(legend.position = 'none',
-                             plot.margin = unit(c(0,0,-0.5,0), "pt"),
-                             axis.text.x = ggplot2::element_blank(),
-                             #axis.ticks.x = element_blank(),
-                             axis.title.x = ggplot2::element_blank()) ) / gg_proto) +
+                                      plot.margin = unit(c(0,0,-0.5,0), "pt"),
+                                      axis.text.x = ggplot2::element_blank(),
+                                      #axis.ticks.x = element_blank(),
+                                      axis.title.x = ggplot2::element_blank()) ) / gg_proto) +
         patchwork::plot_layout(heights = c(5, 0.2))
 
       ggiraph::girafe(
@@ -241,3 +246,4 @@ gg_temp_peuplement <- function(df,
   }
 
 }
+

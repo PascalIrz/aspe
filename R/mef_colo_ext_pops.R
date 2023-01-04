@@ -27,12 +27,16 @@ mef_colo_ext_pops <- function(df, id_point = NULL)
   mef_colo_ext_pop_1pt <- function(df, id_point)
 
   {
-    selection <- df %>%
-      filter(pop_id == id_point) %>%
+    selection <- df
+
+    if(!is.null(id_point)) selection <- selection %>% filter(pop_id == id_point)
+
+    selection <- selection %>%
       group_by(annee,
                esp_code_alternatif,
                pop_id,
-               pop_libelle) %>%
+               pop_libelle,
+               pro_libelle) %>%
       summarise(effectif = sum(lop_effectif, na.rm = TRUE)) %>%
       ungroup() %>%
       droplevels()
@@ -55,6 +59,7 @@ mef_colo_ext_pops <- function(df, id_point = NULL)
               annee) %>%
       select(pop_id,
              pop_libelle,
+             pro_libelle,
              annee,
              esp_code_alternatif,
              effectif) %>%
