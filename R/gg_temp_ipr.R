@@ -56,7 +56,7 @@ gg_temp_ipr <- function(df_ipr,
                         station_sel = NA,
                         sup_500m = FALSE,
                         nb_colonnes = 6,
-                        max_axe_y = 40,
+                        max_axe_y = NULL,
                         inv_y = TRUE,
                         annee_facteur = FALSE,
                         titre_graphique = "Evolution de l'IPR",
@@ -94,6 +94,13 @@ gg_temp_ipr <- function(df_ipr,
   {
     df_ipr <- df_ipr %>%
       filter(!!var_id_sta %in% station_sel)
+  }
+
+  if(is.null(max_axe_y))
+  {
+    max_axe_y <- df_ipr %>% #max(df_ipr$ipr)
+      pull(!!var_ipr) %>%
+      max(na.rm = T)
   }
 
   # gestion de l'évaluation non standard en passant par création d'une variable. Pas trouvé mieux.

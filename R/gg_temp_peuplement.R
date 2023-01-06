@@ -1,13 +1,16 @@
 #' Graphique pour représenter l'évolution des effectifs de taxons au cours du temps
 #'
 #' La fonction permet de visualiser la dynamique des taxons dans le peuplement sur une station. Les taxons sont représentés
-#'     par des points, proportionnels aux effectifs capturés. Les protocoles utilisés sont également représentés.
+#'     par des points, proportionnels aux effectifs capturés. Les protocoles utilisés sont également représentés. La fonction
+#'     nécessite que le dataframe "ref_espece" de la base ASPE soit chargé.
 #' @param df Dataframe contenant les données des effectifs capturés pour les taxons.  Il doit contenir des variables "effectif"
 #'     et "annee" ainsi qu'une variable permettant d'identifier la station ou le point de
 #'     prélèvement. Il doit également contenir une variable 'pro_libelle' correspondant aux protocoles (à ajouter avec la \code{aspe::mef_ajouter_type_protocole()}).
 #' @param interactif Valeur logique: statique (FALSE) produit avec `ggplot2` ou interactif (TRUE) produit avec `ggiraph`.
 #' @param largeur,hauteur Numériques. Dimensions des graphiques interactifs.
 #' @param var_especes Variable indiquant l'espèce ou le code espèce.
+#' @param taxons_ipr Caractère. Indique comment distinguer sur le graphique les noms des espèces participant à l'IPR.
+#'     Peut prendre les valeurs "bold", "italic", "bold.italic", ou par défaut "plain".
 #' @param ... arguments passés à la fonction \code{ggiraph::opts_sizing()}
 #'
 #' @return Retourne une liste de graphiques pour les stations ou points, graphiques statiques `ggplot2` ou interactifs `ggiraph`.
@@ -61,6 +64,7 @@ gg_temp_peuplement <- function(df,
                                 largeur = 6,
                                 hauteur = 5,
                                 var_especes = esp_code_alternatif,
+                                taxons_ipr = "plain",
                                 ...)
 
 {
@@ -158,7 +162,7 @@ gg_temp_peuplement <- function(df,
       dplyr::filter(esp_eligible_calcul_ipr == 't') %>%
       dplyr::pull(!!var_especes)
 
-    manual_font <- ifelse(levels(df_pop %>% pull(!!var_especes)) %in% esp_ipr, yes = "bold.italic", no = "plain")
+    manual_font <- ifelse(levels(df_pop %>% pull(!!var_especes)) %in% esp_ipr, yes = taxons_ipr, no = "plain")
 
     gg_peuplement <-
       gg_peuplement +
