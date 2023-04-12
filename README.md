@@ -133,8 +133,4 @@ To display a comprehensive list of variables with their meaning (all in French s
     data("dictionnaire")
     View(dictionnaire)
     
-A faire / ToDo
----------------
-
-- La fonction lister_dfs() est déclarée deux fois => la sortir de export_tables_csv() et expl_trouver_table().
 
