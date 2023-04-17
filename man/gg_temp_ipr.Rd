@@ -11,7 +11,7 @@ gg_temp_ipr(
   station_sel = NA,
   sup_500m = FALSE,
   nb_colonnes = 6,
-  max_axe_y = 40,
+  max_axe_y = NULL,
   inv_y = TRUE,
   annee_facteur = FALSE,
   titre_graphique = "Evolution de l'IPR",

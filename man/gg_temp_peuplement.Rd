@@ -10,6 +10,7 @@ gg_temp_peuplement(
   largeur = 6,
   hauteur = 5,
   var_especes = esp_code_alternatif,
+  taxons_ipr = "plain",
   ...
 )
 }
@@ -24,6 +25,9 @@ prélèvement. Il doit également contenir une variable 'pro_libelle' correspond
 
 \item{var_especes}{Variable indiquant l'espèce ou le code espèce.}
 
+\item{taxons_ipr}{Caractère. Indique comment distinguer sur le graphique les noms des espèces participant à l'IPR.
+Peut prendre les valeurs "bold", "italic", "bold.italic", ou par défaut "plain".}
+
 \item{...}{arguments passés à la fonction \code{ggiraph::opts_sizing()}}
 }
 \value{
@@ -31,7 +35,8 @@ Retourne une liste de graphiques pour les stations ou points, graphiques statiqu
 }
 \description{
 La fonction permet de visualiser la dynamique des taxons dans le peuplement sur une station. Les taxons sont représentés
-    par des points, proportionnels aux effectifs capturés. Les protocoles utilisés sont également représentés.
+    par des points, proportionnels aux effectifs capturés. Les protocoles utilisés sont également représentés. La fonction
+    nécessite que le dataframe "ref_espece" de la base ASPE soit chargé.
 }
 \examples{
 \dontrun{
