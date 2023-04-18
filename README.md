@@ -132,8 +132,5 @@ To display a comprehensive list of variables with their meaning (all in French s
 
     data("dictionnaire")
     View(dictionnaire)
-<<<<<<< HEAD
-=======
-    
->>>>>>> c169461b48627118ca8e7c68c0021ab6fc85d54f
+
 

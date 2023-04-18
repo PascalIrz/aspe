@@ -3,3 +3,6 @@
 ^\.github$
 ^LICENSE\.md$
 ^CITATION\.cff$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$

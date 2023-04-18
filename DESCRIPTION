@@ -17,7 +17,9 @@ Description: The aspe package provides a suite of tools for most of the common
     importation of the tables from a dump of the PostGreSQL database,
     calculation of abundances, densities, size distributions,
     along with graphical output and spatial processing.
-URL: https://github.com/PascalIrz/aspe/, https://doi.org/10.5281/zenodo.7458005
+URL: https://github.com/PascalIrz/aspe/,
+    https://doi.org/10.5281/zenodo.7458005,
+    https://pascalirz.github.io/aspe/
 BugReports: https://github.com/PascalIrz/aspe/issues
 License: GPL (>= 3)
 Encoding: UTF-8
