@@ -4,12 +4,25 @@ Title: An R Package to Analyse and Visualise River Fish Data in France
 Version: 0.2.23
 Date: 2022-12-19
 Authors@R: c(
-    person("Pascal", "Irz", , "pascal.irz@ofb.gouv.fr", role = c("aut", "cre"),
+    person(given = "Pascal",
+           family = "Irz", 
+           email = "pascal.irz@ofb.gouv.fr",
+           role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-2066-8935")),
-    person("Cédric", "Mondy", , "cedric.mondy@ofb.gouv.fr", role = "ctb",
+    person(given = "Cédric",
+           family = "Mondy",
+           email = "cedric.mondy@ofb.gouv.fr",
+           role = "ctb",
            comment = c(ORCID = "0000-0003-2788-0936")),
-    person("Benoît", "Richard", , "benoit.richard@ofb.gouv.fr", role = "ctb"),
-    person("Lilian", "Bonnafoux", , "l.bonnafoux@peche63.com", role = "ctb")
+    person(given = "Benoît",
+           family = "Richard", 
+           email = "benoit.richard@ofb.gouv.fr",
+           role = "ctb",
+           comment = c(ORCID = "0000-0003-4522-027X")),
+    person(given = "Lilian",
+           family = "Bonnafoux",
+           email = "l.bonnafoux@peche63.com",
+           role = "ctb")
   )
 Maintainer: Pascal Irz <pascal.irz@ofb.gouv.fr>
 Description: The aspe package provides a suite of tools for most of the common 
@@ -47,3 +60,4 @@ Imports: dplyr,
 Suggests: 
     knitr,
     rmarkdown
+VignetteBuilder: knitr

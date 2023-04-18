@@ -1,0 +1,189 @@
+---
+title: "1. Importation des tables de la base ASPE"
+author: "Pascal Irz"
+date: "`r format(Sys.time(), 'Le %d %B %Y')`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{aspe_01_importation_tables}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Objectif
+
+Importer les tables de la base ASPE sous la forme de `dataframes` à partir d'un `dump`, sauvegarde de la base qui est réalisée chaque nuit au BRGM qui héberge la base de production.
+
+>Ce tutoriel est utile **uniquement** si vous avez besoin d'une partie de la base qui excède le service offert par l'API sur [Hub'eau](https://hubeau.eaufrance.fr/) et que vous n'avez pas accès aux fichiers `.RData` déjà parsés.
+
+L'API Hub'eau 'poissons' est requêtable au moyen du [package R hubeau](https://inrae.github.io/hubeau/).
+
+# Préparation du projet
+
+De manière générale il est recommandé de travailler sous la forme de "projets R". L'intérêt et la méthode sont développés dans les [supports de formation à R produits par le MTES](https://mtes-mct.github.io/parcours_r_socle_preparation_des_donnees/bien-commencer.html#cr%C3%A9er-un-projet-sous-rstudio-pour-vous-permettre-de-recencer-vos-travaux.).
+
+Pour cet exemple on utilisera une des arborescences classiques :
+
+- Les données brutes sont stockées dans `raw_data`.   
+- Les sorties des traitements, y compris intermédiaires, sont dans `processed_data`.
+- Les scripts sont dans ... `scripts`.   
+
+# Configuration machine
+
+Pour installer le package {aspe} à partir de [Github](https://fr.wikipedia.org/wiki/GitHub) il faut une machine disposant des éléments suivants - préférentiellement à installer dans cet ordre :
+
+1.	Le logiciel R dans une version récente (>4.0) $\Rightarrow$ [télécharger](https://cran.r-project.org/bin/windows/base/R-4.0.3-win.exe)
+2.	L'IDE RStudio à peu près à jour $\Rightarrow$ [télécharger](https://download1.rstudio.org/desktop/windows/RStudio-1.3.1093.exe)
+3.	Les packages {devtools} et {roxygen2} (installables depuis Rstudio)
+4.	Pour les machines en Windows, Rtools 40 64 bits $\Rightarrow$ [télécharger](https://cran.r-project.org/bin/windows/Rtools/)
+
+# Chargement du package `{aspe}`
+
+Une fois la machine configurée, le package est téléchargeable depuis Github :
+
+```{r, eval = FALSE}
+devtools::install_github("pascalirz/aspe")
+```
+
+Eventuellement cette commande vous retournera un message demandant de mettre à jour des `packages`. Acceptez au moins les mises à jour depuis le [CRAN](https://cran.r-project.org/).
+
+# Activation du package `{aspe}`
+
+... et des autres qui sont nécessaires pour exécuter les scripts.
+
+```{r setup, message = FALSE, warning = FALSE}
+library(aspe)
+library(tidyverse)
+```
+
+# Importation de la base
+
+## Cas 1 : votre machine a 16Go de RAM ou plus
+
+On importe la totalité de la base en une fois, ce qui est bien pratique.
+
+```{r, eval = FALSE}
+# chemin vers le dump
+file <- "C:/Users/pascal.irz/Documents/projets/ASPE/raw_data/aspe_dump_test_pour_datapaper.sql"
+
+# importation
+imp_importer_dump_sql(fichier_dump = file)
+```
+
+L'opération prend environ une demi-heure. L'import peut produire des messages d'avertissement (`Warning`) de ce type, qui n'indiquent pas de problème :
+
+![](img/message_erreur_import.png)
+
+Quand l'importation est terminée, une centaine de `dataframe` apparaissent dans l'onglet "Environnement" de RStudio.
+
+![](../assets/dataframes.png)
+
+Pour éviter d'avoir à répéter cet import, on peut en sauvegarder le résultat au format `.RData` de façon à y accéder plus rapidement par la suite. Comme la table `mesure_individuelle` pèse à elle seule la moitié du volume de la base, on choisit de la conserver dans un fichier à part.
+
+On peut utiliser la fonction `export_tables_rdata()` qui nomme les deux fichiers en fonction des dates et heures systèmes (pour éviter d'écraser malencontreusement d'anciens fichiers) et les sauvegarde par défaut dans un sous-répertoire `/processed_data` du répertoire de travail. Si celui-ci n'est pas pré-existant, il est créé.
+
+```{r, eval = FALSE, message = FALSE, warning = FALSE}
+export_tables_rdata()
+```
+
+>NB : La fonction `importer_dump_sql()` accepte en entrée aussi bien le fichier compressé que décompressé.
+
+## Cas 2 : votre machine a moins de 16Go de RAM
+
+La mémoire ne permettra pas de stocker simultanément le gros fichier texte du `dump` et les `dataframes`. Il faudra procéder en deux étapes. Une des tables, nommée `mesure_individuelle`, comprend à elle seule plus de lignes que la totalité des autres qui sont plus d'une centaine. Il s'agit de la traiter à part.
+
+La première étape est de scinder le `dump` en deux parties qui seront stockées en format `.RData` :
+
+- Le premier fichier contient les lignes du *dump* correspondant à la table `mesure_individuelle`.
+- Le second contient le reste des lignes.
+
+Ce découpage prend 5-10'.
+
+```{r, eval = FALSE}
+imp_scinder_dump(fichier_dump = "raw_data/aspe_20210908.sql.gz")
+```
+
+>NB : Cette opération peut être bloquée si le chemin d'accès est trop long, ce qui retourne un message d'erreur commençant par :
+
+`Error in gzfile(file, "wb") : argument 'description' incorrect`
+`De plus : Warning message ....`
+
+Dans ce cas, déplacez le `dump` pour raccourcir le chemin d'accès.
+
+Si ça a bien fonctionné on trouve dans le répertoire de destination (par défaut celui où se trouve le fichier du `dump`) les deux fichiers `.RData`.
+
+>En cas de message d'erreur comprenant `Error in gzfile(file, "wb") : ...'`, la cause la plus probable est un mauvais chemin vers le fichier `dump`, ce qui ne devrait pas arriver avec l'organisation suggérée du projet.
+
+
+Ensuite, on charge le fichier `.RData` souhaité.
+
+```{r, eval = FALSE}
+load(file = 'raw_data/lignes_autres_tables.RData')
+```
+
+Ce qui fait apparaître dans l'environnement un objet `lignes_autres_tables`.
+
+Si l'on connaît les noms des tables dont on aura besoin, on les charge directement au moyen de la fonction `imp_tables_a_partir_des_lignes()` en renseignant l'argument `tables_a_extraire`.
+
+```{r, eval = FALSE}
+imp_tables_a_partir_des_lignes(lignes_dump = lignes_autres_tables,
+                               tables_a_extraire = c("station", "facies"))
+```
+
+Si on ne les connaît pas, on peut les afficher avec la fonction `imp_extraire_noms_tables()`
+
+```{r, eval = FALSE}
+imp_extraire_noms_tables(lignes_dump = lignes_autres_tables)
+```
+
+
+... ou bien tout importer (environ 5') pour effectuer le tri ultérieurement.
+
+```{r, eval = FALSE}
+imp_tables_a_partir_des_lignes(lignes_dump = lignes_autres_tables)
+```
+
+L'import peut produire des messages d'avertissement (*Warning*) qui sont informatifs.
+
+Comme cet import est un peu long, il y a intérêt à en sauvegarder le résultat, par exemple dans le répertoire `processed_data`.
+
+Cette sauvegarde est réalisée au format `.RData` par la fonction `exp_tables_rdata()`. Comme la table `mesure_individuelle` pèse à elle seule plus de la moitié de la base, elle est sauvegardée à part, dans `mei_aaaa_mm_jj_hh_mm_ss.RData`, tandis que l'ensemble des autres tables sont regroupées  dans`tables_sauf_mei_aaaa_mm_jj_hh_mm_ss.RData`. Par défaut ces fichiers sont placés dans le sous-répertoire `processed_data` du répertoire de travail qui est créé s'il n'est pas pré-existant.
+
+```{r, eval = FALSE}
+aspe::export_tables_rdata()
+```
+
+Si l'on souhaite ne conserver qu'une partie des `dataframe` afin d'y voir plus clair, on peut effectuer une sélection avec la fonction `keep()` du package `{gdata}`, à installer si besoin.
+
+```{r, eval = FALSE}
+gdata::keep(operation,
+            operation_ipr,
+            station,
+            point_prelevement,
+            sure = TRUE)
+```
+
+Pour ne sauvegarder que ces tables :
+
+```{r, eval = FALSE}
+save(operation,
+     operation_ipr,
+     station,
+     point_prelevement,
+     file = "processed_data/tables_selectionnees.RData")
+```
+
+Si l'on veut sauvegarder toutes les tables en csv :
+
+```{r, eval = FALSE}
+export_tables_csv(repertoire = "processed_data/csv")
+```
+
+
+# Ouf !
