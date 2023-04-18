@@ -57,7 +57,8 @@ Imports: dplyr,
     stringr,
     tibble,
     tidyr
-Suggests: 
+Suggests:
+    gdata,
     knitr,
     rmarkdown
 VignetteBuilder: knitr

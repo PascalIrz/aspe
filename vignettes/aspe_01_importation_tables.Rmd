@@ -59,7 +59,7 @@ Eventuellement cette commande vous retournera un message demandant de mettre à 
 
 ```{r setup, message = FALSE, warning = FALSE}
 library(aspe)
-library(tidyverse)
+library(dplyr)
 ```
 
 # Importation de la base
@@ -81,8 +81,6 @@ L'opération prend environ une demi-heure. L'import peut produire des messages d
 ![](img/message_erreur_import.png)
 
 Quand l'importation est terminée, une centaine de `dataframe` apparaissent dans l'onglet "Environnement" de RStudio.
-
-![](../assets/dataframes.png)
 
 Pour éviter d'avoir à répéter cet import, on peut en sauvegarder le résultat au format `.RData` de façon à y accéder plus rapidement par la suite. Comme la table `mesure_individuelle` pèse à elle seule la moitié du volume de la base, on choisit de la conserver dans un fichier à part.
 
