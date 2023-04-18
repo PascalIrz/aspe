@@ -3,7 +3,8 @@ pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   aspe_01_importation_tables: aspe_01_importation_tables.html
-last_built: 2023-04-18T07:49Z
+  aspe_02_construire_un_jeu_de_donnees: aspe_02_construire_un_jeu_de_donnees.html
+last_built: 2023-04-18T17:05Z
 urls:
   reference: https://pascalirz.github.io/aspe/reference
   article: https://pascalirz.github.io/aspe/articles
