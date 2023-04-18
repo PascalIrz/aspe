@@ -1,10 +1,10 @@
 ---
 title: "1. Importation des tables de la base ASPE"
 author: "Pascal Irz"
-date: "`r format(Sys.time(), 'Le %d %B %Y')`"
+date: "`r format(Sys.time(), '%d/%m/%Y')`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{aspe_01_importation_tables}
+  %\VignetteIndexEntry{1. Importation des tables de la base ASPE}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

@@ -1,5 +1,7 @@
 ---
 title: "2. Construire un jeu de données"
+author: "Pascal Irz"
+date: "`r format(Sys.time(), '%d/%m/%Y')`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{2. Construire un jeu de données}
@@ -12,7 +14,8 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   message = FALSE,
-  warning = FALSE
+  warning = FALSE,
+  eval = FALSE
 )
 ```
 
@@ -25,7 +28,7 @@ Il s'agit de construire, à partir des tables de la base Aspe, un jeu de donnée
 ## Activation des packages et chargement des données
 
 
-```{r setup}
+```{r setup, eval = TRUE}
 library(aspe)
 library(dplyr)
 library(stringr)
@@ -37,7 +40,7 @@ Les données ont été préalablement extraites d'un 'dump' de la base Aspe ([cf
 load(file = "../../../raw_data/rdata/tables_sauf_mei_2023_04_07_09_39_32.RData")
 ```
 
-```{r, echo = FALSE}
+```{r, eval = FALSE, echo = FALSE}
 rdata_tables <-
   misc_nom_dernier_fichier(repertoire = "../../../raw_data/rdata",
                            pattern = "^tables")
@@ -49,20 +52,11 @@ load(file = rdata_tables)
 
 On va ici créer un `dataframe` "passerelle" qui met en correspondance les identifiants des tables principales de la base. La description des tables est fournie dans l'article cité ci-dessus.
 
-```{r}
+```{r, eval = FALSE}
 passerelle <- aspe::mef_creer_passerelle()
 ```
 
-Les premières lignes de cette table :
-
-```{r, echo = FALSE}
-passerelle %>% 
-  head() %>% 
-  mutate_all(as.character) %>% 
-  flextable::flextable()
-```
-
-Ces identifiants se réfèrent aux lignes des tables suivantes :
+Cette table contient, comme variables, les identifiants se réfèrant aux lignes des tables suivantes :
 
 - `sta_id` : station (optionnel)
 - `pop_id` : point de prélèvement (obligatoire)
@@ -78,21 +72,12 @@ La base Aspe est nationale, mais pour la plupart des besoins il est préférable
 
 ## Sélectionner des départements
 
+Cette sélection est simple car la base contient l'information du département associé à chaque point de prélèvement.
 
-
-```{r}
+```{r, eval = FALSE}
 aspe_sel <- passerelle %>% 
   mef_ajouter_dept() %>% 
   filter(dept %in% c('22', '29', '35', '56'))
-```
-
-Quelques lignes tirées au hasard :
-
-```{r, echo = FALSE}
-aspe_sel %>% 
-  sample_n(6) %>% 
-  mutate_all(as.character) %>% 
-  flextable::flextable()
 ```
 
 ## Sélection géographique
@@ -104,11 +89,13 @@ Pour sélectionner les points de prélèvement qui se trouvent dans un périmèt
 - extraire les identifiants des points qui sont à l'intérieur du périmètre
 - filtrer la passerelle pour ne conserver que ces points
 
+A noter, pour une sélection sur un périmètre administratif autre que le département (communes, EPCI, régions), le package R [`COGiter`](https://github.com/MaelTheuliere/COGiter) est particulièrement pratique.
+
 ### Spatialisation des points
 
 Comme il existe dans la base plusieurs systèmes de coordonnées (CRS), on doit les homogénéiser et s'assurer que les points et le polygone ont le même CRS.
 
-Ajout du code EPSG aux points (table `point_prelevement`).
+Ajout du code CRS (EPSG) aux points (table `point_prelevement`) par jointure avec la table `ref_type_projection` qui fait la correspondence entre les codes internes de la base et les numéros EPSG des CRS. 
 
 ```{r, echo = TRUE, warning = FALSE, message = FALSE}
 pops <- point_prelevement %>%
@@ -116,7 +103,7 @@ pops <- point_prelevement %>%
             by = c("pop_typ_id" = "typ_id"))
 ```
 
-Coordonnées des points en Lambert 93.
+Coordonnées des points en Lambert 93. Le `dataframe coords` contient uniquement les deux colonnes `X` et `Y` pour la longitude et la latitude.
 
 ```{r, echo = TRUE, warning = FALSE, message = FALSE}
 # coordonnées
@@ -131,7 +118,7 @@ coords <- aspe::geo_convertir_coords_df(
 
 Création d'un objet géographique des points, de classe `sf` :
 
-- on juxtapose au `dataframe pops` les colonnes de coordonnées qui sont dans le `dataframe` nommé `coords`
+- on juxtapose au `dataframe pops` les colonnes de coordonnées qui sont dans le `dataframe coords`
 - puis le dataframe fusionné est transformé en objet géographique avec la fonction `st_as_sf()`.
 
 ```{r, echo = TRUE, warning = FALSE, message = FALSE}
@@ -163,9 +150,9 @@ On opère une sélection géographique en ne conservant que les points pour lesq
 
 ```{r, eval = FALSE}
 pops_geo_bv <- pops_geo %>%
-  sf::st_join(mon_bv) %>%
-  filter(!is.na(ID)) %>% 
-  select(names(pops_geo))
+  sf::st_join(mon_bv) %>%=
+  filter(!is.na(ID)) %>% # suppression des lignes où ID est manquant
+  select(names(pops_geo)) # sélection des mêmes colonnes que celles de pops_geo
 ```
 
 On collecte un vecteur contenant les identifiants `pop_id` des points localisés dans le bassin.
@@ -200,7 +187,7 @@ aspe_sel <- passerelle %>%
 
 Le principe est d'utiliser la famille des fonctions du package `aspe` qui sont préfixées par `mef_ajouter`. Celles-ci servent à ajouter des données à une passerelle. 
 
-```{r, echo = FALSE}
+```{r, eval = TRUE, echo = FALSE}
 ls("package:aspe") %>% stringr::str_subset(pattern = "mef_ajouter")
 ```
 
