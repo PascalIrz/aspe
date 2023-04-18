@@ -1,8 +1,9 @@
 pandoc: 2.19.2
 pkgdown: 2.0.7
 pkgdown_sha: ~
-articles: {}
-last_built: 2023-04-18T05:31Z
+articles:
+  aspe_01_importation_tables: aspe_01_importation_tables.html
+last_built: 2023-04-18T07:49Z
 urls:
   reference: https://pascalirz.github.io/aspe/reference
   article: https://pascalirz.github.io/aspe/articles
