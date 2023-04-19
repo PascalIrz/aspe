@@ -8,7 +8,7 @@ message: 'To cite package "aspe" in publications use:'
 type: software
 license: GPL-3.0-or-later
 title: 'aspe: Import, Process and Visualise the French River Fish Database ASPE'
-version: 0.2.21
+version: 0.3.0
 abstract: The aspe package provides a suite of tools for most of the common processing
   of the ASPE database <https://doi.org/10.1051/kmae/2022021>, including importation
   of the tables from a dump of the PostGreSQL database, calculation of abundances,

@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
   comment = "#>",
   message = FALSE,
   warning = FALSE,
-  eval = FALSE
+  eval = TRUE
 )
 ```
 
@@ -28,7 +28,7 @@ Il s'agit de construire, à partir des tables de la base Aspe, un jeu de donnée
 ## Activation des packages et chargement des données
 
 
-```{r setup, eval = TRUE}
+```{r setup}
 library(aspe)
 library(dplyr)
 library(stringr)
@@ -40,19 +40,15 @@ Les données ont été préalablement extraites d'un 'dump' de la base Aspe ([cf
 load(file = "../../../raw_data/rdata/tables_sauf_mei_2023_04_07_09_39_32.RData")
 ```
 
-```{r, eval = FALSE, echo = FALSE}
-rdata_tables <-
-  misc_nom_dernier_fichier(repertoire = "../../../raw_data/rdata",
-                           pattern = "^tables")
-
-load(file = rdata_tables)
+```{r, echo = FALSE}
+load(system.file("vignettes/aspe_subset.RData", package = "aspe"))
 ```
 
 ## Mise en correspondance des identifiants des tables principales
 
 On va ici créer un `dataframe` "passerelle" qui met en correspondance les identifiants des tables principales de la base. La description des tables est fournie dans l'article cité ci-dessus.
 
-```{r, eval = FALSE}
+```{r, eval = TRUE}
 passerelle <- aspe::mef_creer_passerelle()
 ```
 
@@ -64,7 +60,15 @@ Cette table contient, comme variables, les identifiants se réfèrant aux lignes
 - `pre_id` : prélèvement élémentaire (obligatoire)
 - `lop_id` : lot poisson (obligatoire)
 
-Ces identifiants permettent d'opérer des jointures avec les tables de la base qui contiennent les données. 
+Ces identifiants permettent d'opérer des jointures avec les tables de la base qui contiennent les données. Une ligne correspond à un lot de poisson, qui est rattaché, de proche en proche, à son prélèvement élémentaire, lui-même à son opération, elle-même à son point de prélèvelement et lui-même à sa station. Un échantillon :
+
+```{r, echo = FALSE}
+passerelle %>% 
+  mutate_all(as.character) %>% 
+  sample_n(6) %>% 
+  flextable::flextable()
+```
+
 
 # Sélection d'un périmètre géographique
 
@@ -74,10 +78,10 @@ La base Aspe est nationale, mais pour la plupart des besoins il est préférable
 
 Cette sélection est simple car la base contient l'information du département associé à chaque point de prélèvement.
 
-```{r, eval = FALSE}
-aspe_sel <- passerelle %>% 
+```{r}
+aspe_22 <- passerelle %>% 
   mef_ajouter_dept() %>% 
-  filter(dept %in% c('22', '29', '35', '56'))
+  filter(dept == "22")
 ```
 
 ## Sélection géographique
@@ -129,11 +133,16 @@ pops_geo <- pops %>%
                crs = 2154)
 ```
 
-Le résultat peut être visualisé par exemple en exécutant `mapview::mapview(pops_geo)` (non exécuté ici).
+Le résultat peut être visualisé par exemple avec `mapview::mapview(pops_geo)`.
+
+```{r}
+mapview::mapview(pops_geo)
+```
+
 
 ### Chargement des contours du bassin
 
-Avec les fonctions du package `sf`, on charge le shapefile, puis si besoin on le reprojette.
+Avec les fonctions du package `sf`, on charge le shapefile, puis si besoin on le reprojette s'il n'a pas le même CRS que les points.
 
 ```{r, eval = FALSE, echo = TRUE}
 bv_fichier <- "../raw_data/bassin.shp"
@@ -142,15 +151,13 @@ mon_bv <- sf::read_sf(dsn = bv_fichier) %>%
   sf::st_transform(crs = 2154)
 ```
 
-Le résultat peut être visualisé par exemple en exécutant `mapview::mapview(mon_bv)` (non exécuté ici).
-
 ### Croisement géographique
 
 On opère une sélection géographique en ne conservant que les points pour lesquels la jointure géographique a permis d'obtenir un attribut du bassin (ici la variable `ID`).
 
 ```{r, eval = FALSE}
 pops_geo_bv <- pops_geo %>%
-  sf::st_join(mon_bv) %>%=
+  sf::st_join(mon_bv) %>%
   filter(!is.na(ID)) %>% # suppression des lignes où ID est manquant
   select(names(pops_geo)) # sélection des mêmes colonnes que celles de pops_geo
 ```
@@ -177,27 +184,55 @@ aspe_sel <- passerelle %>%
 
 Cette sélection est beaucoup plus simple qu'en spatial. Il suffit d'ajouter la date de l'opération puis de filtrer dessus. Par exemple :
 
-```{r, eval = FALSE}
+```{r}
 aspe_sel <- passerelle %>% 
   mef_ajouter_ope_date() %>% 
-  filter(annee > 2006)
+  filter(annee > 2008)
 ```
 
 ## Ajout des données (et re-sélection)
 
 Le principe est d'utiliser la famille des fonctions du package `aspe` qui sont préfixées par `mef_ajouter`. Celles-ci servent à ajouter des données à une passerelle. 
 
-```{r, eval = TRUE, echo = FALSE}
+```{r, echo = FALSE}
 ls("package:aspe") %>% stringr::str_subset(pattern = "mef_ajouter")
 ```
 
-Par exemple si l'on veut ajouter les notes IPR et les lots de poissons, mais ne retenir que les pêches réalisées dans le cadre du Réseau Hydrobiologique et Piscicole :
+Exemple si l'on veut étudier les notes IPR et les métriques, pour les pêches réalisées dans le cadre du Réseau Hydrobiologique et Piscicole. Comme les notes IPR sont attribuée à chaque pêche, elles sont identiques pour chaque lot de poissons de la même pêche donc on peut dédoublonner les lignes afin de n'avoir qu'une ligne par opération.
 
-```{r, eval = FALSE}
-aspe_ipr <- passerelle %>% 
+```{r}
+aspe_ipr <- aspe_sel %>% 
+  select(-pre_id, -lop_id) %>% 
+  distinct() %>% 
   mef_ajouter_objectif() %>% 
   filter(obj_libelle == "RHP – Réseau Hydrobiologique Piscicole") %>% 
   mef_ajouter_ipr() %>% 
   mef_ajouter_metriques()
 ```
 
+On rajoute les libellés des points de prélèvement et sélectionne uniquement les variables d'intérêt.
+
+```{r}
+aspe_ipr <- aspe_ipr %>%
+  mef_ajouter_libelle() %>%
+  select(sta_id:ope_id,
+         pop_libelle,
+         annee,
+         ope_date,
+         ipr,
+         cli_libelle,
+         ner:dti)
+```
+
+Visualisation.
+
+```{r, echo = FALSE}
+aspe_ipr %>% 
+  mutate_at(vars(sta_id:annee), as.character) %>% 
+  mutate_at(vars(ipr, ner:dti), round, digits = 2) %>% 
+  mutate(ope_date = format(ope_date, format = "%d/%m/%Y")) %>% 
+  head() %>% 
+  flextable::flextable()
+```
+
+Dans la même logique, il est possible d'enrichir le jeu de données avec les informations contenues dans les différentes tables au moyen des fonctions `mef_ajouter_xxx()`.
