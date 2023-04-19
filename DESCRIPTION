@@ -61,6 +61,7 @@ Suggests:
     flextable,
     gdata,
     knitr,
+    mapview,
     rmarkdown
 VignetteBuilder: knitr
 Depends: 
