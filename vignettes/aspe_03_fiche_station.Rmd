@@ -131,6 +131,8 @@ metriques_station <- aspe %>%
                values_to = "valeur")
 ```
 
+### Graphiques
+
 Avec la fonction `gg_temp_metriq()` il est possible de représenter sur un même graphique les 7 métriques constitutives de l'IPR et de bien visualiser celles qui sont déclassantes.
 
 ```{r, fig.height = 5, fig.width = 7}
@@ -141,6 +143,7 @@ gg_temp_metriq(
   var_valeur_metrique = valeur
 )
 ```
+
 On peut préférer la fonction `gg_temp_metriq_grille()` pour mieux visualiser les tendances par métrique.
 
 ```{r, fig.width = 7}
@@ -151,3 +154,17 @@ gg_temp_metriq_grille(
   var_valeur_metrique = valeur
 )
 ```
+
+# Variables environnementales
+
+```{r}
+env_station <- aspe %>%
+  select(pop_id,
+         ope_id,
+         annee,
+         pop_libelle) %>% 
+  distinct() %>% 
+  mef_ajouter_ope_env() %>% 
+  mef_ajouter_ope_desc_peche()
+```
+
