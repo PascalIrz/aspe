@@ -135,7 +135,7 @@ pops_geo <- pops %>%
 
 Le résultat peut être visualisé par exemple avec `mapview::mapview(pops_geo)`.
 
-```{r, fig.width = 7, fig.height = 6}
+```{r, eval = FALSE, fig.width = 7, fig.height = 6}
 mapview::mapview(pops_geo)
 ```
 
