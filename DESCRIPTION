@@ -62,7 +62,8 @@ Suggests:
     gdata,
     knitr,
     mapview,
-    rmarkdown
+    rmarkdown,
+    terra
 VignetteBuilder: knitr
 Depends: 
     R (>= 2.10)
