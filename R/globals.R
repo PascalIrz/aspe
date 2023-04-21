@@ -247,7 +247,14 @@ utils::globalVariables(
     'valeur',
     'Protocole',
     'hover2',
-    'esp_eligible_calcul_ipr'
+    'esp_eligible_calcul_ipr',
+    'odp_conductivite',
+    'odp_duree_peche',
+    'odp_largeur_lame_eau',
+    'odp_longueur',
+    'odp_nombre_epuisettes',
+    'odp_temperature_instantanee',
+    'odp_tension'
 
   )
 )
