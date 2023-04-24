@@ -1,8 +1,8 @@
 Package: aspe
 Type: Package
 Title: An R Package to Analyse and Visualise River Fish Data in France
-Version: 0.3.1
-Date: 2023-04-21
+Version: 0.3.3
+Date: 2023-04-24
 Authors@R: c(
     person(given = "Pascal",
            family = "Irz", 
@@ -26,7 +26,7 @@ Authors@R: c(
   )
 Maintainer: Pascal Irz <pascal.irz@ofb.gouv.fr>
 Description: The aspe package provides a suite of tools for most of the common 
-    processing of the ASPE database <https://doi.org/10.1051/kmae/2022021>, including
+    processing of the ASPE database <DOI:10.1051/kmae/2022021>, including
     importation of the tables from a dump of the PostGreSQL database,
     calculation of abundances, densities, size distributions,
     along with graphical output and spatial processing.
