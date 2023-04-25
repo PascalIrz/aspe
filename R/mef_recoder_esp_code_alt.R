@@ -5,7 +5,7 @@
 #'     Dans le premier cas, les codes taxons de sous-espèces ou écotype sont recodés à l'espèce.
 #'     Dans le second cas, les codes taxons sont recodés selon la taxonomie de l'IPR, ici
 #'     conformément au script 'IPR_v1.0.3_calc_consult.R'
-#'     téléchargé depuis [https://seee.eaufrance.fr/](https://seee.eaufrance.fr/).
+#'     téléchargé depuis [https://seee.eaufrance.fr/](https://seee.eaufrance.fr/) le 24/04/2023.
 #'
 #' @return Le dataframe mis à jour.
 #' @export
@@ -18,14 +18,14 @@
 #' \dontrun{
 #' # Calcul des captures par espèces pour chaque opération de pêche
 
-# chargement des packages
+#' # chargement des packages
 #'library(dplyr)
 #'library(aspe)
 #'
-# chargement des données (à adapter)
+#' # chargement des données (à adapter)
 #'load(file = "raw_data/tables_sauf_mei_2023_04_07_09_39_32.RData")
 #'
-# création du tableau
+#' # création du tableau
 #'captures <- mef_creer_passerelle() %>%
 #'  mef_ajouter_lots() %>%
 #'  mef_ajouter_esp() %>%
