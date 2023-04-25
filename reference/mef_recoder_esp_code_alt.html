@@ -70,7 +70,7 @@
 Dans le premier cas, les codes taxons de sous-espèces ou écotype sont recodés à l'espèce.
 Dans le second cas, les codes taxons sont recodés selon la taxonomie de l'IPR, ici
 conformément au script 'IPR_v1.0.3_calc_consult.R'
-téléchargé depuis [https://seee.eaufrance.fr/](https://seee.eaufrance.fr/).</p></dd>
+téléchargé depuis [https://seee.eaufrance.fr/](https://seee.eaufrance.fr/) le 24/04/2023.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -84,11 +84,14 @@ téléchargé depuis [https://seee.eaufrance.fr/](https://seee.eaufrance.fr/).</
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span><span class="co"># Calcul des captures par espèces pour chaque opération de pêche</span></span></span>
+<span class="r-in"><span><span class="co"># chargement des packages</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/PascalIrz/aspe/" class="external-link">aspe</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># chargement des données (à adapter)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html" class="external-link">load</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"raw_data/tables_sauf_mei_2023_04_07_09_39_32.RData"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># création du tableau</span></span></span>
 <span class="r-in"><span><span class="va">captures</span> <span class="op">&lt;-</span> <span class="fu"><a href="mef_creer_passerelle.html">mef_creer_passerelle</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
 <span class="r-in"><span> <span class="fu"><a href="mef_ajouter_lots.html">mef_ajouter_lots</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
 <span class="r-in"><span> <span class="fu"><a href="mef_ajouter_esp.html">mef_ajouter_esp</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
