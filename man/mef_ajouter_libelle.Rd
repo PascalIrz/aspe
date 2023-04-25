@@ -2,7 +2,7 @@
 % Please edit documentation in R/mef_ajouter_libelle.R
 \name{mef_ajouter_libelle}
 \alias{mef_ajouter_libelle}
-\title{Rajouter le libellé du point}
+\title{Rajouter le libellé du site}
 \usage{
 mef_ajouter_libelle(passerelle)
 }
@@ -13,10 +13,9 @@ mef_ajouter_libelle(passerelle)
 La passerelle à laquelle ont été ajoutés les libellés des points de prélèvement.
 }
 \description{
-Rajoute à un dataframe qui peut être une passerelle le libellé du point
-    (ou de la station quand il m'est pas dispobible au point). Si ni l'un
-    ni l'autre ne sont renseignés, c'est le pop_id pour éviter les valeurs
-    manquantes bloquantes pour certains traitements.
+`r lifecycle::badge("deprecated")`
+
+Fonction remplacée par "mef_ajouter_libelle_site()".
 }
 \examples{
 \dontrun{

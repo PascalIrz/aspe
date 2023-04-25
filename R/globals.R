@@ -254,7 +254,12 @@ utils::globalVariables(
     'odp_longueur',
     'odp_nombre_epuisettes',
     'odp_temperature_instantanee',
-    'odp_tension'
+    'odp_tension',
+    'ppi_esp_id',
+    'ppi_opi_ope_id',
+    'ppi_param_effectif',
+    'ppi_valeur_probabilite',
+    'probabilite_presence_ipr'
 
   )
 )

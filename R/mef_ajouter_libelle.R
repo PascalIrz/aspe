@@ -1,9 +1,9 @@
-#' Rajouter le libellé du point
+#' Rajouter le libellé du site
 #'
-#' Rajoute à un dataframe qui peut être une passerelle le libellé du point
-#'     (ou de la station quand il m'est pas dispobible au point). Si ni l'un
-#'     ni l'autre ne sont renseignés, c'est le pop_id pour éviter les valeurs
-#'     manquantes bloquantes pour certains traitements.
+#' @description
+#' `r lifecycle::badge("deprecated")`
+#'
+#' Fonction remplacée par "mef_ajouter_libelle_site()".
 #'
 #' @param passerelle Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
 #'
