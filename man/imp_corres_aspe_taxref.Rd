@@ -12,14 +12,14 @@ imp_corres_aspe_taxref(
 \arguments{
 \item{url}{Caractère. URL du jeu de données à télécharger.
 Par défaut "https://api.sandre.eaufrance.fr/referentiels/v1/apt.csv?compress=true&
-filter=<Filter><IS><Field>CodeAlternatifAp/OrgCdAlternatif</Field><Value>ASPE</Value></IS></Filter>"}
+filter=\if{html}{\out{<Filter>}}\if{html}{\out{<IS>}}\if{html}{\out{<Field>}}CodeAlternatifAp/OrgCdAlternatif\if{html}{\out{</Field>}}\if{html}{\out{<Value>}}ASPE\if{html}{\out{</Value>}}\if{html}{\out{</IS>}}\if{html}{\out{</Filter>}}"}
 }
 \value{
 Dataframe. Table de correspondence.
 }
 \description{
 La donnée ne provient pas de la base ASPE, mais de l'API SANDRE. Les données importées ont été
-     filtrées afin de ne pas récupérer l'intégralité du référentiel "Appellation de taxons". Seuls
+filtrées afin de ne pas récupérer l'intégralité du référentiel "Appellation de taxons". Seuls
 }
 \examples{
 \dontrun{

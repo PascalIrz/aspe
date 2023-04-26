@@ -11,7 +11,7 @@ expl_lister_champs(rdata)
 }
 \value{
 Un dataframe avec pour chacun des champs (colonnes) son nom et celui de la table
-    qui le contient
+qui le contient
 }
 \description{
 Lister les champs contenus dans les différents dataframes d'un fichier .RData

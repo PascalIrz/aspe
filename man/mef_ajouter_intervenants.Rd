@@ -3,7 +3,7 @@
 \name{mef_ajouter_intervenants}
 \alias{mef_ajouter_intervenants}
 \title{Ajouter à la passerelle les intervenants sur les opérations
-    Ces intervenants sont l'opérateur, le commanditaire et le valideur}
+Ces intervenants sont l'opérateur, le commanditaire et le valideur}
 \usage{
 mef_ajouter_intervenants(passerelle)
 }
@@ -16,7 +16,7 @@ La passerelle complétée.
 }
 \description{
 Ajouter à la passerelle les intervenants sur les opérations
-    Ces intervenants sont l'opérateur, le commanditaire et le valideur
+Ces intervenants sont l'opérateur, le commanditaire et le valideur
 }
 \examples{
 \dontrun{

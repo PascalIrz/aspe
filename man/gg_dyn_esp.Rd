@@ -30,7 +30,7 @@ la station/point, ainsi que "mei_taille", "ope_date", "mois" et "annee".}
 
 \item{seuil}{Numérique entre 0 et 1. Seuil de pourcentile pour exclure des histogrammes les rares
 individus de longueur extrême. Par défaut fixé à 0 donc toutes les observations sont conservées.
-S'il est fixé à 0.01, les 1% des longueurs les plus élevées sont exclus des histogrammes. Ces
+S'il est fixé à 0.01, les 1\% des longueurs les plus élevées sont exclus des histogrammes. Ces
 individus sont en revanche conservés sur les autres graphiques.}
 
 \item{graph_long_mediane}{Booléen. Afficher le diagramme des longueurs médianes ? Par défaut TRUE.}
@@ -41,7 +41,7 @@ individus sont en revanche conservés sur les autres graphiques.}
 }
 \value{
 Le graphique ggplot2 avec les distributions en taille par année et l'évolution
-    temporelle de la longueur médiane et des effectifs capturés.
+temporelle de la longueur médiane et des effectifs capturés.
 }
 \description{
 Représentation pour une espèce sur une station ou un point de prélèvement.

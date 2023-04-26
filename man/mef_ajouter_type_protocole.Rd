@@ -14,7 +14,7 @@ La passerelle complétée.
 }
 \description{
 ex : Indice Abondance Saumon.
-    Nécessite d'avoir chargé les tables "operation" et "ref_protocole".
+Nécessite d'avoir chargé les tables "operation" et "ref_protocole".
 }
 \examples{
 \dontrun{

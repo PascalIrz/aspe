@@ -19,7 +19,7 @@ gg_temp_peuplement(
 et "annee" ainsi qu'une variable permettant d'identifier la station ou le point de
 prélèvement. Il doit également contenir une variable 'pro_libelle' correspondant aux protocoles (à ajouter avec la \code{aspe::mef_ajouter_type_protocole()}).}
 
-\item{interactif}{Valeur logique: statique (FALSE) produit avec `ggplot2` ou interactif (TRUE) produit avec `ggiraph`.}
+\item{interactif}{Valeur logique: statique (FALSE) produit avec \code{ggplot2} ou interactif (TRUE) produit avec \code{ggiraph}.}
 
 \item{largeur, hauteur}{Numériques. Dimensions des graphiques interactifs.}
 
@@ -31,12 +31,12 @@ Peut prendre les valeurs "bold", "italic", "bold.italic", ou par défaut "plain"
 \item{...}{arguments passés à la fonction \code{ggiraph::opts_sizing()}}
 }
 \value{
-Retourne une liste de graphiques pour les stations ou points, graphiques statiques `ggplot2` ou interactifs `ggiraph`.
+Retourne une liste de graphiques pour les stations ou points, graphiques statiques \code{ggplot2} ou interactifs \code{ggiraph}.
 }
 \description{
 La fonction permet de visualiser la dynamique des taxons dans le peuplement sur une station. Les taxons sont représentés
-    par des points, proportionnels aux effectifs capturés. Les protocoles utilisés sont également représentés. La fonction
-    nécessite que le dataframe "ref_espece" de la base ASPE soit chargé.
+par des points, proportionnels aux effectifs capturés. Les protocoles utilisés sont également représentés. La fonction
+nécessite que le dataframe "ref_espece" de la base ASPE soit chargé.
 }
 \examples{
 \dontrun{

@@ -3,7 +3,7 @@
 \name{ipr_grapher_pc_bon}
 \alias{ipr_grapher_pc_bon}
 \title{Produire un graphique du pourcentage de stations en bon état au plan IPR sur un jeu de
-    stations, en fonction de l'année}
+stations, en fonction de l'année}
 \usage{
 ipr_grapher_pc_bon(ipr_df, titre = NA)
 }
@@ -17,7 +17,7 @@ Le graphique issu de ggplot2.
 }
 \description{
 Produire un graphique du pourcentage de stations en bon état au plan IPR sur un jeu de
-    stations, en fonction de l'année
+stations, en fonction de l'année
 }
 \examples{
 \dontrun{

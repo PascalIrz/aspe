@@ -3,7 +3,7 @@
 \name{mef_ajouter_stats_taille}
 \alias{mef_ajouter_stats_taille}
 \title{Ajouter les tailles (longueurs) mini, maxi, médiane et moyenne pour chaque espèce à
-    chaque opération}
+chaque opération}
 \usage{
 mef_ajouter_stats_taille(df)
 }
@@ -15,8 +15,8 @@ La passerelle à laquelle ont été ajoutés les statistiques de tailles.
 }
 \description{
 La fonction fait appel à de nombreux dataframes de la base Aspe qui doivent impérativement avoir
-    été chargés auparavant (mesure_individuelle, lots, operation, etc.). Elle n'opère pas de distinction
-    entre longueur totale et longueur fourche.
+été chargés auparavant (mesure_individuelle, lots, operation, etc.). Elle n'opère pas de distinction
+entre longueur totale et longueur fourche.
 }
 \examples{
 \dontrun{

@@ -3,7 +3,7 @@
 \name{geo_attribuer}
 \alias{geo_attribuer}
 \title{Rajouter à l'objet sf des points de prélèvement les départements et (ou) les bassins auxquels
-    ils appartiennent.}
+ils appartiennent.}
 \usage{
 geo_attribuer(points_geo, poly_sf, crs_sortie = NA)
 }
@@ -18,11 +18,11 @@ points_geo.}
 }
 \value{
 L'bjet sf des points de prélèvement complété des informations sur les départements
-    et les bassins.
+et les bassins.
 }
 \description{
 Rajouter à l'objet sf des points de prélèvement les départements et (ou) les bassins auxquels
-    ils appartiennent.
+ils appartiennent.
 }
 \examples{
 \dontrun{

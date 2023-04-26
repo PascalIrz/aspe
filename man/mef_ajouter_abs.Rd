@@ -18,11 +18,11 @@ sans guillements.}
 }
 \value{
 Le dataframe avec des lignes supplémentaires pour chacune des espèces absentes à chacune
-    des opérations.
+des opérations.
 }
 \description{
 La fonction fait appel au dataframe "operation" de la base Aspe qui doit impérativement avoir
-    été chargé auparavant.
+été chargé auparavant.
 }
 \examples{
 \dontrun{

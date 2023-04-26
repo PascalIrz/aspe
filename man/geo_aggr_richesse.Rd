@@ -24,11 +24,11 @@ Un dataframe avec les richesses par entité hydrographique.
 }
 \description{
 Calculer à partir des données Aspe le nombre d'espèces différentes recensées par
-    Zone HYdro, Sous-secteur Hydro, Secteur Hydro ou Région hydro.
+Zone HYdro, Sous-secteur Hydro, Secteur Hydro ou Région hydro.
 }
 \details{
 Comme la fonction effectue une jointure entre les inventaires et les entités hydrographiques,
-    il faut que les deux objets géographiques aient au moins un nom de champ en commun.
+il faut que les deux objets géographiques aient au moins un nom de champ en commun.
 }
 \examples{
 \dontrun{

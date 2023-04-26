@@ -11,8 +11,8 @@ La date maximale trouvée
 }
 \description{
 Cette fonction extrait l'ensemble des champs contenant la chaîne de caractère "date"
-    dans l'ensemble des dataframes, en prend le max et omettant les dates ultérieures
-    à la date système.
+dans l'ensemble des dataframes, en prend le max et omettant les dates ultérieures
+à la date système.
 }
 \examples{
 \dontrun{

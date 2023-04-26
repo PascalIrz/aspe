@@ -14,8 +14,8 @@ Un vecteur caractères contenant les noms des tables.
 }
 \description{
 Cette fonction est utile pour explorer la base quand on a une idée de ce que son nom
-    peut contenir. Par exemple pour les tables liées au point on peut chercher, parmi les noms
-    des dataframes chargés, ceux contenant la chaîne de caractères "point".
+peut contenir. Par exemple pour les tables liées au point on peut chercher, parmi les noms
+des dataframes chargés, ceux contenant la chaîne de caractères "point".
 }
 \examples{
 \dontrun{

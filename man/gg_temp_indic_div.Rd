@@ -37,8 +37,8 @@ Un graphique \code{ggplot2} ou un dataframe.
 }
 \description{
 Cette fonction peut renvoyer soit:
-  (i) un dataframe avec les métriques calculées (Richesse taxonomique, Effectif total, Indices de Shannon et Equitabilité),
-  (ii) ou à un graphique \code{ggplot2} en treillis avec les différentes métriques, pour une station ou un groupe de stations.
+(i) un dataframe avec les métriques calculées (Richesse taxonomique, Effectif total, Indices de Shannon et Equitabilité),
+(ii) ou à un graphique \code{ggplot2} en treillis avec les différentes métriques, pour une station ou un groupe de stations.
 }
 \examples{
 \dontrun{

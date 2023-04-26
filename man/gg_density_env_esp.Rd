@@ -3,7 +3,7 @@
 \name{gg_density_env_esp}
 \alias{gg_density_env_esp}
 \title{Produire le graphique des distributions comparées des paramètres environnementaux
-    entre les sites de présence et d'absence d'une espèce.}
+entre les sites de présence et d'absence d'une espèce.}
 \usage{
 gg_density_env_esp(
   df,
@@ -42,7 +42,7 @@ Une liste contenant un graphique par paramètre environnemental.
 }
 \description{
 Produire le graphique des distributions comparées des paramètres environnementaux
-    entre les sites de présence et d'absence d'une espèce.
+entre les sites de présence et d'absence d'une espèce.
 }
 \examples{
 \dontrun{

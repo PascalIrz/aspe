@@ -14,7 +14,7 @@ La passerelle complétée.
 }
 \description{
 Par objectif, on entent la contribution à un réseau (DCE, RCS, RRP, etc.), le suivi de poopulations,
-    des études, du suivi de restauration, etc. Les modalités sont précisées dans la table ref_objectif.
+des études, du suivi de restauration, etc. Les modalités sont précisées dans la table ref_objectif.
 }
 \examples{
 \dontrun{

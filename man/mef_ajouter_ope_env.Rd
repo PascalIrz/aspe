@@ -14,7 +14,7 @@ La passerelle à laquelle ont été ajoutés les variables environnementales.
 }
 \description{
 Ces variables sont en premier lieu renseignées depuis la table "operation_ipr", faute de quoi elles
-    sont complétées depuis la table "point_prelevement".
+sont complétées depuis la table "point_prelevement".
 }
 \examples{
 \dontrun{

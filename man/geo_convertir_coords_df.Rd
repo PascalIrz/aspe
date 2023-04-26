@@ -37,7 +37,7 @@ Les observations (lignes du df) sont reprojetées dans le CRS de sortie.
 }
 \details{
 Le dataframe d'entrée doit comprendre des colonnes indiquant longitude, latitude,
-    code EPSG du système de coordonnées, identifiant de l'observation.
+code EPSG du système de coordonnées, identifiant de l'observation.
 }
 \examples{
 \dontrun{

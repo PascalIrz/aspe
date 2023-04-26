@@ -15,11 +15,11 @@ Par défaut, tous les identifiants présents dans le tableau df sont pris en com
 }
 \value{
 Un dataframe pour un ensemble de points de prélèvement qui est mis en forme
-    pour produire des graphiques avec la fonction gg_colo_ext_pop().
+pour produire des graphiques avec la fonction gg_colo_ext_pop().
 }
 \description{
 L'objectif est de visualiser la dynamique du peuplement. Permet d'identifier les taxons
-    qui apparaissent ou disparaissent ainsi que les abondances.
+qui apparaissent ou disparaissent ainsi que les abondances.
 }
 \examples{
 \dontrun{

@@ -12,7 +12,7 @@ des différentes tables.}
 }
 \value{
 Un dataframe indiquant les noms de variables contenant la chaine recherchée
-    ainsi que leur table d'appartenance.
+ainsi que leur table d'appartenance.
 }
 \description{
 Rechercher les variables dont le nom contient un pattern

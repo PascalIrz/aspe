@@ -15,7 +15,7 @@ La passerelle complétée.
 }
 \description{
 Ces utilisateurs sont le créateur et la personne qui a effectué la dernière modification.
-    Ils sont identifiés par leur adresse email.
+Ils sont identifiés par leur adresse email.
 }
 \examples{
 \dontrun{

@@ -3,7 +3,7 @@
 \name{mef_compter_pres_abs_env}
 \alias{mef_compter_pres_abs_env}
 \title{Dénombrer le nb d'opérations avec chaque paramètre environnemental renseigné pour chacune
-    des espèces}
+des espèces}
 \usage{
 mef_compter_pres_abs_env(df)
 }
@@ -15,7 +15,7 @@ Un dataframe de 4 colonnes correspondant à l'espèce, au paramètre et aux nomb
 }
 \description{
 Dénombrer le nb d'opérations avec chaque paramètre environnemental renseigné pour chacune
-    des espèces
+des espèces
 }
 \examples{
 \dontrun{

@@ -11,7 +11,7 @@ mef_ajouter_surf_calc(passerelle)
 }
 \value{
 La passerelle à laquelle a été ajoutée la superficie échantillonnée qui est une valeur calculée
-    stockée dans le champ ope_surf_calculee de la table operation.
+stockée dans le champ ope_surf_calculee de la table operation.
 }
 \description{
 Rajouter la superficie échantillonnée calculée pour chaque opération à la passerelle

@@ -3,7 +3,7 @@
 \name{mef_filtrer_nb_mini_annees}
 \alias{mef_filtrer_nb_mini_annees}
 \title{Filtrer un dataframe pour ne conserver que les objets présents un nombre
-    minimum d'années}
+minimum d'années}
 \usage{
 mef_filtrer_nb_mini_annees(df, nb_mini_annees, var_id)
 }
@@ -22,11 +22,11 @@ plus de nb_mini_annees années de données.}
 }
 \value{
 Dataframe filtré, c'est-à-dire exourgé des objets qui n'ont pas assez d'années
-    de données.
+de données.
 }
 \description{
 Filtrer un dataframe pour ne conserver que les objets présents un nombre
-    minimum d'années
+minimum d'années
 }
 \examples{
 \dontrun{

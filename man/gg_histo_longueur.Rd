@@ -4,7 +4,7 @@
 \alias{gg_histo_longueur}
 \alias{mei_grapher_histo_longueur}
 \title{Produire l'histogramme de distribution des longueurs individuelles pour une opération
-    de pêche}
+de pêche}
 \usage{
 gg_histo_longueur(
   indiv_df,
@@ -33,11 +33,11 @@ abscisses. La valeur par défaut est 30.}
 }
 \value{
 L'histogramme. C'est un objet de classe ggplot qui peut donc être repris par la
-    suite pour en modifier la mise en forme.
+suite pour en modifier la mise en forme.
 }
 \description{
 Produire l'histogramme de distribution des longueurs individuelles pour une opération
-    de pêche
+de pêche
 }
 \examples{
 \dontrun{

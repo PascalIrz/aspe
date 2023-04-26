@@ -13,7 +13,8 @@ mef_ajouter_type_lot(passerelle)
 La passerelle complétée.
 }
 \description{
-NB Les tables "lot_poissons" et "ref_type_lot" doivent avoir été chargées auparavant.
+\if{html}{\out{<div class="sourceCode">}}\preformatted{NB Les tables "lot_poissons" et "ref_type_lot" doivent avoir été chargées auparavant.
+}\if{html}{\out{</div>}}
 }
 \examples{
 \dontrun{

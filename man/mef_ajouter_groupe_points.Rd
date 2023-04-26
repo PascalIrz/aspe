@@ -13,8 +13,9 @@ mef_ajouter_groupe_points(passerelle)
 La passerelle complétée.
 }
 \description{
-Le type de prélèvement doit donc être indiqué dans le data frame (Groupe de points,
-    Passage ou Ambiance). On applique mef_ajouter_groupe_points() après mef_ajouter_type_prelevement().
+\if{html}{\out{<div class="sourceCode">}}\preformatted{Le type de prélèvement doit donc être indiqué dans le data frame (Groupe de points,
+Passage ou Ambiance). On applique mef_ajouter_groupe_points() après mef_ajouter_type_prelevement().
+}\if{html}{\out{</div>}}
 }
 \examples{
 \dontrun{

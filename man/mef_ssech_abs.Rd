@@ -16,9 +16,9 @@ Un dataframe issu de df mais avec moins de lignes.
 }
 \description{
 La comparaison entre les sites de présence et d'absence d'une espèce n'a de sens quer si leur nombre
-    est comparable. IL ne sert à rien d'avoir l'altitude de 100 000 sites où le saumon est absent
-    si l'on n'a que 1000 sites où il est présent. On allège donc le dataframe en tirant aléatoirement
-    autant d'opérations d'absence qu'il y a de présence.
+est comparable. IL ne sert à rien d'avoir l'altitude de 100 000 sites où le saumon est absent
+si l'on n'a que 1000 sites où il est présent. On allège donc le dataframe en tirant aléatoirement
+autant d'opérations d'absence qu'il y a de présence.
 }
 \examples{
 \dontrun{

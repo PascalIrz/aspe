@@ -20,7 +20,7 @@ Le nom du plus récent des fichiers respectant la condition indiquée au pattern
 }
 \description{
 Recherche dans un répertoire, parmi les fichiers dont le nom correspond au pattern,
-    celui qui est le dernier créé.
+celui qui est le dernier créé.
 }
 \examples{
 \dontrun{

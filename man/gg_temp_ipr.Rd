@@ -69,7 +69,7 @@ Un graphique statique ggplot2 ou un graphique interactif girafe.
 }
 \description{
 La fonction utilise le référentiel "classe_ipr" de la base Aspe qui doit donc être
-    chargé auparavant et complété par les codes couleurs avec ipr_completer_classes_couleur().
+chargé auparavant et complété par les codes couleurs avec ipr_completer_classes_couleur().
 }
 \examples{
 \dontrun{

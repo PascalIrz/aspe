@@ -14,8 +14,8 @@ Un dataframe contenant les mêmes données, mais agencé avec une colonne par an
 }
 \description{
 On appelle format large la présentation des données avec une colonne par année.
-    S'il y a plusieurs valeurs de l'IPR pour un même point une année donnée,
-    la valeur retournée sera la moyenne.
+S'il y a plusieurs valeurs de l'IPR pour un même point une année donnée,
+la valeur retournée sera la moyenne.
 }
 \examples{
 \dontrun{
