@@ -1,6 +1,8 @@
 #' Mettre un dataframe au format pour ls graphiques en radar.
-#'   La fonction radarchart() du package {fmsb} nécessite en entrée un dataframe
-#'   au format spécifique.
+#'
+#' La fonction radarchart() du package {fmsb} nécessite en entrée un dataframe
+#'     au format spécifique.
+#'
 #' @param metriques_df Un dataframe contenant les métriques par station et par année,
 #'     produit par la fonction ipr_extraire_metriques().
 #' @param pop_id Numérique entier. Identifiant du point de prélèvement (pop_id).

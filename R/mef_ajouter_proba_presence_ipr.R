@@ -1,4 +1,4 @@
-#' Ajouter à un dataframe les probabilités de présence des taxons IPR.
+#' Ajouter à un dataframe les probabilités de présence des taxons IPR
 #'
 #' Ces probabilités sont issues de Oberdorff et al. (2002)
 #' Development and validation of a fish‐based index for the assessment of ‘river health’in France.

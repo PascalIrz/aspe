@@ -2,9 +2,7 @@
 % Please edit documentation in R/mef_ajouter_type_protocole.R
 \name{mef_ajouter_type_protocole}
 \alias{mef_ajouter_type_protocole}
-\title{Ajouter le type de protocole à la passerelle
-    ex : Indice Abondance Saumon.
-    Nécessite d'avoir chargé les tables "operation" et "ref_protocole".}
+\title{Ajouter le type de protocole à la passerelle}
 \usage{
 mef_ajouter_type_protocole(passerelle)
 }
@@ -15,8 +13,7 @@ mef_ajouter_type_protocole(passerelle)
 La passerelle complétée.
 }
 \description{
-Ajouter le type de protocole à la passerelle
-    ex : Indice Abondance Saumon.
+ex : Indice Abondance Saumon.
     Nécessite d'avoir chargé les tables "operation" et "ref_protocole".
 }
 \examples{

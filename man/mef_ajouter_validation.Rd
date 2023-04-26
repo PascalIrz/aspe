@@ -2,8 +2,7 @@
 % Please edit documentation in R/mef_ajouter_validation.R
 \name{mef_ajouter_validation}
 \alias{mef_ajouter_validation}
-\title{Ajouter à la passerelle l'a qualification de a donnée'état d'avancement de la saisie
-    ex : En cours de saisie / Validé niveau 1.}
+\title{Ajouter à la passerelle l'a qualification de a donnée'état d'avancement de la saisie}
 \usage{
 mef_ajouter_validation(passerelle)
 }
@@ -14,8 +13,7 @@ mef_ajouter_validation(passerelle)
 La passerelle complétée.
 }
 \description{
-Ajouter à la passerelle l'a qualification de a donnée'état d'avancement de la saisie
-    ex : En cours de saisie / Validé niveau 1.
+ex : En cours de saisie / Validé niveau 1.
 }
 \examples{
 \dontrun{

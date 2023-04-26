@@ -1,5 +1,6 @@
-#' Ajouter à la passerelle la qualification de a donnée
-#'     ex : Correcte / Incorrecte / Incertaine.
+#' Ajouter à la passerelle la qualification de la donnée
+#'
+#' ex : Correcte / Incorrecte / Incertaine.
 #'
 #' @param passerelle Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
 #'

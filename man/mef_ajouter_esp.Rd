@@ -2,7 +2,7 @@
 % Please edit documentation in R/mef_ajouter_esp.R
 \name{mef_ajouter_esp}
 \alias{mef_ajouter_esp}
-\title{Ajouter à un df "passerelle le code espèce à 3 lettres, son nom commun et scientifique.}
+\title{Ajouter à un df "passerelle le code espèce à 3 lettres, son nom commun et scientifique}
 \usage{
 mef_ajouter_esp(passerelle)
 }

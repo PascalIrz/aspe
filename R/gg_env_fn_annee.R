@@ -1,5 +1,5 @@
 #' Produire le graphique de l'évolution temporelle de facteurs environnementaux moyens comparés
-#'     entre les sites de présence et d'absence des espèces.
+#'     entre les sites de présence et d'absence des espèces
 #'
 #' @param df Le dataframe contenant les données avec les variables presence, parametre,
 #'     valeur_parametre, annee

@@ -1,5 +1,6 @@
 #' Ajouter à la passerelle le type de matériel employé
-#'     ex : Héron
+#'
+#' ex : Héron
 #'
 #' @param passerelle Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
 #'

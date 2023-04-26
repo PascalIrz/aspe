@@ -2,7 +2,7 @@
 % Please edit documentation in R/mef_ajouter_ope_env.R
 \name{mef_ajouter_ope_env}
 \alias{mef_ajouter_ope_env}
-\title{Rajouter les variables environnementales pour chaque opération à la passerelle (quand disponible).}
+\title{Rajouter les variables environnementales pour chaque opération à la passerelle (quand disponible)}
 \usage{
 mef_ajouter_ope_env(passerelle)
 }

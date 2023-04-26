@@ -1,4 +1,4 @@
-#' Ajouter à la passerelle le type de prélèvement élémentaire.
+#' Ajouter à la passerelle le type de prélèvement élémentaire
 #'
 #' Par type de prélèvement, on entend les modalités du tpe_libelle de la
 #'     table ref_type_prelevement_elementaire

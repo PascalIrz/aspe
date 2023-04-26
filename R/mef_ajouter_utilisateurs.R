@@ -1,5 +1,6 @@
 #' Ajouter à la passerelle les utilisateurs sur les opérations
-#'     Ces utilisateurs sont le créateur et la personne qui a effectué la dernière modification.
+#'
+#' Ces utilisateurs sont le créateur et la personne qui a effectué la dernière modification.
 #'     Ils sont identifiés par leur adresse email.
 #'
 #' @param passerelle Dataframe "passerelle" mettant en correspondance les identifiants des

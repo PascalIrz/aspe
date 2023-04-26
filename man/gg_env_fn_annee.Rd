@@ -3,7 +3,7 @@
 \name{gg_env_fn_annee}
 \alias{gg_env_fn_annee}
 \title{Produire le graphique de l'évolution temporelle de facteurs environnementaux moyens comparés
-    entre les sites de présence et d'absence des espèces.}
+    entre les sites de présence et d'absence des espèces}
 \usage{
 gg_env_fn_annee(
   df,
@@ -43,7 +43,7 @@ Une liste dont les éléments sont des graphiques ggplot2 (un par paramètre).
 }
 \description{
 Produire le graphique de l'évolution temporelle de facteurs environnementaux moyens comparés
-    entre les sites de présence et d'absence des espèces.
+    entre les sites de présence et d'absence des espèces
 }
 \examples{
 \dontrun{

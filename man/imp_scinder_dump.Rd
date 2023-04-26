@@ -3,7 +3,7 @@
 \name{imp_scinder_dump}
 \alias{imp_scinder_dump}
 \title{Scinder le dump en deux parties pour les traiter séparément et éviter de
-    saturer la mémoire vive.}
+    saturer la mémoire vive}
 \usage{
 imp_scinder_dump(fichier_dump, repertoire_sortie = NA)
 }

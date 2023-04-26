@@ -10,7 +10,7 @@ mef_ajouter_ope_desc_peche(passerelle)
 \item{passerelle}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.}
 }
 \value{
-La passerelle à laquelle ont été ajoutés les variables environnementales.
+La passerelle à laquelle ont été ajoutés les variables environnementales
 }
 \description{
 Ces variables sont issues de la table "operation_description_peche".

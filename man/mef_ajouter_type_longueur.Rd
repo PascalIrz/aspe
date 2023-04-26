@@ -2,8 +2,7 @@
 % Please edit documentation in R/mef_ajouter_type_longueur.R
 \name{mef_ajouter_type_longueur}
 \alias{mef_ajouter_type_longueur}
-\title{Ajouter le type de longueur à la passerelle
-    ex : totale, fourche.}
+\title{Ajouter le type de longueur à la passerelle}
 \usage{
 mef_ajouter_type_longueur(passerelle)
 }
@@ -14,8 +13,7 @@ mef_ajouter_type_longueur(passerelle)
 La passerelle complétée.
 }
 \description{
-Ajouter le type de longueur à la passerelle
-    ex : totale, fourche.
+ex : totale, fourche.
 }
 \examples{
 \dontrun{

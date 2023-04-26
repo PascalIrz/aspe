@@ -2,7 +2,7 @@
 % Please edit documentation in R/imp_trouver_index_fin.R
 \name{imp_trouver_index_fin}
 \alias{imp_trouver_index_fin}
-\title{Trouver la ligne de fin qui correspond à une table désignée par sa ligne de début.}
+\title{Trouver la ligne de fin qui correspond à une table désignée par sa ligne de début}
 \usage{
 imp_trouver_index_fin(vecteur_index_lignes_fin, ligne_debut)
 }

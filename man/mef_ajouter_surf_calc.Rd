@@ -2,7 +2,7 @@
 % Please edit documentation in R/mef_ajouter_surf_calc.R
 \name{mef_ajouter_surf_calc}
 \alias{mef_ajouter_surf_calc}
-\title{Rajouter la superficie échantillonnée calculée pour chaque opération à la passerelle.}
+\title{Rajouter la superficie échantillonnée calculée pour chaque opération à la passerelle}
 \usage{
 mef_ajouter_surf_calc(passerelle)
 }
@@ -14,7 +14,7 @@ La passerelle à laquelle a été ajoutée la superficie échantillonnée qui es
     stockée dans le champ ope_surf_calculee de la table operation.
 }
 \description{
-Rajouter la superficie échantillonnée calculée pour chaque opération à la passerelle.
+Rajouter la superficie échantillonnée calculée pour chaque opération à la passerelle
 }
 \examples{
 \dontrun{

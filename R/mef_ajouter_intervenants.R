@@ -1,5 +1,5 @@
 #' Ajouter à la passerelle les intervenants sur les opérations
-#'     Ces intervenants sont l'opérateur, le commanditaire et le valideur.
+#'     Ces intervenants sont l'opérateur, le commanditaire et le valideur
 #'
 #' @param passerelle Dataframe "passerelle" mettant en correspondance les identifiants des
 #'     différentes tables.

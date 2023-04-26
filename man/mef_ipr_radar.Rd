@@ -2,9 +2,7 @@
 % Please edit documentation in R/mef_ipr_radar.R
 \name{mef_ipr_radar}
 \alias{mef_ipr_radar}
-\title{Mettre un dataframe au format pour ls graphiques en radar.
-  La fonction radarchart() du package {fmsb} nécessite en entrée un dataframe
-  au format spécifique.}
+\title{Mettre un dataframe au format pour ls graphiques en radar.}
 \usage{
 mef_ipr_radar(metriques_df, pop_id)
 }
@@ -18,9 +16,8 @@ produit par la fonction ipr_extraire_metriques().}
 Un dataframe mis en forme.
 }
 \description{
-Mettre un dataframe au format pour ls graphiques en radar.
-  La fonction radarchart() du package {fmsb} nécessite en entrée un dataframe
-  au format spécifique.
+La fonction radarchart() du package {fmsb} nécessite en entrée un dataframe
+    au format spécifique.
 }
 \examples{
 \dontrun{

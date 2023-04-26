@@ -1,5 +1,5 @@
 #' Mettre les données nécessaires au calcul de l'IPR au format requis en entrée de la macro
-#'     Excel de calcul de l'indice.
+#'     Excel de calcul de l'indice
 #'
 #' @param passerelle Dataframe mettant en correspondance les identifiants des différentes tables.
 #' @param date_debut Date de début de la période à extraire au format jj/mm/aaaa.

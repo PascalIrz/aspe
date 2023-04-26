@@ -4,7 +4,7 @@
 #'
 #' @param passerelle Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
 #'
-#' @return La passerelle à laquelle ont été ajoutés les variables environnementales.
+#' @return La passerelle à laquelle ont été ajoutés les variables environnementales
 #' @export
 #'
 #' @importFrom dplyr left_join select mutate_all

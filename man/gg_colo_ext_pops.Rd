@@ -3,7 +3,7 @@
 \name{gg_colo_ext_pops}
 \alias{gg_colo_ext_pops}
 \title{Produire le graphique de la dynamique du peuplement pour chacun des points de prélèvement
-    du dataframe.}
+    du dataframe}
 \usage{
 gg_colo_ext_pops(df, interactif = FALSE, largeur = 6, hauteur = 5, ...)
 }
@@ -21,7 +21,7 @@ Une liste contenant les graphiques produits avec ggplot2.
 }
 \description{
 Produire le graphique de la dynamique du peuplement pour chacun des points de prélèvement
-    du dataframe.
+    du dataframe
 }
 \examples{
 \dontrun{

@@ -1,4 +1,4 @@
-#' Trouver la ligne de fin qui correspond à une table désignée par sa ligne de début.
+#' Trouver la ligne de fin qui correspond à une table désignée par sa ligne de début
 #'
 #' Par exemple pour trouver le numéro de la ligne de fin d'une table qui débuterait à la ligne 6517552
 #'

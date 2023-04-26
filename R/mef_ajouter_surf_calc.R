@@ -1,4 +1,4 @@
-#' Rajouter la superficie échantillonnée calculée pour chaque opération à la passerelle.
+#' Rajouter la superficie échantillonnée calculée pour chaque opération à la passerelle
 #'
 #' @param passerelle Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
 #'

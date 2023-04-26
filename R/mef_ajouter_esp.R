@@ -1,4 +1,4 @@
-#' Ajouter à un df "passerelle le code espèce à 3 lettres, son nom commun et scientifique.
+#' Ajouter à un df "passerelle le code espèce à 3 lettres, son nom commun et scientifique
 #'
 #' Les codes sont "historiques", hérités du Conseil Supérieur de la Pêche.
 #'

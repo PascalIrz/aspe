@@ -1,4 +1,4 @@
-#' Ajouter le code EPSG du CRS à un dataframe.
+#' Ajouter le code EPSG du CRS à un dataframe
 #'
 #' @param df Le dataframe de données.
 #' @param var_id_crs Caractère. Le nom de la variable qui contient l'identifiant du CRS

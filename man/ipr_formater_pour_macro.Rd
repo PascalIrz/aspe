@@ -3,7 +3,7 @@
 \name{ipr_formater_pour_macro}
 \alias{ipr_formater_pour_macro}
 \title{Mettre les données nécessaires au calcul de l'IPR au format requis en entrée de la macro
-    Excel de calcul de l'indice.}
+    Excel de calcul de l'indice}
 \usage{
 ipr_formater_pour_macro(
   passerelle,
@@ -25,7 +25,7 @@ Un dataframe au format souhaité, mais dont les colonnes doivent ensuite être r
 }
 \description{
 Mettre les données nécessaires au calcul de l'IPR au format requis en entrée de la macro
-    Excel de calcul de l'indice.
+    Excel de calcul de l'indice
 }
 \examples{
 \dontrun{

@@ -2,7 +2,7 @@
 % Please edit documentation in R/geo_ajouter_crs.R
 \name{geo_ajouter_crs}
 \alias{geo_ajouter_crs}
-\title{Ajouter le code EPSG du CRS à un dataframe.}
+\title{Ajouter le code EPSG du CRS à un dataframe}
 \usage{
 geo_ajouter_crs(df, var_id_crs)
 }
@@ -17,7 +17,7 @@ selon la}
 Le dataframe complété.
 }
 \description{
-Ajouter le code EPSG du CRS à un dataframe.
+Ajouter le code EPSG du CRS à un dataframe
 }
 \examples{
 \dontrun{

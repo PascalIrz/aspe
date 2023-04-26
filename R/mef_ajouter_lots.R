@@ -1,4 +1,4 @@
-#' Ajouter les lots de poissons capturés à la passerelle.
+#' Ajouter les lots de poissons capturés à la passerelle
 #'
 #' @param passerelle Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
 #'

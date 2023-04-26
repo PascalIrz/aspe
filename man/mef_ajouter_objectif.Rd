@@ -2,7 +2,7 @@
 % Please edit documentation in R/mef_ajouter_objectif.R
 \name{mef_ajouter_objectif}
 \alias{mef_ajouter_objectif}
-\title{Ajouter à la passerelle l'objectif de l'opération.}
+\title{Ajouter à la passerelle l'objectif de l'opération}
 \usage{
 mef_ajouter_objectif(passerelle)
 }

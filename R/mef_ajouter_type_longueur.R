@@ -1,5 +1,6 @@
 #' Ajouter le type de longueur à la passerelle
-#'     ex : totale, fourche.
+#'
+#' ex : totale, fourche.
 #'
 #' @param passerelle Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
 #'

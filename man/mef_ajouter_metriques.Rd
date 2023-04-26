@@ -3,7 +3,7 @@
 \name{mef_ajouter_metriques}
 \alias{mef_ajouter_metriques}
 \title{Ajouter à une passerelle les métriques IPR observées, théoriques et leur contribution
-    à l'indice IPR agrégé.}
+    à l'indice IPR agrégé}
 \usage{
 mef_ajouter_metriques(passerelle)
 }
@@ -15,7 +15,7 @@ Le dataframe passerelle complété par les métriques.
 }
 \description{
 Ajouter à une passerelle les métriques IPR observées, théoriques et leur contribution
-    à l'indice IPR agrégé.
+    à l'indice IPR agrégé
 }
 \examples{
 \dontrun{

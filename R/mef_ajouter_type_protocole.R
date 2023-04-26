@@ -1,5 +1,6 @@
 #' Ajouter le type de protocole à la passerelle
-#'     ex : Indice Abondance Saumon.
+#'
+#' ex : Indice Abondance Saumon.
 #'     Nécessite d'avoir chargé les tables "operation" et "ref_protocole".
 #'
 #' @param passerelle Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.

@@ -1,5 +1,5 @@
 #' Produire le graphique de la dynamique du peuplement pour chacun des points de prélèvement
-#'     du dataframe.
+#'     du dataframe
 #'
 #' @param df Le dataframe contenant les données, mises en forme par la fonction \code{\link[=mef_colo_ext_pops]{mef_colo_ext_pops()}}
 #' @param interactif Valeur logique définissant le type de graphique produit: statique (FALSE) ou interactif (TRUE)

@@ -1,5 +1,6 @@
 #' Ajouter à la passerelle l'a qualification de a donnée'état d'avancement de la saisie
-#'     ex : En cours de saisie / Validé niveau 1.
+#'
+#' ex : En cours de saisie / Validé niveau 1.
 #'
 #' @param passerelle Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
 #'

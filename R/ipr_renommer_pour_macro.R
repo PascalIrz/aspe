@@ -1,5 +1,5 @@
 #' Sélectionner et nommer les colonnes au format requis en entrée de la macro
-#'     Excel de calcul de l'indice.
+#'     Excel de calcul de l'indice
 #'
 #' @param data Le dataframe contenant les données, issu de la fonction formater_pour_macro().
 #' @param fichier_macro Caractère. Chemin vers le fichier Excel de la macro.

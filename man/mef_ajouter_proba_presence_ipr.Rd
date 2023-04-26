@@ -2,7 +2,7 @@
 % Please edit documentation in R/mef_ajouter_proba_presence_ipr.R
 \name{mef_ajouter_proba_presence_ipr}
 \alias{mef_ajouter_proba_presence_ipr}
-\title{Ajouter à un dataframe les probabilités de présence des taxons IPR.}
+\title{Ajouter à un dataframe les probabilités de présence des taxons IPR}
 \usage{
 mef_ajouter_proba_presence_ipr(df)
 }

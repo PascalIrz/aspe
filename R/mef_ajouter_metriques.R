@@ -1,5 +1,5 @@
 #' Ajouter à une passerelle les métriques IPR observées, théoriques et leur contribution
-#'     à l'indice IPR agrégé.
+#'     à l'indice IPR agrégé
 #'
 #' @param passerelle Le dataframe passerelle.
 #'

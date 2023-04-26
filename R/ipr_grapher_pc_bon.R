@@ -1,5 +1,5 @@
 #' Produire un graphique du pourcentage de stations en bon état au plan IPR sur un jeu de
-#'     stations, en fonction de l'année.
+#'     stations, en fonction de l'année
 #'
 #' @param ipr_df Dataframe contenant les données, issu de la fonction extraire_ipr().
 #' @param titre Caractère. Titre du graphique.

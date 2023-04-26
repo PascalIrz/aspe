@@ -2,9 +2,7 @@
 % Please edit documentation in R/mef_ajouter_utilisateurs.R
 \name{mef_ajouter_utilisateurs}
 \alias{mef_ajouter_utilisateurs}
-\title{Ajouter à la passerelle les utilisateurs sur les opérations
-    Ces utilisateurs sont le créateur et la personne qui a effectué la dernière modification.
-    Ils sont identifiés par leur adresse email.}
+\title{Ajouter à la passerelle les utilisateurs sur les opérations}
 \usage{
 mef_ajouter_utilisateurs(passerelle)
 }
@@ -16,8 +14,7 @@ différentes tables.}
 La passerelle complétée.
 }
 \description{
-Ajouter à la passerelle les utilisateurs sur les opérations
-    Ces utilisateurs sont le créateur et la personne qui a effectué la dernière modification.
+Ces utilisateurs sont le créateur et la personne qui a effectué la dernière modification.
     Ils sont identifiés par leur adresse email.
 }
 \examples{

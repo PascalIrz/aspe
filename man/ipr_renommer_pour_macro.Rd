@@ -3,7 +3,7 @@
 \name{ipr_renommer_pour_macro}
 \alias{ipr_renommer_pour_macro}
 \title{Sélectionner et nommer les colonnes au format requis en entrée de la macro
-    Excel de calcul de l'indice.}
+    Excel de calcul de l'indice}
 \usage{
 ipr_renommer_pour_macro(data, fichier_macro)
 }
@@ -17,7 +17,7 @@ Le dataframe
 }
 \description{
 Sélectionner et nommer les colonnes au format requis en entrée de la macro
-    Excel de calcul de l'indice.
+    Excel de calcul de l'indice
 }
 \examples{
 \dontrun{

@@ -1,4 +1,4 @@
-#' Rajouter les variables environnementales pour chaque opération à la passerelle (quand disponible).
+#' Rajouter les variables environnementales pour chaque opération à la passerelle (quand disponible)
 #'
 #' Ces variables sont en premier lieu renseignées depuis la table "operation_ipr", faute de quoi elles
 #'     sont complétées depuis la table "point_prelevement".

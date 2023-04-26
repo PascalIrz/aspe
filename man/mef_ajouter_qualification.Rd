@@ -2,8 +2,7 @@
 % Please edit documentation in R/mef_ajouter_qualification.R
 \name{mef_ajouter_qualification}
 \alias{mef_ajouter_qualification}
-\title{Ajouter à la passerelle la qualification de a donnée
-    ex : Correcte / Incorrecte / Incertaine.}
+\title{Ajouter à la passerelle la qualification de la donnée}
 \usage{
 mef_ajouter_qualification(passerelle)
 }
@@ -14,8 +13,7 @@ mef_ajouter_qualification(passerelle)
 La passerelle complétée.
 }
 \description{
-Ajouter à la passerelle la qualification de a donnée
-    ex : Correcte / Incorrecte / Incertaine.
+ex : Correcte / Incorrecte / Incertaine.
 }
 \examples{
 \dontrun{

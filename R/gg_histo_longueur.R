@@ -1,5 +1,5 @@
 #' Produire l'histogramme de distribution des longueurs individuelles pour une opération
-#'     de pêche.
+#'     de pêche
 #'
 #' @param indiv_df Le dataframe contanant les données nécessaires.
 #' @param operation Entier. Identifiant de l'opération de pêche au sens du champ ope_id.

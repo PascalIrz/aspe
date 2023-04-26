@@ -1,5 +1,5 @@
 #' Scinder le dump en deux parties pour les traiter séparément et éviter de
-#'     saturer la mémoire vive.
+#'     saturer la mémoire vive
 #'
 #' ATTENTION : Si le chemin d'accès au fichier est trop long, il est possible que
 #'     la fonction retourne une erreur :

@@ -2,7 +2,7 @@
 % Please edit documentation in R/mef_ajouter_type_prelevement.R
 \name{mef_ajouter_type_prelevement}
 \alias{mef_ajouter_type_prelevement}
-\title{Ajouter à la passerelle le type de prélèvement élémentaire.}
+\title{Ajouter à la passerelle le type de prélèvement élémentaire}
 \usage{
 mef_ajouter_type_prelevement(passerelle)
 }

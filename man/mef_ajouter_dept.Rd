@@ -17,7 +17,7 @@ La passerelle complétée par le département.
 Si le code commune de la station est renseigné dans la table station, ses deux premiers caractères
     indiquent le département. S'il est manquant mais renseigné dans la table point_prelevement,
     c'est cette information qui est utilisée. Malgré tout l'information est manquantes dans
-    certains cas.
+    certains cas
 }
 \examples{
 \dontrun{

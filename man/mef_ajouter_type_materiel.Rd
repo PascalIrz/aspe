@@ -2,8 +2,7 @@
 % Please edit documentation in R/mef_ajouter_type_materiel.R
 \name{mef_ajouter_type_materiel}
 \alias{mef_ajouter_type_materiel}
-\title{Ajouter à la passerelle le type de matériel employé
-    ex : Héron}
+\title{Ajouter à la passerelle le type de matériel employé}
 \usage{
 mef_ajouter_type_materiel(passerelle)
 }
@@ -14,8 +13,7 @@ mef_ajouter_type_materiel(passerelle)
 La passerelle complétée.
 }
 \description{
-Ajouter à la passerelle le type de matériel employé
-    ex : Héron
+ex : Héron
 }
 \examples{
 \dontrun{
