@@ -17,7 +17,7 @@ Un dataframe mis en forme.
 }
 \description{
 La fonction radarchart() du package {fmsb} nécessite en entrée un dataframe
-    au format spécifique.
+au format spécifique.
 }
 \examples{
 \dontrun{

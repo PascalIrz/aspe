@@ -1,8 +1,6 @@
 #' Rajouter le libellé du site
 #'
-#' @description
-#' `r lifecycle::badge("deprecated")`
-#'
+#' @description `r lifecycle::badge("deprecated")`.
 #' Fonction remplacée par "mef_ajouter_libelle_site()".
 #'
 #' @param passerelle Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
