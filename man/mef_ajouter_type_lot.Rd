@@ -4,10 +4,11 @@
 \alias{mef_ajouter_type_lot}
 \title{Ajouter le type de lot à la passerelle}
 \usage{
-mef_ajouter_type_lot(passerelle)
+mef_ajouter_type_lot(df)
 }
 \arguments{
-\item{passerelle}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.}
+\item{df}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
+df doit contenir une variable "lop_id" (identifiant du lot).}
 }
 \value{
 La passerelle complétée.

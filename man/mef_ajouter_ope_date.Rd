@@ -4,10 +4,11 @@
 \alias{mef_ajouter_ope_date}
 \title{Rajouter à la passerelle la date et l'année de chaque opération.}
 \usage{
-mef_ajouter_ope_date(passerelle)
+mef_ajouter_ope_date(df)
 }
 \arguments{
-\item{passerelle}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.}
+\item{df}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
+df doit contenir une variable "ope_id" (identifiant de l'opération de pêche).}
 }
 \value{
 La passerelle à laquelle ont été ajoutés la date et l'année.
@@ -17,6 +18,6 @@ Rajouter à la passerelle la date et l'année de chaque opération.
 }
 \examples{
 \dontrun{
-passerelle <- mef_ajouter_ope_date(passerelle = passerelle)
+passerelle <- mef_ajouter_ope_date(df = passerelle)
 }
 }

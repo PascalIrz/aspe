@@ -4,10 +4,11 @@
 \alias{mef_ajouter_surf_calc}
 \title{Rajouter la superficie échantillonnée calculée pour chaque opération à la passerelle}
 \usage{
-mef_ajouter_surf_calc(passerelle)
+mef_ajouter_surf_calc(df)
 }
 \arguments{
-\item{passerelle}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.}
+\item{df}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
+df doit contenir une variable "ope_id" (identifiant de l'opération de pêche).}
 }
 \value{
 La passerelle à laquelle a été ajoutée la superficie échantillonnée qui est une valeur calculée
@@ -18,6 +19,6 @@ Rajouter la superficie échantillonnée calculée pour chaque opération à la p
 }
 \examples{
 \dontrun{
-passerelle <- mef_ajouter_surf_calc(passerelle = passerelle)
+passerelle <- mef_ajouter_surf_calc(df = passerelle)
 }
 }

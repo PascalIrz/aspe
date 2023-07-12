@@ -4,10 +4,11 @@
 \alias{mef_ajouter_groupe_points}
 \title{Ajouter à la passerelle, quand le prélèvement élémentaire est un groupe de points, ses données}
 \usage{
-mef_ajouter_groupe_points(passerelle)
+mef_ajouter_groupe_points(df)
 }
 \arguments{
-\item{passerelle}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.}
+\item{df}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
+df doit contenir le champ "pre_id" (identifiant du prélèvement individuel).}
 }
 \value{
 La passerelle complétée.

@@ -4,10 +4,11 @@
 \alias{mef_ajouter_moyen_prospection}
 \title{Ajouter à la passerelle le moyen de prospection}
 \usage{
-mef_ajouter_moyen_prospection(passerelle)
+mef_ajouter_moyen_prospection(df)
 }
 \arguments{
-\item{passerelle}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.}
+\item{df}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
+df doit contenir une variable "ope_id" (identifiant de l'opération de pêche).}
 }
 \value{
 La passerelle complétée.

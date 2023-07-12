@@ -5,7 +5,7 @@
 #'     c'est cette information qui est utilisée. Malgré tout l'information est manquantes dans
 #'     certains cas
 #'
-#' @param passerelle Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
+#' @param df Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
 #'     La passerelle doit comprendre des colonnes "sta_id" et "pop_id".
 #'
 #' @return La passerelle complétée par le département.
@@ -19,11 +19,11 @@
 #' passerelle <- passerelle %>%
 #' mef_ajouter_dept()
 #' }
-mef_ajouter_dept <- function(passerelle)
+mef_ajouter_dept <- function(df)
 
 {
 
-  passerelle %>%
+  df %>%
     left_join(y = station %>%
                 select(sta_id,
                        com_code_insee = sta_com_code_insee)) %>%
@@ -37,6 +37,6 @@ mef_ajouter_dept <- function(passerelle)
            dept = ifelse(is.na(dept_sta),
                          yes = dept_pop,
                          no = dept_sta)) %>%
-    select(c(names(passerelle), "dept"))
+    select(c(names(df), "dept"))
 
 }

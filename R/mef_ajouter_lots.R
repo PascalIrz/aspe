@@ -1,6 +1,7 @@
 #' Ajouter les lots de poissons capturés à la passerelle
 #'
-#' @param passerelle Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
+#' @param df Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
+#'     df doit contenir une variable "pre_id" (identifiant du prélèvement élémentaire).
 #'
 #' @return La passerelle complétée.
 #' @export
@@ -12,11 +13,11 @@
 #' passerelle <- passerelle %>%
 #' mef_ajouter_lots()
 #' }
-mef_ajouter_lots <- function(passerelle)
+mef_ajouter_lots <- function(df)
 
 {
 
-  passerelle %>%
+  df %>%
     left_join(y = lot_poissons %>%
                 select(pre_id = lop_pre_id,
                        lop_id,

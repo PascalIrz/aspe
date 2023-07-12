@@ -4,10 +4,10 @@
 \alias{mef_ajouter_ope_env}
 \title{Rajouter les variables environnementales pour chaque opération à la passerelle (quand disponible)}
 \usage{
-mef_ajouter_ope_env(passerelle)
+mef_ajouter_ope_env(df)
 }
 \arguments{
-\item{passerelle}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.}
+\item{df}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.}
 }
 \value{
 La passerelle à laquelle ont été ajoutés les variables environnementales.
@@ -18,6 +18,6 @@ sont complétées depuis la table "point_prelevement".
 }
 \examples{
 \dontrun{
-passerelle <- mef_ajouter_ope_env(passerelle = passerelle)
+passerelle <- mef_ajouter_ope_env(df = passerelle)
 }
 }

@@ -4,10 +4,11 @@
 \alias{mef_ajouter_qualification}
 \title{Ajouter à la passerelle la qualification de la donnée}
 \usage{
-mef_ajouter_qualification(passerelle)
+mef_ajouter_qualification(df)
 }
 \arguments{
-\item{passerelle}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.}
+\item{df}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
+df doit contenir une variable "ope_id" (identifiant de l'opération de pêche).}
 }
 \value{
 La passerelle complétée.

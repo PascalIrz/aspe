@@ -2,7 +2,8 @@
 #'
 #' ex : Correcte / Incorrecte / Incertaine.
 #'
-#' @param passerelle Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
+#' @param df Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
+#'     df doit contenir une variable "ope_id" (identifiant de l'opération de pêche).
 #'
 #' @return La passerelle complétée.
 #' @export
@@ -14,10 +15,10 @@
 #' passerelle <- passerelle %>%
 #' mef_ajouter_qualification()
 #' }
-mef_ajouter_qualification <- function(passerelle)
+mef_ajouter_qualification <- function(df)
 
 {
-  passerelle %>%
+  df %>%
     left_join(y = operation %>%
                 select(ope_id,
                        niq_id = ope_niq_id)) %>%

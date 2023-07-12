@@ -4,10 +4,10 @@
 \alias{mef_ajouter_type_prelevement}
 \title{Ajouter à la passerelle le type de prélèvement élémentaire}
 \usage{
-mef_ajouter_type_prelevement(passerelle)
+mef_ajouter_type_prelevement(df)
 }
 \arguments{
-\item{passerelle}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.}
+\item{df}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.}
 }
 \value{
 La passerelle complétée.

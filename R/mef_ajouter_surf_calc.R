@@ -1,6 +1,7 @@
 #' Rajouter la superficie échantillonnée calculée pour chaque opération à la passerelle
 #'
-#' @param passerelle Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
+#' @param df Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
+#'     df doit contenir une variable "ope_id" (identifiant de l'opération de pêche).
 #'
 #' @return La passerelle à laquelle a été ajoutée la superficie échantillonnée qui est une valeur calculée
 #'     stockée dans le champ ope_surf_calculee de la table operation.
@@ -10,12 +11,12 @@
 #'
 #' @examples
 #' \dontrun{
-#' passerelle <- mef_ajouter_surf_calc(passerelle = passerelle)
+#' passerelle <- mef_ajouter_surf_calc(df = passerelle)
 #' }
-mef_ajouter_surf_calc <- function(passerelle)
+mef_ajouter_surf_calc <- function(df)
 
 {
-  passerelle %>%
+  df %>%
     left_join(y = operation %>%
                 select(ope_id,
                        ope_surface_calculee))

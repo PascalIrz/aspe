@@ -4,10 +4,10 @@
 \alias{mef_ajouter_dept}
 \title{Ajouter à la passerelle les numéros de départements.}
 \usage{
-mef_ajouter_dept(passerelle)
+mef_ajouter_dept(df)
 }
 \arguments{
-\item{passerelle}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
+\item{df}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
 La passerelle doit comprendre des colonnes "sta_id" et "pop_id".}
 }
 \value{

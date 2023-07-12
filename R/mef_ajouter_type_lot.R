@@ -2,7 +2,8 @@
 #'
 #'     NB Les tables "lot_poissons" et "ref_type_lot" doivent avoir été chargées auparavant.
 #'
-#' @param passerelle Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
+#' @param df Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
+#'     df doit contenir une variable "lop_id" (identifiant du lot).
 #'
 #' @return La passerelle complétée.
 #' @export
@@ -14,10 +15,10 @@
 #' passerelle <- passerelle %>%
 #' mef_ajouter_type_lot()
 #' }
-mef_ajouter_type_lot <- function(passerelle)
+mef_ajouter_type_lot <- function(df)
 
 {
-  passerelle %>%
+  df %>%
     left_join(y = lot_poissons %>%
                 select(lop_id,
                        tyl_id = lop_tyl_id)) %>%

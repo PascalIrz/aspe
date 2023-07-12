@@ -2,7 +2,7 @@
 #'
 #' ex : En cours de saisie / Validé niveau 1.
 #'
-#' @param passerelle Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
+#' @param df Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
 #'
 #' @return La passerelle complétée.
 #' @export
@@ -14,10 +14,10 @@
 #' passerelle <- passerelle %>%
 #' mef_ajouter_validation()
 #' }
-mef_ajouter_validation <- function(passerelle)
+mef_ajouter_validation <- function(df)
 
 {
-  passerelle %>%
+  df %>%
     left_join(y = operation %>%
                 select(ope_id,
                        eta_id = ope_eta_id)) %>%

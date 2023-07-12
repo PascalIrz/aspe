@@ -4,11 +4,11 @@
 \alias{mef_ajouter_mei}
 \title{Ajouter les mesures individuelles à la passerelle}
 \usage{
-mef_ajouter_mei(passerelle)
+mef_ajouter_mei(df)
 }
 \arguments{
-\item{passerelle}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
-Elle doit contenir le champ "lop_id" qui sert à la jointure avec la table mesure_individuelle.}
+\item{df}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
+df doit contenir le champ "lop_id" qui sert à la jointure avec la table mesure_individuelle.}
 }
 \value{
 La passerelle complétée.

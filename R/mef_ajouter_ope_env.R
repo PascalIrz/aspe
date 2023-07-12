@@ -3,7 +3,7 @@
 #' Ces variables sont en premier lieu renseignées depuis la table "operation_ipr", faute de quoi elles
 #'     sont complétées depuis la table "point_prelevement".
 #'
-#' @param passerelle Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
+#' @param df Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
 #'
 #' @return La passerelle à laquelle ont été ajoutés les variables environnementales.
 #' @export
@@ -12,13 +12,13 @@
 #'
 #' @examples
 #' \dontrun{
-#' passerelle <- mef_ajouter_ope_env(passerelle = passerelle)
+#' passerelle <- mef_ajouter_ope_env(df = passerelle)
 #' }
-mef_ajouter_ope_env <- function(passerelle)
+mef_ajouter_ope_env <- function(df)
 
 {
 
-  ope_env <- passerelle %>%
+  ope_env <- df %>%
     select(pop_id,
            ope_id) %>%
     left_join(    # jointure table operation_ipr
@@ -67,7 +67,7 @@ mef_ajouter_ope_env <- function(passerelle)
     distinct()
 
 
-  passerelle <- passerelle %>%
+  df <- df %>%
     left_join(ope_env) %>%
     mutate(temp_juillet = ifelse(temp_juillet == -99, # codage valeurs manquantes
                                  NA,
@@ -76,7 +76,7 @@ mef_ajouter_ope_env <- function(passerelle)
                                  NA,
                                  temp_janvier))
 
-  passerelle
+  df
 
 }
 

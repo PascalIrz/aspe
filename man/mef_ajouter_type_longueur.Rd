@@ -4,10 +4,11 @@
 \alias{mef_ajouter_type_longueur}
 \title{Ajouter le type de longueur à la passerelle}
 \usage{
-mef_ajouter_type_longueur(passerelle)
+mef_ajouter_type_longueur(df)
 }
 \arguments{
-\item{passerelle}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.}
+\item{df}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
+df doit contenir une variable "lop_id" (identifiant du lot).}
 }
 \value{
 La passerelle complétée.

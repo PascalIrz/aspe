@@ -4,10 +4,10 @@
 \alias{mef_ajouter_type_protocole}
 \title{Ajouter le type de protocole à la passerelle}
 \usage{
-mef_ajouter_type_protocole(passerelle)
+mef_ajouter_type_protocole(df)
 }
 \arguments{
-\item{passerelle}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.}
+\item{df}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.}
 }
 \value{
 La passerelle complétée.

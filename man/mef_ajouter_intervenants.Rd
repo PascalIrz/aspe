@@ -5,10 +5,10 @@
 \title{Ajouter à la passerelle les intervenants sur les opérations
 Ces intervenants sont l'opérateur, le commanditaire et le valideur}
 \usage{
-mef_ajouter_intervenants(passerelle)
+mef_ajouter_intervenants(df)
 }
 \arguments{
-\item{passerelle}{Dataframe "passerelle" mettant en correspondance les identifiants des
+\item{df}{Dataframe "passerelle" mettant en correspondance les identifiants des
 différentes tables.}
 }
 \value{

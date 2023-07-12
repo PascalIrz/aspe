@@ -4,10 +4,10 @@
 \alias{mef_ajouter_validation}
 \title{Ajouter à la passerelle l'a qualification de a donnée'état d'avancement de la saisie}
 \usage{
-mef_ajouter_validation(passerelle)
+mef_ajouter_validation(df)
 }
 \arguments{
-\item{passerelle}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.}
+\item{df}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.}
 }
 \value{
 La passerelle complétée.

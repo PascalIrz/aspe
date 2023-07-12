@@ -1,7 +1,7 @@
 #' Ajouter les mesures individuelles à la passerelle
 #'
-#' @param passerelle Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
-#'     Elle doit contenir le champ "lop_id" qui sert à la jointure avec la table mesure_individuelle.
+#' @param df Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
+#'     df doit contenir le champ "lop_id" qui sert à la jointure avec la table mesure_individuelle.
 #'
 #' @return La passerelle complétée.
 #' @export
@@ -13,10 +13,10 @@
 #' passerelle <- passerelle %>%
 #' mef_ajouter_mei()
 #' }
-mef_ajouter_mei <- function(passerelle)
+mef_ajouter_mei <- function(df)
 
 {
-  passerelle %>%
+  df %>%
     left_join(y = mesure_individuelle %>%
                 rename(lop_id = mei_lop_id))
 }

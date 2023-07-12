@@ -2,7 +2,7 @@
 #'
 #' Ces variables sont issues de la table "operation_description_peche".
 #'
-#' @param passerelle Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
+#' @param df Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
 #'
 #' @return La passerelle à laquelle ont été ajoutés les variables environnementales
 #' @export
@@ -11,13 +11,13 @@
 #'
 #' @examples
 #' \dontrun{
-#' passerelle <- mef_ajouter_ope_desc_peche(passerelle = passerelle)
+#' passerelle <- mef_ajouter_ope_desc_peche(df = passerelle)
 #' }
-mef_ajouter_ope_desc_peche <- function(passerelle)
+mef_ajouter_ope_desc_peche <- function(df)
 
 {
 
-  ope_dp <- passerelle %>%
+  ope_dp <- df %>%
     left_join(    # jointure table operation_description_peche
       y = operation_description_peche %>%
         select(ope_id = odp_ope_id,

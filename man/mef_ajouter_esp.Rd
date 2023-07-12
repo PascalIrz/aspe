@@ -2,12 +2,12 @@
 % Please edit documentation in R/mef_ajouter_esp.R
 \name{mef_ajouter_esp}
 \alias{mef_ajouter_esp}
-\title{Ajouter à un df "passerelle le code espèce à 3 lettres, son nom commun et scientifique}
+\title{Ajouter à un dataframe le code espèce à 3 lettres, son nom commun et scientifique}
 \usage{
-mef_ajouter_esp(passerelle)
+mef_ajouter_esp(df)
 }
 \arguments{
-\item{passerelle}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
+\item{df}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
 La passerelle doit comprendre un champ avec le code taxon esp_id (typiquement, on utilise donc
 mef_ajouter_esp() après mef_ajouter_lots())}
 }

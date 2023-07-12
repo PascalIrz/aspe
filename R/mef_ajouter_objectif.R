@@ -3,7 +3,8 @@
 #' Par objectif, on entent la contribution à un réseau (DCE, RCS, RRP, etc.), le suivi de poopulations,
 #'     des études, du suivi de restauration, etc. Les modalités sont précisées dans la table ref_objectif.
 #'
-#' @param passerelle Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
+#' @param df Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
+#'     df doit contenir une variable "ope_id" (identifiant de l'opération de pêche).
 #'
 #' @return La passerelle complétée.
 #' @export
@@ -15,10 +16,10 @@
 #' passerelle <- passerelle %>%
 #' mef_ajouter_objectif()
 #' }
-mef_ajouter_objectif <- function(passerelle)
+mef_ajouter_objectif <- function(df)
 
 {
-  passerelle %>%
+  df %>%
     left_join(y = operation_objectif %>%
                 select(ope_id = opo_ope_id,
                        obj_id = opo_obj_id)) %>%

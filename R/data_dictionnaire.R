@@ -2,12 +2,12 @@
 #'
 #' @docType data
 #'
-#' @usage data(dictionnaire)
+#' @usage data(data_dictionnaire)
 #'
 #' @keywords datasets
 #'
 #' @examples
 #' \donttest{
-#' data(dictionnaire)
-#' dictionnaire}
-"dictionnaire"
+#' data(data_dictionnaire)
+#' data_dictionnaire}
+"data_dictionnaire"

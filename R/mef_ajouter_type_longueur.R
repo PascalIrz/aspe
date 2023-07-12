@@ -2,7 +2,8 @@
 #'
 #' ex : totale, fourche.
 #'
-#' @param passerelle Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
+#' @param df Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
+#'     df doit contenir une variable "lop_id" (identifiant du lot).
 #'
 #' @return La passerelle complétée.
 #' @export
@@ -14,10 +15,10 @@
 #' passerelle <- passerelle %>%
 #' mef_ajouter_type_longueur()
 #' }
-mef_ajouter_type_longueur <- function(passerelle)
+mef_ajouter_type_longueur <- function(df)
 
 {
-  passerelle %>%
+  df %>%
     left_join(lot_poissons %>%
                 select(lop_id,
                        tlo_id = lop_tlo_id)) %>%

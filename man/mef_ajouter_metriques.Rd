@@ -5,10 +5,10 @@
 \title{Ajouter à une passerelle les métriques IPR observées, théoriques et leur contribution
 à l'indice IPR agrégé}
 \usage{
-mef_ajouter_metriques(passerelle)
+mef_ajouter_metriques(df)
 }
 \arguments{
-\item{passerelle}{Le dataframe passerelle.}
+\item{df}{Dataframe qui doit comprendre une colonnes "ope_id" (identifiant de l'opération de pêche).}
 }
 \value{
 Le dataframe passerelle complété par les métriques.
@@ -19,6 +19,6 @@ Ajouter à une passerelle les métriques IPR observées, théoriques et leur con
 }
 \examples{
 \dontrun{
-passerelle_avec_metriques <- mef_ajouter_metriques(passerelle = ma_passerelle)
+passerelle_avec_metriques <- mef_ajouter_metriques(df = ma_passerelle)
 }
 }

@@ -3,7 +3,7 @@
 #' Par type de prélèvement, on entend les modalités du tpe_libelle de la
 #'     table ref_type_prelevement_elementaire
 #'
-#' @param passerelle Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
+#' @param df Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
 #'
 #' @return La passerelle complétée.
 #' @export
@@ -15,10 +15,10 @@
 #' passerelle <- passerelle %>%
 #' mef_ajouter_type_prelevement()
 #' }
-mef_ajouter_type_prelevement <- function(passerelle)
+mef_ajouter_type_prelevement <- function(df)
 
 {
-  passerelle %>%
+  df %>%
     left_join(y = prelevement_elementaire %>%
                 select(pre_id,
                        tpe_id = pre_tpe_id)) %>%

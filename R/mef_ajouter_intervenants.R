@@ -1,7 +1,7 @@
 #' Ajouter à la passerelle les intervenants sur les opérations
 #'     Ces intervenants sont l'opérateur, le commanditaire et le valideur
 #'
-#' @param passerelle Dataframe "passerelle" mettant en correspondance les identifiants des
+#' @param df Dataframe "passerelle" mettant en correspondance les identifiants des
 #'     différentes tables.
 #'
 #' @return La passerelle complétée.
@@ -16,7 +16,7 @@
 #' mef_ajouter_intervenants()
 #' }
 #'
-mef_ajouter_intervenants <- function(passerelle)
+mef_ajouter_intervenants <- function(df)
 
 {
   # simplification des tables pour ne conserver que le nécessaire
@@ -57,7 +57,7 @@ mef_ajouter_intervenants <- function(passerelle)
     )
 
   # ajout de variables booleennes pour taguer si l'opération est OFB ou AFB (commanditaire etc.)
-  passerelle <- passerelle %>%
+  df <- df %>%
     left_join(ope_simp) %>%
     mutate(
       operateur_ofb = str_extract(string = operateur_peche,
@@ -85,6 +85,6 @@ mef_ajouter_intervenants <- function(passerelle)
 
     )
 
-  passerelle
+  df
 
 }

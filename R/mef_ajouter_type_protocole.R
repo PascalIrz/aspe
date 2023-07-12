@@ -3,7 +3,7 @@
 #' ex : Indice Abondance Saumon.
 #'     Nécessite d'avoir chargé les tables "operation" et "ref_protocole".
 #'
-#' @param passerelle Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
+#' @param df Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
 #'
 #' @return La passerelle complétée.
 #' @export
@@ -15,10 +15,10 @@
 #' passerelle <- passerelle %>%
 #' mef_ajouter_type_protocole()
 #' }
-mef_ajouter_type_protocole <- function(passerelle)
+mef_ajouter_type_protocole <- function(df)
 
 {
-  passerelle %>%
+  df %>%
     left_join(y = operation %>%
                 select(ope_id,
                        pro_id = ope_pro_id)) %>%

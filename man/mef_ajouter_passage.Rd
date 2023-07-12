@@ -4,10 +4,11 @@
 \alias{mef_ajouter_passage}
 \title{Ajouter à la passerelle, quand le prélèvement élémentaire est un passage, le numéro de passage}
 \usage{
-mef_ajouter_passage(passerelle)
+mef_ajouter_passage(df)
 }
 \arguments{
-\item{passerelle}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.}
+\item{df}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
+df doit contenir une variable "pre_id" (identifiant du prélèvement élémentaire).}
 }
 \value{
 La passerelle complétée.

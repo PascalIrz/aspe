@@ -4,10 +4,10 @@
 \alias{mef_ajouter_ope_desc_peche}
 \title{Rajouter à la passerelle les variables de description de la pêche pour chaque opération (quand disponible).}
 \usage{
-mef_ajouter_ope_desc_peche(passerelle)
+mef_ajouter_ope_desc_peche(df)
 }
 \arguments{
-\item{passerelle}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.}
+\item{df}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.}
 }
 \value{
 La passerelle à laquelle ont été ajoutés les variables environnementales
@@ -17,6 +17,6 @@ Ces variables sont issues de la table "operation_description_peche".
 }
 \examples{
 \dontrun{
-passerelle <- mef_ajouter_ope_desc_peche(passerelle = passerelle)
+passerelle <- mef_ajouter_ope_desc_peche(df = passerelle)
 }
 }

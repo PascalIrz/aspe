@@ -3,7 +3,8 @@
 #'     Le type de prélèvement doit donc être indiqué dans le data frame (Groupe de points,
 #'     Passage ou Ambiance). On applique mef_ajouter_passage() après mef_ajouter_type_prelevement().
 #'
-#' @param passerelle Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
+#' @param df Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
+#'     df doit contenir une variable "pre_id" (identifiant du prélèvement élémentaire).
 #'
 #' @return La passerelle complétée.
 #' @export
@@ -16,10 +17,10 @@
 #' mef_ajouter_type_prelevement() %>%
 #' mef_ajouter_passage()
 #' }
-mef_ajouter_passage <- function(passerelle)
+mef_ajouter_passage <- function(df)
 
 {
-  passerelle %>%
+  df %>%
     left_join(y = passage %>%
                 rename(pre_id = pas_id))
 

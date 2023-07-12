@@ -4,10 +4,11 @@
 \alias{mef_ajouter_ambiance}
 \title{Ajouter à la passerelle, quand le prélèvement élémentaire est une ambiance, ses données}
 \usage{
-mef_ajouter_ambiance(passerelle)
+mef_ajouter_ambiance(df)
 }
 \arguments{
-\item{passerelle}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.}
+\item{df}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
+df doit contenir le champ "pre_id" (identifiant du prélèvement individuel).}
 }
 \value{
 La passerelle complétée.

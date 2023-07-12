@@ -4,10 +4,10 @@
 \alias{mef_ajouter_utilisateurs}
 \title{Ajouter à la passerelle les utilisateurs sur les opérations}
 \usage{
-mef_ajouter_utilisateurs(passerelle)
+mef_ajouter_utilisateurs(df)
 }
 \arguments{
-\item{passerelle}{Dataframe "passerelle" mettant en correspondance les identifiants des
+\item{df}{Dataframe "passerelle" mettant en correspondance les identifiants des
 différentes tables.}
 }
 \value{

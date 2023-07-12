@@ -4,10 +4,10 @@
 \alias{mef_ajouter_type_materiel}
 \title{Ajouter à la passerelle le type de matériel employé}
 \usage{
-mef_ajouter_type_materiel(passerelle)
+mef_ajouter_type_materiel(df)
 }
 \arguments{
-\item{passerelle}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.}
+\item{df}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.}
 }
 \value{
 La passerelle complétée.

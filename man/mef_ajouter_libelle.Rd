@@ -13,8 +13,7 @@ mef_ajouter_libelle(passerelle)
 La passerelle à laquelle ont été ajoutés les libellés des points de prélèvement.
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
-
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}.
 Fonction remplacée par "mef_ajouter_libelle_site()".
 }
 \examples{

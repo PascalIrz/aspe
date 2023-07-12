@@ -3,7 +3,7 @@
 #' Ces utilisateurs sont le créateur et la personne qui a effectué la dernière modification.
 #'     Ils sont identifiés par leur adresse email.
 #'
-#' @param passerelle Dataframe "passerelle" mettant en correspondance les identifiants des
+#' @param df Dataframe "passerelle" mettant en correspondance les identifiants des
 #'     différentes tables.
 #'
 #' @return La passerelle complétée.
@@ -17,7 +17,7 @@
 #' mef_ajouter_utilisateurs()
 #' }
 #'
-mef_ajouter_utilisateurs <- function(passerelle)
+mef_ajouter_utilisateurs <- function(df)
 
 {
   # simplification des tables pour ne conserver que le nécessaire
@@ -41,9 +41,9 @@ mef_ajouter_utilisateurs <- function(passerelle)
                 rename(ope_uti_id_derniere_modification = uti_id,
                        modificateur = uti_mail))
 
-  passerelle <- passerelle %>%
+  df <- df %>%
     left_join(ope_simp)
 
-  passerelle
+  df
 
 }

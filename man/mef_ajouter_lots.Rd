@@ -4,10 +4,11 @@
 \alias{mef_ajouter_lots}
 \title{Ajouter les lots de poissons capturés à la passerelle}
 \usage{
-mef_ajouter_lots(passerelle)
+mef_ajouter_lots(df)
 }
 \arguments{
-\item{passerelle}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.}
+\item{df}{Dataframe "passerelle" mettant en correspondance les identifiants des différentes tables.
+df doit contenir une variable "pre_id" (identifiant du prélèvement élémentaire).}
 }
 \value{
 La passerelle complétée.
