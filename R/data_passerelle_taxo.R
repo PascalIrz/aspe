@@ -5,12 +5,12 @@
 #'
 #' @docType data
 #'
-#' @usage data(passerelle_taxo)
+#' @usage data(data_passerelle_taxo)
 #'
 #' @keywords datasets
 #'
 #' @examples
 #' \donttest{
-#' data(passerelle_taxo)
-#' passerelle_taxo}
-"passerelle_taxo"
+#' data(data_passerelle_taxo)
+#' data_passerelle_taxo}
+"data_passerelle_taxo"
