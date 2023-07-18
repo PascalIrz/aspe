@@ -31,6 +31,9 @@
     <loc>https://pascalirz.github.io/aspe/reference/data_dictionnaire.html</loc>
   </url>
   <url>
+    <loc>https://pascalirz.github.io/aspe/reference/data_passerelle_taxo.html</loc>
+  </url>
+  <url>
     <loc>https://pascalirz.github.io/aspe/reference/expl_commentaires_champs.html</loc>
   </url>
   <url>
@@ -263,9 +266,6 @@
   </url>
   <url>
     <loc>https://pascalirz.github.io/aspe/reference/misc_nom_dernier_fichier.html</loc>
-  </url>
-  <url>
-    <loc>https://pascalirz.github.io/aspe/reference/passerelle_taxo.html</loc>
   </url>
   <url>
     <loc>https://pascalirz.github.io/aspe/reference/protection_especes.html</loc>
