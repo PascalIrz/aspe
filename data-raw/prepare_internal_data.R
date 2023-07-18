@@ -1,7 +1,9 @@
-## Code to prepare `aspe_subset` dataset goes here
+### Code to prepare the internal data of the package ----
 
-# The aim is to get an as light as possible dataset allowing the vignettes to work.
-# The sensitive taxa of the ASPE database are removed
+
+# The aim is to get a set of dataframes, as light as possible, allowing the vignettes and tests to work.
+# This script is based on a raw copy of the ASPE SQL data tables previously parsed into R dataframes.
+# The sensitive taxa of the ASPE database are removed.
 
 # load packages ----
 library(aspe)
@@ -67,9 +69,9 @@ data <- passerelle %>%
   mef_ajouter_dept() %>%
   mef_ajouter_objectif() %>%
   mef_ajouter_ope_date() %>%
-  filter(str_detect(obj_libelle, 'RHP'),
+  filter(stringr::str_detect(obj_libelle, 'RHP'),
     annee > 2006,
-    dept %in% c("22", "35")) %>%
+    dept == "22") %>%
   mef_ajouter_lots() %>%
   mef_ajouter_mei()
 
@@ -111,31 +113,27 @@ lot_poissons <- lot_poissons %>%
 mesure_individuelle <- mesure_individuelle %>%
   filter(mei_id %in% my_meis)
 
-save(station,
-     point_prelevement,
-     operation,
-     operation_description_peche,
-     operation_donnees_environnementales,
-     operation_ipr,
-     operation_objectif,
-     prelevement_elementaire,
-     lot_poissons,
-     mesure_individuelle,
-     ref_espece,
-     ref_logique_3,
-     ref_logique_4,
-     ref_moyen_prospection,
-     ref_objectif,
-     ref_protocole,
-     ref_type_longueur,
-     ref_type_lot,
-     ref_type_prelevement_elementaire,
-     ref_type_projection,
-     classe_ipr,
-     file = "inst/vignettes/aspe_subset.RData")
-
-
-
-
-
-#usethis::use_data(aspe_subset, overwrite = TRUE)
+# save data (see https://r-pkgs.org/data.html#sec-data-sysdata)
+usethis::use_data(station,
+                  point_prelevement,
+                  operation,
+                  operation_description_peche,
+                  operation_donnees_environnementales,
+                  operation_ipr,
+                  operation_objectif,
+                  prelevement_elementaire,
+                  lot_poissons,
+                  mesure_individuelle,
+                  ref_espece,
+                  ref_logique_3,
+                  ref_logique_4,
+                  ref_moyen_prospection,
+                  ref_objectif,
+                  ref_protocole,
+                  ref_type_longueur,
+                  ref_type_lot,
+                  ref_type_prelevement_elementaire,
+                  ref_type_projection,
+                  classe_ipr,
+                  internal = TRUE,
+                  overwrite = TRUE)

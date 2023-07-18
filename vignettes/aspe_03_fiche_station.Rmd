@@ -39,18 +39,18 @@ load(file = "../../../raw_data/rdata/tables_sauf_mei_2023_04_07_09_39_32.RData")
 ```
 
 ```{r, echo = FALSE}
-load(system.file("vignettes/aspe_subset.RData", package = "aspe"))
+#load(system.file("vignettes/aspe_subset.RData", package = "aspe"))
 ```
 
 # Le peuplement
 
 ## Construction du `dataframe` de base
 
-On choisit ici à titre d'exemple la station avec le `sta_id` 10502, Le Couesnon à Romazy.
+On choisit ici à titre d'exemple la station avec le `sta_id` 10925, Le Trieux à Plésidy.
 
 ```{r, eval = TRUE}
 aspe <- aspe::mef_creer_passerelle() %>% 
-  filter(sta_id == 10502) %>% 
+  filter(sta_id == 10844) %>% 
   mef_ajouter_ope_date() %>% # ajout de la date
   mef_ajouter_libelle() %>% # ajout des libellés station
   mef_ajouter_lots() # ajout des lots
@@ -100,8 +100,13 @@ ipr_station <- aspe %>%
 
 La fonction `ip_completer_classes_couleur()` sert à ajouter le code couleur qui convient à chaque classe de qualité en vue de produire 'arrière-plan du graphique.
 
-```{r}
+```{r, eval = FALSE}
 classe_ipr <- classe_ipr %>% 
+  ip_completer_classes_couleur()
+```
+
+```{r, echo = FALSE}
+classe_ipr <- aspe:::classe_ipr %>% 
   ip_completer_classes_couleur()
 ```
 
@@ -111,7 +116,8 @@ On produit ensuite le graphique avec la fonction `gg_temp_ipr()`.
 gg_temp_ipr(df_ipr = ipr_station,
             var_id_sta = pop_libelle,
             var_ipr = ipr,
-            max_axe_y = 35)
+            max_axe_y = 35,
+            df_classes = classe_ipr)
 ```
 
 ## Les métriques IPR
@@ -140,7 +146,8 @@ gg_temp_metriq(
   df_metriques = metriques_station,
   var_id_sta = pop_libelle,
   var_nom_metrique = metrique,
-  var_valeur_metrique = valeur
+  var_valeur_metrique = valeur,
+  df_classes = classe_ipr
 )
 ```
 

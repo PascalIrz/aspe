@@ -41,7 +41,7 @@ load(file = "../../../raw_data/rdata/tables_sauf_mei_2023_04_07_09_39_32.RData")
 ```
 
 ```{r, echo = FALSE}
-load(system.file("vignettes/aspe_subset.RData", package = "aspe"))
+#load(system.file("vignettes/aspe_subset.RData", package = "aspe"))
 ```
 
 ## Mise en correspondance des identifiants des tables principales
@@ -101,7 +101,13 @@ Comme il existe dans la base plusieurs systèmes de coordonnées (CRS), on doit 
 
 Ajout du code CRS (EPSG) aux points (table `point_prelevement`) par jointure avec la table `ref_type_projection` qui fait la correspondence entre les codes internes de la base et les numéros EPSG des CRS. 
 
-```{r, echo = TRUE, warning = FALSE, message = FALSE}
+```{r, echo = FALSE, warning = FALSE, message = FALSE}
+pops <- aspe:::point_prelevement %>%
+  left_join(y = aspe:::ref_type_projection,
+            by = c("pop_typ_id" = "typ_id"))
+```
+
+```{r, eval = FALSE}
 pops <- point_prelevement %>%
   left_join(y = ref_type_projection,
             by = c("pop_typ_id" = "typ_id"))
@@ -195,7 +201,8 @@ aspe_sel <- passerelle %>%
 Le principe est d'utiliser la famille des fonctions du package `aspe` qui sont préfixées par `mef_ajouter`. Celles-ci servent à ajouter des données à une passerelle. 
 
 ```{r, echo = FALSE}
-ls("package:aspe") %>% stringr::str_subset(pattern = "mef_ajouter")
+ls("package:aspe") %>%
+  stringr::str_subset(pattern = "mef_ajouter")
 ```
 
 Exemple si l'on veut étudier les notes IPR et les métriques, pour les pêches réalisées dans le cadre du Réseau Hydrobiologique et Piscicole. Comme les notes IPR sont attribuée à chaque pêche, elles sont identiques pour chaque lot de poissons de la même pêche donc on peut dédoublonner les lignes afin de n'avoir qu'une ligne par opération.
@@ -203,7 +210,7 @@ Exemple si l'on veut étudier les notes IPR et les métriques, pour les pêches 
 ```{r}
 aspe_ipr <- aspe_sel %>% 
   select(-pre_id, -lop_id) %>% 
-  distinct() %>% 
+  distinct() %>% # dédoublonnage
   mef_ajouter_objectif() %>% 
   filter(obj_libelle == "RHP – Réseau Hydrobiologique Piscicole") %>% 
   mef_ajouter_ipr() %>% 
