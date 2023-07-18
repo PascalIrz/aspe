@@ -31,6 +31,9 @@
     <loc>https://pascalirz.github.io/aspe/reference/data_dictionnaire.html</loc>
   </url>
   <url>
+    <loc>https://pascalirz.github.io/aspe/reference/data_liste_rouge.html</loc>
+  </url>
+  <url>
     <loc>https://pascalirz.github.io/aspe/reference/data_passerelle_taxo.html</loc>
   </url>
   <url>
@@ -143,9 +146,6 @@
   </url>
   <url>
     <loc>https://pascalirz.github.io/aspe/reference/ipr_renommer_pour_macro.html</loc>
-  </url>
-  <url>
-    <loc>https://pascalirz.github.io/aspe/reference/liste_rouge.html</loc>
   </url>
   <url>
     <loc>https://pascalirz.github.io/aspe/reference/mef_ajouter_abs.html</loc>
