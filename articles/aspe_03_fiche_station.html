@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">aspe</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.5</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -73,7 +73,7 @@
       <img src="" class="logo" alt=""><h1>3. Produire une fiche station</h1>
                         <h4 data-toc-skip class="author">Pascal Irz</h4>
             
-            <h4 data-toc-skip class="date">12/07/2023</h4>
+            <h4 data-toc-skip class="date">18/07/2023</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/PascalIrz/aspe/blob/HEAD/vignettes/aspe_03_fiche_station.Rmd" class="external-link"><code>vignettes/aspe_03_fiche_station.Rmd</code></a></small>
       <div class="d-none name"><code>aspe_03_fiche_station.Rmd</code></div>
@@ -107,10 +107,10 @@ dans les autres vignettes.</p>
 <h3 id="construction-du-dataframe-de-base">Construction du <code>dataframe</code> de base<a class="anchor" aria-label="anchor" href="#construction-du-dataframe-de-base"></a>
 </h3>
 <p>On choisit ici à titre d’exemple la station avec le
-<code>sta_id</code> 10502, Le Couesnon à Romazy.</p>
+<code>sta_id</code> 10925, Le Trieux à Plésidy.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aspe</span> <span class="op">&lt;-</span> <span class="fu">aspe</span><span class="fu">::</span><span class="fu"><a href="../reference/mef_creer_passerelle.html">mef_creer_passerelle</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">sta_id</span> <span class="op">==</span> <span class="fl">10502</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">sta_id</span> <span class="op">==</span> <span class="fl">10844</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="../reference/mef_ajouter_ope_date.html">mef_ajouter_ope_date</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="co"># ajout de la date</span></span>
 <span>  <span class="fu"><a href="../reference/mef_ajouter_libelle.html">mef_ajouter_libelle</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="co"># ajout des libellés station</span></span>
 <span>  <span class="fu"><a href="../reference/mef_ajouter_lots.html">mef_ajouter_lots</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># ajout des lots</span></span></code></pre></div>
@@ -172,8 +172,9 @@ de produire ’arrière-plan du graphique.</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/gg_temp_ipr.html">gg_temp_ipr</a></span><span class="op">(</span>df_ipr <span class="op">=</span> <span class="va">ipr_station</span>,</span>
 <span>            var_id_sta <span class="op">=</span> <span class="va">pop_libelle</span>,</span>
 <span>            var_ipr <span class="op">=</span> <span class="va">ipr</span>,</span>
-<span>            max_axe_y <span class="op">=</span> <span class="fl">35</span><span class="op">)</span></span></code></pre></div>
-<p><img src="aspe_03_fiche_station_files/figure-html/unnamed-chunk-9-1.png" width="480"></p>
+<span>            max_axe_y <span class="op">=</span> <span class="fl">35</span>,</span>
+<span>            df_classes <span class="op">=</span> <span class="va">classe_ipr</span><span class="op">)</span></span></code></pre></div>
+<p><img src="aspe_03_fiche_station_files/figure-html/unnamed-chunk-10-1.png" width="480"></p>
 </div>
 </div>
 <div class="section level3">
@@ -205,9 +206,10 @@ et de bien visualiser celles qui sont déclassantes.</p>
 <span>  df_metriques <span class="op">=</span> <span class="va">metriques_station</span>,</span>
 <span>  var_id_sta <span class="op">=</span> <span class="va">pop_libelle</span>,</span>
 <span>  var_nom_metrique <span class="op">=</span> <span class="va">metrique</span>,</span>
-<span>  var_valeur_metrique <span class="op">=</span> <span class="va">valeur</span></span>
+<span>  var_valeur_metrique <span class="op">=</span> <span class="va">valeur</span>,</span>
+<span>  df_classes <span class="op">=</span> <span class="va">classe_ipr</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p><img src="aspe_03_fiche_station_files/figure-html/unnamed-chunk-11-1.png" width="672"></p>
+<p><img src="aspe_03_fiche_station_files/figure-html/unnamed-chunk-12-1.png" width="672"></p>
 <p>On peut préférer la fonction <code><a href="../reference/gg_temp_metriq_grille.html">gg_temp_metriq_grille()</a></code>
 pour mieux visualiser les tendances par métrique.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
@@ -217,7 +219,7 @@ pour mieux visualiser les tendances par métrique.</p>
 <span>  var_nom_metrique <span class="op">=</span> <span class="va">metrique</span>,</span>
 <span>  var_valeur_metrique <span class="op">=</span> <span class="va">valeur</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p><img src="aspe_03_fiche_station_files/figure-html/unnamed-chunk-12-1.png" width="672"></p>
+<p><img src="aspe_03_fiche_station_files/figure-html/unnamed-chunk-13-1.png" width="672"></p>
 </div>
 </div>
 </div>
