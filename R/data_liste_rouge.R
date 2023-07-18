@@ -5,12 +5,12 @@
 #'
 #' @docType data
 #'
-#' @usage data(liste_rouge)
+#' @usage data(data_liste_rouge)
 #'
 #' @keywords datasets
 #'
 #' @examples
 #' \donttest{
-#' data(liste_rouge)
-#' liste_rouge}
-"liste_rouge"
+#' data(data_liste_rouge)
+#' data_liste_rouge}
+"data_liste_rouge"
