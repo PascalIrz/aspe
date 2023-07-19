@@ -10,12 +10,12 @@
 #'
 #' @docType data
 #'
-#' @usage data(taille_poids)
+#' @usage data(data_taille_poids)
 #'
 #' @keywords datasets
 #'
 #' @examples
 #' \donttest{
-#' data(taille_poids)
-#' taille_poids}
-"taille_poids"
+#' data(data_taille_poids)
+#' data_taille_poids}
+"data_taille_poids"

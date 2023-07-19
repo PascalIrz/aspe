@@ -4,12 +4,12 @@
 #'
 #' @docType data
 #'
-#' @usage data(protection_especes)
+#' @usage data(data_protection_especes)
 #'
 #' @keywords datasets
 #'
 #' @examples
 #' \donttest{
-#' data("protection_especes")
-#' protection_especes}
-"protection_especes"
+#' data("data_protection_especes")
+#' data_protection_especes}
+"data_protection_especes"

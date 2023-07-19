@@ -6,12 +6,12 @@
 #'
 #' @docType data
 #'
-#' @usage data(traits_bio)
+#' @usage data(data_traits_bio)
 #'
 #' @keywords datasets
 #'
 #' @examples
 #' \donttest{
-#' data(traits_bio)
-#' traits_bio}
-"traits_bio"
+#' data(data_traits_bio)
+#' data_traits_bio}
+"data_traits_bio"

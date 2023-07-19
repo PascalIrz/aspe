@@ -135,5 +135,5 @@ usethis::use_data(station,
                   ref_type_prelevement_elementaire,
                   ref_type_projection,
                   classe_ipr,
-                  internal = TRUE,
+#                  internal = TRUE,
                   overwrite = TRUE)
