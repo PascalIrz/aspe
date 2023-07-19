@@ -2,3 +2,34 @@ url: https://pascalirz.github.io/aspe/
 template:
   bootstrap: 5
 
+reference:
+- title: Data
+  desc:  Jeux de données contenus dans le package.
+- contents:
+  - starts_with("data_")
+- title: Exploration des données
+  desc: Fonctions d'exploration des dataframes Aspe et de leurs champs.
+- contents:
+  - starts_with("expl_")
+- title: Export des dataframes
+- contents:
+  - starts_with("export_")
+- title: Opérations spatiales
+- contents:
+  - starts_with("geo_")
+- title: Graphiques
+- contents:
+  - starts_with("gg_")
+- title: Importation des données
+- contents:
+  - starts_with("imp_")
+- title: Indice Poisson Rivière
+- contents:
+  - starts_with("ip_")
+- title: Mise en forme des dataframes
+- contents:
+  - starts_with("mef_")
+- title: Miscellanées
+  desc: Fonctions variées pas faciles à caser ailleurs.
+- contents:
+  - starts_with("misc_")

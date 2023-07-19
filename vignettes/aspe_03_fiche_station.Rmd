@@ -34,12 +34,9 @@ library(dplyr)
 library(tidyr)
 ```
 
-```{r, eval = FALSE}
-load(file = "../../../raw_data/rdata/tables_sauf_mei_2023_04_07_09_39_32.RData")
-```
-
-```{r, echo = FALSE}
-#load(system.file("vignettes/aspe_subset.RData", package = "aspe"))
+```{r, results = 'hide'}
+misc_charger_donnees_test()
+# load(file = "../../../raw_data/rdata/tables_sauf_mei_2023_04_07_09_39_32.RData")
 ```
 
 # Le peuplement
@@ -100,13 +97,8 @@ ipr_station <- aspe %>%
 
 La fonction `ip_completer_classes_couleur()` sert à ajouter le code couleur qui convient à chaque classe de qualité en vue de produire 'arrière-plan du graphique.
 
-```{r, eval = FALSE}
+```{r}
 classe_ipr <- classe_ipr %>% 
-  ip_completer_classes_couleur()
-```
-
-```{r, echo = FALSE}
-classe_ipr <- aspe:::classe_ipr %>% 
   ip_completer_classes_couleur()
 ```
 

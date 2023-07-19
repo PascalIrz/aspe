@@ -36,12 +36,8 @@ library(stringr)
 
 Les données ont été préalablement extraites d'un 'dump' de la base Aspe ([cf. tuto](https://pascalirz.github.io/aspe/articles/aspe_01_importation_tables.html). Elles comprennent deux fichiers de données, l'un pour les mesures individuelles et l'autre pour l'ensemble des autres tables. Seul ce dernier est utilisé ici.
 
-```{r, eval = FALSE}
-load(file = "../../../raw_data/rdata/tables_sauf_mei_2023_04_07_09_39_32.RData")
-```
-
-```{r, echo = FALSE}
-#load(system.file("vignettes/aspe_subset.RData", package = "aspe"))
+```{r, results = 'hide'}
+misc_charger_donnees_test()
 ```
 
 ## Mise en correspondance des identifiants des tables principales
@@ -101,13 +97,7 @@ Comme il existe dans la base plusieurs systèmes de coordonnées (CRS), on doit 
 
 Ajout du code CRS (EPSG) aux points (table `point_prelevement`) par jointure avec la table `ref_type_projection` qui fait la correspondence entre les codes internes de la base et les numéros EPSG des CRS. 
 
-```{r, echo = FALSE, warning = FALSE, message = FALSE}
-pops <- aspe:::point_prelevement %>%
-  left_join(y = aspe:::ref_type_projection,
-            by = c("pop_typ_id" = "typ_id"))
-```
-
-```{r, eval = FALSE}
+```{r, warning = FALSE, message = FALSE}
 pops <- point_prelevement %>%
   left_join(y = ref_type_projection,
             by = c("pop_typ_id" = "typ_id"))
