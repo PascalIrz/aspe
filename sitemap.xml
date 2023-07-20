@@ -37,6 +37,18 @@
     <loc>https://pascalirz.github.io/aspe/reference/data_passerelle_taxo.html</loc>
   </url>
   <url>
+    <loc>https://pascalirz.github.io/aspe/reference/data_protection_especes.html</loc>
+  </url>
+  <url>
+    <loc>https://pascalirz.github.io/aspe/reference/data_taille_poids.html</loc>
+  </url>
+  <url>
+    <loc>https://pascalirz.github.io/aspe/reference/data_traits_bio.html</loc>
+  </url>
+  <url>
+    <loc>https://pascalirz.github.io/aspe/reference/donneesTest.html</loc>
+  </url>
+  <url>
     <loc>https://pascalirz.github.io/aspe/reference/expl_commentaires_champs.html</loc>
   </url>
   <url>
@@ -262,18 +274,12 @@
     <loc>https://pascalirz.github.io/aspe/reference/mef_ssech_esp_env.html</loc>
   </url>
   <url>
+    <loc>https://pascalirz.github.io/aspe/reference/misc_charger_donnees_test.html</loc>
+  </url>
+  <url>
     <loc>https://pascalirz.github.io/aspe/reference/misc_derniere_date.html</loc>
   </url>
   <url>
     <loc>https://pascalirz.github.io/aspe/reference/misc_nom_dernier_fichier.html</loc>
-  </url>
-  <url>
-    <loc>https://pascalirz.github.io/aspe/reference/protection_especes.html</loc>
-  </url>
-  <url>
-    <loc>https://pascalirz.github.io/aspe/reference/taille_poids.html</loc>
-  </url>
-  <url>
-    <loc>https://pascalirz.github.io/aspe/reference/traits_bio.html</loc>
   </url>
 </urlset>
