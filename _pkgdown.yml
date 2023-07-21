@@ -2,7 +2,7 @@ url: https://pascalirz.github.io/aspe/
 template:
   bootstrap: 5
 reference:
-- title: "Data""
+- title: "Data"
   desc:  "Jeux de données contenus dans le package."
   contents:
   - starts_with("data_")
