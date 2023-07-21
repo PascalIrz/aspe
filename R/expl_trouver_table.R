@@ -19,22 +19,22 @@
 expl_trouver_table <- function(nom_contient) {
 
   ######################################
-  lister_dfs <- function()
-
-  {
-    objets <- ls(envir = globalenv())
-
-    test_1obj <- function(obj) {
-      is.data.frame(get(obj))
-    }
-
-    test <- map(.x = objets,
-                .f = test_1obj)
-
-    test %>%
-      unlist()
-
-  }
+  # lister_dfs <- function()
+  #
+  # {
+  #   objets <- ls(envir = globalenv())
+  #
+  #   test_1obj <- function(obj) {
+  #     is.data.frame(get(obj))
+  #   }
+  #
+  #   test <- map(.x = objets,
+  #               .f = test_1obj)
+  #
+  #   test %>%
+  #     unlist()
+  #
+  # }
 
   #################################
   # Liste des dataframes
