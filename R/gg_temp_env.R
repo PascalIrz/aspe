@@ -21,12 +21,14 @@
 #' @importFrom dplyr pull filter
 #' @importFrom ggplot2 ggplot geom_smooth facet_wrap scale_y_log10 theme element_text
 #'
+#' @aliases gg_env_fn_annee
+#'
 #' @examples
 #' \dontrun{
-#' mes_graphiques <- gg_env_fn_annee(df = mon_df, log_y = c('surface_bv', 'distance_source'))
+#' mes_graphiques <- gg_temp_env(df = mon_df, log_y = c('surface_bv', 'distance_source'))
 #' mes_graphiques[[1]]
 #' }
-gg_env_fn_annee <-
+gg_temp_env <-
   function(df,
            parametres = NA,
            log_y = c('surface_bv', 'distance_source', 'pente', 'largeur'),

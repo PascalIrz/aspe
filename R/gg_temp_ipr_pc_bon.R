@@ -11,12 +11,14 @@
 #' @importFrom ggplot2 aes geom_bar ggplot labs scale_x_continuous scale_y_continuous theme
 #' @importFrom forcats fct_recode
 #'
+#' @aliases ipr_grapher_pc_bon
+#'
 #' @examples
 #' \dontrun{
-#' ipr_grapher_pc_bon(ipr_df = data_56,
+#' gg_temp_ipr_pc_bon(ipr_df = data_56,
 #' titre = "Morbihan")
 #' }
-ipr_grapher_pc_bon <- function(ipr_df, titre = NA)
+gg_temp_ipr_pc_bon <- function(ipr_df, titre = NA)
 
 {
 

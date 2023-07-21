@@ -1,0 +1,21 @@
+year    <- sub("-.*", "", meta$Date)
+version <- meta$Version
+note    <- sprintf("R package version %s", version)
+
+citHeader("To cite package aspe in publications use:")
+
+bibentry(
+  bibtype  = "Manual",
+  title    = "aspe: An R Package to Analyse and Visualise River Fish Data in France",
+  author   = c(as.person("P. Irz"), as.person("C. Mondy"), as.person("B. Richard"), as.person("L. Bonnafoux")),
+  journal  = "Github repo",
+  year     = year,
+  volume   = note,
+  url      = "https://github.com/PascalIrz/aspe/",
+  textVersion = paste0("Irz, P., Mondy, C., Richard, B. and Bonnafoux, L. (",
+                       year,
+                       "). aspe: An R Package to Analyse and Visualise River Fish Data in France. ",
+                       note, ", ",
+                       "https://github.com/PascalIrz/aspe/"
+                       )
+)
