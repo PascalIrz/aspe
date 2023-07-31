@@ -5,7 +5,7 @@
 \alias{data_traits_bio}
 \title{Données sommaires sur les espèces de poissons}
 \format{
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 124 rows and 22 columns.
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 87 rows and 20 columns.
 }
 \usage{
 data(data_traits_bio)

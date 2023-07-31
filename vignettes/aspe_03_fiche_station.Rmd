@@ -30,8 +30,7 @@ Le détail des premières étapes de constitution des tables sont donnés dans l
 
 ```{r setup}
 library(aspe)
-library(dplyr)
-library(tidyr)
+library(tidyverse)
 ```
 
 ```{r, results = 'hide'}
@@ -156,6 +155,14 @@ gg_temp_metriq_grille(
 
 # Variables environnementales
 
+## Préparation des données
+
+On prépare un dataframe dans un format qui permettra ensuite de produire la présentation graphique des données environnementales qui varient d'une opération de pêche à une autre :
+
+- Ajout des données environnementales au dataframe de base avec les fonctions `mef_ajouter_ope_env()` et `mef_ajouter_ope_desc_peche()`
+- Passage en format "long"
+- Mise dans l'ordre souhaité des variables à représenter
+
 ```{r}
 env_station <- aspe %>%
   select(pop_id,
@@ -164,6 +171,40 @@ env_station <- aspe %>%
          pop_libelle) %>% 
   distinct() %>% 
   mef_ajouter_ope_env() %>% 
-  mef_ajouter_ope_desc_peche()
+  mef_ajouter_ope_desc_peche() %>% 
+  select(annee, odp_duree_peche:odp_puissance) %>% 
+  pivot_longer(cols = odp_duree_peche:odp_puissance,
+               names_to = "variable",
+               values_to = "valeur") %>% 
+  mutate(variable = as.factor(variable),
+         variable = fct_relevel(variable,
+                                "odp_largeur_lame_eau",
+                                "odp_longueur",
+                                "odp_temperature_instantanee"))
+```
+
+Calul des moyennes interannuelles par variable.
+
+```{r}
+moyennes <- env_station %>% 
+  group_by(variable) %>% 
+  summarise(moyenne = mean(valeur, na.rm = TRUE))
+```
+
+## Présentation graphique
+
+```{r, fig.width = 7, fig.height = 5}
+ggplot(data = env_station,
+       aes(x = annee,
+           y = valeur)) +
+  geom_bar(stat = "identity",
+           fill = "darkgreen") +
+  facet_wrap(~variable, scales = "free_y") +
+  geom_hline(data = moyennes,
+             aes(yintercept = moyenne),
+             linetype = "dotted",
+             col = "red") +
+  labs(x = "Année",
+       y = "")
 ```
 

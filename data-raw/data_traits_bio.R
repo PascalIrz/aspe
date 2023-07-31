@@ -34,7 +34,7 @@ captures <- mef_creer_passerelle() %>% # création de la passerelle
            esp_nom_commun) %>%
   summarise(effectif = sum(lop_effectif, na.rm = TRUE)) %>%
   ungroup() %>%
-  # recodages (temporaire ; à supprimer quand le référentiel taxo Aspe sera Ok)
+  # recodages (temporaire ; à supprimer pour l'essentiel quand le référentiel taxo Aspe sera Ok)
   mutate(esp_nom_latin = case_when(
     esp_nom_latin == "Leuciscus cephalus" ~ "Squalius cephalus",
     esp_nom_latin == "Atherinapresbyter" ~ "Atherina presbyter",
@@ -43,10 +43,21 @@ captures <- mef_creer_passerelle() %>% # création de la passerelle
     TRUE ~ esp_nom_latin))
 
 # jointure entre données Aspe et tableau de traits
-test <- captures %>%
+taxons_sans_traits <- captures %>%
   anti_join(y = data_traits_bio) %>%
   arrange(-effectif) %>%
   filter(!str_detect(esp_nom_commun, "indétermi|Ecrevis|Crab|Hybrid"))
+
+data_traits_bio <- data_traits_bio %>%
+  left_join(captures) %>%
+  select(esp_code_alternatif,
+         esp_nom_latin,
+         esp_nom_commun,
+         `acid tolerance`:`reproduction (fiBS)`) %>%
+  filter(!is.na(esp_code_alternatif))
+
+
+
 
 # si le dataframe test ne montre aucun taxon inattendu c'est Ok
 usethis::use_data(data_traits_bio, overwrite = T)
