@@ -30,7 +30,10 @@ Le détail des premières étapes de constitution des tables sont donnés dans l
 
 ```{r setup}
 library(aspe)
-library(tidyverse)
+library(tidyr)
+library(ggplot2)
+library(forcats)
+library(dplyr)
 ```
 
 ```{r, results = 'hide'}
