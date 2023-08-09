@@ -6,6 +6,8 @@
 
 library(tidyverse)
 
+
+
 # lecture
 df <- readr::read_csv2("inst/extdata/APT_20230718_SANDRE.csv") %>%
   select(CdAppelTaxon,
@@ -50,7 +52,7 @@ passerelle_taxo <- passerelle_taxo %>%
 
 # jointure avec le ref_espece de la base aspe
 data_passerelle_taxo <- passerelle_taxo %>%
-  left_join(y = aspe:::ref_espece %>%
+  left_join(y = ref_espece %>%
               select(esp_id,
                      esp_code_alternatif,
                      esp_nom_latin)) %>%
@@ -63,7 +65,8 @@ data_passerelle_taxo <- passerelle_taxo %>%
       is.na(esp_code_taxref) & esp_code_alternatif == "VAX" ~ 194072,
       TRUE ~ as.double(esp_code_taxref)
     )
-  )
+  ) %>%
+  filter(esp_code_sandre != 2094) # pb de l'ancien code de l'aspe qui traine dans le référentiel
 
 
 usethis::use_data(data_passerelle_taxo, overwrite = T)

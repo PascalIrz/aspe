@@ -5,7 +5,7 @@
 \alias{data_passerelle_taxo}
 \title{Table de passage entre les identifiants des espèces}
 \format{
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 267 rows and 5 columns.
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 266 rows and 5 columns.
 }
 \usage{
 data(data_passerelle_taxo)

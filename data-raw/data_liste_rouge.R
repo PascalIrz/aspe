@@ -41,7 +41,7 @@ ecrevisses <- read_csv2("inst/extdata/2012_crustacea_RL_mainland_FR_202245.csv")
   filter(!is.na(esp_code_alternatif))
 
 data_liste_rouge <- rbind(poissons,
-                     ecrevisses)
+                          ecrevisses)
 
 
 usethis::use_data(data_liste_rouge, overwrite = T)
