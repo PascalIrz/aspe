@@ -1,32 +1,43 @@
-#' Graphique pour représenter l'évolution des effectifs de taxons au cours du temps
+#'Graphique pour représenter l'évolution des effectifs de taxons au cours du
+#'temps
 #'
-#' La fonction permet de visualiser la dynamique des taxons dans le peuplement sur une station. Les taxons sont représentés
-#'     par des points, proportionnels aux effectifs capturés. Les protocoles utilisés sont également représentés. La fonction
-#'     nécessite que le dataframe "ref_espece" de la base ASPE soit chargé.
-#' @param df Dataframe contenant les données des effectifs capturés pour les taxons.  Il doit contenir des variables "effectif"
-#'     et "annee" ainsi qu'une variable permettant d'identifier la station ou le point de
-#'     prélèvement. Il doit également contenir une variable 'pro_libelle' correspondant aux protocoles (à ajouter avec la \code{aspe::mef_ajouter_type_protocole()}).
-#' @param var_id_sta Nom de la variable servant à identifier les stations ou points.
-#'     Cette variable donnera les étiquettes du graphique.
-#' @param var_especes Variable indiquant l'espèce ou le code espèce.
-#' @param interactif Valeur logique: statique (FALSE) produit avec `ggplot2` ou interactif (TRUE) produit avec `ggiraph`.
-#' @param largeur,hauteur Numériques. Dimensions des graphiques interactifs.
-#' @param taxons_ipr Caractère. Indique comment distinguer sur le graphique les noms des espèces participant à l'IPR.
-#'     Peut prendre les valeurs "bold", "italic", "bold.italic", ou par défaut "plain".
-#' @param ... arguments passés à la fonction \code{ggiraph::opts_sizing()}
+#'La fonction permet de visualiser la dynamique des taxons dans le peuplement
+#'sur une station. Les taxons sont représentés par des points, proportionnels
+#'aux effectifs capturés. Les protocoles utilisés sont également représentés. La
+#'fonction nécessite que le dataframe "ref_espece" de la base ASPE soit chargé.
+#'@param df Dataframe contenant les données des effectifs capturés pour les
+#'  taxons.  Il doit contenir des variables "effectif" et "annee" ainsi qu'une
+#'  variable permettant d'identifier la station ou le point de prélèvement. Il
+#'  doit également contenir une variable 'pro_libelle' correspondant aux
+#'  protocoles (à ajouter avec la \code{aspe::mef_ajouter_type_protocole()}).
+#'@param var_id_sta Nom de la variable servant à identifier les stations ou
+#'  points. Cette variable donnera les étiquettes du graphique.
+#'@param var_especes Variable indiquant l'espèce ou le code espèce.
+#'@param interactif Valeur logique: statique (FALSE) produit avec `ggplot2` ou
+#'  interactif (TRUE) produit avec `ggiraph`.
+#'@param largeur,hauteur Numériques. Dimensions des graphiques interactifs.
+#'@param taxons_ipr Caractère. Indique comment distinguer sur le graphique les
+#'  noms des espèces participant à l'IPR. Peut prendre les valeurs "bold",
+#'  "italic", "bold.italic", ou par défaut "plain".
+#'@param longueur_libelle Numérique. longueur maximale (en nombre de caractères)
+#'  du titre du graphique
+#'@param ... arguments passés à la fonction \code{ggiraph::opts_sizing()}
 #'
-#' @return Retourne une liste de graphiques pour les stations ou points, graphiques statiques `ggplot2` ou interactifs `ggiraph`.
-#' @export
+#'@return Retourne une liste de graphiques pour les stations ou points,
+#'  graphiques statiques `ggplot2` ou interactifs `ggiraph`.
+#'@export
 #'
-#' @importFrom dplyr filter rowwise mutate ungroup pull select
-#' @importFrom forcats fct_rev
-#' @importFrom ggiraph geom_point_interactive girafe
-#' @importFrom ggplot2 ggplot aes labs scale_x_continuous xlab scale_size unit theme geom_line scale_shape_manual scale_y_continuous expansion element_blank element_text element_rect
-#' @importFrom ggtext element_markdown
-#' @importFrom patchwork plot_layout
-#' @importFrom purrr map
-#' @importFrom shiny HTML
-#' @importFrom stringr str_wrap
+#'@importFrom dplyr filter rowwise mutate ungroup pull select
+#'@importFrom forcats fct_rev
+#'@importFrom ggiraph geom_point_interactive girafe
+#'@importFrom ggplot2 ggplot aes labs scale_x_continuous xlab scale_size unit
+#'  theme geom_line scale_shape_manual scale_y_continuous expansion
+#'  element_blank element_text element_rect
+#'@importFrom ggtext element_markdown
+#'@importFrom patchwork plot_layout
+#'@importFrom purrr map
+#'@importFrom shiny HTML
+#'@importFrom stringr str_wrap
 #'
 #' @examples
 #' \dontrun{
@@ -69,6 +80,7 @@ gg_temp_peuplement <- function(df,
                                 largeur = 6,
                                 hauteur = 5,
                                 taxons_ipr = "plain",
+                               longueur_libelle = 20,
                                 ...)
 
 {
@@ -111,7 +123,7 @@ gg_temp_peuplement <- function(df,
       dplyr::pull(!!var_libelle_sta) %>%
       na.omit() %>%
       .[1] %>%
-      stringr::str_wrap(20)
+      stringr::str_wrap(longueur_libelle)
 
 
     df_protocole <-
