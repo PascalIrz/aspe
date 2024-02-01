@@ -12,6 +12,8 @@
 #'  protocoles (à ajouter avec la \code{aspe::mef_ajouter_type_protocole()}).
 #'@param var_id_sta Nom de la variable servant à identifier les stations ou
 #'  points. Cette variable donnera les étiquettes du graphique.
+#'@param var_libelle_sta Nom de la variable servant à identifier les libellés
+#'  des stations ou points. Cette variable donnera les étiquettes du graphique.
 #'@param var_especes Variable indiquant l'espèce ou le code espèce.
 #'@param interactif Valeur logique: statique (FALSE) produit avec `ggplot2` ou
 #'  interactif (TRUE) produit avec `ggiraph`.

@@ -28,6 +28,9 @@ protocoles (à ajouter avec la \code{aspe::mef_ajouter_type_protocole()}).}
 \item{var_id_sta}{Nom de la variable servant à identifier les stations ou
 points. Cette variable donnera les étiquettes du graphique.}
 
+\item{var_libelle_sta}{Nom de la variable servant à identifier les libellés
+des stations ou points. Cette variable donnera les étiquettes du graphique.}
+
 \item{var_especes}{Variable indiquant l'espèce ou le code espèce.}
 
 \item{interactif}{Valeur logique: statique (FALSE) produit avec \code{ggplot2} ou
