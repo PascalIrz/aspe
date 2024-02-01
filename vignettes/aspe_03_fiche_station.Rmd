@@ -78,7 +78,7 @@ ope_capt <- aspe %>%
 ## Dynamique du peuplement
 
 ```{r, fig.width = 7, fig.height = 5}
-aspe::gg_temp_peuplement(df = ope_capt)
+aspe::gg_temp_peuplement(df = ope_capt, var_id_sta = pop_id, var_libelle_sta = pop_libelle)
 ```
 
 # Etat du milieu
