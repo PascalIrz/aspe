@@ -2,41 +2,60 @@
 % Please edit documentation in R/gg_temp_peuplement.R
 \name{gg_temp_peuplement}
 \alias{gg_temp_peuplement}
-\title{Graphique pour représenter l'évolution des effectifs de taxons au cours du temps}
+\title{Graphique pour représenter l'évolution des effectifs de taxons au cours du
+temps}
 \usage{
 gg_temp_peuplement(
   df,
+  var_id_sta = pop_id,
+  var_libelle_sta = pop_libelle,
+  var_especes = esp_code_alternatif,
   interactif = FALSE,
   largeur = 6,
   hauteur = 5,
-  var_especes = esp_code_alternatif,
   taxons_ipr = "plain",
+  longueur_libelle = 20,
   ...
 )
 }
 \arguments{
-\item{df}{Dataframe contenant les données des effectifs capturés pour les taxons.  Il doit contenir des variables "effectif"
-et "annee" ainsi qu'une variable permettant d'identifier la station ou le point de
-prélèvement. Il doit également contenir une variable 'pro_libelle' correspondant aux protocoles (à ajouter avec la \code{aspe::mef_ajouter_type_protocole()}).}
+\item{df}{Dataframe contenant les données des effectifs capturés pour les
+taxons.  Il doit contenir des variables "effectif" et "annee" ainsi qu'une
+variable permettant d'identifier la station ou le point de prélèvement. Il
+doit également contenir une variable 'pro_libelle' correspondant aux
+protocoles (à ajouter avec la \code{aspe::mef_ajouter_type_protocole()}).}
 
-\item{interactif}{Valeur logique: statique (FALSE) produit avec \code{ggplot2} ou interactif (TRUE) produit avec \code{ggiraph}.}
+\item{var_id_sta}{Nom de la variable servant à identifier les stations ou
+points. Cette variable donnera les étiquettes du graphique.}
 
-\item{largeur, hauteur}{Numériques. Dimensions des graphiques interactifs.}
+\item{var_libelle_sta}{Nom de la variable servant à identifier les libellés
+des stations ou points. Cette variable donnera les étiquettes du graphique.}
 
 \item{var_especes}{Variable indiquant l'espèce ou le code espèce.}
 
-\item{taxons_ipr}{Caractère. Indique comment distinguer sur le graphique les noms des espèces participant à l'IPR.
-Peut prendre les valeurs "bold", "italic", "bold.italic", ou par défaut "plain".}
+\item{interactif}{Valeur logique: statique (FALSE) produit avec \code{ggplot2} ou
+interactif (TRUE) produit avec \code{ggiraph}.}
+
+\item{largeur, hauteur}{Numériques. Dimensions des graphiques interactifs.}
+
+\item{taxons_ipr}{Caractère. Indique comment distinguer sur le graphique les
+noms des espèces participant à l'IPR. Peut prendre les valeurs "bold",
+"italic", "bold.italic", ou par défaut "plain".}
+
+\item{longueur_libelle}{Numérique. longueur maximale (en nombre de caractères)
+du titre du graphique}
 
 \item{...}{arguments passés à la fonction \code{ggiraph::opts_sizing()}}
 }
 \value{
-Retourne une liste de graphiques pour les stations ou points, graphiques statiques \code{ggplot2} ou interactifs \code{ggiraph}.
+Retourne une liste de graphiques pour les stations ou points,
+graphiques statiques \code{ggplot2} ou interactifs \code{ggiraph}.
 }
 \description{
-La fonction permet de visualiser la dynamique des taxons dans le peuplement sur une station. Les taxons sont représentés
-par des points, proportionnels aux effectifs capturés. Les protocoles utilisés sont également représentés. La fonction
-nécessite que le dataframe "ref_espece" de la base ASPE soit chargé.
+La fonction permet de visualiser la dynamique des taxons dans le peuplement
+sur une station. Les taxons sont représentés par des points, proportionnels
+aux effectifs capturés. Les protocoles utilisés sont également représentés. La
+fonction nécessite que le dataframe "ref_espece" de la base ASPE soit chargé.
 }
 \examples{
 \dontrun{

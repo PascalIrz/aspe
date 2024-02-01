@@ -1,30 +1,45 @@
-#' Graphique pour représenter l'évolution des effectifs de taxons au cours du temps
+#'Graphique pour représenter l'évolution des effectifs de taxons au cours du
+#'temps
 #'
-#' La fonction permet de visualiser la dynamique des taxons dans le peuplement sur une station. Les taxons sont représentés
-#'     par des points, proportionnels aux effectifs capturés. Les protocoles utilisés sont également représentés. La fonction
-#'     nécessite que le dataframe "ref_espece" de la base ASPE soit chargé.
-#' @param df Dataframe contenant les données des effectifs capturés pour les taxons.  Il doit contenir des variables "effectif"
-#'     et "annee" ainsi qu'une variable permettant d'identifier la station ou le point de
-#'     prélèvement. Il doit également contenir une variable 'pro_libelle' correspondant aux protocoles (à ajouter avec la \code{aspe::mef_ajouter_type_protocole()}).
-#' @param interactif Valeur logique: statique (FALSE) produit avec `ggplot2` ou interactif (TRUE) produit avec `ggiraph`.
-#' @param largeur,hauteur Numériques. Dimensions des graphiques interactifs.
-#' @param var_especes Variable indiquant l'espèce ou le code espèce.
-#' @param taxons_ipr Caractère. Indique comment distinguer sur le graphique les noms des espèces participant à l'IPR.
-#'     Peut prendre les valeurs "bold", "italic", "bold.italic", ou par défaut "plain".
-#' @param ... arguments passés à la fonction \code{ggiraph::opts_sizing()}
+#'La fonction permet de visualiser la dynamique des taxons dans le peuplement
+#'sur une station. Les taxons sont représentés par des points, proportionnels
+#'aux effectifs capturés. Les protocoles utilisés sont également représentés. La
+#'fonction nécessite que le dataframe "ref_espece" de la base ASPE soit chargé.
+#'@param df Dataframe contenant les données des effectifs capturés pour les
+#'  taxons.  Il doit contenir des variables "effectif" et "annee" ainsi qu'une
+#'  variable permettant d'identifier la station ou le point de prélèvement. Il
+#'  doit également contenir une variable 'pro_libelle' correspondant aux
+#'  protocoles (à ajouter avec la \code{aspe::mef_ajouter_type_protocole()}).
+#'@param var_id_sta Nom de la variable servant à identifier les stations ou
+#'  points. Cette variable donnera les étiquettes du graphique.
+#'@param var_libelle_sta Nom de la variable servant à identifier les libellés
+#'  des stations ou points. Cette variable donnera les étiquettes du graphique.
+#'@param var_especes Variable indiquant l'espèce ou le code espèce.
+#'@param interactif Valeur logique: statique (FALSE) produit avec `ggplot2` ou
+#'  interactif (TRUE) produit avec `ggiraph`.
+#'@param largeur,hauteur Numériques. Dimensions des graphiques interactifs.
+#'@param taxons_ipr Caractère. Indique comment distinguer sur le graphique les
+#'  noms des espèces participant à l'IPR. Peut prendre les valeurs "bold",
+#'  "italic", "bold.italic", ou par défaut "plain".
+#'@param longueur_libelle Numérique. longueur maximale (en nombre de caractères)
+#'  du titre du graphique
+#'@param ... arguments passés à la fonction \code{ggiraph::opts_sizing()}
 #'
-#' @return Retourne une liste de graphiques pour les stations ou points, graphiques statiques `ggplot2` ou interactifs `ggiraph`.
-#' @export
+#'@return Retourne une liste de graphiques pour les stations ou points,
+#'  graphiques statiques `ggplot2` ou interactifs `ggiraph`.
+#'@export
 #'
-#' @importFrom dplyr filter rowwise mutate ungroup pull select
-#' @importFrom forcats fct_rev
-#' @importFrom ggiraph geom_point_interactive girafe
-#' @importFrom ggplot2 ggplot aes labs scale_x_continuous xlab scale_size unit theme geom_line scale_shape_manual scale_y_continuous expansion element_blank element_text element_rect
-#' @importFrom ggtext element_markdown
-#' @importFrom patchwork plot_layout
-#' @importFrom purrr map
-#' @importFrom shiny HTML
-#' @importFrom stringr str_wrap
+#'@importFrom dplyr filter rowwise mutate ungroup pull select
+#'@importFrom forcats fct_rev
+#'@importFrom ggiraph geom_point_interactive girafe
+#'@importFrom ggplot2 ggplot aes labs scale_x_continuous xlab scale_size unit
+#'  theme geom_line scale_shape_manual scale_y_continuous expansion
+#'  element_blank element_text element_rect
+#'@importFrom ggtext element_markdown
+#'@importFrom patchwork plot_layout
+#'@importFrom purrr map
+#'@importFrom shiny HTML
+#'@importFrom stringr str_wrap
 #'
 #' @examples
 #' \dontrun{
@@ -60,15 +75,19 @@
 #' }
 
 gg_temp_peuplement <- function(df,
-                                interactif = FALSE,
+                               var_id_sta = pop_id,
+                               var_libelle_sta = pop_libelle,
+                               var_especes = esp_code_alternatif,
+                               interactif = FALSE,
                                 largeur = 6,
                                 hauteur = 5,
-                                var_especes = esp_code_alternatif,
                                 taxons_ipr = "plain",
+                               longueur_libelle = 20,
                                 ...)
 
 {
-
+  var_id_sta <- enquo(var_id_sta)
+  var_libelle_sta <- enquo(var_libelle_sta)
   var_especes <- enquo(var_especes)
 
   # mise en forme des étiquettes inspirée de https://stackoverflow.com/a/57086284
@@ -91,7 +110,7 @@ gg_temp_peuplement <- function(df,
   # fonction de création d'un graphique
   create_graph <- function(pop, df, interactive) {
     df_pop <- df %>%
-      dplyr::filter(pop_id == pop) %>%
+      dplyr::filter(!!var_id_sta == pop) %>%
       dplyr::rowwise() %>%
       dplyr::mutate(
         hover = shiny::HTML(
@@ -103,15 +122,15 @@ gg_temp_peuplement <- function(df,
 
     libelle <-
       df_pop %>%
-      dplyr::pull(pop_libelle) %>%
+      dplyr::pull(!!var_libelle_sta) %>%
       na.omit() %>%
       .[1] %>%
-      stringr::str_wrap(20)
+      stringr::str_wrap(longueur_libelle)
 
 
     df_protocole <-
       df_pop %>%
-      dplyr::select(annee, pop_libelle, pro_libelle) %>%
+      dplyr::select(annee, !!var_libelle_sta, pro_libelle) %>%
       unique() %>%
       dplyr::mutate(Protocole = stringr::str_wrap(pro_libelle, 15)) %>%
       dplyr::mutate(hover2 = paste0("<b>", annee, "</b><br>", pro_libelle))
@@ -239,14 +258,14 @@ gg_temp_peuplement <- function(df,
 
   # application sur l'ensemble des points
   graphs <- df %>%
-    dplyr::pull(pop_id) %>%
+    dplyr::pull(!!var_id_sta) %>%
     unique() %>%
     purrr::map(
       .f = create_graph,
       df = df,
       interactive = interactif
     ) %>%
-    set_names(unique(df$pop_id))
+    set_names(unique(dplyr::pull(df, !!var_id_sta)))
 
   # sortie
   if (length(graphs) == 1) {
