@@ -75,8 +75,8 @@
 #' }
 
 gg_temp_peuplement <- function(df,
-                               var_id_sta,
-                               var_libelle_sta,
+                               var_id_sta = pop_id,
+                               var_libelle_sta = pop_libelle,
                                var_especes = esp_code_alternatif,
                                interactif = FALSE,
                                 largeur = 6,
