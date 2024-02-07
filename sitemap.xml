@@ -46,6 +46,9 @@
     <loc>/reference/data_traits_bio.html</loc>
   </url>
   <url>
+    <loc>/reference/def_attribut_id.html</loc>
+  </url>
+  <url>
     <loc>/reference/donneesTest.html</loc>
   </url>
   <url>
@@ -256,7 +259,13 @@
     <loc>/reference/mef_creer_passerelle.html</loc>
   </url>
   <url>
+    <loc>/reference/mef_filtrer_id.html</loc>
+  </url>
+  <url>
     <loc>/reference/mef_filtrer_nb_mini_annees.html</loc>
+  </url>
+  <url>
+    <loc>/reference/mef_filtrer_ope_id.html</loc>
   </url>
   <url>
     <loc>/reference/mef_ipr_radar.html</loc>
