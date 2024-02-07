@@ -18,31 +18,31 @@ mef_filtrer_ope_id(
 )
 }
 \arguments{
-\item{df}{Dataframe devant contenir le champ "ope_id"}
+\item{df}{data frame}
 
-\item{var_id}{Nom(s) de la ou des variable(s) contenant les identifiants des points de prélèvement (ex : sta_id, pop_id, c(pop_id, saison)}
+\item{var_id}{variable(s) identifiant les prélèvements}
 
-\item{var_tmp}{Nom de la variable contenant les dates de prélèvement (ex: annee)}
+\item{var_tmp}{variable identifiant la date de prélèvement}
 
-\item{var_surf}{[optionnelle] Nom de la variable contenant les surfaces de pêche : sélection des opérations dont la surface de pêche est renseignée}
+\item{var_surf}{variable identifiant la surface de pêche (optionnelle)}
 
-\item{var_pro}{[optionnelle] Nom de la variable contenant les protocoles de pêche : sélection des opérations minimisant le nombre de changements de protocoles de pêche}
+\item{var_pro}{variable identifiant le protocole de pêche (optionnelle)}
 
-\item{var_pds}{[optionnelle] Nom de la variable contenant les poids : sélection des opérations dont le poids est renseignée}
+\item{var_pds}{variable identifiant la présence d'information sur les poids (optionnelle)}
 
-\item{var_mei}{[optionnelle] Nom de la variable contenant des identifiants sur les mesures individuelles (ex : mei_id) : sélection des opérations associées à des mesures individuelles}
+\item{var_mei}{variable identifiant la présence d'information sur les mesures individuelles (optionnelle)}
 
-\item{var_pas}{[optionnelle] Nom de la variable contenant les numéros de passage de pêche : sélection des opérations associées à plusieurs passages de pêche}
+\item{var_pas}{variable identifiant le numéro du passage de pêche (optionnelle)}
 
-\item{var_date}{[optionnelle] Nom de la variable contenant les dates additionnelles de pêche (ex : mois, saison) : sélection des opérations fournissant les séries les plus homogènes en terme de date}
+\item{var_date}{variable identifiant une date additionnelle de pêche (optionnelle)}
 
-\item{default}{Logique : si TRUE, selection de la première opération de pêche)}
+\item{default}{logique}
 }
 \value{
-Le dataframe filtré (ne contenant que les opérations de pêche sélectionnées).  
+df
 }
 \description{
-Lorsque plusieurs opérations de pêche par points de prélèvement et par date de prélèvement ont eu lieu, filtre les opérations de pêche en fonction des informations renseignées.
+Filtrer les opérations de pêche
 }
 \examples{
 \dontrun{
@@ -55,7 +55,6 @@ var_tmp = annee,
 var_surf = ope_surface_calculee,
 var_pro = pro_libelle,
 default=TRUE)
-
 df <- mef_creer_passerelle() \%>\%
 mef_ajouter_ope_date() \%>\%
 mef_ajouter_surf_calc() \%>\%

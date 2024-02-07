@@ -13,7 +13,7 @@
 #' @importFrom scales pretty_breaks
 #' @importFrom dplyr pull filter rowwise ungroup
 #' @importFrom stats na.omit
-#' @importFrom purrr map
+#' @importFrom purrr map set_names
 #' @importFrom ggiraph geom_point_interactive girafe opts_sizing
 #' @importFrom shiny HTML
 #'

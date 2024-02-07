@@ -2,24 +2,24 @@
 % Please edit documentation in R/def_attribut_id.R
 \name{def_attribut_id}
 \alias{def_attribut_id}
-\title{Définir les attributs des points de prélèvement}
+\title{Définir les attributs des prélèvements}
 \usage{
 def_attribut_id(df, var_id, var_tmp, var_pro = NULL)
 }
 \arguments{
-\item{df}{Dataframe}
+\item{df}{dataframe}
 
-\item{var_id}{Nom(s) de la ou des variable(s) contenant les identifiants des points de prélèvement (ex : pop_id, c(pop_id, saison))}
+\item{var_id}{variable(s) identifiant les prélèvements}
 
-\item{var_tmp}{Nom de la variable contenant les dates de prélèvement (ex: annee)}
+\item{var_tmp}{variable identifiant la date de prélèvement}
 
-\item{var_pro}{[optionnelle] Nom de la variable contenant les protocoles de pêche}
+\item{var_pro}{variable identifiant le protocole de pêche (optionnelle)}
 }
 \value{
-Un dataframe avec le nombre d'observations (nb_obs) et le nombre de valeurs manquantes consecutives (nb_na_cons) pour chaque point de prélèvement ou, si \code{var_pro} est specifié, un dataframe avec le nombre d'observations (nb_obs), le nombre de valeurs manquantes consecutives (nb_na_cons), le nombre de protocoles de pêche (nb_pro) et le nombre de changements de protocole (nb_chg) pour chaque point de prélèvement et chaque combinaison de protocole de pêche.
+tb data frame
 }
 \description{
-Définie le nombre d'observations, de valeurs manquantes consecutives, de protocoles de pêche et de changements de protocole de chaque points de prélèvement
+Définir les attributs des prélèvements
 }
 \examples{
 \dontrun{

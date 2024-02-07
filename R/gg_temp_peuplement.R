@@ -37,7 +37,7 @@
 #'  element_blank element_text element_rect
 #'@importFrom ggtext element_markdown
 #'@importFrom patchwork plot_layout
-#'@importFrom purrr map
+#'@importFrom purrr map set_names
 #'@importFrom shiny HTML
 #'@importFrom stringr str_wrap
 #'

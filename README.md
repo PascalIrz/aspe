@@ -50,12 +50,14 @@ Répertoires Github associés / Associated Github repositories
 ------------
 
 Plusieurs dépôts Github sont associés au package :
+
 - [aspe_data](https://github.com/PascalIrz/aspe_data) : construction des jeux de données inclus dans le package {aspe}
 - [aspe_test](https://github.com/PascalIrz/aspe_test) : Fichiers R Markdown pour tester le package {aspe} et produire les tutos
 - [aspe_demo](https://github.com/PascalIrz/aspe_demo) : Fichiers R Markdown pour prétraiter les données pour [un tableau de bord interactif](https://gitlab.ofb.fr/cedric.mondy1/aspedashboard)
 - [aspeQual](https://github.com/PascalIrz/aspeQual) : package R destiné à la mise en qualité de la base Aspe
 
 The package comes with a number of associated repos :
+
 - [aspe_data](https://github.com/PascalIrz/aspe_data): building of the datasets included in the {aspe} package
 - [aspe_test](https://github.com/PascalIrz/aspe_test): R Markdown files to test the {aspe} package and to build the tutorials
 - [aspe_demo](https://github.com/PascalIrz/aspe_demo): R Markdown files to pre-process the fish data for [a dashboard app](https://gitlab.ofb.fr/cedric.mondy1/aspedashboard)
@@ -68,6 +70,7 @@ Tutoriels / Vignettes
 La documentation générale du package est diffusée sur Github pages : https://pascalirz.github.io/aspe/
 
 Une série de tutoriels est en ligne :
+
 - [Traiter des données Indice Poisson Rivière (IPR)](https://rpubs.com/kamoke/713491)
 - [Faire des traitements de base à partir des lots](https://rpubs.com/kamoke/715102)
 - [Traiter des mesures individuelles](https://rpubs.com/kamoke/715858)
@@ -75,6 +78,7 @@ Une série de tutoriels est en ligne :
 - [Construire des relations taille-poids](https://rpubs.com/kamoke/729779)
 
 Several vignettes (in French) are available online:
+
 - [Processing the fish-based river health index](https://rpubs.com/kamoke/713491)
 - [Base processing on the fish batches data](https://rpubs.com/kamoke/715102)
 - [Processing the individual measurements](https://rpubs.com/kamoke/715858)

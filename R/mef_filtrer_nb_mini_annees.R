@@ -14,6 +14,7 @@
 #' @return Dataframe filtré, c'est-à-dire exourgé des objets qui n'ont pas assez d'années
 #'     de données.
 #' @export
+#' @importFrom purrr set_names
 #'
 #' @examples
 #' \dontrun{
@@ -34,16 +35,5 @@ mef_filtrer_nb_mini_annees <- function(df, nb_mini_annees, var_id)
 
   df %>%
     filter(get(!!var_id) %in% var_ids)
-
-  # var_ids <- df %>%
-  #   group_by(!!var_id) %>%
-  #     summarise(n = n_distinct(annee)) %>%
-  #   ungroup() %>%
-  #   filter(n >= nb_mini_annees) %>%
-  #   pull(!!var_id) %>%
-  #   as.character()
-  #
-  # df %>%
-  #   filter(var_id %in% var_ids)
 
   }

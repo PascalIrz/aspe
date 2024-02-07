@@ -2,7 +2,7 @@
 % Please edit documentation in R/mef_filtrer_id.R
 \name{mef_filtrer_id}
 \alias{mef_filtrer_id}
-\title{Filtrer les points de prélèvement}
+\title{Filtrer les prélèvements}
 \usage{
 mef_filtrer_id(
   df,
@@ -17,29 +17,29 @@ mef_filtrer_id(
 )
 }
 \arguments{
-\item{df}{Dataframe}
+\item{df}{data frame}
 
-\item{tb}{Dataframe retourné par la fonction \code{def_attribut_id}}
+\item{tb}{data frame}
 
-\item{var_id}{Nom(s) de la ou des variable(s) contenant les identifiants des points de prélèvement (ex : pop_id, c(pop_id,saison))}
+\item{var_id}{variable(s) identifiant les prélèvements}
 
-\item{var_sta}{[optionnelle] Nom de la variable contenant les identifiants des points de prélèvement (ex : pop_id lorsque \code{var_id = c(pop_id, saison)})}
+\item{var_sta}{variable identifiant les points de prélèvements (optionnelle)}
 
-\item{var_pro}{[optionnelle] Nom de la variable contenant les identifiants des protocoles de pêche}
+\item{var_pro}{variable identifiant le protocole de pêche (optionnelle)}
 
-\item{min_obs}{Numérique définissant le nombre minimal d'observations par point de prélèvement}
+\item{min_obs}{numerique définissant le nombre minimal d'observations par prélèvement}
 
-\item{max_na_cons}{[optionnelle] Numérique définissant le nombre maximal de valeurs manquantes consécutives par point de prélèvement}
+\item{max_na_cons}{numerique définissant le nombre maximal de valeurs manquantes consécutives par prélèvement}
 
-\item{max_pro}{[optionnelle] Numérique définissant le nombre maximal de protocoles de pêche par point de prélèvement}
+\item{max_pro}{numerique définissant le nombre maximal de protocoles de pêche par prélèvement}
 
-\item{max_chg}{[optionnelle] Numérique définissant le nombre maximal de changement de protocole de pêche par point de prélèvement}
+\item{max_chg}{numerique définissant le nombre maximal de changement de protocole de pêche par prélèvement}
 }
 \value{
-Le dataframe df filtré (suppression des points de prélèvement ne correspondant pas aux critères specifiés).
+df
 }
 \description{
-Filtre les points de prélèvement en fonction du nombre d'observations, de valeurs consecutives, de protocoles de pêche et de changements de protocoles. 
+Filtrer les prélèvements
 }
 \examples{
 \dontrun{
@@ -47,12 +47,10 @@ df <- mef_creer_passerelle() \%>\%
 mef_ajouter_ope_date() \%>\%
 mef_ajouter_ope_saison() \%>\%
 mef_ajouter_type_protocole()
-
 tb <- def_attribut_id (df,
 var_id = c(pop_id,saison),
 var_tmp = annee,
 var_pro = pro_libelle)
-
 df_id <- mef_filtrer_id(df,
 tb,
 var_id = c(pop_id, saison),
@@ -61,7 +59,6 @@ var_pro = pro_libelle,
 min_obs = 10,
 max_na_cons = 3,
 max_pro = 1)
-
 df_id <- mef_filtrer_id(df,
 tb,
 var_id = pop_id,
