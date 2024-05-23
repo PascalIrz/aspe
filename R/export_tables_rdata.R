@@ -4,9 +4,9 @@
 #'
 #' @return Les fichiers sont sauvegardés dans le répertoire choisi. Si aucun chemin n'est indiqué,
 #'     ça sera dans un sous-répertoire "processed_data" du répertoire de travail qui est créé au besoin.
-#'     Les fichiers sont au nombre de deux, l'un pour les mesures individuelles et l'autre pour les
-#'     autres tables. Ils sont respectivement nommés mei_aaaa_mm_jj_hh_mm_ss (d'après les dates et heures
-#'     de la sauvegarde), et tables_sauf_mei_aaaa_mm_jj_hh_mm_ss.
+#'     Les fichiers sont au nombre de trois, l'un pour les mesures individuelles, l'un pour les lots de poissons
+#'     et le dernier pour toutes les autres tables. Ils sont respectivement nommés mei_aaaa_mm_jj_hh_mm_ss (d'après les dates et heures
+#'     de la sauvegarde), lop_aaaa_mm_jj_hh_mm_ss et tables_sauf_mei_aaaa_mm_jj_hh_mm_ss.
 #' @export
 #'
 #' @importFrom stringr str_replace str_replace_all
@@ -40,7 +40,13 @@ export_tables_rdata <- function(repertoire = NA)
     str_replace_all(" ", "_") %>%
     str_replace_all(":", "_")
 
-  fichier_tables_sauf_mei <- paste0(repertoire, "/tables_sauf_mei ", Sys.time(), ".RData") %>%
+  fichier_lop <- paste0(repertoire, "/lop ", Sys.time(), ".RData") %>%
+    str_replace(" CEST", "") %>%
+    str_replace_all("-", "_") %>%
+    str_replace_all(" ", "_") %>%
+    str_replace_all(":", "_")
+
+  fichier_tables_sauf_mei_et_lop <- paste0(repertoire, "/tables_sauf_mei_et_lop ", Sys.time(), ".RData") %>%
     str_replace(" CEST", "") %>%
     str_replace_all("-", "_") %>%
     str_replace_all(" ", "_") %>%
@@ -48,8 +54,12 @@ export_tables_rdata <- function(repertoire = NA)
 
 # sauvegarde table mesure_individuelle
   save(mesure_individuelle, file = fichier_mei)
+
+  # sauvegarde table lot_poissons
+  save(lot_poissons, file = fichier_lop)
+
 # sauvegarde du reste
-  save(list = setdiff(ls(envir = globalenv()), "mesure_individuelle"),
-       file = fichier_tables_sauf_mei)
+  save(list = setdiff(ls(envir = globalenv()), c("mesure_individuelle", "lot_poissons")),
+       file = fichier_tables_sauf_mei_et_lop)
 
 }
