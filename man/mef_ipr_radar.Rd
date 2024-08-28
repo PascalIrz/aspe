@@ -16,7 +16,7 @@ produit par la fonction ipr_extraire_metriques().}
 Un dataframe mis en forme.
 }
 \description{
-La fonction radarchart() du package {fmsb} nécessite en entrée un dataframe
+La fonction radarchart() du package \code{fmsb} nécessite en entrée un dataframe
 au format spécifique.
 }
 \examples{
