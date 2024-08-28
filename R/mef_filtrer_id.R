@@ -1,6 +1,6 @@
 #' Filtrer les prélèvements
 #'
-#' @import magrittr
+#' @importFrom magrittr %>%
 #' @import dplyr
 #' @importFrom rlang enquo quo_is_null quo_name
 
