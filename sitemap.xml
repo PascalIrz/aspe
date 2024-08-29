@@ -1,294 +1,100 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>/404.html</loc>
-  </url>
-  <url>
-    <loc>/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>/articles/aspe_01_importation_tables.html</loc>
-  </url>
-  <url>
-    <loc>/articles/aspe_02_construire_un_jeu_de_donnees.html</loc>
-  </url>
-  <url>
-    <loc>/articles/aspe_03_fiche_station.html</loc>
-  </url>
-  <url>
-    <loc>/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>/authors.html</loc>
-  </url>
-  <url>
-    <loc>/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/aspe-package.html</loc>
-  </url>
-  <url>
-    <loc>/reference/data_dictionnaire.html</loc>
-  </url>
-  <url>
-    <loc>/reference/data_liste_rouge.html</loc>
-  </url>
-  <url>
-    <loc>/reference/data_passerelle_taxo.html</loc>
-  </url>
-  <url>
-    <loc>/reference/data_protection_especes.html</loc>
-  </url>
-  <url>
-    <loc>/reference/data_taille_poids.html</loc>
-  </url>
-  <url>
-    <loc>/reference/data_traits_bio.html</loc>
-  </url>
-  <url>
-    <loc>/reference/def_attribut_id.html</loc>
-  </url>
-  <url>
-    <loc>/reference/donneesTest.html</loc>
-  </url>
-  <url>
-    <loc>/reference/expl_commentaires_champs.html</loc>
-  </url>
-  <url>
-    <loc>/reference/expl_lister_champs.html</loc>
-  </url>
-  <url>
-    <loc>/reference/expl_trouver_table.html</loc>
-  </url>
-  <url>
-    <loc>/reference/expl_trouver_variable.html</loc>
-  </url>
-  <url>
-    <loc>/reference/export_tables_csv.html</loc>
-  </url>
-  <url>
-    <loc>/reference/export_tables_rdata.html</loc>
-  </url>
-  <url>
-    <loc>/reference/geo_aggr_richesse.html</loc>
-  </url>
-  <url>
-    <loc>/reference/geo_ajouter_crs.html</loc>
-  </url>
-  <url>
-    <loc>/reference/geo_attribuer.html</loc>
-  </url>
-  <url>
-    <loc>/reference/geo_convertir_coords_df.html</loc>
-  </url>
-  <url>
-    <loc>/reference/gg_ajouter_arriere_plan_int.html</loc>
-  </url>
-  <url>
-    <loc>/reference/gg_colo_ext_pops.html</loc>
-  </url>
-  <url>
-    <loc>/reference/gg_density_env_esp.html</loc>
-  </url>
-  <url>
-    <loc>/reference/gg_dyn_esp.html</loc>
-  </url>
-  <url>
-    <loc>/reference/gg_gerer_seuils_classes_ipr_int.html</loc>
-  </url>
-  <url>
-    <loc>/reference/gg_histo_longueur.html</loc>
-  </url>
-  <url>
-    <loc>/reference/gg_temp_abondance.html</loc>
-  </url>
-  <url>
-    <loc>/reference/gg_temp_env.html</loc>
-  </url>
-  <url>
-    <loc>/reference/gg_temp_indic_div.html</loc>
-  </url>
-  <url>
-    <loc>/reference/gg_temp_ipr.html</loc>
-  </url>
-  <url>
-    <loc>/reference/gg_temp_ipr_pc_bon.html</loc>
-  </url>
-  <url>
-    <loc>/reference/gg_temp_metriq.html</loc>
-  </url>
-  <url>
-    <loc>/reference/gg_temp_metriq_grille.html</loc>
-  </url>
-  <url>
-    <loc>/reference/gg_temp_peuplement.html</loc>
-  </url>
-  <url>
-    <loc>/reference/imp_corres_aspe_taxref.html</loc>
-  </url>
-  <url>
-    <loc>/reference/imp_extraire_date_fichier.html</loc>
-  </url>
-  <url>
-    <loc>/reference/imp_extraire_noms_tables.html</loc>
-  </url>
-  <url>
-    <loc>/reference/imp_extraire_noms_tables2.html</loc>
-  </url>
-  <url>
-    <loc>/reference/imp_importer_dump_sql.html</loc>
-  </url>
-  <url>
-    <loc>/reference/imp_scinder_dump.html</loc>
-  </url>
-  <url>
-    <loc>/reference/imp_tables_a_partir_des_lignes.html</loc>
-  </url>
-  <url>
-    <loc>/reference/imp_trouver_index_fin.html</loc>
-  </url>
-  <url>
-    <loc>/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/ip_completer_classes_couleur.html</loc>
-  </url>
-  <url>
-    <loc>/reference/ipr_formater_pour_macro.html</loc>
-  </url>
-  <url>
-    <loc>/reference/ipr_pivoter_1colonne_par_an.html</loc>
-  </url>
-  <url>
-    <loc>/reference/ipr_renommer_pour_macro.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mef_ajouter_abs.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mef_ajouter_ambiance.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mef_ajouter_dept.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mef_ajouter_esp.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mef_ajouter_groupe_points.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mef_ajouter_intervenants.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mef_ajouter_ipr.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mef_ajouter_libelle.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mef_ajouter_libelle_site.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mef_ajouter_lots.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mef_ajouter_mei.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mef_ajouter_metriques.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mef_ajouter_moyen_prospection.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mef_ajouter_objectif.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mef_ajouter_ope_date.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mef_ajouter_ope_desc_peche.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mef_ajouter_ope_env.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mef_ajouter_passage.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mef_ajouter_proba_presence_ipr.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mef_ajouter_qualification.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mef_ajouter_stats_taille.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mef_ajouter_surf_calc.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mef_ajouter_type_longueur.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mef_ajouter_type_lot.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mef_ajouter_type_materiel.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mef_ajouter_type_prelevement.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mef_ajouter_type_protocole.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mef_ajouter_utilisateurs.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mef_ajouter_validation.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mef_colo_ext_pops.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mef_compter_pres_abs_env.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mef_creer_passerelle.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mef_filtrer_id.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mef_filtrer_nb_mini_annees.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mef_filtrer_ope_id.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mef_ipr_radar.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mef_pivoter_var_env.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mef_recoder_esp_code_alt.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mef_ssech_abs.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mef_ssech_esp_env.html</loc>
-  </url>
-  <url>
-    <loc>/reference/misc_charger_donnees_test.html</loc>
-  </url>
-  <url>
-    <loc>/reference/misc_derniere_date.html</loc>
-  </url>
-  <url>
-    <loc>/reference/misc_nom_dernier_fichier.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>/404.html</loc></url>
+<url><loc>/LICENSE.html</loc></url>
+<url><loc>/articles/aspe_01_importation_tables.html</loc></url>
+<url><loc>/articles/aspe_02_construire_un_jeu_de_donnees.html</loc></url>
+<url><loc>/articles/aspe_03_fiche_station.html</loc></url>
+<url><loc>/articles/index.html</loc></url>
+<url><loc>/authors.html</loc></url>
+<url><loc>/index.html</loc></url>
+<url><loc>/reference/aspe-package.html</loc></url>
+<url><loc>/reference/data_dictionnaire.html</loc></url>
+<url><loc>/reference/data_liste_rouge.html</loc></url>
+<url><loc>/reference/data_passerelle_taxo.html</loc></url>
+<url><loc>/reference/data_protection_especes.html</loc></url>
+<url><loc>/reference/data_taille_poids.html</loc></url>
+<url><loc>/reference/data_traits_bio.html</loc></url>
+<url><loc>/reference/def_attribut_id.html</loc></url>
+<url><loc>/reference/donneesTest.html</loc></url>
+<url><loc>/reference/expl_commentaires_champs.html</loc></url>
+<url><loc>/reference/expl_lister_champs.html</loc></url>
+<url><loc>/reference/expl_trouver_table.html</loc></url>
+<url><loc>/reference/expl_trouver_variable.html</loc></url>
+<url><loc>/reference/export_tables_csv.html</loc></url>
+<url><loc>/reference/export_tables_rdata.html</loc></url>
+<url><loc>/reference/geo_aggr_richesse.html</loc></url>
+<url><loc>/reference/geo_ajouter_crs.html</loc></url>
+<url><loc>/reference/geo_attribuer.html</loc></url>
+<url><loc>/reference/geo_convertir_coords_df.html</loc></url>
+<url><loc>/reference/gg_ajouter_arriere_plan_int.html</loc></url>
+<url><loc>/reference/gg_colo_ext_pops.html</loc></url>
+<url><loc>/reference/gg_density_env_esp.html</loc></url>
+<url><loc>/reference/gg_dyn_esp.html</loc></url>
+<url><loc>/reference/gg_gerer_seuils_classes_ipr_int.html</loc></url>
+<url><loc>/reference/gg_histo_longueur.html</loc></url>
+<url><loc>/reference/gg_temp_abondance.html</loc></url>
+<url><loc>/reference/gg_temp_env.html</loc></url>
+<url><loc>/reference/gg_temp_indic_div.html</loc></url>
+<url><loc>/reference/gg_temp_ipr.html</loc></url>
+<url><loc>/reference/gg_temp_ipr_pc_bon.html</loc></url>
+<url><loc>/reference/gg_temp_metriq.html</loc></url>
+<url><loc>/reference/gg_temp_metriq_grille.html</loc></url>
+<url><loc>/reference/gg_temp_peuplement.html</loc></url>
+<url><loc>/reference/imp_corres_aspe_taxref.html</loc></url>
+<url><loc>/reference/imp_extraire_date_fichier.html</loc></url>
+<url><loc>/reference/imp_extraire_noms_tables.html</loc></url>
+<url><loc>/reference/imp_extraire_noms_tables2.html</loc></url>
+<url><loc>/reference/imp_importer_dump_sql.html</loc></url>
+<url><loc>/reference/imp_scinder_dump.html</loc></url>
+<url><loc>/reference/imp_tables_a_partir_des_lignes.html</loc></url>
+<url><loc>/reference/imp_trouver_index_fin.html</loc></url>
+<url><loc>/reference/index.html</loc></url>
+<url><loc>/reference/ip_completer_classes_couleur.html</loc></url>
+<url><loc>/reference/ipr_formater_pour_macro.html</loc></url>
+<url><loc>/reference/ipr_pivoter_1colonne_par_an.html</loc></url>
+<url><loc>/reference/ipr_renommer_pour_macro.html</loc></url>
+<url><loc>/reference/mef_ajouter_abs.html</loc></url>
+<url><loc>/reference/mef_ajouter_ambiance.html</loc></url>
+<url><loc>/reference/mef_ajouter_dept.html</loc></url>
+<url><loc>/reference/mef_ajouter_esp.html</loc></url>
+<url><loc>/reference/mef_ajouter_groupe_points.html</loc></url>
+<url><loc>/reference/mef_ajouter_intervenants.html</loc></url>
+<url><loc>/reference/mef_ajouter_ipr.html</loc></url>
+<url><loc>/reference/mef_ajouter_libelle.html</loc></url>
+<url><loc>/reference/mef_ajouter_libelle_site.html</loc></url>
+<url><loc>/reference/mef_ajouter_lots.html</loc></url>
+<url><loc>/reference/mef_ajouter_mei.html</loc></url>
+<url><loc>/reference/mef_ajouter_metriques.html</loc></url>
+<url><loc>/reference/mef_ajouter_moyen_prospection.html</loc></url>
+<url><loc>/reference/mef_ajouter_objectif.html</loc></url>
+<url><loc>/reference/mef_ajouter_ope_date.html</loc></url>
+<url><loc>/reference/mef_ajouter_ope_desc_peche.html</loc></url>
+<url><loc>/reference/mef_ajouter_ope_env.html</loc></url>
+<url><loc>/reference/mef_ajouter_passage.html</loc></url>
+<url><loc>/reference/mef_ajouter_proba_presence_ipr.html</loc></url>
+<url><loc>/reference/mef_ajouter_qualification.html</loc></url>
+<url><loc>/reference/mef_ajouter_stats_taille.html</loc></url>
+<url><loc>/reference/mef_ajouter_surf_calc.html</loc></url>
+<url><loc>/reference/mef_ajouter_type_longueur.html</loc></url>
+<url><loc>/reference/mef_ajouter_type_lot.html</loc></url>
+<url><loc>/reference/mef_ajouter_type_materiel.html</loc></url>
+<url><loc>/reference/mef_ajouter_type_prelevement.html</loc></url>
+<url><loc>/reference/mef_ajouter_type_protocole.html</loc></url>
+<url><loc>/reference/mef_ajouter_utilisateurs.html</loc></url>
+<url><loc>/reference/mef_ajouter_validation.html</loc></url>
+<url><loc>/reference/mef_colo_ext_pops.html</loc></url>
+<url><loc>/reference/mef_compter_pres_abs_env.html</loc></url>
+<url><loc>/reference/mef_creer_passerelle.html</loc></url>
+<url><loc>/reference/mef_filtrer_id.html</loc></url>
+<url><loc>/reference/mef_filtrer_nb_mini_annees.html</loc></url>
+<url><loc>/reference/mef_filtrer_ope_id.html</loc></url>
+<url><loc>/reference/mef_ipr_radar.html</loc></url>
+<url><loc>/reference/mef_pivoter_var_env.html</loc></url>
+<url><loc>/reference/mef_recoder_esp_code_alt.html</loc></url>
+<url><loc>/reference/mef_ssech_abs.html</loc></url>
+<url><loc>/reference/mef_ssech_esp_env.html</loc></url>
+<url><loc>/reference/misc_charger_donnees_test.html</loc></url>
+<url><loc>/reference/misc_derniere_date.html</loc></url>
+<url><loc>/reference/misc_nom_dernier_fichier.html</loc></url>
 </urlset>
+

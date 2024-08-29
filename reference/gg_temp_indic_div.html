@@ -5,7 +5,7 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]--></head><body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-reference-topic">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -30,7 +30,7 @@
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
@@ -46,20 +46,20 @@
       </ul><ul class="nav navbar-nav navbar-right"><li>
   <a href="https://github.com/PascalIrz/aspe/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
-     
+
   </a>
 </li>
       </ul></div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Graphique de la série chronologique de métriques de diversité à l'échelle du peuplement sur une station ou un groupe de stations</h1>
-    <small class="dont-index">Source: <a href="https://github.com/PascalIrz/aspe/blob/HEAD/R/gg_temp_indic_div.R" class="external-link"><code>R/gg_temp_indic_div.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/PascalIrz/aspe/blob/main/R/gg_temp_indic_div.R" class="external-link"><code>R/gg_temp_indic_div.R</code></a></small>
     <div class="hidden name"><code>gg_temp_indic_div.Rd</code></div>
     </div>
 
@@ -83,47 +83,47 @@
 
     <div id="arguments">
     <h2>Arguments</h2>
-    <dl><dt>df_captures</dt>
+
+
+<dl><dt id="arg-df-captures">df_captures<a class="anchor" aria-label="anchor" href="#arg-df-captures"></a></dt>
 <dd><p>Dataframe contenant les données des effectifs capturés par taxons. Il doit contenir les variables "effectif" et "annee", ainsi que
 trois variables pour d'identifier les stations (ou points de prélèvement) pour les calculs.</p></dd>
 
 
-<dt>var_id_sta</dt>
+<dt id="arg-var-id-sta">var_id_sta<a class="anchor" aria-label="anchor" href="#arg-var-id-sta"></a></dt>
 <dd><p>Variable servant à identifier les stations ou points.
 Cette variable donnera les étiquettes des lignes du graphique.</p></dd>
 
 
-<dt>var_metrique_div</dt>
+<dt id="arg-var-metrique-div">var_metrique_div<a class="anchor" aria-label="anchor" href="#arg-var-metrique-div"></a></dt>
 <dd><p>Variable donnant le nom de la colonne des métriques (ex : metriques_div).</p></dd>
 
 
-<dt>station_sel</dt>
+<dt id="arg-station-sel">station_sel<a class="anchor" aria-label="anchor" href="#arg-station-sel"></a></dt>
 <dd><p>Vecteur caractère indiquant les points ou stations à sélectionner.</p></dd>
 
 
-<dt>nb_colonnes</dt>
+<dt id="arg-nb-colonnes">nb_colonnes<a class="anchor" aria-label="anchor" href="#arg-nb-colonnes"></a></dt>
 <dd><p>Entier. Nombre de colonnes du graphique utilisé pour dans le cas d'un graphique pour une station. Par défaut nb_colonnes = 2.</p></dd>
 
 
-<dt>id_sta_max_caract</dt>
+<dt id="arg-id-sta-max-caract">id_sta_max_caract<a class="anchor" aria-label="anchor" href="#arg-id-sta-max-caract"></a></dt>
 <dd><p>Entier. Nombre maximum de caractères dans l'identifiant de la station, au-delà duquel il sera
 découpé pour tenir sur plusieurs lignes. Par défaut c'est 25 caractères.</p></dd>
 
 
-<dt>print_metrique</dt>
+<dt id="arg-print-metrique">print_metrique<a class="anchor" aria-label="anchor" href="#arg-print-metrique"></a></dt>
 <dd><p>Valeur logique. Si TRUE, le dataframe des métriques est retourné. Si FALSE (par défaut), le graphique <code>ggplot2</code> est retourné.</p></dd>
 
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    
-
-<p>Un graphique <code>ggplot2</code> ou un dataframe.</p>
+    <p>Un graphique <code>ggplot2</code> ou un dataframe.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
 <span class="r-in"><span><span class="co"># preparation donnees</span></span></span>
 <span class="r-in"><span><span class="va">captures</span> <span class="op">&lt;-</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="mef_creer_passerelle.html">mef_creer_passerelle</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># création passerelle</span></span></span>
@@ -175,7 +175,7 @@ découpé pour tenir sur plusieurs lignes. Par défaut c'est 25 caractères.</p>
 <span class="r-in"><span>                    station_sel <span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"La Berre à Portel-des-Corbières"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>                    nb_colonnes <span class="op">=</span> <span class="fl">2</span>,</span></span>
 <span class="r-in"><span>                    print_metrique <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -190,15 +190,15 @@ découpé pour tenir sur plusieurs lignes. Par défaut c'est 25 caractères.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
 </div>
 
       </footer></div>
 
-  
 
 
-  
+
+
 
   </body></html>
 
