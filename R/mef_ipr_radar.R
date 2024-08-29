@@ -1,6 +1,6 @@
 #' Mettre un dataframe au format pour ls graphiques en radar.
 #'
-#' La fonction radarchart() du package {fmsb} nécessite en entrée un dataframe
+#' La fonction radarchart() du package \code{fmsb} nécessite en entrée un dataframe
 #'     au format spécifique.
 #'
 #' @param metriques_df Un dataframe contenant les métriques par station et par année,

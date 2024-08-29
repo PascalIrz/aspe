@@ -1,9 +1,10 @@
 #' Définir les attributs des prélèvements
 #'
-#' @import magrittr
+#' @importFrom magrittr %>%
 #' @import dplyr
 #' @import utils
 #' @importFrom rlang enquo quo_name quo_is_null
+#' @importFrom stats setNames
 #'
 #' @param df dataframe
 #' @param var_id variable(s) identifiant les prélèvements
