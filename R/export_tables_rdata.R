@@ -12,7 +12,8 @@
 #' @export
 #'
 #' @importFrom stringr str_replace str_replace_all
-#' @importFrom dplyr head mutate slice
+#' @importFrom dplyr mutate slice
+#' @importFrom utils head
 #'
 #' @examples
 #' \dontrun{
