@@ -268,7 +268,9 @@ utils::globalVariables(
     'nb_na_start',
     'nb_obs',
     'nb_pro',
-    'row_id'
+    'row_id',
+    'debut',
+    'fin'
 
   )
 )
