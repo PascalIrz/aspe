@@ -66,7 +66,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">export_tables_rdata</span><span class="op">(</span>repertoire <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">export_tables_rdata</span><span class="op">(</span>repertoire <span class="op">=</span> <span class="cn">NA</span>, n_fichiers_mei <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -76,14 +76,19 @@
 <dl><dt id="arg-repertoire">repertoire<a class="anchor" aria-label="anchor" href="#arg-repertoire"></a></dt>
 <dd><p>Caractères. Chemin vers le répertoire où les fichiers seront écrits.</p></dd>
 
+
+<dt id="arg-n-fichiers-mei">n_fichiers_mei<a class="anchor" aria-label="anchor" href="#arg-n-fichiers-mei"></a></dt>
+<dd><p>Entier. Nombre de fichiers pour découper le dataframe des mesures individuelles.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
     <p>Les fichiers sont sauvegardés dans le répertoire choisi. Si aucun chemin n'est indiqué,
 ça sera dans un sous-répertoire "processed_data" du répertoire de travail qui est créé au besoin.
-Les fichiers sont au nombre de deux, l'un pour les mesures individuelles et l'autre pour les
+Par défaut (n_fichiers_mei = 1) les fichiers sont au nombre de deux, l'un pour les mesures individuelles et l'autre pour les
 autres tables. Ils sont respectivement nommés mei_aaaa_mm_jj_hh_mm_ss (d'après les dates et heures
-de la sauvegarde), et tables_sauf_mei_aaaa_mm_jj_hh_mm_ss.</p>
+de la sauvegarde), et tables_sauf_mei_aaaa_mm_jj_hh_mm_ss. Si n_fichiers_mei est supérieur à 1, il faudra
+ultérieurement empiler (ex avec rbind) les différents dataframes mei pour reconstituer la table complète.</p>
     </div>
 
     <div id="ref-examples">
@@ -105,7 +110,7 @@ de la sauvegarde), et tables_sauf_mei_aaaa_mm_jj_hh_mm_ss.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
       </footer></div>
