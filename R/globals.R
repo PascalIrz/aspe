@@ -259,7 +259,16 @@ utils::globalVariables(
     'ppi_opi_ope_id',
     'ppi_param_effectif',
     'ppi_valeur_probabilite',
-    'probabilite_presence_ipr'
+    'probabilite_presence_ipr',
+    'nb',
+    'nb_chg',
+    'nb_na_cons',
+    'nb_na_end',
+    'nb_na_serie',
+    'nb_na_start',
+    'nb_obs',
+    'nb_pro',
+    'row_id'
 
   )
 )
