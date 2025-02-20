@@ -5,8 +5,6 @@
 [![DOI](https://zenodo.org/badge/323145117.svg)](https://zenodo.org/record/7458005)
 <!-- badges: end -->
 
-<script data-goatcounter="https://kamoke.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-
 {aspe}: an R package to analyse and visualise river fish data in France 
 ====
 

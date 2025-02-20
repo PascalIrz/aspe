@@ -44,3 +44,11 @@ jobs:
           clean: false
           branch: gh-pages
           folder: docs
+
+url: https://pascalirz.github.io/aspe/
+template:
+  bootstrap: 5
+  includes:
+    after_body: >
+      <script data-goatcounter="https://kamoke.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
