@@ -9,3 +9,9 @@ last_built: 2025-02-20T14:45Z
 urls:
   reference: https://pascalirz.github.io/aspe/reference
   article: https://pascalirz.github.io/aspe/articles
+template:
+  bootstrap: 5
+  includes:
+    after_body: >
+      <script data-goatcounter="https://kamoke.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
