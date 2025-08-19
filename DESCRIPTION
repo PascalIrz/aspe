@@ -1,8 +1,8 @@
 Package: aspe
 Type: Package
 Title: An R Package to Analyse and Visualise River Fish Data in France
-Version: 0.4.2
-Date: 2024-10-09
+Version: 1.0.0
+Date: 2025-08-19
 Authors@R: c(
     person(given = "Pascal",
            family = "Irz", 
@@ -74,5 +74,5 @@ Suggests:
 VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)
 Depends: 
-    R (>= 2.10)
+    R (>= 3.5)
 Config/testthat/edition: 3

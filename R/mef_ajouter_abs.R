@@ -1,7 +1,8 @@
 #' Ajouter à un dataframe de présences les lignes des absences (avec effectif et densité nuls)
 #'
 #' La fonction fait appel au dataframe "operation" de la base Aspe qui doit impérativement avoir
-#'     été chargé auparavant.
+#'     été chargé auparavant. Seules espèces avec au moins une occurrence dans la dataframe
+#'     initial sont considérées (et non toutes les espèces de la BDD Aspe).
 #'
 #' @param df Dataframe avec les variables ope_id, esp_code_alternatif, effectif, dens_ind_1000m2 et annee.
 #' @param var_id Nom de la variable contenant les identifiants des observations (ex : ope_id), sans guillements.

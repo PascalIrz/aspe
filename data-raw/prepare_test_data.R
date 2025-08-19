@@ -18,11 +18,20 @@ rdata_tables <-
 load(file = rdata_tables)
 
 ## individual measurements ----
-rdata_mei <-
+rdata_mei1 <-
   misc_nom_dernier_fichier(repertoire = "../../raw_data/rdata",
-                           pattern = "^mei")
+                           pattern = "^mei_1")
 
-load(file = rdata_mei)
+load(file = rdata_mei1)
+mei1 <- temp_df
+
+rdata_mei2 <-
+  misc_nom_dernier_fichier(repertoire = "../../raw_data/rdata",
+                           pattern = "^mei_2")
+load(file = rdata_mei2)
+
+mesure_individuelle <- mei1 %>%
+  rbind(temp_df)
 
 # remove sensitive taxa ----
 
@@ -104,6 +113,9 @@ operation_donnees_environnementales <- operation_donnees_environnementales %>%
 operation_objectif <- operation_objectif %>%
   filter(opo_ope_id %in% my_opes)
 
+ambiance <- ambiance %>%
+  filter(amb_id %in% my_opes)
+
 prelevement_elementaire <- prelevement_elementaire %>%
   filter(pre_id %in% my_pres)
 
@@ -121,6 +133,7 @@ usethis::use_data(station,
                   operation_donnees_environnementales,
                   operation_ipr,
                   operation_objectif,
+                  ambiance,
                   prelevement_elementaire,
                   lot_poissons,
                   mesure_individuelle,

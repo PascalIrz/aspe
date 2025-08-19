@@ -22,7 +22,8 @@ des opérations.
 }
 \description{
 La fonction fait appel au dataframe "operation" de la base Aspe qui doit impérativement avoir
-été chargé auparavant.
+été chargé auparavant. Seules espèces avec au moins une occurrence dans la dataframe
+initial sont considérées (et non toutes les espèces de la BDD Aspe).
 }
 \examples{
 \dontrun{
