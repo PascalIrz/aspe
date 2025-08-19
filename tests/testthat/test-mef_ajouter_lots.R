@@ -1,6 +1,6 @@
 test_that("mef_ajouter_lots works", {
 
-  misc_charger_donnees_test()
+  # misc_charger_donnees_test()
 
   passerelle <- mef_creer_passerelle()
 
@@ -11,5 +11,5 @@ test_that("mef_ajouter_lots works", {
                     names(passerelle))
 
   testthat::expect_identical(object,
-                         c("tyl_id", "tlo_id", "lop_effectif", "esp_code_alternatif"))
+                             c("tyl_id", "tlo_id", "lop_effectif", "esp_code_alternatif"))
 })
