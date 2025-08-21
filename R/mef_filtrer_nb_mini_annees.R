@@ -18,7 +18,14 @@
 #'
 #' @examples
 #' \dontrun{
-#' data_22_filtre <- mef_filtrer_nb_mini_annees(df = data_22, nb_mini_annees = 1, var_id = "sta_id")
+#' passerelle <- mef_creer_passerelle() %>%
+#' mef_ajouter_ope_date() %>%
+#'   select(pop_id, annee) %>%
+#'   distinct()
+#'
+#' object <- passerelle %>%
+#'   mef_filtrer_nb_mini_annees(nb_mini_annees = 5,
+#'                              var_id = "pop_id")
 #' }
 mef_filtrer_nb_mini_annees <- function(df, nb_mini_annees, var_id)
 

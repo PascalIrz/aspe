@@ -18,9 +18,26 @@
 #'
 #' @examples
 #' \dontrun{
-#' colo_ext_mon_point <- captures %>%
-#'     mef_colo_ext_pops()
+#' passerelle <- mef_creer_passerelle()
+#'
+#' object <- passerelle %>%
+#'   mef_ajouter_lots() %>%
+#'   mef_ajouter_ope_date() %>%
+#'   mef_ajouter_libelle() %>%
+#'   mef_ajouter_type_protocole() %>%
+#'   group_by(annee,
+#'            esp_code_alternatif,
+#'            pop_id,
+#'            pop_libelle,
+#'            pro_libelle) %>%
+#'   summarise(lop_effectif = sum(lop_effectif, na.rm = TRUE)) %>%
+#'   ungroup() %>%
+#'   droplevels() %>%
+#'   mef_colo_ext_pops()
+#'
+#' str(object)
 #' }
+#'
 mef_colo_ext_pops <- function(df, id_point = NULL)
 
 {

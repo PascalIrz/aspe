@@ -116,6 +116,22 @@ operation_objectif <- operation_objectif %>%
 ambiance <- ambiance %>%
   filter(amb_id %in% my_opes)
 
+int1 <- operation %>% pull(ope_int_id_operateur_peche)
+int2 <- operation %>% pull(ope_int_id_commanditaire)
+int3 <- operation %>% pull(ope_int_id_validation_technique)
+
+my_intervenants <- unique(c(int1, int2, int3))
+ref_intervenant <- ref_intervenant %>%
+  filter(int_id %in% my_intervenants)
+
+operation %>%
+  select(
+    ope_id,
+    ope_int_id_operateur_peche,
+    ope_int_id_commanditaire,
+    ope_int_id_validation_technique
+  )
+
 prelevement_elementaire <- prelevement_elementaire %>%
   filter(pre_id %in% my_pres)
 
@@ -138,6 +154,7 @@ usethis::use_data(station,
                   lot_poissons,
                   mesure_individuelle,
                   ref_espece,
+                  ref_intervenant,
                   ref_logique_3,
                   ref_logique_4,
                   ref_moyen_prospection,
