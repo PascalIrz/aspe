@@ -10,7 +10,14 @@
 #'
 #' @examples
 #' \dontrun{
-#' df_long <- mef_pivoter_var_env(df_court)
+#' df_long <- operation_ipr %>%
+#' mutate(distance_mer = NA) %>%
+#'   select(ope_id = opi_ope_id,
+#'          distance_mer,
+#'          starts_with("opi_param")) %>%
+#'   rename(temp_janvier = opi_param_tjanvier) %>%
+#'   select(-opi_param_bassin) %>%
+#'   mef_pivoter_var_env()
 #' }
 mef_pivoter_var_env <- function(df)
 
