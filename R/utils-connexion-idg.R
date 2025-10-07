@@ -13,13 +13,12 @@
 #'
 #' @examples
 #' \dontrun{
-#' bdd_aspe <- start_connexion_idg()
+#' bdd_aspe <- start_connexion_aspe_idg()
 #'
-#' start_connexion_idg(conn = bdd_aspe)
 #' }
 #'
 
-start_connexion_idg <- function() {
+start_connexion_aspe_idg <- function() {
   required_vars <- c(
     'BDD_IDG_HOST',
     'BDD_IDG_PORT',
@@ -90,12 +89,12 @@ start_connexion_idg <- function() {
 #'
 #' @examples
 #' \dontrun{
-#' bdd_aspe <- start_sql_connexion()
+#' bdd_aspe <- start_connexion_aspe_idg()
 #'
-#' stop_connexion_idg(conn = bdd_aspe)
+#' stop_connexion_aspe_idg(conn = bdd_aspe)
 #' }
 
 #' @importFrom DBI dbDisconnect
-stop_connexion_idg <- function(conn) {
+stop_connexion_aspe_idg <- function(conn) {
   DBI::dbDisconnect(conn)
 }
