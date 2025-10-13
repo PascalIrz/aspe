@@ -5,7 +5,7 @@
 [![DOI](https://zenodo.org/badge/323145117.svg)](https://zenodo.org/record/7458005)
 <!-- badges: end -->
 
-{aspe}: an R package to analyse and visualise river fish data in France <a href="https://pascalirz.github.io/aspe/"><img src="man/figures/logo.png" align="right" height="139" alt="aspe website" /></a>
+{aspe}: an R package to analyse and visualise river fish data in France <a href="https://pascalirz.github.io/aspe/"><img src="man/figures/logo.png" align="right" height="145" alt="aspe website" /></a>
 ====
 
 {aspe} fournit des outils autorisant simplement la plupart des
