@@ -1,0 +1,116 @@
+---
+title: "1b. Importation des tables de la base ASPE depuis l'IDG (OFB)"
+author: "Benoit Richard, Pascal Irz"
+date: "`r format(Sys.time(), '%d/%m/%Y')`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{1b. Importation des tables de la base ASPE depuis l'IDG (OFB)}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+# Objectif
+
+Récemment (*depuis octobre 2025*), la base ASPE est présente dans l'IDG de l'OFB (= **I**nfrastructure de **D**onnées **G**éographiques).  
+
+Il est donc maintenant possible d'importer directement les tables de la base ASPE depuis l'IDG (*sans passer par la conversion d'un dump ASPE* ; cf. `[vignette importation tables hubeau](https://pascalirz.github.io/aspe/articles/aspe_01_importation_tables.html)`).
+
+A noter que cet accès via l'IDG :
+
+- est restreint aux agents de l'OFB, ayant préalablement été inscrits comme utilisateurs ;
+- se fait à partir du réseau interne de l'OFB (ou via le VPN à l'externe) ;
+- nécessite de disposer des paramètres de connexion à la base IDG (adresse, login, ...).
+
+Les tables importées sont sous la forme de `dataframes`, et sont directement utilisables depuis l'IDE utilisé (comme `RStudio`), et sont compatibles avec les autres fonctions du package `{aspe}`.  
+
+## Installer et charger le package `{aspe}`
+
+Charger le package `{aspe}`, téléchargeable depuis GitHub :
+
+```{r, eval = FALSE}
+devtools::install_github("pascalirz/aspe")
+```
+
+Eventuellement cette commande vous retournera un message demandant de mettre à jour des `packages`. Acceptez au moins les mises à jour depuis le [CRAN](https://cran.r-project.org/).
+
+... et des autres qui sont nécessaires pour exécuter les scripts.
+
+```{r setup, message = FALSE, warning = FALSE, eval = FALSE}
+library(aspe)
+library(dplyr)
+```
+
+## Stocker les informations de connexion dans son R environnement
+
+Pour des raisons de sécurité (*et de bonnes pratiques*), il convient de ne pas exposer les informations sensibles de connexion à tous. C'est pourquoi, il est nécessaire de stocker ces informations dans  l'environnement `R` (fichier `.Renviron`). La fonction de connexion à la base aspe via l'IDG utilise ces informations (càd. nommées ainsi).
+
+Pour stocker les informations dans votre environnement `R`, vous pouvez procéder comme ceci :
+
+```{r, eval = FALSE}
+## 1° - ouvrir le fichier de configuration de l'environnement R avec la fonction du package usethis (installer le package si nécessaire).
+usethis::edit_r_environ()
+
+## 2° - dans la fenêtre ouverte intitulée '.Renviron', 
+# sauvegarder les lignes suivantes avec le bon paramétrage
+BDD_IDG_HOST = "URL_DE_LA_BDD"
+BDD_IDG_LOGIN = "IDENTIFIANT_POUR_CONNEXION_A_LA_BDD"
+BDD_IDG_PWD = "MDP_POUR_CONNEXION_A_LA_BDD"
+BDD_IDG_PORT = "LE_PORT_DE_LA_BDD"
+BDD_IDG_ASPE_NAME = 'NOM_DE_LA_BDD'
+```
+
+Sauvegarder le fichier `.Renviron` et redémarrer votre session `R` pour que les informations renseignées soient utilisables.
+
+Au redémarrage, vérifier les informations stockées en tapant ces lignes suivantes :
+
+```{r, eval = FALSE}
+## 3° - ces informations doivent être visibles dans la console R :
+Sys.getenv('BDD_IDG_HOST')
+Sys.getenv('BDD_IDG_LOGIN')
+Sys.getenv('BDD_IDG_PWD')
+Sys.getenv('BDD_IDG_PORT')
+Sys.getenv('BDD_IDG_ASPE_NAME')
+```
+
+## Importation de la base depuis l'IDG
+
+Après ces réglages, vous êtes prêts à utiliser les fonctions liées à l'IDG 🤩.
+
+En pratique, il faut d'abord (i) se connecter à la base de l'IDG, puis (ii) lancer l'importation. 
+
+Deux fonctions facilitent le processus :
+
+```{r, eval = FALSE}
+# connexion à l'IDG
+# ! veillez à disposer des informations de connexion et un droit d'accès
+aspe_db <- start_connexion_aspe_idg()
+
+# importation des tables de la base aspe
+imp_importer_aspe_idg(aspe_db)
+```
+
+Chaque table est importée une par une. L'opération est assez rapide selon l'état de votre connexion (*de l'ordre de 3 à 5 min* 🚀). 
+
+![](img/message_connexion_dll_tables_idg.png)
+
+Quand l'importation est terminée, une centaine de tables au format `dataframe` apparaissent dans l'onglet "Environnement" de RStudio.
+
+Pour éviter d'avoir à répéter cet import, on peut en sauvegarder le résultat au format `.RData` de façon à y accéder plus rapidement par la suite. La fonction `export_tables_rdata()` peut être utilisée pour cela. 
+
+Elle nomme les fichiers (`tables_sauf_mei` et `mesure_individuelle`) en fonction des dates et heures systèmes (pour éviter d'écraser malencontreusement d'anciens fichiers) et les sauvegarde par défaut dans un sous-répertoire `/processed_data` du répertoire de travail. Si celui-ci n'est pas pré-existant, il est créé.
+
+> NB: Il est possible de scinder les tables `mesure_individuelle` en plusieurs parties afin de faciliter le dépôt sur des espaces de stockage (avec taille limité). Par exemple, pour créer 2 parties, la fonction s'utilise comme ceci: `export_tables_rdata(n_fichiers_mei = 2)`.
+
+```{r, eval = FALSE, message = FALSE, warning = FALSE}
+export_tables_rdata()
+```
+
+

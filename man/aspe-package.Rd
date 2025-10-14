@@ -6,6 +6,8 @@
 \alias{aspe-package}
 \title{aspe: An R Package to Analyse and Visualise River Fish Data in France}
 \description{
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
 The aspe package provides a suite of tools for most of the common processing of the ASPE database \doi{10.1051/kmae/2022021}, including importation of the tables from a dump of the PostGreSQL database, calculation of abundances, densities, size distributions, along with graphical output and spatial processing.
 }
 \seealso{
