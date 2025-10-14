@@ -2,6 +2,7 @@
 <url><loc>https://pascalirz.github.io/aspe/404.html</loc></url>
 <url><loc>https://pascalirz.github.io/aspe/LICENSE.html</loc></url>
 <url><loc>https://pascalirz.github.io/aspe/articles/aspe_01_importation_tables.html</loc></url>
+<url><loc>https://pascalirz.github.io/aspe/articles/aspe_01b_importation_tables_idg.html</loc></url>
 <url><loc>https://pascalirz.github.io/aspe/articles/aspe_02_construire_un_jeu_de_donnees.html</loc></url>
 <url><loc>https://pascalirz.github.io/aspe/articles/aspe_03_fiche_station.html</loc></url>
 <url><loc>https://pascalirz.github.io/aspe/articles/index.html</loc></url>
@@ -44,6 +45,7 @@
 <url><loc>https://pascalirz.github.io/aspe/reference/imp_extraire_date_fichier.html</loc></url>
 <url><loc>https://pascalirz.github.io/aspe/reference/imp_extraire_noms_tables.html</loc></url>
 <url><loc>https://pascalirz.github.io/aspe/reference/imp_extraire_noms_tables2.html</loc></url>
+<url><loc>https://pascalirz.github.io/aspe/reference/imp_importer_aspe_idg.html</loc></url>
 <url><loc>https://pascalirz.github.io/aspe/reference/imp_importer_dump_sql.html</loc></url>
 <url><loc>https://pascalirz.github.io/aspe/reference/imp_scinder_dump.html</loc></url>
 <url><loc>https://pascalirz.github.io/aspe/reference/imp_tables_a_partir_des_lignes.html</loc></url>
@@ -96,5 +98,7 @@
 <url><loc>https://pascalirz.github.io/aspe/reference/misc_charger_donnees_test.html</loc></url>
 <url><loc>https://pascalirz.github.io/aspe/reference/misc_derniere_date.html</loc></url>
 <url><loc>https://pascalirz.github.io/aspe/reference/misc_nom_dernier_fichier.html</loc></url>
+<url><loc>https://pascalirz.github.io/aspe/reference/start_connexion_aspe_idg.html</loc></url>
+<url><loc>https://pascalirz.github.io/aspe/reference/stop_connexion_aspe_idg.html</loc></url>
 </urlset>
 
