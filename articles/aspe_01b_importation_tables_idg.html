@@ -66,7 +66,7 @@
                         <h4 data-toc-skip class="author">Benoit Richard,
 Pascal Irz</h4>
             
-            <h4 data-toc-skip class="date">14/10/2025</h4>
+            <h4 data-toc-skip class="date">16/10/2025</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/PascalIrz/aspe/blob/main/vignettes/aspe_01b_importation_tables_idg.Rmd" class="external-link"><code>vignettes/aspe_01b_importation_tables_idg.Rmd</code></a></small>
       <div class="d-none name"><code>aspe_01b_importation_tables_idg.Rmd</code></div>
@@ -82,8 +82,8 @@ dans l’IDG de l’OFB (= <strong>I</strong>nfrastructure de
 <strong>D</strong>onnées <strong>G</strong>éographiques).</p>
 <p>Il est donc maintenant possible d’importer directement les tables de
 la base ASPE depuis l’IDG (<em>sans passer par la conversion d’un dump
-ASPE</em> ;
-cf. <code>[vignette importation tables hubeau](https://pascalirz.github.io/aspe/articles/aspe_01_importation_tables.html)</code>).</p>
+ASPE</em> ; cf. <a href="https://pascalirz.github.io/aspe/articles/aspe_01_importation_tables.html">vignette
+importation tables</a> ).</p>
 <p>A noter que cet accès via l’IDG :</p>
 <ul>
 <li>est restreint aux agents de l’OFB, ayant préalablement été inscrits
@@ -103,13 +103,15 @@ package <a href="https://github.com/PascalIrz/aspe/" class="external-link">aspe<
 <p>Charger le package <a href="https://github.com/PascalIrz/aspe/" class="external-link">aspe</a>, téléchargeable depuis GitHub
 :</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"pascalirz/aspe"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># installation package aspe</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"pascalirz/aspe"</span><span class="op">)</span></span></code></pre></div>
 <p>Eventuellement cette commande vous retournera un message demandant de
 mettre à jour des <code>packages</code>. Acceptez au moins les mises à
 jour depuis le <a href="https://cran.r-project.org/" class="external-link">CRAN</a>.</p>
 <p>… et des autres qui sont nécessaires pour exécuter les scripts.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/PascalIrz/aspe/" class="external-link">aspe</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="co"># chargement packages</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/PascalIrz/aspe/" class="external-link">aspe</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
@@ -117,10 +119,10 @@ jour depuis le <a href="https://cran.r-project.org/" class="external-link">CRAN<
 </h3>
 <p>Pour des raisons de sécurité (<em>et de bonnes pratiques</em>), il
 convient de ne pas exposer les informations sensibles de connexion à
-tous. C’est pourquoi, il est nécessaire de stocker ces informations dans
-l’environnement <code>R</code> (fichier <code>.Renviron</code>). La
-fonction de connexion à la base aspe via l’IDG utilise ces informations
-(càd. nommées ainsi).</p>
+tous. C’est pourquoi, il est conseiller de stocker ces informations dans
+l’environnement <code>R</code> (fichier <code>.Renviron</code>) sur son
+ordinateur. La fonction de connexion à la base aspe via l’IDG utilise
+ces informations (càd. <em>nommées ainsi</em>).</p>
 <p>Pour stocker les informations dans votre environnement
 <code>R</code>, vous pouvez procéder comme ceci :</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
@@ -150,8 +152,8 @@ lignes suivantes :</p>
 <div class="section level3">
 <h3 id="importation-de-la-base-depuis-lidg">Importation de la base depuis l’IDG<a class="anchor" aria-label="anchor" href="#importation-de-la-base-depuis-lidg"></a>
 </h3>
-<p>Après ces réglages, vous êtes prêts à utiliser les fonctions liées à
-l’IDG 🤩.</p>
+<p>Après ces réglages, vous êtes prêts à utiliser les fonctions
+d’importation aspe liées à l’IDG 🤩.</p>
 <p>En pratique, il faut d’abord (i) se connecter à la base de l’IDG,
 puis (ii) lancer l’importation.</p>
 <p>Deux fonctions facilitent le processus :</p>
