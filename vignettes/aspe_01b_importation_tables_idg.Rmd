@@ -36,11 +36,7 @@ Les tables importées sont sous la forme de `dataframes`, et sont directement ut
 Charger le package `{aspe}`, téléchargeable depuis GitHub :
 
 ```{r, eval = FALSE}
-<<<<<<< HEAD
 install.packages("devtools")
-=======
-# installation package aspe
->>>>>>> fd9f72a81e7f13a1cf2867d4c8574aac55b6bbaf
 devtools::install_github("pascalirz/aspe")
 ```
 
@@ -57,7 +53,7 @@ library(usethis)
 
 ## Stocker les informations de connexion dans son R environnement
 
-Pour des raisons de sécurité (*et de bonnes pratiques*), il convient de ne pas exposer les informations sensibles de connexion à tous. C'est pourquoi, il est conseiller de stocker ces informations dans  l'environnement `R` (fichier `.Renviron`) sur son ordinateur. La fonction de connexion à la base aspe via l'IDG utilise ces informations (càd. *nommées ainsi*).
+Pour des raisons de sécurité (*et de bonnes pratiques*), il convient de ne pas exposer les informations sensibles de connexion à tous. C'est pourquoi, il est conseillé de stocker ces informations dans  l'environnement `R` (fichier `.Renviron`) sur son ordinateur. La fonction de connexion à la base aspe via l'IDG utilise ces informations (càd. *nommées ainsi*).
 
 Pour stocker les informations dans votre environnement `R`, vous pouvez procéder comme ceci :
 
