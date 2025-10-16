@@ -25,7 +25,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">aspe</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,12 +38,13 @@
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/aspe_01_importation_tables.html">1. Importation des tables de la base ASPE</a></li>
+<li><a class="dropdown-item" href="../articles/aspe_01_importation_tables.html">1. Importation des tables de la base ASPE à partir d'un dump</a></li>
     <li><a class="dropdown-item" href="../articles/aspe_01b_importation_tables_idg.html">1b. Importation des tables de la base ASPE depuis l'IDG (OFB)</a></li>
     <li><a class="dropdown-item" href="../articles/aspe_02_construire_un_jeu_de_donnees.html">2. Construire un jeu de données</a></li>
     <li><a class="dropdown-item" href="../articles/aspe_03_fiche_station.html">3. Produire une fiche station</a></li>
   </ul>
 </li>
+<li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul>
 <ul class="navbar-nav">
 <li class="nav-item"><form class="form-inline" role="search">
@@ -103,7 +104,7 @@ package <a href="https://github.com/PascalIrz/aspe/" class="external-link">aspe<
 <p>Charger le package <a href="https://github.com/PascalIrz/aspe/" class="external-link">aspe</a>, téléchargeable depuis GitHub
 :</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># installation package aspe</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"pascalirz/aspe"</span><span class="op">)</span></span></code></pre></div>
 <p>Eventuellement cette commande vous retournera un message demandant de
 mettre à jour des <code>packages</code>. Acceptez au moins les mises à
@@ -112,14 +113,15 @@ jour depuis le <a href="https://cran.r-project.org/" class="external-link">CRAN<
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># chargement packages</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/PascalIrz/aspe/" class="external-link">aspe</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></code></pre></div>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://usethis.r-lib.org" class="external-link">usethis</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="stocker-les-informations-de-connexion-dans-son-r-environnement">Stocker les informations de connexion dans son R environnement<a class="anchor" aria-label="anchor" href="#stocker-les-informations-de-connexion-dans-son-r-environnement"></a>
 </h3>
 <p>Pour des raisons de sécurité (<em>et de bonnes pratiques</em>), il
 convient de ne pas exposer les informations sensibles de connexion à
-tous. C’est pourquoi, il est conseiller de stocker ces informations dans
+tous. C’est pourquoi, il est conseillé de stocker ces informations dans
 l’environnement <code>R</code> (fichier <code>.Renviron</code>) sur son
 ordinateur. La fonction de connexion à la base aspe via l’IDG utilise
 ces informations (càd. <em>nommées ainsi</em>).</p>
@@ -172,9 +174,9 @@ selon l’état de votre connexion (<em>de l’ordre de 3 à 5 min</em>
 <code>dataframe</code> apparaissent dans l’onglet “Environnement” de
 RStudio.</p>
 <p>Pour éviter d’avoir à répéter cet import, on peut en sauvegarder le
-résultat au format <code>.RData</code> de façon à y accéder plus
-rapidement par la suite. La fonction <code><a href="../reference/export_tables_rdata.html">export_tables_rdata()</a></code>
-peut être utilisée pour cela.</p>
+résultat au format <code>.RData</code> de façon à accéder plus
+rapidement aux données par la suite. La fonction
+<code><a href="../reference/export_tables_rdata.html">export_tables_rdata()</a></code> peut être utilisée pour cela.</p>
 <p>Elle nomme les fichiers (<code>tables_sauf_mei</code> et
 <code>mesure_individuelle</code>) en fonction des dates et heures
 systèmes (pour éviter d’écraser malencontreusement d’anciens fichiers)
@@ -199,7 +201,7 @@ pour créer 2 parties, la fonction s’utilise comme ceci:
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Pascal Irz.</p>
+  <p>Developed by Pascal Irz, Benoît Richard.</p>
 </div>
 
 <div class="pkgdown-footer-right">
