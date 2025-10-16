@@ -21,7 +21,7 @@ knitr::opts_chunk$set(
 
 Récemment (*depuis octobre 2025*), la base ASPE est présente dans l'IDG de l'OFB (= **I**nfrastructure de **D**onnées **G**éographiques).  
 
-Il est donc maintenant possible d'importer directement les tables de la base ASPE depuis l'IDG (*sans passer par la conversion d'un dump ASPE* ; cf. `[vignette importation tables hubeau](https://pascalirz.github.io/aspe/articles/aspe_01_importation_tables.html)`).
+Il est donc maintenant possible d'importer directement les tables de la base ASPE depuis l'IDG (*sans passer par la conversion d'un dump ASPE* ; cf. [vignette importation tables](https://pascalirz.github.io/aspe/articles/aspe_01_importation_tables.html) ).
 
 A noter que cet accès via l'IDG :
 
@@ -36,7 +36,11 @@ Les tables importées sont sous la forme de `dataframes`, et sont directement ut
 Charger le package `{aspe}`, téléchargeable depuis GitHub :
 
 ```{r, eval = FALSE}
+<<<<<<< HEAD
 install.packages("devtools")
+=======
+# installation package aspe
+>>>>>>> fd9f72a81e7f13a1cf2867d4c8574aac55b6bbaf
 devtools::install_github("pascalirz/aspe")
 ```
 
@@ -45,6 +49,7 @@ Eventuellement cette commande vous retournera un message demandant de mettre à 
 ... et des autres qui sont nécessaires pour exécuter les scripts.
 
 ```{r setup, message = FALSE, warning = FALSE, eval = FALSE}
+# chargement packages
 library(aspe)
 library(dplyr)
 library(usethis)
@@ -52,7 +57,7 @@ library(usethis)
 
 ## Stocker les informations de connexion dans son R environnement
 
-Pour des raisons de sécurité (*et de bonnes pratiques*), il convient de ne pas exposer les informations sensibles de connexion à tous. C'est pourquoi, il est nécessaire de stocker ces informations dans  l'environnement `R` (fichier `.Renviron`). La fonction de connexion à la base aspe via l'IDG utilise ces informations (càd. nommées ainsi).
+Pour des raisons de sécurité (*et de bonnes pratiques*), il convient de ne pas exposer les informations sensibles de connexion à tous. C'est pourquoi, il est conseiller de stocker ces informations dans  l'environnement `R` (fichier `.Renviron`) sur son ordinateur. La fonction de connexion à la base aspe via l'IDG utilise ces informations (càd. *nommées ainsi*).
 
 Pour stocker les informations dans votre environnement `R`, vous pouvez procéder comme ceci :
 
@@ -84,7 +89,7 @@ Sys.getenv('BDD_IDG_ASPE_NAME')
 
 ## Importation de la base depuis l'IDG
 
-Après ces réglages, vous êtes prêts à utiliser les fonctions liées à l'IDG 🤩.
+Après ces réglages, vous êtes prêts à utiliser les fonctions d'importation aspe liées à l'IDG 🤩.
 
 En pratique, il faut d'abord (i) se connecter à la base de l'IDG, puis (ii) lancer l'importation. 
 
