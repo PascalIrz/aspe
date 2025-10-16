@@ -1,5 +1,5 @@
 ---
-title: "1. Importation des tables de la base ASPE"
+title: "1. Importation des tables de la base ASPE à partir d'un dump"
 author: "Pascal Irz"
 date: "`r format(Sys.time(), '%d/%m/%Y')`"
 output: rmarkdown::html_vignette
@@ -64,7 +64,7 @@ library(dplyr)
 
 # Importation de la base
 
-## Cas 1 : votre machine a 16Go de RAM ou plus
+## Cas 1 : votre machine a 32Go de RAM ou plus
 
 On importe la totalité de la base en une fois, ce qui est bien pratique.
 
@@ -92,7 +92,7 @@ export_tables_rdata()
 
 >NB : La fonction `importer_dump_sql()` accepte en entrée aussi bien le fichier compressé que décompressé.
 
-## Cas 2 : votre machine a moins de 16Go de RAM
+## Cas 2 : votre machine a moins de 32Go de RAM
 
 La mémoire ne permettra pas de stocker simultanément le gros fichier texte du `dump` et les `dataframes`. Il faudra procéder en deux étapes. Une des tables, nommée `mesure_individuelle`, comprend à elle seule plus de lignes que la totalité des autres qui sont plus d'une centaine. Il s'agit de la traiter à part.
 

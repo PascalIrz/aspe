@@ -36,6 +36,7 @@ Les tables importées sont sous la forme de `dataframes`, et sont directement ut
 Charger le package `{aspe}`, téléchargeable depuis GitHub :
 
 ```{r, eval = FALSE}
+install.packages("devtools")
 devtools::install_github("pascalirz/aspe")
 ```
 
@@ -46,6 +47,7 @@ Eventuellement cette commande vous retournera un message demandant de mettre à 
 ```{r setup, message = FALSE, warning = FALSE, eval = FALSE}
 library(aspe)
 library(dplyr)
+library(usethis)
 ```
 
 ## Stocker les informations de connexion dans son R environnement
@@ -103,7 +105,7 @@ Chaque table est importée une par une. L'opération est assez rapide selon l'é
 
 Quand l'importation est terminée, une centaine de tables au format `dataframe` apparaissent dans l'onglet "Environnement" de RStudio.
 
-Pour éviter d'avoir à répéter cet import, on peut en sauvegarder le résultat au format `.RData` de façon à y accéder plus rapidement par la suite. La fonction `export_tables_rdata()` peut être utilisée pour cela. 
+Pour éviter d'avoir à répéter cet import, on peut en sauvegarder le résultat au format `.RData` de façon à accéder plus rapidement aux données par la suite. La fonction `export_tables_rdata()` peut être utilisée pour cela. 
 
 Elle nomme les fichiers (`tables_sauf_mei` et `mesure_individuelle`) en fonction des dates et heures systèmes (pour éviter d'écraser malencontreusement d'anciens fichiers) et les sauvegarde par défaut dans un sous-répertoire `/processed_data` du répertoire de travail. Si celui-ci n'est pas pré-existant, il est créé.
 
