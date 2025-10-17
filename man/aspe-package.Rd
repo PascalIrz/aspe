@@ -23,10 +23,14 @@ Useful links:
 \author{
 \strong{Maintainer}: Pascal Irz \email{pascal.irz@ofb.gouv.fr} (\href{https://orcid.org/0000-0002-2066-8935}{ORCID})
 
+Authors:
+\itemize{
+  \item Benoît Richard \email{benoit.richard@ofb.gouv.fr} (\href{https://orcid.org/0000-0003-4522-027X}{ORCID})
+  \item Cédric Mondy \email{cedric.mondy@ofb.gouv.fr} (\href{https://orcid.org/0000-0003-2788-0936}{ORCID})
+}
+
 Other contributors:
 \itemize{
-  \item Cédric Mondy \email{cedric.mondy@ofb.gouv.fr} (\href{https://orcid.org/0000-0003-2788-0936}{ORCID}) [contributor]
-  \item Benoît Richard \email{benoit.richard@ofb.gouv.fr} (\href{https://orcid.org/0000-0003-4522-027X}{ORCID}) [contributor]
   \item Emmanuelle Dortel \email{emmanuelle.dortel@cefe.cnrs.fr} [contributor]
   \item Lilian Bonnafoux \email{l.bonnafoux@peche63.com} [contributor]
 }
