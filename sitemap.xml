@@ -42,7 +42,9 @@
 <url><loc>https://pascalirz.github.io/aspe/reference/gg_temp_metriq.html</loc></url>
 <url><loc>https://pascalirz.github.io/aspe/reference/gg_temp_metriq_grille.html</loc></url>
 <url><loc>https://pascalirz.github.io/aspe/reference/gg_temp_peuplement.html</loc></url>
+<url><loc>https://pascalirz.github.io/aspe/reference/imp_connecter_aspe_idg.html</loc></url>
 <url><loc>https://pascalirz.github.io/aspe/reference/imp_corres_aspe_taxref.html</loc></url>
+<url><loc>https://pascalirz.github.io/aspe/reference/imp_deconnecter_aspe_idg.html</loc></url>
 <url><loc>https://pascalirz.github.io/aspe/reference/imp_extraire_date_fichier.html</loc></url>
 <url><loc>https://pascalirz.github.io/aspe/reference/imp_extraire_noms_tables.html</loc></url>
 <url><loc>https://pascalirz.github.io/aspe/reference/imp_extraire_noms_tables2.html</loc></url>
@@ -99,7 +101,5 @@
 <url><loc>https://pascalirz.github.io/aspe/reference/misc_charger_donnees_test.html</loc></url>
 <url><loc>https://pascalirz.github.io/aspe/reference/misc_derniere_date.html</loc></url>
 <url><loc>https://pascalirz.github.io/aspe/reference/misc_nom_dernier_fichier.html</loc></url>
-<url><loc>https://pascalirz.github.io/aspe/reference/start_connexion_aspe_idg.html</loc></url>
-<url><loc>https://pascalirz.github.io/aspe/reference/stop_connexion_aspe_idg.html</loc></url>
 </urlset>
 
