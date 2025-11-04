@@ -94,7 +94,7 @@ Deux fonctions facilitent le processus :
 ```{r, eval = FALSE}
 # connexion à l'IDG
 # ! veillez à disposer des informations de connexion et un droit d'accès
-aspe_db <- start_connexion_aspe_idg()
+aspe_db <- imp_connecter_aspe_idg()
 
 # importation des tables de la base aspe
 imp_importer_aspe_idg(aspe_db)
