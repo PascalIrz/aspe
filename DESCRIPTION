@@ -1,8 +1,8 @@
 Package: aspe
 Type: Package
 Title: An R Package to Analyse and Visualise River Fish Data in France
-Version: 0.5.1
-Date: 2025-10-16
+Version: 0.5.2
+Date: 2025-11-04
 Authors@R: c(
     person(given = "Pascal",
            family = "Irz", 

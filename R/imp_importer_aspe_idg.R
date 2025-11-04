@@ -1,6 +1,9 @@
-#' Importer les tables ASPE à partir de la BDD IDG (OFB)
+#' Importer les tables ASPE à partir de la BDD IDG (OFB).
+#' Par défaut elles le sont toutes.
 #'
 #' @param conn connexion à la BDD
+#' @param tab_excl Vecteur caractère indiquant les éventuelles tables à ne pas importer.
+#' @param tab_select Vecteur caractère indiquant les tables à importer. Prime sur tab_excl.
 #' @param ... autre
 #'
 #' @returns Les dataframes correspondant à chacune des tables de la base (sauf celles expurgées au préalable)
@@ -13,14 +16,14 @@
 #'
 #' @examples
 #' \dontrun{
-#' bdd_aspe <- start_connexion_aspe_idg()
+#' bdd_aspe <- imp_connecter_aspe_idg()
 #'
 #' imp_importer_aspe_idg(conn = bdd_aspe)
 #'
-#' stop_connexion_aspe_idg(conn = bdd_aspe)
+#' imp_deconnecter_aspe_idg(conn = bdd_aspe)
 #' }
 
-imp_importer_aspe_idg <- function(conn, ...){
+imp_importer_aspe_idg <- function(conn, tab_excl = NA, tab_select = NA, ...){
 
   table_names <-
     conn %>%
@@ -32,6 +35,16 @@ imp_importer_aspe_idg <- function(conn, ...){
 
   table_names <-
     table_names[!grepl('batch_', table_names)]
+
+  if (is.character(tab_select)) {
+    table_names <-
+      table_names[table_names %in% tab_select]
+  } else {
+    if (is.character(tab_excl)) {
+      table_names <-
+        table_names[!table_names %in% tab_excl]
+    }
+  }
 
   for (table_name in table_names) {
     id <- cli::cli_process_start("table {.val {table_name}}")

@@ -2,12 +2,17 @@
 % Please edit documentation in R/imp_importer_aspe_idg.R
 \name{imp_importer_aspe_idg}
 \alias{imp_importer_aspe_idg}
-\title{Importer les tables ASPE à partir de la BDD IDG (OFB)}
+\title{Importer les tables ASPE à partir de la BDD IDG (OFB).
+Par défaut elles le sont toutes.}
 \usage{
-imp_importer_aspe_idg(conn, ...)
+imp_importer_aspe_idg(conn, tab_excl = NA, tab_select = NA, ...)
 }
 \arguments{
 \item{conn}{connexion à la BDD}
+
+\item{tab_excl}{Vecteur caractère indiquant les éventuelles tables à ne pas importer.}
+
+\item{tab_select}{Vecteur caractère indiquant les tables à importer. Prime sur tab_excl.}
 
 \item{...}{autre}
 }
@@ -15,14 +20,15 @@ imp_importer_aspe_idg(conn, ...)
 Les dataframes correspondant à chacune des tables de la base (sauf celles expurgées au préalable)
 }
 \description{
-Importer les tables ASPE à partir de la BDD IDG (OFB)
+Importer les tables ASPE à partir de la BDD IDG (OFB).
+Par défaut elles le sont toutes.
 }
 \examples{
 \dontrun{
-bdd_aspe <- start_connexion_aspe_idg()
+bdd_aspe <- imp_connecter_aspe_idg()
 
 imp_importer_aspe_idg(conn = bdd_aspe)
 
-stop_connexion_aspe_idg(conn = bdd_aspe)
+imp_deconnecter_aspe_idg(conn = bdd_aspe)
 }
 }
