@@ -67,9 +67,9 @@
                         <h4 data-toc-skip class="author">Benoit Richard,
 Pascal Irz</h4>
             
-            <h4 data-toc-skip class="date">04/11/2025</h4>
+            <h4 data-toc-skip class="date">05/11/2025</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/PascalIrz/aspe/blob/v0.5.2/vignettes/aspe_01b_importation_tables_idg.Rmd" class="external-link"><code>vignettes/aspe_01b_importation_tables_idg.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/PascalIrz/aspe/blob/main/vignettes/aspe_01b_importation_tables_idg.Rmd" class="external-link"><code>vignettes/aspe_01b_importation_tables_idg.Rmd</code></a></small>
       <div class="d-none name"><code>aspe_01b_importation_tables_idg.Rmd</code></div>
     </div>
 
@@ -170,6 +170,14 @@ puis (ii) lancer l’importation.</p>
 selon l’état de votre connexion (<em>de l’ordre de 3 à 5 min</em>
 🚀).</p>
 <p><img src="img/message_connexion_dll_tables_idg.png"></p>
+<blockquote>
+<p>A noter qu’il est possible de choisir d’inclure ou d’exclure
+certaines tables lors de l’importation, en utilisant les arguments
+<code>tab_select</code> et <code>tab_excl</code> dans la fonction
+<code><a href="../reference/imp_importer_aspe_idg.html">imp_importer_aspe_idg()</a></code>. Par exemple, si l’on souhaite
+importer uniquement la table des opérations, il suffit d’écrire:
+<code>imp_importer_aspe_idg(aspe_db, tab_select = "operation")</code></p>
+</blockquote>
 <p>Quand l’importation est terminée, une centaine de tables au format
 <code>dataframe</code> apparaissent dans l’onglet “Environnement” de
 RStudio.</p>
