@@ -203,7 +203,11 @@ gg_temp_ipr <- function(df_ipr,
           axis.text.x = element_text(angle = 45, hjust = 1),
           panel.grid.minor = ggplot2::element_blank(),
           panel.grid.major.x = ggplot2::element_blank(),
-          panel.grid.major.y = ggplot2::element_line(color = "lightgrey", size = .25),
+          panel.grid.major.y = if (utils::packageVersion("ggplot2") >= "3.4.0") {
+            ggplot2::element_line(color = "lightgrey", linewidth = 0.25)
+          } else {
+            ggplot2::element_line(color = "lightgrey", size = 0.25)
+          },
           panel.background = ggplot2::element_blank(),
           strip.background = ggplot2::element_blank())
   # orientation de l'axe des IPR selon l'argument inv_y
