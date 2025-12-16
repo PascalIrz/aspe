@@ -1,12 +1,12 @@
 pandoc: 3.1.11
-pkgdown: 2.1.3
+pkgdown: 2.2.0
 pkgdown_sha: ~
 articles:
   aspe_01_importation_tables: aspe_01_importation_tables.html
   aspe_01b_importation_tables_idg: aspe_01b_importation_tables_idg.html
   aspe_02_construire_un_jeu_de_donnees: aspe_02_construire_un_jeu_de_donnees.html
   aspe_03_fiche_station: aspe_03_fiche_station.html
-last_built: 2025-11-05T13:22Z
+last_built: 2025-12-16T10:33Z
 urls:
   reference: https://pascalirz.github.io/aspe/reference
   article: https://pascalirz.github.io/aspe/articles

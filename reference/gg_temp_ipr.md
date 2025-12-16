@@ -1,0 +1,127 @@
+# Graphique de la série chronologique des IPR
+
+La fonction utilise le référentiel "classe_ipr" de la base Aspe qui doit
+donc être chargé auparavant et complété par les codes couleurs avec
+ipr_completer_classes_couleur().
+
+## Usage
+
+``` r
+gg_temp_ipr(
+  df_ipr,
+  var_id_sta,
+  var_ipr,
+  station_sel = NA,
+  sup_500m = FALSE,
+  nb_colonnes = 6,
+  max_axe_y = NULL,
+  inv_y = TRUE,
+  annee_facteur = FALSE,
+  titre_graphique = "Evolution de l'IPR",
+  titre_y = "Indice Poisson Rivière",
+  df_classes = classe_ipr,
+  interactif = FALSE,
+  largeur = 6,
+  hauteur = 5,
+  options = list()
+)
+```
+
+## Arguments
+
+- df_ipr:
+
+  Dataframe contenant les données IPR. Il doit contenir des variables
+  "ipr" et "annee" ainsi qu'une variable permettant d'identifier la
+  station ou le point de prélèvement.
+
+- var_id_sta:
+
+  Nom de la variable servant à identifier les stations ou points. Cette
+  variable donnera les étiquettes du graphique.
+
+- var_ipr:
+
+  Nom de la variable contenant les valeurs IPR.
+
+- station_sel:
+
+  Vecteur caractère indiquant les points ou stations à sélectionner.
+
+- sup_500m:
+
+  Booléen. Indique si les stations sont situées à des altitudes
+  inférieures (sup_500m = FALSE, par défaut) ou bien supérieures à 500m
+  car les seuils de classe se qualité varient selon l'altitude. Comme ce
+  paramètre est unique pour l'ensemble des stations (ou points)
+  représentées, il importe de s'assurer qu'elles sont toutes soit
+  au-dessus, soit en-dessous de 500m.
+
+- nb_colonnes:
+
+  Entier. Nombre (maxi) de colonnes de graphiques s'il y a plusieurs
+  stations. Par défaut nb_colonnes = 6.
+
+- max_axe_y:
+
+  Numérique. Limite supérieure de l'axe des ordonnées. Par défaut
+  max_axe_y = 40.
+
+- inv_y:
+
+  Booléen. Indique l'axe des ordonnées pointe vers le bas (TRUE, par
+  défaut) ou vers le haut.
+
+- annee_facteur:
+
+  Booléen. Indique si la variable annee doit être transformée en
+  facteur. Parfois utile pour la mise en forme de l'axe des abscisses
+  (années).
+
+- titre_graphique:
+
+  Texte. Titre du graphique.
+
+- titre_y:
+
+  Texte. Titre de l'axe des ordonnées.
+
+- df_classes:
+
+  Dataframe contenant les limites de classes. Exemple : classe_ipr.
+
+- interactif:
+
+  Booléen. Indique si le graphique produit est statique (ggplot) ou
+  interactif (produit avec le package ggiraph).
+
+- largeur, hauteur:
+
+  largeur et hauteur du graphique interactif (en pouces). Cela définit
+  les dimensions relatives du graphique.
+
+- options:
+
+  liste d'options utilisée pour le rendu du graphique interactif (voir
+  [`girafe`](https://davidgohel.github.io/ggiraph/reference/girafe.html))
+
+## Value
+
+Un graphique statique ggplot2 ou un graphique interactif girafe.
+
+## Examples
+
+``` r
+if (FALSE) { # \dontrun{
+classe_ipr <- classe_ipr %>%
+  ipr_completer_classes_couleur()
+
+ipr_data %>%
+  gg_temp_ipr(var_id_sta = pop_libelle,
+              var_ipr = ipr,
+              station_sel = mes_pops,
+              nb_colonnes = 4,
+              max_axe_y = 60,
+              inv_y = FALSE)
+} # }
+```

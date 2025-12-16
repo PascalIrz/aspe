@@ -1,0 +1,275 @@
+# 2. Construire un jeu de données
+
+## Objectif
+
+Il s’agit de construire, à partir des tables de la base Aspe, un jeu de
+données classique. Pour le détail de la structure de la base, voir [Irz
+*et al.*
+(2022)](https://www.kmae-journal.org/articles/kmae/full_html/2022/01/kmae220057/kmae220057.html).
+
+## Construction du `dataframe` de base
+
+### Activation des packages et chargement des données
+
+``` r
+library(aspe)
+library(dplyr)
+library(stringr)
+```
+
+Les données ont été préalablement extraites d’un ‘dump’ de la base Aspe
+([cf. tuto](https://pascalirz.github.io/aspe/articles/aspe_01_importation_tables.html).
+Elles comprennent deux fichiers de données, l’un pour les mesures
+individuelles et l’autre pour l’ensemble des autres tables. Seul ce
+dernier est utilisé ici.
+
+``` r
+misc_charger_donnees_test()
+```
+
+### Mise en correspondance des identifiants des tables principales
+
+On va ici créer un `dataframe` “passerelle” qui met en correspondance
+les identifiants des tables principales de la base. La description des
+tables est fournie dans l’article cité ci-dessus.
+
+``` r
+passerelle <- aspe::mef_creer_passerelle()
+```
+
+Cette table contient, comme variables, les identifiants se réfèrant aux
+lignes des tables suivantes :
+
+- `sta_id` : station (optionnel)
+- `pop_id` : point de prélèvement (obligatoire)
+- `ope_id` : opération de pêche (obligatoire)
+- `pre_id` : prélèvement élémentaire (obligatoire)
+- `lop_id` : lot poisson (obligatoire)
+
+Ces identifiants permettent d’opérer des jointures avec les tables de la
+base qui contiennent les données. Une ligne correspond à un lot de
+poisson, qui est rattaché, de proche en proche, à son prélèvement
+élémentaire, lui-même à son opération, elle-même à son point de
+prélèvelement et lui-même à sa station. Un échantillon :
+
+| sta_id | pop_id | ope_id | pre_id | lop_id  |
+|--------|--------|--------|--------|---------|
+| 11302  | 44190  | 6473   | 14848  | 797642  |
+| 10844  | 42704  | 6565   | 15113  | 819557  |
+| 10925  | 42959  | 86987  | 94057  | 5404810 |
+| 11302  | 44190  | 6639   | 15664  | 835895  |
+| 11302  | 44190  | 6568   | 14861  | 820069  |
+| 10925  | 42959  | 87839  | 95308  | 5472677 |
+
+## Sélection d’un périmètre géographique
+
+La base Aspe est nationale, mais pour la plupart des besoins il est
+préférable de commencer par en restreindre le périmètre pour alléger les
+traitements.
+
+### Sélectionner des départements
+
+Cette sélection est simple car la base contient l’information du
+département associé à chaque point de prélèvement.
+
+``` r
+aspe_22 <- passerelle %>% 
+  mef_ajouter_dept() %>% 
+  filter(dept == "22")
+```
+
+### Sélection géographique
+
+Pour sélectionner les points de prélèvement qui se trouvent dans un
+périmètre donné, il est possible d’opérer une sélection spatiale. La
+sélection comprend les étapes suivantes :
+
+- transformer la table des points de prélèvements en un objet
+  géographique
+- intersecter ces points avec le polygone du périmètre (ici un bassin
+  versant)
+- extraire les identifiants des points qui sont à l’intérieur du
+  périmètre
+- filtrer la passerelle pour ne conserver que ces points
+
+A noter, pour une sélection sur un périmètre administratif autre que le
+département (communes, EPCI, régions), le package R
+[`COGiter`](https://github.com/MaelTheuliere/COGiter) est
+particulièrement pratique.
+
+#### Spatialisation des points
+
+Comme il existe dans la base plusieurs systèmes de coordonnées (CRS), on
+doit les homogénéiser et s’assurer que les points et le polygone ont le
+même CRS.
+
+Ajout du code CRS (EPSG) aux points (table `point_prelevement`) par
+jointure avec la table `ref_type_projection` qui fait la correspondence
+entre les codes internes de la base et les numéros EPSG des CRS.
+
+``` r
+pops <- point_prelevement %>%
+  left_join(y = ref_type_projection,
+            by = c("pop_typ_id" = "typ_id"))
+```
+
+Coordonnées des points en Lambert 93. Le `dataframe coords` contient
+uniquement les deux colonnes `X` et `Y` pour la longitude et la
+latitude.
+
+``` r
+# coordonnées
+coords <- aspe::geo_convertir_coords_df(
+  df = pops,
+  var_x = pop_coordonnees_x,
+  var_y = pop_coordonnees_y,
+  var_crs_initial = typ_code_epsg,
+  crs_sortie = 2154 # Lambert 93
+)
+```
+
+Création d’un objet géographique des points, de classe `sf` :
+
+- on juxtapose au `dataframe pops` les colonnes de coordonnées qui sont
+  dans le `dataframe coords`
+- puis le dataframe fusionné est transformé en objet géographique avec
+  la fonction `st_as_sf()`.
+
+``` r
+# création d'un objet géographique
+pops_geo <- pops %>%
+  cbind(coords) %>%
+  sf::st_as_sf(coords = c("X", "Y"),
+               crs = 2154)
+```
+
+Le résultat peut être visualisé par exemple avec
+`mapview::mapview(pops_geo)`.
+
+``` r
+mapview::mapview(pops_geo)
+```
+
+#### Chargement des contours du bassin
+
+Avec les fonctions du package `sf`, on charge le shapefile, puis si
+besoin on le reprojette s’il n’a pas le même CRS que les points.
+
+``` r
+bv_fichier <- "../raw_data/bassin.shp"
+
+mon_bv <- sf::read_sf(dsn = bv_fichier) %>% 
+  sf::st_transform(crs = 2154)
+```
+
+#### Croisement géographique
+
+On opère une sélection géographique en ne conservant que les points pour
+lesquels la jointure géographique a permis d’obtenir un attribut du
+bassin (ici la variable `ID`).
+
+``` r
+pops_geo_bv <- pops_geo %>%
+  sf::st_join(mon_bv) %>%
+  filter(!is.na(ID)) %>% # suppression des lignes où ID est manquant
+  select(names(pops_geo)) # sélection des mêmes colonnes que celles de pops_geo
+```
+
+On collecte un vecteur contenant les identifiants `pop_id` des points
+localisés dans le bassin.
+
+``` r
+pops_bv_ids <- pops_geo_bv %>%
+  pull(pop_id)
+```
+
+#### Sélection des points
+
+La passerelle est filtrée pour ne retenir que les points de prélèvement
+localisés dans le polygone.
+
+``` r
+aspe_sel <- passerelle %>% 
+  filter(pop_id %in% pops_bv_ids)
+```
+
+## Construction du jeu de données
+
+### Sélection d’une fenêtre temporelle
+
+Cette sélection est beaucoup plus simple qu’en spatial. Il suffit
+d’ajouter la date de l’opération puis de filtrer dessus. Par exemple :
+
+``` r
+aspe_sel <- passerelle %>% 
+  mef_ajouter_ope_date() %>% 
+  filter(annee > 2008)
+```
+
+### Ajout des données (et re-sélection)
+
+Le principe est d’utiliser la famille des fonctions du package `aspe`
+qui sont préfixées par `mef_ajouter`. Celles-ci servent à ajouter des
+données à une passerelle.
+
+    #>  [1] "mef_ajouter_abs"                "mef_ajouter_ambiance"          
+    #>  [3] "mef_ajouter_dept"               "mef_ajouter_esp"               
+    #>  [5] "mef_ajouter_groupe_points"      "mef_ajouter_intervenants"      
+    #>  [7] "mef_ajouter_ipr"                "mef_ajouter_libelle"           
+    #>  [9] "mef_ajouter_libelle_site"       "mef_ajouter_lots"              
+    #> [11] "mef_ajouter_mei"                "mef_ajouter_metriques"         
+    #> [13] "mef_ajouter_moyen_prospection"  "mef_ajouter_objectif"          
+    #> [15] "mef_ajouter_ope_date"           "mef_ajouter_ope_desc_peche"    
+    #> [17] "mef_ajouter_ope_env"            "mef_ajouter_passage"           
+    #> [19] "mef_ajouter_proba_presence_ipr" "mef_ajouter_qualification"     
+    #> [21] "mef_ajouter_stats_taille"       "mef_ajouter_surf_calc"         
+    #> [23] "mef_ajouter_type_longueur"      "mef_ajouter_type_lot"          
+    #> [25] "mef_ajouter_type_materiel"      "mef_ajouter_type_prelevement"  
+    #> [27] "mef_ajouter_type_protocole"     "mef_ajouter_utilisateurs"      
+    #> [29] "mef_ajouter_validation"
+
+Exemple si l’on veut étudier les notes IPR et les métriques, pour les
+pêches réalisées dans le cadre du Réseau Hydrobiologique et Piscicole.
+Comme les notes IPR sont attribuée à chaque pêche, elles sont identiques
+pour chaque lot de poissons de la même pêche donc on peut dédoublonner
+les lignes afin de n’avoir qu’une ligne par opération.
+
+``` r
+aspe_ipr <- aspe_sel %>% 
+  select(-pre_id, -lop_id) %>% 
+  distinct() %>% # dédoublonnage
+  mef_ajouter_objectif() %>% 
+  filter(obj_libelle == "RHP – Réseau Hydrobiologique Piscicole") %>% 
+  mef_ajouter_ipr() %>% 
+  mef_ajouter_metriques()
+```
+
+On rajoute les libellés des points de prélèvement et sélectionne
+uniquement les variables d’intérêt.
+
+``` r
+aspe_ipr <- aspe_ipr %>%
+  mef_ajouter_libelle() %>%
+  select(sta_id:ope_id,
+         pop_libelle,
+         annee,
+         ope_date,
+         ipr,
+         cli_libelle,
+         ner:dti)
+```
+
+Visualisation.
+
+| sta_id | pop_id | ope_id | pop_libelle                      | annee | ope_date   | ipr   | cli_libelle | ner  | nel  | nte  | dit  | dio  | dii  | dti  |
+|--------|--------|--------|----------------------------------|-------|------------|-------|-------------|------|------|------|------|------|------|------|
+| 10925  | 42959  | 51339  | Le Ruisseau de Loup à Plougonver | 2010  | 05/10/2010 | 6.36  | Bon         | 0.04 | 0.04 | 1.72 | 2.51 | 0.92 | 0.99 | 0.14 |
+| 10734  | 42437  | 51317  | Le Gouessant à Andel             | 2009  | 08/09/2009 | 19.16 | Moyen       | 1.10 | 1.76 | 3.83 | 3.16 | 6.84 | 0.84 | 1.63 |
+| 10647  | 42207  | 6648   | L'Arguenon à Dolo                | 2009  | 08/09/2009 | 10.72 | Bon         | 0.16 | 0.25 | 3.06 | 2.10 | 3.05 | 1.68 | 0.41 |
+| 10844  | 42704  | 6642   | TRIEUX à PLESIDY                 | 2009  | 16/10/2009 | 5.99  | Bon         | 0.17 | 0.47 | 2.09 | 0.98 | 0.57 | 0.98 | 0.72 |
+| 10734  | 42437  | 6676   | Le Gouessant à Andel             | 2010  | 29/09/2010 | 16.75 | Moyen       | 1.16 | 4.30 | 1.10 | 2.16 | 5.38 | 2.21 | 0.44 |
+| 10844  | 42704  | 6837   | TRIEUX à PLESIDY                 | 2013  | 01/10/2013 | 5.86  | Bon         | 0.14 | 0.07 | 1.69 | 1.69 | 0.55 | 1.13 | 0.58 |
+
+Dans la même logique, il est possible d’enrichir le jeu de données avec
+les informations contenues dans les différentes tables au moyen des
+fonctions `mef_ajouter_xxx()`.
