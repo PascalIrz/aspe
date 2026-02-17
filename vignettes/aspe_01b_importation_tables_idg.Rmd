@@ -104,6 +104,8 @@ Chaque table est importée une par une. L'opération est assez rapide selon l'é
 
 ![](img/message_connexion_dll_tables_idg.png)
 
+> A noter qu'il est possible de choisir d'inclure ou d'exclure certaines tables lors de l'importation, en utilisant les arguments `tab_select` et `tab_excl` dans la fonction `imp_importer_aspe_idg()`. Par exemple, si l'on souhaite importer uniquement la table des opérations, il suffit d'écrire: `imp_importer_aspe_idg(aspe_db, tab_select = "operation")`
+
 Quand l'importation est terminée, une centaine de tables au format `dataframe` apparaissent dans l'onglet "Environnement" de RStudio.
 
 Pour éviter d'avoir à répéter cet import, on peut en sauvegarder le résultat au format `.RData` de façon à accéder plus rapidement aux données par la suite. La fonction `export_tables_rdata()` peut être utilisée pour cela. 
