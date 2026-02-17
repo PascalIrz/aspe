@@ -36,15 +36,15 @@ imp_importer_aspe_idg <- function(conn, tab_excl = NA, tab_select = NA, ...){
   table_names <-
     table_names[!grepl('batch_', table_names)]
 
-  if (is.character(tab_select)) {
-    table_names <-
-      table_names[table_names %in% tab_select]
-  } else {
-    if (is.character(tab_excl)) {
-      table_names <-
-        table_names[!table_names %in% tab_excl]
-    }
-  }
+  # if (is.character(tab_select)) {
+  #   table_names <-
+  #     table_names[table_names %in% tab_select]
+  # } else {
+  #   if (is.character(tab_excl)) {
+  #     table_names <-
+  #       table_names[!table_names %in% tab_excl]
+  #   }
+  # }
 
   for (table_name in table_names) {
     id <- cli::cli_process_start("table {.val {table_name}}")
