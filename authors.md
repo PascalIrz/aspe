@@ -18,15 +18,15 @@
 Source:
 [`inst/CITATION`](https://github.com/PascalIrz/aspe/blob/main/inst/CITATION)
 
-Irz, P., Richard, B., Mondy, C. (2025). aspe: An R Package to Analyse
-and Visualise River Fish Data in France. R package version 0.5.2,
+Irz, P., Richard, B., Mondy, C. (2026). aspe: An R Package to Analyse
+and Visualise River Fish Data in France. R package version 0.5.4,
 https://github.com/PascalIrz/aspe/
 
     @Manual{,
       title = {aspe: An R Package to Analyse and Visualise River Fish Data in France},
       author = {P. Irz and B. Richard and C. Mondy},
       journal = {Github repo},
-      year = {2025},
-      volume = {R package version 0.5.2},
+      year = {2026},
+      volume = {R package version 0.5.4},
       url = {https://github.com/PascalIrz/aspe/},
     }
