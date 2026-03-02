@@ -16,7 +16,7 @@
 ## Citation
 
 Source:
-[`inst/CITATION`](https://github.com/PascalIrz/aspe/blob/main/inst/CITATION)
+[`inst/CITATION`](https://github.com/PascalIrz/aspe/blob/v0.5.4/inst/CITATION)
 
 Irz, P., Richard, B., Mondy, C. (2026). aspe: An R Package to Analyse
 and Visualise River Fish Data in France. R package version 0.5.4,
