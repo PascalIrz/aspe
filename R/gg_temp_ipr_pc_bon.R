@@ -47,7 +47,6 @@ gg_temp_ipr_pc_bon <- function(ipr_df, titre = NA)
   ggplot(data = pc_bon, aes(x = annee, y = pc_bon)) +
     geom_bar(stat = "identity") +
     scale_y_continuous(limits = c(0, NA)) +
-    geom_bar(stat = "identity") +
     labs(y = "Pourcentage de stations en bon \u00e9tat d\'apr\u00e8s l\'IPR",
          title = titre) +
     scale_x_continuous(labels = scales::number_format(accuracy = 1, big.mark = ''),
