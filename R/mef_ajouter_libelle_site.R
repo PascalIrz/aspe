@@ -74,6 +74,12 @@ mef_ajouter_libelle_site <- function(df, origine_libelle = "auto")
         mutate_at(vars(pop_libelle,
                        sta_libelle_sandre),
                   as.character) %>%
+
+      # transformer les chaînes vides en NA
+        mutate(pop_libelle = na_if(pop_libelle, ""),
+               sta_libelle_sandre = na_if(sta_libelle_sandre, "")
+              ) %>%
+      
         mutate(pop_libelle = ifelse(is.na(pop_libelle),
                                     sta_libelle_sandre,
                                     pop_libelle)) %>%
