@@ -95,7 +95,7 @@ gg_temp_metriq_grille <- function(df_metriques,
   plot_ipr_station <- ggplot(data = df_metriques,
                              aes(x = annee,
                                  y = !!var_valeur_metrique)) +
-    if (packageVersion("ggplot2") >= "3.4.0") {
+    if (utils::packageVersion("ggplot2") >= "3.4.0") {
       geom_line(linewidth = 1)
     } else {
       geom_line(size = 1)
