@@ -95,7 +95,11 @@ gg_temp_metriq_grille <- function(df_metriques,
   plot_ipr_station <- ggplot(data = df_metriques,
                              aes(x = annee,
                                  y = !!var_valeur_metrique)) +
-    geom_line(size = 1) +
+    if (utils::packageVersion("ggplot2") >= "3.4.0") {
+      geom_line(linewidth = 1)
+    } else {
+      geom_line(size = 1)
+    } +
     geom_point(size = 2, shape = 16) +
     labs(title = "Evolution des m\u00e9triques IPR",
          x = "",

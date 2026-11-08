@@ -98,6 +98,13 @@ gg_temp_metriq <- function(df_metriques,
   plot_ipr_station <- ggplot(data = df_metriques) %>%
     gg_ajouter_arriere_plan_int(df_classes = df_classes)
 
+  # Compatibilité ggplot2 : anciennes et nouvelles versions
+  param_ligne <- if (utils::packageVersion("ggplot2") >= "3.4.0") {
+    list(linewidth = 1)
+  } else {
+    list(size = 1)
+  }
+
     # métriques IPR
   if(type_graphique == "barres")
 
@@ -120,16 +127,22 @@ gg_temp_metriq <- function(df_metriques,
   if(type_graphique == "courbes")
 
   {
-    plot_ipr_station <- plot_ipr_station +
-      geom_line(
+    # Construction des arguments de geom_line()
+    geom_line_args <- c(
+      list(
         data = df_metriques,
-        aes(
+        mapping = aes(
           x = annee,
           y = !!var_valeur_metrique,
           col = !!var_nom_metrique,
           group = !!var_nom_metrique
-        ), size = 1
-      ) +
+        )
+      ),
+      param_ligne
+    )
+ 
+    plot_ipr_station <- plot_ipr_station +
+      do.call(geom_line, geom_line_args) +
       geom_point(
         data = df_metriques,
         aes(
